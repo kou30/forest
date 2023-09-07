@@ -10,10 +10,10 @@ public class ShowAllShinamonoBL {
 	 *引数　：なし
 	 *戻り値：抽出結果（DTOリスト）
 	 *----------------------------------------------------------------------**/
-	public List<ShinamonoDTO> executeSelectShinamono() {
+	public List<ShinamonoDTO> executeSelectShinamono(int user_nr) {
 
 		ShinamonoDAO dao = new ShinamonoDAO();
-		List<ShinamonoDTO> dtoList= dao.findAll();
+		List<ShinamonoDTO> dtoList= dao.findAll(user_nr);
 		
 		return dtoList;
 	}

@@ -6,7 +6,7 @@ public class MeiboDTO {
 	//フィールド
 	//----------------------------------------------------------------
 	private int	meibo_id;
-	private String  userid ;                //id
+	private int  user_nr ;                //id
 	private String    name ;                //名前
 	private String    yomi ;                 //年齢
 	private int       sex ;                 //性別
@@ -19,19 +19,6 @@ public class MeiboDTO {
 	private byte[] imageData ;                
 
 
-
-	//----------------------------------------------------------------
-	//getter/setter
-	//----------------------------------------------------------------
-
-	//getter/setter（対象フィールド：userId）
-	public String getUserId() { return userid; }
-	public void setUserId(String userid) { this.userid = userid; }
-
-
-	//----------------------------------------------------------------
-	//getter/setter
-	//----------------------------------------------------------------
 
 	//getter/setter（対象フィールド：name）
 	public String getName() { return name; }
@@ -72,5 +59,12 @@ public class MeiboDTO {
 	public void setMeibo_id(int meibo_id) {
 		this.meibo_id = meibo_id;
 	}
+	public int getUser_nr() {
+		return user_nr;
+	}
+	public void setUser_nr(int user_nr) {
+		this.user_nr = user_nr;
+	}
+
 
 }

@@ -23,7 +23,7 @@ public class MeiboEntry extends HttpServlet {
 		UserInfoDto userInfoOnSession = (UserInfoDto)session.getAttribute("LOGIN_INFO");
 	 	
 	 	if (userInfoOnSession != null) {
-			request.getRequestDispatcher("/WEB-INF/view/MeiboEntry.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/view/meiboentry.jsp").forward(request, response);
 	 	}else {
 	 		response.sendRedirect("Logininfo");
 	 	}

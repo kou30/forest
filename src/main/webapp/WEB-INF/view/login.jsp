@@ -9,7 +9,7 @@
 <title>ログイン画面</title>
 </head>
 <body>
-	<h1>ログインSample①（ログイン画面）</h1>
+	<h1>ログイン画面</h1>
 	<form action="ExecuteLogin" method="post">
 		<p>
 			ユーザーID：<br> <input type="text" ID="Id" name="USER_ID"
@@ -21,6 +21,7 @@
 		</p>
 		<div ID="center">
 			<input type="submit" value="ログイン" onclick="return ale()">
+			<br>
 			    <a href="ExecuteSignup">サインアップする</a>
 			
 		</div>

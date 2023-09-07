@@ -32,8 +32,25 @@
     <title>名簿一覧</title>
 </head>
 <body>
-    <h1>名簿一覧</h1>
-    <table>
+	<header>
+  	<h1>名簿一覧</h1>
+		<nav>
+			<ul>
+				<ol>
+					<a href="MainPage">TOP</a>
+				</ol>
+				<ol>
+					<a href="MeiboEntry">名簿登録</a>
+				</ol>
+				<ol>
+					<a href="ShowAllMeibo">名簿一覧</a>
+				</ol>
+				<ol>
+					<a href="ShowAllShinamono">贈り物・貰い物一覧</a>
+				</ol>
+			</ul>
+		</nav>
+	</header>    <table>
         <tr>
             <th>名前</th>
             <th>よみがな</th>
@@ -74,6 +91,5 @@
         </tr>
         <% } %>
     </table>
-    <a href="Mainsub">サンプルHP</a>
 </body>
 </html>

@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -59,7 +58,7 @@ public class ShinamonoDAO {
 			ps.setInt(1, Shinamono.getShinamono_id());
 			ps.setInt(2, Shinamono.getUser_nr());
 			ps.setString(3, Shinamono.getAite_name());
-			ps.setDate(4, Shinamono.getRe_time());
+			ps.setString(4, Shinamono.getRe_time());
 			ps.setInt(5, Shinamono.getBunrui());
 			ps.setInt(6, Shinamono.getCategory());
 			ps.setInt(7, Shinamono.getItem());
@@ -74,26 +73,28 @@ public class ShinamonoDAO {
 		}
 	}
 
-	public List<ShinamonoDTO> findAll() {
+	public List<ShinamonoDTO> findAll(int user_nr) {
 		List<ShinamonoDTO> list = new ArrayList<>();
 		try {
 			this.connect();
-			ps = db.prepareStatement("SELECT * FROM shinamono");
+			ps = db.prepareStatement("SELECT * FROM shinamono WHERE USER_NR=?");
+			ps.setInt(1, user_nr);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int shinamono_id = rs.getInt("shinamono_id");
-				int user_id = rs.getInt("user_id");
+				user_nr = rs.getInt("user_nr");
 				int meibo_id=rs.getInt("meibo_id");
 				String aite_name = rs.getString("aite_name");
-				Date re_time = rs.getDate("re_time");
+				String re_time = rs.getString("re_time");
 				int bunrui = rs.getInt("bunrui");
 				int category = rs.getInt("category");
 				int item = rs.getInt("item");
 				String shinamono_name = rs.getString("shinamono_name");
 				int shinamono_kingaku = rs.getInt("shinamono_kingaku");
 				String memo = rs.getString("memo");
-				list.add(new ShinamonoDTO(shinamono_id, user_id, aite_name, re_time, bunrui, category, item,
-						shinamono_name, shinamono_kingaku, memo,meibo_id));
+				list.add(new ShinamonoDTO(shinamono_id, user_nr,meibo_id, aite_name, re_time, bunrui, category, item,
+						shinamono_name, shinamono_kingaku, memo));
+				System.out.println(list);
 			}
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
@@ -109,17 +110,17 @@ public class ShinamonoDAO {
 		try {
 			this.connect();
 			ps = db.prepareStatement(
-					"INSERT INTO shinamono(user_id,aite_name,re_time,bunrui,category,item,shinamono_name,shinamono_kingaku,memo) VALUES(?,?,?,?,?,?,?,?,?)");
-//			ps.setInt(1, Shinamono.getShinamono_id()); 自動割り当て
+					"INSERT INTO shinamono(user_nr,meibo_id,aite_name,re_time,bunrui,category,item,shinamono_name,shinamono_kingaku,memo) VALUES(?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1, Shinamono.getUser_nr());
-			ps.setString(2, Shinamono.getAite_name());
-			ps.setDate(3, Shinamono.getRe_time());
-			ps.setInt(4, Shinamono.getBunrui());
-			ps.setInt(5, Shinamono.getCategory());
-			ps.setInt(6, Shinamono.getItem());
-			ps.setString(7, Shinamono.getShinamono_name());
-			ps.setInt(8, Shinamono.getShinamono_kingaku());
-			ps.setString(9, Shinamono.getMemo());
+			ps.setInt(2, Shinamono.getMeibo_id());
+			ps.setString(3, Shinamono.getAite_name());
+			ps.setString(4, Shinamono.getRe_time());
+			ps.setInt(5, Shinamono.getBunrui());
+			ps.setInt(6, Shinamono.getCategory());
+			ps.setInt(7, Shinamono.getItem());
+			ps.setString(8, Shinamono.getShinamono_name());
+			ps.setInt(9, Shinamono.getShinamono_kingaku());
+			ps.setString(10, Shinamono.getMemo());
 			ps.execute();
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
@@ -138,18 +139,18 @@ public class ShinamonoDAO {
 			rs=ps.executeQuery();
 			if(rs.next()) {
 				int shinamono_id = rs.getInt("shinamono_id");
-				int user_id = rs.getInt("user_id");
+				int user_nr = rs.getInt("user_nr");
 				int meibo_id=rs.getInt("meibo_id");
 				String aite_name = rs.getString("aite_name");
-				Date re_time = rs.getDate("re_time");
+				String re_time = rs.getString("re_time");
 				int bunrui = rs.getInt("bunrui");
 				int category = rs.getInt("category");
 				int item = rs.getInt("item");
 				String shinamono_name = rs.getString("shinamono_name");
 				int shinamono_kingaku = rs.getInt("shinamono_id");
 				String memo = rs.getString("memo");
-				shinamono=new ShinamonoDTO(shinamono_id, user_id, aite_name, re_time, bunrui, category, item,
-						shinamono_name, shinamono_kingaku, memo,meibo_id);
+				shinamono=new ShinamonoDTO(shinamono_id, user_nr,meibo_id, aite_name, re_time, bunrui, category, item,
+						shinamono_name, shinamono_kingaku, memo);
 			}
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();

@@ -26,13 +26,15 @@ public class ShowAllMeibo extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
 		UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
-		List<MeiboDTO> list = new ArrayList<MeiboDTO>();
-		ShowAllMeiboBL logic = new ShowAllMeiboBL();
-		list = logic.executeSelectMeibo();
-		request.setAttribute("MEIBO", list);
-		if (userInfoOnSession != null) {
 
-			request.getRequestDispatcher("/WEB-INF/view/ShowAllMeibo.jsp").forward(request, response);
+		if (userInfoOnSession != null) {
+			int user_nr=   userInfoOnSession.getUser_nr();
+			List<MeiboDTO> list = new ArrayList<MeiboDTO>();
+			ShowAllMeiboBL logic = new ShowAllMeiboBL();
+			list = logic.executeSelectMeibo(user_nr);
+			request.setAttribute("MEIBO", list);
+
+			request.getRequestDispatcher("/WEB-INF/view/showallmeibo.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("Logininfo");
 		}

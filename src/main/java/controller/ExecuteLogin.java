@@ -53,7 +53,7 @@ public class ExecuteLogin extends HttpServlet {
 		//    ユーザーデータを取得できなかった→まだログインされていない
 		if (userInfoOnSession != null) {
 			//ログイン済：ホーム画面に転送
-			response.sendRedirect("Mainsub");
+			response.sendRedirect("MainPage");
 		} else {
 			//未ログイン：ログイン処理を実施
 
@@ -74,7 +74,7 @@ public class ExecuteLogin extends HttpServlet {
 				session.setAttribute("LOGIN_INFO", dto);
 
 				//ホーム画面へ転送
-				response.sendRedirect("Mainsub");
+				response.sendRedirect("MainPage");
 
 			} else {
 				//ユーザーデータの抽出に失敗：ログインNGとしてログイン画面へ転送

@@ -1,13 +1,11 @@
 package model;
 
-import java.sql.Date;
-
 public class ShinamonoDTO {
 	private int shinamono_id;
 	private int user_nr;
 	private int meibo_id;
 	private String aite_name;
-	private Date re_time;
+	private String re_time;
 	private int bunrui;
 	private int category;
 	private int item;
@@ -17,7 +15,7 @@ public class ShinamonoDTO {
 	
 	public ShinamonoDTO() {}
 	
-	public ShinamonoDTO(int shinamono_id,int user_nr,String aite_name,Date re_time,int bunrui,int category,int item,String shinamono_name,int shinamono_kingaku,String memo, int meibo_id) {
+	public ShinamonoDTO(int shinamono_id,int user_nr, int meibo_id,String aite_name,String re_time,int bunrui,int category,int item,String shinamono_name,int shinamono_kingaku,String memo) {
 	this.shinamono_id=shinamono_id;
 	this.user_nr=user_nr;
 	this.meibo_id=meibo_id;
@@ -37,10 +35,10 @@ public class ShinamonoDTO {
 	public void setShinamono_id(int shinamono_id) {
 		this.shinamono_id = shinamono_id;
 	}
-	public Date getRe_time() {
+	public String getRe_time() {
 		return re_time;
 	}
-	public void setRe_time(Date re_time) {
+	public void setRe_time(String re_time) {
 		this.re_time = re_time;
 	}
 	public int getBunrui() {

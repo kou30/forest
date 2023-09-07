@@ -35,8 +35,8 @@ public class ShinamonoEntry extends HttpServlet {
 			int meibo_id=Integer.parseInt(request.getParameter("MEIBO_ID"));
 			ExecuteSelectMeiboBL logic = new ExecuteSelectMeiboBL();
 			MeiboDTO meibo = logic.executeSelectMeibo(meibo_id);
+			System.out.println(meibo.getName());
 
-			System.out.println(meibo_id);
 			request.setAttribute("meibo", meibo);
 			
 			

@@ -98,7 +98,7 @@ public class MeiboDAO {
 			//発行するSQL文の生成（INSERT）
 			StringBuffer buf = new StringBuffer();
 			buf.append("INSERT INTO MEIBO (  ");
-			buf.append("  USERID,               ");
+			buf.append("  USER_NR,               ");
 			buf.append("  NAME,               ");
 			buf.append("  YOMI,                ");
 			buf.append("  SEX,                ");
@@ -120,10 +120,8 @@ public class MeiboDAO {
 			buf.append(")                     ");
 
 			//PreparedStatementオブジェクトを生成＆発行するSQLをセット
-			ps = con.prepareStatement(buf.toString());
-			System.out.println("SQL文生成後");
-			//パラメータをセット
-			ps.setString(1, dto.getUserId()); //第1パラメータ：更新データ（名前）
+			ps = con.prepareStatement(buf.toString());			//パラメータをセット
+			ps.setInt(1, dto.getUser_nr()); //第1パラメータ：更新データ（名前）
 			ps.setString(2, dto.getName()); //第1パラメータ：更新データ（名前）
 			ps.setString(3, dto.getYomi()); //第2パラメータ：更新データ（年齢）
 			ps.setInt(4, dto.getSex()); //第3パラメータ：更新データ（性別）
@@ -191,7 +189,7 @@ public class MeiboDAO {
 		return isSuccess;
 	}
 
-	public List<MeiboDTO> doSelect() {
+	public List<MeiboDTO> doSelect(int user_nr) {
 
 		//-------------------------------------------
 		//JDBCドライバのロード
@@ -228,8 +226,8 @@ public class MeiboDAO {
 			//発行するSQL文の生成（SELECT）
 			StringBuffer buf = new StringBuffer();
 			buf.append("SELECT                     ");
-			buf.append("  meibo_id,               ");
-			buf.append("  user_id,                ");
+			buf.append("  MEIBO_ID,               ");
+			buf.append("  USER_NR,                ");
 			buf.append("  NAME,               ");
 			buf.append("  YOMI,                ");
 			buf.append("  SEX,                ");
@@ -241,15 +239,19 @@ public class MeiboDAO {
 			buf.append("FROM                  ");
 			buf.append("  MEIBO              ");
 			//buf.append("  WHERE  DEL=0              ");
+			buf.append("  WHERE  USER_NR=?              ");
 			buf.append("  ORDER BY              ");
 			buf.append("  MEIBO_ID;                ");
 
 			ps = con.prepareStatement(buf.toString());
+			ps.setInt(1, user_nr); 
 			rs = ps.executeQuery();
 
 			//ResultSetオブジェクトからDTOリストに格納
 			while (rs.next()) {
 				MeiboDTO dto = new MeiboDTO();
+				dto.setMeibo_id(rs.getInt("MEIBO_ID"));
+				dto.setUser_nr(rs.getInt("USER_NR"));
 				dto.setName(rs.getString("NAME"));
 				dto.setYomi(rs.getString("YOMI"));
 				dto.setSex(rs.getInt("SEX"));
@@ -302,15 +304,16 @@ public class MeiboDAO {
 	}
 
 	public MeiboDTO FindOne(int id) {
-		MeiboDTO meibo = null;
+		MeiboDTO dto = new MeiboDTO();
+
 		try {
 			this.connect();
 			ps = db.prepareStatement("SELECT * FROM meibo WHERE meibo_id=?");
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				MeiboDTO dto = new MeiboDTO();
-				dto.setMeibo_id(rs.getInt("USER_ID"));
+				dto.setMeibo_id(rs.getInt("MEIBO_ID"));
+				dto.setUser_nr(rs.getInt("USER_NR"));
 				dto.setName(rs.getString("NAME"));
 				dto.setYomi(rs.getString("YOMI"));
 				dto.setSex(rs.getInt("SEX"));
@@ -325,6 +328,6 @@ public class MeiboDAO {
 		} finally {
 			this.disconnect();
 		}
-		return meibo;
+		return dto;
 	}
 }

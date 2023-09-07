@@ -12,14 +12,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
 </head>
   <header>
-    <h1>サンプルHP</h1>
+    <h1>TOPページ</h1>
     <nav>
-      <ul>
-        <ol><a href="MeiboEntry">個別情報登録</a></ol>
-        <ol><a href="ShowAllMeibo">名簿一覧</a></ol>
-        <ol><a href="ShowAllShinamono">贈り物・貰い物一覧</a></ol>
-        <ol><a href="ShinamonoEntry">贈り物・貰い物登録(仮)</a></ol>
-      </ul>
+			<ul>
+				<ol>
+					<a href="MainPage">TOP</a>
+				</ol>
+				<ol>
+					<a href="MeiboEntry">名簿登録</a>
+				</ol>
+				<ol>
+					<a href="ShowAllMeibo">名簿一覧</a>
+				</ol>
+				<ol>
+					<a href="ShowAllShinamono">贈り物・貰い物一覧</a>
+				</ol>
+			</ul>
     </nav>
   </header>
   

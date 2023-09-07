@@ -23,12 +23,10 @@ import model.UserInfoDto;
 public class SaveMeibo extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-	
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session           = request.getSession();
 		UserInfoDto userInfoOnSession = (UserInfoDto)session.getAttribute("LOGIN_INFO");
-		System.out.println("セッション後");
-		String userid =   userInfoOnSession.getUserId();
+		int user_nr=   userInfoOnSession.getUser_nr();
 		
 		String name = request.getParameter("NAME");
 		String yomi = request.getParameter("YOMI");
@@ -46,7 +44,7 @@ public class SaveMeibo extends HttpServlet {
 		
 		
 		MeiboDTO dto = new MeiboDTO();
-		dto.setUserId( userid );
+		dto.setUser_nr( user_nr );
 		dto.setName( name );
 		dto.setYomi( yomi );
 		dto.setBirthday( birthday );
@@ -57,7 +55,6 @@ public class SaveMeibo extends HttpServlet {
 		dto.setImageData(image);
 		InsertMeiboBL logic = new InsertMeiboBL();
 		boolean successInsert = logic.executeInsertMeibo(dto);
-		System.out.println("最後");
 		if(successInsert) {
 			
 			response.sendRedirect("html/finish.html");

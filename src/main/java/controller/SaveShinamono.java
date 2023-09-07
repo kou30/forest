@@ -1,9 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,14 +20,7 @@ public class SaveShinamono extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");	
 		int meibo_id=Integer.parseInt(request.getParameter("MEIBO_ID"));
 		String aite_name = request.getParameter("AITENAME"); //リクエストパラメータ（NAME）
-	    String dateString = request.getParameter("DATE"); // "date"はパラメータ名。適切に変更してください。
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); // この形式は入力の形式に基づいています。必要に応じて変更してください。
-        java.util.Date date = null;
-		try {
-			date = format.parse(dateString);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+	    String date = request.getParameter("DATE"); // "date"はパラメータ名。適切に変更してください。
 		int bunrui = Integer.parseInt(request.getParameter("BUNRUI")); //リクエストパラメータ（NAME）
 		int category = Integer.parseInt(request.getParameter("CATEGORY")); //リクエストパラメータ（NAME）
 		int item = Integer.parseInt(request.getParameter("ITEM")); //リクエストパラメータ（NAME）
@@ -46,7 +36,7 @@ public class SaveShinamono extends HttpServlet {
 		dto.setUser_nr(user_nr);
 		dto.setMeibo_id(meibo_id);
 		dto.setAite_name(aite_name);
-		dto.setRe_time((Date) date);
+		dto.setRe_time(date);
 		dto.setBunrui(bunrui);
 		dto.setCategory(category);
 		dto.setItem(item);
@@ -59,12 +49,12 @@ public class SaveShinamono extends HttpServlet {
 
 		if (succesInsert) {
 			//DB登録に成功した場合、回答完了画面（finish.html）を表示する
-			response.sendRedirect("htmls/finish.html");
+			response.sendRedirect("html/finish.html");
 
 		} else {
 
 			//DB登録に失敗した場合、エラー画面（error.html）を表示する
-			response.sendRedirect("htmls/error.html");
+			response.sendRedirect("html/error.html");
 		}
 		
 		
