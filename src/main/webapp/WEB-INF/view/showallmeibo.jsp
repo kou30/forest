@@ -102,4 +102,4 @@ List<MeiboDTO> MeiboDTOlist = (List<MeiboDTO>) request.getAttribute("MEIBO");
 	<a href="Logoutinfo">ログアウト</a>
 
 </body>
-</html>
+</html>>
