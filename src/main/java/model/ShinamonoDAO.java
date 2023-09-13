@@ -19,7 +19,7 @@ public class ShinamonoDAO {
 
 	private void connect() throws NamingException, SQLException {
 		Context context = new InitialContext();
-		DataSource ds = (DataSource) context.lookup("java:comp/env/family_db");
+		DataSource ds = (DataSource) context.lookup("java:comp/env/forest_db");
 		this.db = ds.getConnection();
 	}
 

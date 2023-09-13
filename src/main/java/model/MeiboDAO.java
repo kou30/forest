@@ -16,24 +16,9 @@ public class MeiboDAO {
 	private Connection db;
 	private PreparedStatement ps;
 	private ResultSet rs;
-
-	String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
-
-	//接続先のデータベース
-	//※データベース名が「test_db」でない場合は該当の箇所を変更してください
-	String JDBC_URL = "jdbc:mysql://localhost/family_db?characterEncoding=UTF-8&useSSL=false";
-
-	//接続するユーザー名
-	//※ユーザー名が「test_user」でない場合は該当の箇所を変更してください
-	String USER_ID = "forest_user";
-
-	//接続するユーザーのパスワード
-	//※パスワードが「test_pass」でない場合は該当の箇所を変更してください
-	String USER_PASS = "forest_pass";
-
 	private void connect() throws NamingException, SQLException {
 		Context context = new InitialContext();
-		DataSource ds = (DataSource) context.lookup("java:comp/env/family_db");
+		DataSource ds = (DataSource) context.lookup("java:comp/env/forest_db");
 		this.db = ds.getConnection();
 	}
 

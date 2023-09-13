@@ -13,6 +13,11 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/class.DESKTOP-HLMSUMQ/Downloads/poi-src-5.2.3-20220909 (2)"/>
+	<classpathentry kind="lib" path="C:/Users/class.DESKTOP-HLMSUMQ/Downloads/poi-bin-3.6-20091214/poi-3.6/poi-3.6-20091214.jar"/>
+	<classpathentry kind="lib" path="C:/Users/class.DESKTOP-HLMSUMQ/Downloads/poi-bin-3.6-20091214/poi-3.6/poi-contrib-3.6-20091214.jar"/>
+	<classpathentry kind="lib" path="C:/Users/class.DESKTOP-HLMSUMQ/Downloads/poi-bin-3.6-20091214/poi-3.6/poi-examples-3.6-20091214.jar"/>
+	<classpathentry kind="lib" path="C:/Users/class.DESKTOP-HLMSUMQ/Downloads/poi-bin-3.6-20091214/poi-3.6/poi-ooxml-3.6-20091214.jar"/>
+	<classpathentry kind="lib" path="C:/Users/class.DESKTOP-HLMSUMQ/Downloads/poi-bin-3.6-20091214/poi-3.6/poi-ooxml-schemas-3.6-20091214.jar"/>
+	<classpathentry kind="lib" path="C:/Users/class.DESKTOP-HLMSUMQ/Downloads/poi-bin-3.6-20091214/poi-3.6/poi-scratchpad-3.6-20091214.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
