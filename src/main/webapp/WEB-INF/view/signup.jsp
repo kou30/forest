@@ -13,19 +13,19 @@
   <div style="width:500px;">
     <form action="ExecuteSignup" method="post" >
       <p>ID<br>
-        <input type="text" name="USER_ID"  maxlength="20" >
+        <input type="text" name="USER_ID"  maxlength="20" required>
      
       </p>
       <p>USER_NAME<br>
-        <input type="text" name="USER_NAME"  maxlength="20" >
+        <input type="text" name="USER_NAME"  maxlength="20" required>
      
       </p>
       <p>PASSWORD<br>
-        <input type="text" name="PASSWORD" id="pass1" maxlength="20" >
+        <input type="text" name="PASSWORD" id="pass1" maxlength="20" required>
      
       </p>
       <p>確認のためにPASSWORDを入力<br>
-        <input type="text" name="PASSWORDcheck" id="pass2" maxlength="20" >
+        <input type="text" name="PASSWORDcheck" id="pass2" maxlength="20" required>
      
       </p>
       
