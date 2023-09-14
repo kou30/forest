@@ -48,11 +48,7 @@
 	List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
 	%>
 
-	<%
-	for (int i = 0; i < list.size(); i++) {
-		ShinamonoDTO dto = list.get(i);
-		if (dto.getBunrui() == 1) {
-	%>
+
 	<table>
 		<tr>
 			<th>相手の名前</th>
@@ -64,6 +60,11 @@
 			<th>編集</th>
 			<th>削除</th>
 		</tr>
+		<%
+		for (int i = 0; i < list.size(); i++) {
+			ShinamonoDTO dto = list.get(i);
+			if (dto.getBunrui() == 1) {
+		%>
 
 		<tr>
 			<td><%=dto.getAite_name()%></td>
@@ -214,16 +215,12 @@
 		<%
 		}
 		%>
+		<%
+		}
+		%>
 	</table>
 	<h2>頂いたモノ</h2>
-	<%
-	}
-	%>
-	<%
-	for (int i = 0; i < list.size(); i++) {
-		ShinamonoDTO dto = list.get(i);
-		if (dto.getBunrui() == 2) {
-	%>
+
 
 	<table>
 		<tr>
@@ -236,6 +233,11 @@
 			<th>編集</th>
 			<th>削除</th>
 		</tr>
+		<%
+		for (int i = 0; i < list.size(); i++) {
+			ShinamonoDTO dto = list.get(i);
+			if (dto.getBunrui() == 2) {
+		%>
 
 		<tr>
 			<td><%=dto.getAite_name()%></td>

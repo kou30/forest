@@ -24,9 +24,31 @@ public class SaveShinamono extends HttpServlet {
 		if ("".equals(date)) {
 			date = null;
 		}
-		int bunrui = Integer.parseInt(request.getParameter("BUNRUI")); //リクエストパラメータ（NAME）
-		int category = Integer.parseInt(request.getParameter("CATEGORY")); //リクエストパラメータ（NAME）
-		int item = Integer.parseInt(request.getParameter("ITEM")); //リクエストパラメータ（NAME）
+		String str=request.getParameter("BUNRUI");
+		int bunrui=0;
+		if (str != null) {
+		    try {
+		        bunrui = Integer.parseInt(str);
+		    } catch (NumberFormatException e) {
+		    }
+		}
+		str=request.getParameter("CATEGORY");
+		int category=0;
+		if (str != null) {
+		    try {
+		        category = Integer.parseInt(str);
+		    } catch (NumberFormatException e) {
+		    }
+		}
+		str=request.getParameter("ITEM");
+		int item=0;
+		if (str != null) {
+		    try {
+		        item = Integer.parseInt(str);
+		    } catch (NumberFormatException e) {
+		    }
+		}
+		
 		String shinamono_name = request.getParameter("SHINAMONONAME"); //リクエストパラメータ（NAME）
 
 		int kingaku = Integer.parseInt(request.getParameter("KINGAKU")); //リクエストパラメータ（AGE）
