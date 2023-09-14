@@ -31,17 +31,23 @@ public class SaveMeibo extends HttpServlet {
 		String name = request.getParameter("NAME");
 		String yomi = request.getParameter("YOMI");
 		String birthday = request.getParameter("BIRTHDAY");
+		if ("".equals(birthday)) {
+		    birthday = null;
+		}
 		int sex = Integer.parseInt(request.getParameter("SEX"));
 		String bunrui = request.getParameter("BUNRUI");
-		
 		int relationship = Integer.parseInt(request.getParameter("RELATIONSHIP"));
 		String memo = request.getParameter("MEMO");
 		
 		
-		Part filePart= request.getPart("IMAGE");
-		InputStream fileContext=filePart.getInputStream();
-		byte[] image=fileContext.readAllBytes();
-		
+		Part filePart = request.getPart("IMAGE");
+		InputStream fileContent = filePart.getInputStream();
+		byte[] image = null;
+
+		if (fileContent.available() > 0) {
+		    image = fileContent.readAllBytes();
+		}
+
 		
 		MeiboDTO dto = new MeiboDTO();
 		dto.setUser_nr( user_nr );

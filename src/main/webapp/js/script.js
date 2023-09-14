@@ -3,7 +3,7 @@
   const nextOptionSelect = document.getElementById('nextOptionSelect');
   const thirdOptionSelect = document.getElementById('thirdOptionSelect');
   const amountField = document.getElementById('amountField'); 
-  
+   
   bunruiSelect.addEventListener('change', function() {
     const selectedBunrui = bunruiSelect.value;
   
@@ -99,3 +99,4 @@
     }
   });
 });
+

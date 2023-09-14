@@ -32,11 +32,11 @@
 		<h1 class="hero">名簿登録フォーム</h1>
 		<form action="SaveMeibo" method="post" enctype="multipart/form-data">
 			<p>
-				よみがな:<input type="text" name="YOMI" maxlength="10" id="">
+				よみがな:<input type="text" name="YOMI" maxlength="10" id="" required>
 			</p>
 
 			<p>
-				氏名:<input type="text" name="NAME" maxlength="10" id="">
+				氏名:<input type="text" name="NAME" maxlength="10" id="" required>
 			</p>
 
 			<p>

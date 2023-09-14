@@ -36,14 +36,15 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 <main>
 	<h1 class="hero">贈り物・頂き物編集フォーム</h1>
 	<form action="ExecuteEditShinamono" method="post" enctype="">
-			品物ID:<input type="hidden" name="SHINAMONO_ID"
-				value="<%=dto.getShinamono_id()%>" maxlength="10" readonly>
+		<input type="hidden" name="SHINAMONO_ID"
+			value="<%=dto.getShinamono_id()%>" maxlength="10" readonly> <input
+			type="hidden" name="AITE_NAME" value=<%=dto.getAite_name()%>>
+
 		<p>
-			名前(仮):<input name="AITENAME" value="<%=dto.getAite_name()%>"
-				maxlength="10">
+			名前:<%=dto.getAite_name()%>
 		</p>
 		<label for="DATE">贈った、または頂いた日時:</label> <input type="date"
-			id="inputDate"　value="<%=dto.getRe_time()%>" name="DATE">
+			id="inputDate" value="<%=dto.getRe_time()%>" name="DATE">
 
 
 		<!-- 第一分類 -->
@@ -90,8 +91,7 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 
 		<p>
 			備考:<br>
-			<textarea name="MEMO" rows="4" cols="50"
-				maxlength="250"><%=dto.getMemo()%></textarea>
+			<textarea name="MEMO" rows="4" cols="50" maxlength="250"><%=dto.getMemo()%></textarea>
 			<input type="submit" value="贈り物・頂き物登録" onclick="return itAgg()">
 	</form>
 	<br> <br> <a href="Logoutinfo">ログアウト</a>

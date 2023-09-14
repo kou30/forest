@@ -46,6 +46,9 @@ public class ExecuteEditShinamono extends HttpServlet {
 		int shinamono_id = Integer.parseInt(request.getParameter("SHINAMONO_ID"));
 
 	    String date = request.getParameter("DATE"); // "date"はパラメータ名。適切に変更してください。
+		if ("".equals(date)) {
+			date = null;
+		}
 		int bunrui = Integer.parseInt(request.getParameter("BUNRUI")); //リクエストパラメータ（NAME）
 		int category = Integer.parseInt(request.getParameter("CATEGORY")); //リクエストパラメータ（NAME）
 		int item = Integer.parseInt(request.getParameter("ITEM")); //リクエストパラメータ（NAME）

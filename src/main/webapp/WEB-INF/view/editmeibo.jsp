@@ -43,12 +43,12 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 				maxlength="10" readonly>
 			<p>
 				よみがな:<input type="text" name="YOMI" value="<%=dto.getYomi()%>"
-					maxlength="10" id="">
+					maxlength="10" id="" required>
 			</p>
 
 			<p>
 				氏名:<input type="text" name="NAME" value="<%=dto.getName()%>"
-					maxlength="10" id="">
+					maxlength="10" id="" required>
 			</p>
 
 			<p>

@@ -21,6 +21,9 @@ public class SaveShinamono extends HttpServlet {
 		int meibo_id=Integer.parseInt(request.getParameter("MEIBO_ID"));
 		String aite_name = request.getParameter("AITENAME"); //リクエストパラメータ（NAME）
 	    String date = request.getParameter("DATE"); // "date"はパラメータ名。適切に変更してください。
+		if ("".equals(date)) {
+			date = null;
+		}
 		int bunrui = Integer.parseInt(request.getParameter("BUNRUI")); //リクエストパラメータ（NAME）
 		int category = Integer.parseInt(request.getParameter("CATEGORY")); //リクエストパラメータ（NAME）
 		int item = Integer.parseInt(request.getParameter("ITEM")); //リクエストパラメータ（NAME）
