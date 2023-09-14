@@ -1,74 +1,46 @@
 package model;
 
-
-
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//import javax.naming.Context;
-//import javax.naming.InitialContext;
-//import javax.naming.NamingException;
-//import javax.sql.DataSource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
-/**----------------------------------------------------------------------*
- *■■■UserInfoDaoクラス■■■
- *概要：DAO（「user_info」テーブル）
- *----------------------------------------------------------------------**/
 public class UserInfoDao {
-	String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
+	private Connection db;
+	private PreparedStatement ps;
+	private ResultSet rs;
 
-	//接続先のデータベース
-	//※データベース名が「test_db」でない場合は該当の箇所を変更してください
-	String JDBC_URL    = "jdbc:mysql://localhost/family_db?characterEncoding=UTF-8&useSSL=false";
+	private void connect() throws NamingException, SQLException {
+		Context context = new InitialContext();
+		DataSource ds = (DataSource) context.lookup("java:comp/env/forest_db");
+		this.db = ds.getConnection();
+	}
 
-	//接続するユーザー名
-	//※ユーザー名が「test_user」でない場合は該当の箇所を変更してください
-	String USER_ID     = "forest_user";
-
-	//接続するユーザーのパスワード
-	//※パスワードが「test_pass」でない場合は該当の箇所を変更してください
-	String USER_PASS   = "forest_pass";
-
-	public UserInfoDto doSelect(String inputUserId, String inputPassWord) {
-
-		//-------------------------------------------
-		//JDBCドライバのロード
-		//-------------------------------------------
+	private void disconnect() {
 		try {
-			Class.forName(DRIVER_NAME);       //JDBCドライバをロード＆接続先として指定
-		} catch (ClassNotFoundException e) {
+			if (rs != null) {
+				rs.close();
+			}
+			if (ps != null) {
+				ps.close();
+			}
+			if (db != null) {
+				db.close();
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
 
-		//-------------------------------------------
-		//SQL発行
-		//-------------------------------------------
-
-		//JDBCの接続に使用するオブジェクトを宣言
-		//※finallyブロックでも扱うためtryブロック内で宣言してはいけないことに注意
-		Connection        con = null ;   // Connection（DB接続情報）格納用変数
-		PreparedStatement ps  = null ;   // PreparedStatement（SQL発行用オブジェクト）格納用変数
-		ResultSet         rs  = null ;   // ResultSet（SQL抽出結果）格納用変数
-
-		//抽出データ（UserInfoDto型）格納用変数
-		//※最終的にreturnするため、tryブロック内で宣言してはいけないことに注意
+	public UserInfoDto doSelect(String inputUserId, String inputPassWord) {
 		UserInfoDto dto = new UserInfoDto();
-
 		try {
-
-			//-------------------------------------------
-			//接続の確立（Connectionオブジェクトの取得）
-			//-------------------------------------------
-			con = DriverManager.getConnection(JDBC_URL, USER_ID, USER_PASS);
-
-			//-------------------------------------------
-			//SQL文の送信 ＆ 結果の取得
-			//-------------------------------------------
-
-			//発行するSQL文の生成（SELECT）
+			this.connect();
 			StringBuffer buf = new StringBuffer();
 			buf.append(" SELECT             ");
 			buf.append(" USER_NR,           ");
@@ -78,69 +50,32 @@ public class UserInfoDao {
 			buf.append(" FROM               ");
 			buf.append("   USER_INFO        ");
 			buf.append(" WHERE              ");
-			buf.append("   USER_ID  = ? AND ");  //第1パラメータ
-			buf.append("   PASSWORD = ?     ");  //第2パラメータ
+			buf.append("   USER_ID  = ? AND "); //第1パラメータ
+			buf.append("   PASSWORD = ?     "); //第2パラメータ
 
 			//PreparedStatement（SQL発行用オブジェクト）を生成＆発行するSQLをセット
-			ps = con.prepareStatement(buf.toString());
+			ps = db.prepareStatement(buf.toString());
 
 			//パラメータをセット
-			ps.setString( 1, inputUserId   );  //第1パラメータ：ユーザーID（ユーザー入力）
-			ps.setString( 2, inputPassWord );  //第2パラメータ：ユーザーパスワード（ユーザー入力）
+			ps.setString(1, inputUserId); //第1パラメータ：ユーザーID（ユーザー入力）
+			ps.setString(2, inputPassWord); //第2パラメータ：ユーザーパスワード（ユーザー入力）
 
 			//SQL文の送信＆戻り値としてResultSet（SQL抽出結果）を取得
 			rs = ps.executeQuery();
-
-			//--------------------------------------------------------------------------------
-			//ResultSetオブジェクトからユーザーデータを抽出
-			//--------------------------------------------------------------------------------
 			if (rs.next()) {
-				//ResultSetから1行分のレコード情報をDTOへ登録
 				dto.setUser_nr(rs.getInt("USER_NR"));
-				dto.setUserId(   rs.getString("USER_ID")   );    //ユーザーID
-				dto.setUserName( rs.getString("USER_NAME") );    //ユーザー名
-				dto.setPassWord( rs.getString("PASSWORD")  );    //ユーザーパスワード
+				dto.setUserId(rs.getString("USER_ID")); //ユーザーID
+				dto.setUserName(rs.getString("USER_NAME")); //ユーザー名
+				dto.setPassWord(rs.getString("PASSWORD")); //ユーザーパスワード
 			}
-
-		} catch (SQLException e) {
+		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
-
 		} finally {
-			//-------------------------------------------
-			//接続の解除
-			//-------------------------------------------
-
-			//ResultSetオブジェクトの接続解除
-			if (rs != null) {    //接続が確認できている場合のみ実施
-				try {
-					rs.close();  //接続の解除
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-
-			//PreparedStatementオブジェクトの接続解除
-			if (ps != null) {    //接続が確認できている場合のみ実施
-				try {
-					ps.close();  //接続の解除
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-
-			//Connectionオブジェクトの接続解除
-			if (con != null) {    //接続が確認できている場合のみ実施
-				try {
-					con.close();  //接続の解除
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			this.disconnect();
 		}
-
-		//抽出したユーザーデータを戻す
 		return dto;
 	}
+
 	public UserInfoDto executeSelectUserInfo(String inputUserId, String inputPassWord) {
 
 		UserInfoDto dto = new UserInfoDto(); //ユーザーデータ（UserInfoDto型）
@@ -151,5 +86,42 @@ public class UserInfoDao {
 
 		//抽出したユーザーデータを戻す
 		return dto;
+	}
+
+	public boolean doSignup(UserInfoDto dto) throws NamingException {
+		boolean isSuccess = true;
+		try {
+			this.connect();
+			StringBuffer buf = new StringBuffer();
+			buf.append("INSERT INTO USER_INFO (  ");
+			buf.append("   USER_ID,       ");
+			buf.append("   USER_NAME,       ");
+			buf.append("   PASSWORD         ");
+			buf.append(") VALUES (            ");
+			buf.append("  ?,                  ");
+			buf.append("  ?,                  ");
+			buf.append("  ?                   ");
+			buf.append(")                     ");
+
+			//PreparedStatement（SQL発行用オブジェクト）を生成＆発行するSQLをセット
+			ps = db.prepareStatement(buf.toString());
+
+			//パラメータをセット
+			ps.setString(1, dto.getUserId()); //第1パラメータ：ユーザーID（ユーザー入力）
+			ps.setString(2, dto.getUserName()); //第2パラメータ：ユーザーパスワード（ユーザー入力）
+			ps.setString(3, dto.getPassWord());
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			isSuccess = false;
+		} finally {
+			this.disconnect();
+		}
+
+		//実行結果を返す
+		return isSuccess;
+
 	}
 }

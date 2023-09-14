@@ -56,7 +56,6 @@ public class SaveMeibo extends HttpServlet {
 		InsertMeiboBL logic = new InsertMeiboBL();
 		boolean successInsert = logic.executeInsertMeibo(dto);
 		if(successInsert) {
-			
 			response.sendRedirect("html/finish.html");
 		} else {
 			

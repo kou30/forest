@@ -1,7 +1,6 @@
 package model;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,24 +16,9 @@ public class MeiboDAO {
 	private Connection db;
 	private PreparedStatement ps;
 	private ResultSet rs;
-
-	String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
-
-	//接続先のデータベース
-	//※データベース名が「test_db」でない場合は該当の箇所を変更してください
-	String JDBC_URL = "jdbc:mysql://localhost/family_db?characterEncoding=UTF-8&useSSL=false";
-
-	//接続するユーザー名
-	//※ユーザー名が「test_user」でない場合は該当の箇所を変更してください
-	String USER_ID = "forest_user";
-
-	//接続するユーザーのパスワード
-	//※パスワードが「test_pass」でない場合は該当の箇所を変更してください
-	String USER_PASS = "forest_pass";
-
 	private void connect() throws NamingException, SQLException {
 		Context context = new InitialContext();
-		DataSource ds = (DataSource) context.lookup("java:comp/env/family_db");
+		DataSource ds = (DataSource) context.lookup("java:comp/env/forest_db");
 		this.db = ds.getConnection();
 	}
 
@@ -54,48 +38,11 @@ public class MeiboDAO {
 		}
 	}
 
+	@SuppressWarnings("finally")
 	public boolean doInsert(MeiboDTO dto) {
-
-		//-------------------------------------------
-		//JDBCドライバのロード
-		//-------------------------------------------
-		try {
-			Class.forName(DRIVER_NAME); //JDBCドライバをロード＆接続先として指定
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		//-------------------------------------------
-		//SQL発行
-		//-------------------------------------------
-
-		//JDBCの接続に使用するオブジェクトを宣言
-		//※finallyブロックでも扱うためtryブロック内で宣言してはいけないことに注意
-		Connection con = null; // Connection（DB接続情報）格納用変数
-		PreparedStatement ps = null; // PreparedStatement（SQL発行用オブジェクト）格納用変数
-
-		//実行結果（真：成功、偽：例外発生）格納用変数
-		//※最終的にreturnするため、tryブロック内で宣言してはいけないことに注意
 		boolean isSuccess = true;
-
 		try {
-
-			//-------------------------------------------
-			//接続の確立（Connectionオブジェクトの取得）
-			//-------------------------------------------
-			con = DriverManager.getConnection(JDBC_URL, USER_ID, USER_PASS);
-
-			//-------------------------------------------
-			//トランザクションの開始
-			//-------------------------------------------
-			//オートコミットをオフにする（トランザクション開始）
-			con.setAutoCommit(false);
-
-			//-------------------------------------------
-			//SQL文の送信 ＆ 結果の取得
-			//-------------------------------------------
-			System.out.println("SQL文生成前");
-			//発行するSQL文の生成（INSERT）
+			this.connect();
 			StringBuffer buf = new StringBuffer();
 			buf.append("INSERT INTO MEIBO (  ");
 			buf.append("  USER_NR,               ");
@@ -120,7 +67,7 @@ public class MeiboDAO {
 			buf.append(")                     ");
 
 			//PreparedStatementオブジェクトを生成＆発行するSQLをセット
-			ps = con.prepareStatement(buf.toString());			//パラメータをセット
+			ps = db.prepareStatement(buf.toString()); //パラメータをセット
 			ps.setInt(1, dto.getUser_nr()); //第1パラメータ：更新データ（名前）
 			ps.setString(2, dto.getName()); //第1パラメータ：更新データ（名前）
 			ps.setString(3, dto.getYomi()); //第2パラメータ：更新データ（年齢）
@@ -130,100 +77,20 @@ public class MeiboDAO {
 			ps.setInt(7, dto.getRelationship()); //第4パラメータ：更新データ（満足度）
 			ps.setString(8, dto.getMemo()); //第5パラメータ：更新データ（メッセージ）
 			ps.setBytes(9, dto.getImageData());
-			System.out.println(ps);
-			System.out.println("SQL文実行前");
 			ps.execute();
-			System.out.println("SQL文実行後");
-		} catch (SQLException e) {
+		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
-
-			//実行結果を例外発生として更新
 			isSuccess = false;
-
 		} finally {
-			//-------------------------------------------
-			//トランザクションの終了
-			//-------------------------------------------
-			if (isSuccess) {
-				//明示的にコミットを実施
-				try {
-					con.commit();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-
-			} else {
-				//明示的にロールバックを実施
-				try {
-					con.rollback();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-
-			//-------------------------------------------
-			//接続の解除
-			//-------------------------------------------
-
-			//PreparedStatementオブジェクトの接続解除
-			if (ps != null) { //接続が確認できている場合のみ実施
-				try {
-					ps.close(); //接続の解除
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-
-			//Connectionオブジェクトの接続解除
-			if (con != null) { //接続が確認できている場合のみ実施
-				try {
-					con.close(); //接続の解除
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-
+			this.disconnect();
+			return isSuccess;
 		}
-
-		//実行結果を返す
-		return isSuccess;
 	}
 
 	public List<MeiboDTO> doSelect(int user_nr) {
-
-		//-------------------------------------------
-		//JDBCドライバのロード
-		//-------------------------------------------
-		try {
-			Class.forName(DRIVER_NAME); //JDBCドライバをロード＆接続先として指定
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		//-------------------------------------------
-		//SQL発行
-		//-------------------------------------------
-
-		//JDBCの接続に使用するオブジェクトを宣言
-		Connection con = null; // Connection（DB接続情報）格納用変数
-		PreparedStatement ps = null; // PreparedStatement（SQL発行用オブジェクト）格納用変数
-		ResultSet rs = null; // ResultSet（SQL抽出結果）格納用変数
-
-		//抽出結果格納用DTOリスト
 		List<MeiboDTO> dtoList = new ArrayList<MeiboDTO>();
-
 		try {
-
-			//-------------------------------------------
-			//接続の確立（Connectionオブジェクトの取得）
-			//-------------------------------------------
-			con = DriverManager.getConnection(JDBC_URL, USER_ID, USER_PASS);
-
-			//-------------------------------------------
-			//SQL文の送信 ＆ 結果の取得
-			//-------------------------------------------
-
-			//発行するSQL文の生成（SELECT）
+			this.connect();
 			StringBuffer buf = new StringBuffer();
 			buf.append("SELECT                     ");
 			buf.append("  MEIBO_ID,               ");
@@ -243,8 +110,8 @@ public class MeiboDAO {
 			buf.append("  ORDER BY              ");
 			buf.append("  MEIBO_ID;                ");
 
-			ps = con.prepareStatement(buf.toString());
-			ps.setInt(1, user_nr); 
+			ps = db.prepareStatement(buf.toString());
+			ps.setInt(1, user_nr);
 			rs = ps.executeQuery();
 
 			//ResultSetオブジェクトからDTOリストに格納
@@ -263,43 +130,11 @@ public class MeiboDAO {
 
 				dtoList.add(dto);
 			}
-
-		} catch (SQLException e) {
+		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
 		} finally {
-			//-------------------------------------------
-			//接続の解除
-			//-------------------------------------------
-
-			//ResultSetオブジェクトの接続解除
-			if (rs != null) { //接続が確認できている場合のみ実施
-				try {
-					rs.close(); //接続の解除
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-
-			//PreparedStatementオブジェクトの接続解除
-			if (ps != null) { //接続が確認できている場合のみ実施
-				try {
-					ps.close(); //接続の解除
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-
-			//Connectionオブジェクトの接続解除
-			if (con != null) { //接続が確認できている場合のみ実施
-				try {
-					con.close(); //接続の解除
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			this.disconnect();
 		}
-
-		//抽出結果を返す
 		return dtoList;
 	}
 
@@ -330,4 +165,56 @@ public class MeiboDAO {
 		}
 		return dto;
 	}
+
+	public void deleteOne(int id) {
+		try {
+			this.connect();
+			ps = db.prepareStatement("DELETE FROM meibo WHERE meibo_id=?");
+			ps.setInt(1, id);
+			ps.execute();
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			this.disconnect();
+		}
+	}
+
+	@SuppressWarnings("finally")
+	public boolean doUpdate(MeiboDTO dto) {
+		boolean isSuccess = true;
+
+		try {
+			this.connect();
+			StringBuffer buf = new StringBuffer();
+			buf.append("UPDATE MEIBO set  ");
+			buf.append("  NAME=?,               ");
+			buf.append("  YOMI=?,                ");
+			buf.append("  SEX=?,                ");
+			buf.append("  BUNRUI=?,                ");
+			buf.append("  BIRTHDAY=?,                ");
+			buf.append("  RELATIONSHIP=?, ");
+			buf.append("  MEMO=?,            ");
+			buf.append("  IMAGE=?                ");
+			buf.append("   WHERE MEIBO_ID=?)                     ");
+
+			ps = db.prepareStatement(buf.toString());
+			ps.setString(1, dto.getName());
+			ps.setString(2, dto.getYomi());
+			ps.setInt(3, dto.getSex());
+			ps.setString(4, dto.getBunrui());
+			ps.setString(5, dto.getBirthday());
+			ps.setInt(6, dto.getRelationship());
+			ps.setString(7, dto.getMemo());
+			ps.setBytes(8, dto.getImageData());
+			ps.setInt(9, dto.getMeibo_id());
+			ps.execute();
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+			isSuccess = false;
+		} finally {
+			this.disconnect();
+			return isSuccess;
+		}
+	}
+
 }

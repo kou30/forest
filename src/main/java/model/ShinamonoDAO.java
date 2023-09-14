@@ -19,7 +19,7 @@ public class ShinamonoDAO {
 
 	private void connect() throws NamingException, SQLException {
 		Context context = new InitialContext();
-		DataSource ds = (DataSource) context.lookup("java:comp/env/family_db");
+		DataSource ds = (DataSource) context.lookup("java:comp/env/forest_db");
 		this.db = ds.getConnection();
 	}
 
@@ -83,7 +83,7 @@ public class ShinamonoDAO {
 			while (rs.next()) {
 				int shinamono_id = rs.getInt("shinamono_id");
 				user_nr = rs.getInt("user_nr");
-				int meibo_id=rs.getInt("meibo_id");
+				int meibo_id = rs.getInt("meibo_id");
 				String aite_name = rs.getString("aite_name");
 				String re_time = rs.getString("re_time");
 				int bunrui = rs.getInt("bunrui");
@@ -92,9 +92,8 @@ public class ShinamonoDAO {
 				String shinamono_name = rs.getString("shinamono_name");
 				int shinamono_kingaku = rs.getInt("shinamono_kingaku");
 				String memo = rs.getString("memo");
-				list.add(new ShinamonoDTO(shinamono_id, user_nr,meibo_id, aite_name, re_time, bunrui, category, item,
+				list.add(new ShinamonoDTO(shinamono_id, user_nr, meibo_id, aite_name, re_time, bunrui, category, item,
 						shinamono_name, shinamono_kingaku, memo));
-				System.out.println(list);
 			}
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
@@ -130,17 +129,18 @@ public class ShinamonoDAO {
 			return isSuccess;
 		}
 	}
+
 	public ShinamonoDTO FindOne(int id) {
 		ShinamonoDTO shinamono = null;
 		try {
 			this.connect();
-			ps=db.prepareStatement("SELECT * FROM shinamono WHERE shinamono_id=?");
+			ps = db.prepareStatement("SELECT * FROM shinamono WHERE shinamono_id=?");
 			ps.setInt(1, id);
-			rs=ps.executeQuery();
-			if(rs.next()) {
+			rs = ps.executeQuery();
+			if (rs.next()) {
 				int shinamono_id = rs.getInt("shinamono_id");
 				int user_nr = rs.getInt("user_nr");
-				int meibo_id=rs.getInt("meibo_id");
+				int meibo_id = rs.getInt("meibo_id");
 				String aite_name = rs.getString("aite_name");
 				String re_time = rs.getString("re_time");
 				int bunrui = rs.getInt("bunrui");
@@ -149,7 +149,8 @@ public class ShinamonoDAO {
 				String shinamono_name = rs.getString("shinamono_name");
 				int shinamono_kingaku = rs.getInt("shinamono_id");
 				String memo = rs.getString("memo");
-				shinamono=new ShinamonoDTO(shinamono_id, user_nr,meibo_id, aite_name, re_time, bunrui, category, item,
+				shinamono = new ShinamonoDTO(shinamono_id, user_nr, meibo_id, aite_name, re_time, bunrui, category,
+						item,
 						shinamono_name, shinamono_kingaku, memo);
 			}
 		} catch (NamingException | SQLException e) {
@@ -159,16 +160,73 @@ public class ShinamonoDAO {
 		}
 		return shinamono;
 	}
+
 	public void deleteOne(int id) {
 		try {
 			this.connect();
-			ps=db.prepareStatement("DELETE FROM shinamono WHERE shinamono_id=?");
+			ps = db.prepareStatement("DELETE FROM shinamono WHERE shinamono_id=?");
 			ps.setInt(1, id);
 			ps.execute();
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			this.disconnect();
 		}
+	}
+
+	@SuppressWarnings("finally")
+	public boolean doUpdate(ShinamonoDTO Shinamono) {
+		boolean isSuccess = true;
+		try {
+			this.connect();
+			ps = db.prepareStatement(
+					"UPDATE shinamono SET re_time=?,bunrui=?,category=?,item=?,shinamono_name=?,shinamono_kingaku=?,memo=? WHERE SHINAMONO_ID=?");
+			ps.setString(1, Shinamono.getRe_time());
+			ps.setInt(2, Shinamono.getBunrui());
+			ps.setInt(3, Shinamono.getCategory());
+			ps.setInt(4, Shinamono.getItem());
+			ps.setString(5, Shinamono.getShinamono_name());
+			ps.setInt(6, Shinamono.getShinamono_kingaku());
+			ps.setString(7, Shinamono.getMemo());
+			ps.setInt(8, Shinamono.getShinamono_id());
+			ps.execute();
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+			isSuccess = false;
+		} finally {
+			this.disconnect();
+			return isSuccess;
+		}
+	}
+
+	public ShinamonoDTO DetailFindOne(int id) {
+		ShinamonoDTO shinamono = null;
+		try {
+			this.connect();
+			ps = db.prepareStatement("SELECT * FROM shinamono WHERE meibo_id=?");
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				int shinamono_id = rs.getInt("shinamono_id");
+				int user_nr = rs.getInt("user_nr");
+				int meibo_id = rs.getInt("meibo_id");
+				String aite_name = rs.getString("aite_name");
+				String re_time = rs.getString("re_time");
+				int bunrui = rs.getInt("bunrui");
+				int category = rs.getInt("category");
+				int item = rs.getInt("item");
+				String shinamono_name = rs.getString("shinamono_name");
+				int shinamono_kingaku = rs.getInt("shinamono_id");
+				String memo = rs.getString("memo");
+				shinamono = new ShinamonoDTO(shinamono_id, user_nr, meibo_id, aite_name, re_time, bunrui, category,
+						item,
+						shinamono_name, shinamono_kingaku, memo);
+			}
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			this.disconnect();
+		}
+		return shinamono;
 	}
 }

@@ -15,9 +15,6 @@ import model.MeiboDTO;
 import model.ShowAllMeiboBL;
 import model.UserInfoDto;
 
-/**
- * Servlet implementation class ShowallMeibo
- */
 @WebServlet("/ShowAllMeibo")
 public class ShowAllMeibo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
