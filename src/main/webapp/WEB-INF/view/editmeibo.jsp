@@ -12,13 +12,13 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/editmeibo.css">
 <title>名簿編集</title>
 </head>
 <body>
 	<header>
 		<h1>名簿編集</h1>
-		<nav>
+		<nav class="nav">
 			<ul>
 				<ol>
 					<a href="MainPage">TOP</a>
@@ -42,13 +42,13 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 			<input type="hidden" name="MEIBO_ID" value="<%=dto.getMeibo_id()%>"
 				maxlength="10" readonly>
 			<p>
-				よみがな:<input type="text" name="YOMI" value="<%=dto.getYomi()%>"
-					maxlength="10" id="" required>
+				<input type="text" name="YOMI" value="<%=dto.getYomi()%>"
+					maxlength="10" id=""placeholder="よみがな">
 			</p>
 
 			<p>
-				氏名:<input type="text" name="NAME" value="<%=dto.getName()%>"
-					maxlength="10" id="" required>
+				<input type="text" name="NAME" value="<%=dto.getName()%>"
+					maxlength="10" id=""placeholder="氏名">
 			</p>
 
 			<p>
@@ -93,9 +93,33 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 				備考:<br>
 				<textarea name="MEMO" rows="4" cols="50" maxlength="250"><%=dto.getMemo()%></textarea>
 			</p>
-			<input type="file" name="IMAGE" accept="image/png,image/jpeg"
-				src="<%=dto.getImageData()%>">
-			</p>
+		<p><br>
+			  画像を選択：<input id="file-sample" type="file" name="IMAGE" accept="image/png,image/jpeg" 
+			</p><br>
+			<img id="file-preview" src="<%=dto.getImageData()%>" alt="画像プレビュー">
+			
+			<script>
+			document.getElementById('file-sample').addEventListener('change', function() {
+			  const fileInput = this;
+			  const imgPreview = document.getElementById('file-preview');
+			
+			  if (fileInput.files && fileInput.files[0]) {
+			    const reader = new FileReader();
+			
+			    reader.onload = function(e) {
+			      imgPreview.src = e.target.result;
+			    };
+			
+			    reader.readAsDataURL(fileInput.files[0]);
+			  }
+			});
+			</script>
+			 <style>
+				#file-preview {
+					  max-width: 100%;
+					  max-height: 300px;
+					} 
+			</style><br>
 			<input type="submit" value="名簿登録" onclick="return itAgg()">
 			<!--itAgg()は仮-->
 		</form>

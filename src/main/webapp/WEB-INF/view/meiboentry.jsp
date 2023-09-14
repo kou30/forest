@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
-<head> 
+<head class=header>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="styles.css">
@@ -10,8 +10,8 @@
 </head>
 <body>
 	<header>
-		<h1>名簿登録</h1>
-		<nav>
+		<h1 class=pagename>名簿登録</h1>
+		<nav class=nav>
 			<ul>
 				<ol>
 					<a href="MainPage">TOP</a>
@@ -32,11 +32,11 @@
 		<h1 class="hero">名簿登録フォーム</h1>
 		<form action="SaveMeibo" method="post" enctype="multipart/form-data">
 			<p>
-				よみがな:<input type="text" name="YOMI" maxlength="10" id="" required>
+				<input type="text" name="YOMI" maxlength="10" id="yomiInput"placeholder="よみがな">
 			</p>
 
 			<p>
-				氏名:<input type="text" name="NAME" maxlength="10" id="" required>
+				<input type="text" name="NAME" maxlength="10" id="nameInput"placeholder="氏名">
 			</p>
 
 			<p>
@@ -95,7 +95,7 @@
 			<input type="submit" value="名簿登録" onclick="return itAgg()">
 			<!--itAgg()は仮-->
 		</form>
-		<br> <a href="Logoutinfo">ログアウト</a> 
+		<br> <a href="Logoutinfo"class="logout">ログアウト</a> 
 	</main>
 	<script src="js/script.js"></script>
 	<footer>

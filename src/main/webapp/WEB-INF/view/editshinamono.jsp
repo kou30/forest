@@ -11,7 +11,7 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/editshinamono.css">
 <title>贈り物、貰い物編集</title>
 </head>
 <header>
@@ -91,7 +91,7 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 
 		<p>
 			備考:<br>
-			<textarea name="MEMO" rows="4" cols="50" maxlength="250"><%=dto.getMemo()%></textarea>
+			<textarea name="MEMO" rows="4" cols="50" maxlength="250"><%=dto.getMemo()%></textarea><br>
 			<input type="submit" value="贈り物・頂き物登録" onclick="return itAgg()">
 	</form>
 	<br> <br> <a href="Logoutinfo">ログアウト</a>

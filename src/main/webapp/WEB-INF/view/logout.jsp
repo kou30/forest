@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="css1/css2.css">
+<link rel="stylesheet"href="css/Logout.css">
 
 <head>
 <title>ログアウト完了</title>

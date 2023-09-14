@@ -1,0 +1,55 @@
+@charset "UTF-8";
+body{
+	background-image: url(../images/春フリー画像.jpg);
+	background-repeat: repeat;
+   background-size: 100% auto;
+}
+.top{
+	text-align: center;
+
+  
+  font-family: "Hiragino Mincho Pro", serif;
+}
+.en{
+text-align: center;
+  font-size: 150px;
+  margin-top: -50px;
+  font-family: "Hiragino Mincho Pro", serif;
+   
+
+}
+h3{
+	text-align: center;
+	margin-top: -90px;
+}
+nav>ul{
+	
+	list-style: none; /* リストスタイルを削除 */
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 1.25rem;
+	
+}
+
+.main-content{
+	text-align: center;
+}
+footer>p{
+	display:block;
+	text-align: center;
+	margin:0 auto;
+	font-size: 1.25rem;
+}
+a.logout {
+  display: block;
+  text-align: center;
+  font-size: 1.25rem; /* フォントサイズを調整 */
+  margin-top: 20px;
+
+}
+
+
+
+

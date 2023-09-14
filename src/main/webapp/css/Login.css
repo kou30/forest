@@ -1,0 +1,58 @@
+
+h1{
+	text-align:center;
+	 margin-top: 200px;
+	font-size: 3rem;
+}
+
+form{
+	text-align: center;
+	 margin-top: 50px;/*h1から少し下に*/
+	 
+}
+p{
+	font-size: 1.5rem;
+}
+input[type="text"]{
+	font-size: 1.25rem;
+}
+input[type="password"]{
+	font-size: 1.25rem;
+}
+.botton {
+	  background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 20px; /* ボタンの上部のマージンを追加 */
+    font-size: 1.25rem;
+}
+
+.btn-square:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+ transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+  }
+input[type="submit"]:hover/*マウスが要素の上にホバーされたときに適用されるスタイルを指定します。*/
+ {
+    background-color: #0056b3;
+}
+.signup{
+	color: rgb(0, 0, 255);
+	
+}
+.signup {
+    margin-top: 20px; /* 上側の余白を追加 */
+    display: block; /* リンクをブロック要素として表示（改行あり） */
+    text-align: center; /* リンクを中央揃えにする */
+  }
+
+body{
+    background-image: url(../images/ストライプ.jpg);
+    background-repeat: repeat;
+   background-size: 50% auto;/*画像の大きさ調整*/
+}
