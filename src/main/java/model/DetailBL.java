@@ -21,5 +21,5 @@ public class DetailBL {
 		MeiboDTO dto = dao.FindOne(id);
 		return dto;
 	}
-
+ 
 }
