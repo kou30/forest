@@ -1,8 +1,19 @@
 body{
   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
   color:#444;
-
+  background-image: url(../images/緑フリー画像.png);
+    background-repeat: repeat;
+   background-size: 100% auto;/*画像の大きさ調整*/
 }
+nav>ul{
+	margin:30px 0 0 0 ;
+	padding: 0;
+	list-style-type:none;/*リスト項目「・」を消している？*/
+	display:flex;
+	justify-content:center;
+	font-size: 1.25rem;
+}
+
 #wrapper{
   background:#78909C;
   padding:5vh 0;
@@ -10,9 +21,10 @@ body{
 }
 h1{
   text-align: center;
-  color:#B9F6CA;
+   color: rgb(0, 64, 128);
   font-size:2rem;
   margin-bottom:2vh;
+  
 }
 #menu{
   width:80%;
@@ -50,4 +62,63 @@ h1{
   #menu>div{
     width:95%;
   }
+}
+td{
+	background-color:rgb(255, 255, 255) ;
+	
+   
+
+}
+th{
+	background-color: rgb(255, 255, 255);
+}
+table{
+	width: 100%;
+}
+/* テーブル内のセルのスタイル */
+table {
+  border-collapse: collapse; /* セル間の余白を削除 */
+  width: 100%; /* テーブルを親要素に合わせる */
+}
+
+td, th {
+  border: 1px solid #000; /* セルの境界線を追加 */
+  padding: 8px; /* セルの内側の余白 */
+  text-align: center; /* テキストを中央寄せ */
+}
+
+/* ヘッダー行の背景色を設定 */
+th {
+  background-color: #ccc;
+}
+
+/* 交互に行の背景色を設定 */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* セル内のテキストが長い場合の省略表示 */
+
+
+/* ホバー時にセル内のテキストを全表示 */
+
+.scroll-container {
+  width: 300px; /* 幅を固定 */
+  height: 150px; /* 高さを固定 */
+  overflow: scroll; /* スクロールバーを表示 */
+}
+th{
+	width: 500px;
+}
+.logout{
+	display:block;
+	text-align: center;
+	margin:0 auto;
+	font-size: 1.25rem;
+}
+footer>p{
+	display:block;
+	text-align: center;
+	margin:0 auto;
+	font-size: 1.25rem;
 }
