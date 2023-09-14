@@ -53,7 +53,7 @@
 		ShinamonoDTO dto = list.get(i);
 		if (dto.getBunrui() == 1) {
 	%>
-	<table>
+	<table border="1"class="my-table">
 		<tr>
 			<th>相手の名前</th>
 			<th>品物送受日</th>
@@ -225,7 +225,7 @@
 		if (dto.getBunrui() == 2) {
 	%>
 
-	<table>
+	<table border="1"class="my-table">
 		<tr>
 			<th>相手の名前</th>
 			<th>品物送受日</th>
@@ -393,7 +393,7 @@
 
 	<br>
 	<br>
-	<a href="Logoutinfo">ログアウト</a>
+	<a href="Logoutinfo" class="logout">ログアウト</a>
 	<script src="js/script.js"></script>
 	<footer>
 		<p>&copy; team フォレスト</p>

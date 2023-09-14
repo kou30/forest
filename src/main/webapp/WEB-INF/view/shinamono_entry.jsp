@@ -11,7 +11,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/shinamonoentry.css">
 <title>贈り物、貰い物登録</title>
 
 </head>

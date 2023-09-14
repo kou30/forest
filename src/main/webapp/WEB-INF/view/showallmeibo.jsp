@@ -33,7 +33,7 @@ List<MeiboDTO> MeiboDTOlist = (List<MeiboDTO>) request.getAttribute("MEIBO");
 <body>
 	<header>
 		<h1>名簿一覧</h1>
-		<nav>
+		<nav class="nav">
 			<ul>
 				<ol>
 					<a href="MainPage">TOP</a>
@@ -45,12 +45,12 @@ List<MeiboDTO> MeiboDTOlist = (List<MeiboDTO>) request.getAttribute("MEIBO");
 					<a href="ShowAllMeibo">名簿一覧</a>
 				</ol>
 				<ol>
-					<a href="ShowAllShinamono">贈り物・貰い物一覧</a>
+					<a href="ShowAllShinamono">贈り物・頂いたもの一覧</a>
 				</ol>
 			</ul>
 		</nav>
 	</header>
-	<table>
+	<table border="1">
 		<tr>
 			<th>名前</th>
 			<th>よみがな</th>
@@ -60,7 +60,9 @@ List<MeiboDTO> MeiboDTOlist = (List<MeiboDTO>) request.getAttribute("MEIBO");
 			<th>続柄</th>
 			<th>備考</th>
 			<th>品物登録</th>
-			<th>コマンド</th>
+			<th>削除コマンド</th>
+			<th>編集コマンド</th>
+			<th>個人ページコマンド</th>
 		</tr>
 		<%
 		for (int i = 0; i < MeiboDTOlist.size(); i++) {
@@ -79,7 +81,7 @@ List<MeiboDTO> MeiboDTOlist = (List<MeiboDTO>) request.getAttribute("MEIBO");
 		};
 		%>
 		<tr>
-			<td><%=replaceEscapeChar(dto.getName())%></td>
+			<td><a href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>"><%=replaceEscapeChar(dto.getName())%></td>
 			<td><%=replaceEscapeChar(dto.getYomi())%></td>
 			<td><%=dto.getBirthday()%></td>
 			<td><%=gender[dto.getSex()]%></td>
@@ -99,7 +101,7 @@ List<MeiboDTO> MeiboDTOlist = (List<MeiboDTO>) request.getAttribute("MEIBO");
 		%>
 	</table>
 	<br>
-	<a href="Logoutinfo">ログアウト</a>
+	<a href="Logoutinfo"class="Logout">ログアウト</a>
 
 </body>
 </html>>

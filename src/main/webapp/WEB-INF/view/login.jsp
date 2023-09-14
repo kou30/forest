@@ -13,16 +13,16 @@
 	<form action="ExecuteLogin" method="post">
 		<p>
 			ユーザーID：<br> <input type="text" ID="Id" name="USER_ID"
-				maxlength="20" required>
+				maxlength="20"placeholder="ユーザーID" required >
 		</p>
 		<p>
 			パスワード：<br> <input type="password" ID="Pass" name="PASSWORD"
-				maxlength="20" required>
+				maxlength="20"placeholder="パスワード" required>
 		</p>
 		<div ID="center">
-			<input type="submit" value="ログイン" onclick="return ale()">
+			<input type="submit" value="ログイン" onclick="return ale()"class="botton">
 			<br>
-			    <a href="ExecuteSignup">サインアップする</a>
+			    <a href="ExecuteSignup"class="signup">サインアップする</a>
 			
 		</div>
 	</form>

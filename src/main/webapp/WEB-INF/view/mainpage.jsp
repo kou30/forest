@@ -9,14 +9,15 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/mainpage.css">
   <title>TOPページ</title>
   <!-- ... FullCalendarのスタイルシートとスクリプトをHTMLファイルにインクルード ... -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
 </head>
   <header>
-    <h1>TOPページ</h1>
+    <h1 class=top>TOPページ</h1>
+    <h1 class=en>縁</h1>
     <h3>こんにちは<%=userInfoOnSession.getUserName()%> さん。</h3>
    <nav>
 			<ul>
@@ -68,6 +69,6 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
   <footer>
     <p>&copy; team フォレスト</p>
   </footer>
-  <a href="Logoutinfo">ログアウト</a> <!--8/30追加-->
+  <a href="Logoutinfo""class="logout">ログアウト</a> <!--8/30追加-->
 </body>
 </html>
