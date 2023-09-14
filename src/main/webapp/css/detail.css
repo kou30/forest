@@ -1,0 +1,49 @@
+@charset "UTF-8";
+body{
+    background-image: url(../images/ストライプ.jpg);
+    background-repeat: repeat;
+   background-size: 50% auto;/*画像の大きさ調整*/
+}
+
+h1{
+  text-align: center;
+  color: #00C4B5;
+  font-size:2rem;
+  margin-bottom:2vh;
+  }
+  
+h2{
+  text-align: center;
+  color :#254058;
+  font-size:1.5rem;
+  margin-bottom:1vh;
+  }
+table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: center; 
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+       #file {
+    text-align: center;
+}
+
+.image {
+    display: inline-block; 
+    vertical-align: middle; 
+}
+
+
+
+
+
+
