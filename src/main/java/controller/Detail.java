@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,20 +21,23 @@ import model.UserInfoDto;
 public class Detail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
 
 		if (userInfoOnSession != null) {
 			int id = Integer.parseInt(request.getParameter("MEIBO_ID"));
-			ShinamonoDTO Slist  = new ShinamonoDTO();
+			
 			DetailBL logic = new DetailBL();
-			Slist = (ShinamonoDTO) logic.DetailShinamonoSelect(id);
+			
+			List<ShinamonoDTO> Slist=new ArrayList<ShinamonoDTO>();
+			Slist =  logic.DetailShinamono(id);
 			request.setAttribute("Slist", Slist);
 			
 			MeiboDTO Mlist = new MeiboDTO();
 			Mlist = logic.DetailMeiboSelect(id);
 			request.setAttribute("Mlist", Mlist);
-
+			
 			RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/view/detail.jsp");
 			dispatch.forward(request, response);
 
