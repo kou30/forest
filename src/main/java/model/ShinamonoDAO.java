@@ -39,17 +39,6 @@ public class ShinamonoDAO {
 		}
 	}
 
-	public void ConnectCheck() {
-		try {
-			this.connect();
-			System.out.println("OK");
-		} catch (NamingException | SQLException e) {
-			e.printStackTrace();
-		} finally {
-			this.disconnect();
-		}
-	}
-
 	public void insertOne(ShinamonoDTO Shinamono) {
 		try {
 			this.connect();
