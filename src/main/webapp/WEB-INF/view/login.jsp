@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>ログイン画面</h1>
-	<form action="ExecuteLogin" method="post">
+	<form action="Logininfo" method="post">
 		<p>
 			ユーザーID：<br> <input type="text" ID="Id" name="USER_ID"
 				maxlength="20"placeholder="ユーザーID" required >
