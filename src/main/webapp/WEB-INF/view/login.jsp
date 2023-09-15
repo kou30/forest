@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="css1/css2.css">
+<link rel="stylesheet" href="css/login.css">
 <head>
 <script src="js/javaScript1.js"></script>
 <title>ログイン画面</title>

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body{
-	background-image: url(../images/tƒtƒŠ[‰æ‘œ.jpg);
+	background-image: url(../images/mori.jpg);
 	background-repeat: repeat;
    background-size: 100% auto;
 }
@@ -24,7 +24,7 @@ h3{
 }
 nav>ul{
 	
-	list-style: none; /* ƒŠƒXƒgƒXƒ^ƒCƒ‹‚ğíœ */
+	list-style: none; /* ï¿½ï¿½ï¿½Xï¿½gï¿½Xï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½íœ */
     padding: 0;
     display: flex;
     justify-content: center;
@@ -45,7 +45,7 @@ footer>p{
 a.logout {
   display: block;
   text-align: center;
-  font-size: 1.25rem; /* ƒtƒHƒ“ƒgƒTƒCƒY‚ğ’²® */
+  font-size: 1.25rem; /* ï¿½tï¿½Hï¿½ï¿½ï¿½gï¿½Tï¿½Cï¿½Yï¿½ğ’²ï¿½ */
   margin-top: 20px;
 
 }

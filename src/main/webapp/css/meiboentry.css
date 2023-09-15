@@ -1,14 +1,14 @@
 @charset "UTF-8";
 body{
- background-image: url(../images/ƒXƒgƒ‰ƒCƒv.jpg);
+ background-image: url(../images/haru.jpg);
     background-repeat: repeat;
-   background-size: 90% auto;/*‰æ‘œ‚Ì‘å‚«‚³’²®*/
+   background-size: 90% auto;/*ï¿½æ‘œï¿½Ì‘å‚«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
    
  margin: 0;
     padding: 0;
 }
 
-/* ƒy[ƒW‘S‘Ì‚ÌƒRƒ“ƒeƒ“ƒc‚ğ’†‰›‚É”z’u */
+/* ï¿½yï¿½[ï¿½Wï¿½Sï¿½Ì‚ÌƒRï¿½ï¿½ï¿½eï¿½ï¿½ï¿½cï¿½ğ’†‰ï¿½ï¿½É”zï¿½u */
 body > header, body > main {
     display: flex;
     flex-direction: column;
@@ -16,15 +16,15 @@ body > header, body > main {
     text-align: center;
 }
 
-/* ƒwƒbƒ_[•”•ª‚ÌƒXƒ^ƒCƒ‹ */
+/* ï¿½wï¿½bï¿½_ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ÌƒXï¿½^ï¿½Cï¿½ï¿½ */
 header {
-    background-color: #fff; /* ”wŒiF‚ğİ’è */
+    background-color: #fff; /* ï¿½wï¿½iï¿½Fï¿½ï¿½İ’ï¿½ */
     padding: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* ƒVƒƒƒhƒE‚ğ’Ç‰Á */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* ï¿½Vï¿½ï¿½ï¿½hï¿½Eï¿½ï¿½Ç‰ï¿½ */
     width: 100%;
 }
 
-/* ƒwƒbƒ_[“à‚Ìƒ^ƒCƒgƒ‹‚ÌƒXƒ^ƒCƒ‹ */
+/* ï¿½wï¿½bï¿½_ï¿½[ï¿½ï¿½ï¿½Ìƒ^ï¿½Cï¿½gï¿½ï¿½ï¿½ÌƒXï¿½^ï¿½Cï¿½ï¿½ */
 header h1 {
     color: rgb(0, 0, 128);
     font-size: 3rem;
@@ -32,9 +32,9 @@ header h1 {
 }
 
 
-/* ƒiƒrƒQ[ƒVƒ‡ƒ“ƒƒjƒ…[‚ÌƒXƒ^ƒCƒ‹ */
+/* ï¿½iï¿½rï¿½Qï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½ÌƒXï¿½^ï¿½Cï¿½ï¿½ */
 .nav ul {
-    list-style: none; /* ƒŠƒXƒgƒXƒ^ƒCƒ‹‚ğíœ */
+    list-style: none; /* ï¿½ï¿½ï¿½Xï¿½gï¿½Xï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½íœ */
     padding: 0;
     display: flex;
     justify-content: center;
@@ -45,20 +45,20 @@ header h1 {
 .nav ol {
     margin: 0;
     padding: 0;
-    margin-right: 20px; /* ƒƒjƒ…[ŠÔ‚ÌŠÔŠu‚ğİ’è */
+    margin-right: 20px; /* ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½[ï¿½Ô‚ÌŠÔŠuï¿½ï¿½İ’ï¿½ */
 }
 
 .nav a {
     text-decoration: none;
     color: #007bff;
-    transition: color 0.2s ease; /* ƒŠƒ“ƒN‚Ìƒzƒo[‚Ìƒgƒ‰ƒ“ƒWƒVƒ‡ƒ“Œø‰Ê */
+    transition: color 0.2s ease; /* ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½Ìƒzï¿½oï¿½[ï¿½ï¿½ï¿½Ìƒgï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 }
 
 .nav a:hover {
     color: #0056b3;
 }
 
-/* ƒƒCƒ“ƒRƒ“ƒeƒ“ƒc‚ÌƒXƒ^ƒCƒ‹ */
+/* ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Rï¿½ï¿½ï¿½eï¿½ï¿½ï¿½cï¿½ÌƒXï¿½^ï¿½Cï¿½ï¿½ */
 main {
     padding: 20px;
 }
@@ -74,10 +74,10 @@ form>p>input[type="radio"]{
 }
 
 select[name="RELATIONSHIP"] {
-  width: 100px; /* ‘å‚«‚³‚ğ’²®‚·‚é’l‚ğw’è */
+  width: 100px; /* ï¿½å‚«ï¿½ï¿½ï¿½ğ’²ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ï¿½ï¿½wï¿½ï¿½ */
   
 }
-/* ƒ{ƒ^ƒ“‚ÌƒXƒ^ƒCƒ‹ */
+/* ï¿½{ï¿½^ï¿½ï¿½ï¿½ÌƒXï¿½^ï¿½Cï¿½ï¿½ */
 input[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -86,11 +86,11 @@ input[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    margin-top: 20px; /* ƒ{ƒ^ƒ“‚Ìã•”‚Ìƒ}[ƒWƒ“‚ğ’Ç‰Á */
+    margin-top: 20px; /* ï¿½{ï¿½^ï¿½ï¿½ï¿½Ìã•”ï¿½Ìƒ}ï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½Ç‰ï¿½ */
     font-size: 1.5rem;
 }
 
-input[type="submit"]:hover/*ƒ}ƒEƒX‚ª—v‘f‚Ìã‚Éƒzƒo[‚³‚ê‚½‚Æ‚«‚É“K—p‚³‚ê‚éƒXƒ^ƒCƒ‹‚ğw’è‚µ‚Ü‚·B*/
+input[type="submit"]:hover/*ï¿½}ï¿½Eï¿½Xï¿½ï¿½ï¿½vï¿½fï¿½Ìï¿½Éƒzï¿½oï¿½[ï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½ï¿½É“Kï¿½pï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½wï¿½è‚µï¿½Ü‚ï¿½ï¿½B*/
  {
     background-color: #0056b3;
 }

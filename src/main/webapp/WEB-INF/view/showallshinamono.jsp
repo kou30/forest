@@ -19,7 +19,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="css/showallmeibo.css">
 <title>贈ったモノ・頂いたモノ全件一覧</title>
 </head>
 <body>

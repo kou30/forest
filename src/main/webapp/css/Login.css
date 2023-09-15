@@ -7,7 +7,7 @@ h1{
 
 form{
 	text-align: center;
-	 margin-top: 50px;/*h1‚©‚ç­‚µ‰º‚É*/
+	 margin-top: 50px;/*h1ï¿½ï¿½ï¿½ç­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	 
 }
 p{
@@ -27,17 +27,17 @@ input[type="password"]{
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    margin-top: 20px; /* ƒ{ƒ^ƒ“‚Ìã•”‚Ìƒ}[ƒWƒ“‚ğ’Ç‰Á */
+    margin-top: 20px; /* ï¿½{ï¿½^ï¿½ï¿½ï¿½Ìã•”ï¿½Ìƒ}ï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½Ç‰ï¿½ */
     font-size: 1.25rem;
 }
 
 .btn-square:active {
-  /*ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚Æ‚«*/
+  /*ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½*/
   -webkit-transform: translateY(4px);
- transform: translateY(4px);/*‰º‚É“®‚­*/
-  border-bottom: none;/*ü‚ğÁ‚·*/
+ transform: translateY(4px);/*ï¿½ï¿½ï¿½É“ï¿½ï¿½ï¿½*/
+  border-bottom: none;/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
   }
-input[type="submit"]:hover/*ƒ}ƒEƒX‚ª—v‘f‚Ìã‚Éƒzƒo[‚³‚ê‚½‚Æ‚«‚É“K—p‚³‚ê‚éƒXƒ^ƒCƒ‹‚ğw’è‚µ‚Ü‚·B*/
+input[type="submit"]:hover/*ï¿½}ï¿½Eï¿½Xï¿½ï¿½ï¿½vï¿½fï¿½Ìï¿½Éƒzï¿½oï¿½[ï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½ï¿½É“Kï¿½pï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½wï¿½è‚µï¿½Ü‚ï¿½ï¿½B*/
  {
     background-color: #0056b3;
 }
@@ -46,13 +46,13 @@ input[type="submit"]:hover/*ƒ}ƒEƒX‚ª—v‘f‚Ìã‚Éƒzƒo[‚³‚ê‚½‚Æ‚«‚É“K—p‚³‚ê‚éƒXƒ^ƒC
 	
 }
 .signup {
-    margin-top: 20px; /* ã‘¤‚Ì—]”’‚ğ’Ç‰Á */
-    display: block; /* ƒŠƒ“ƒN‚ğƒuƒƒbƒN—v‘f‚Æ‚µ‚Ä•\¦i‰üs‚ ‚èj */
-    text-align: center; /* ƒŠƒ“ƒN‚ğ’†‰›‘µ‚¦‚É‚·‚é */
+    margin-top: 20px; /* ï¿½ã‘¤ï¿½Ì—]ï¿½ï¿½ï¿½ï¿½Ç‰ï¿½ */
+    display: block; /* ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½uï¿½ï¿½ï¿½bï¿½Nï¿½vï¿½fï¿½Æ‚ï¿½ï¿½Ä•\ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½j */
+    text-align: center; /* ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ğ’†‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½ */
   }
 
 body{
-    background-image: url(../images/ƒXƒgƒ‰ƒCƒv.jpg);
+    background-image: url(../images/stripe.jpg);
     background-repeat: repeat;
-   background-size: 50% auto;/*‰æ‘œ‚Ì‘å‚«‚³’²®*/
+   background-size: 50% auto;/*ï¿½æ‘œï¿½Ì‘å‚«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 }

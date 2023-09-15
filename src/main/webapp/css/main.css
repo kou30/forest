@@ -1,7 +1,7 @@
 body{
   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
   color:#444;
-  background-image: url(../images/緑フリー画像.png);
+  background-image: url(../images/green.png);
     background-repeat: repeat;
    background-size: 100% auto;/*画像の大きさ調整*/
 }
