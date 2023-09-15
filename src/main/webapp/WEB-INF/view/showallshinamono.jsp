@@ -385,12 +385,10 @@
 				href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
 		</tr>
 		<%
-		}
+		}}
 		%>
 	</table>
-	<%
-	}
-	%>
+
 
 	<br>
 	<br>

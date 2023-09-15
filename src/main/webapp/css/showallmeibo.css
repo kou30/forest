@@ -1,14 +1,14 @@
 body{
-  font-family: "Hiragino Kaku Gothic Pro", "ƒqƒ‰ƒMƒmŠpƒS Pro", "Yu Gothic Medium", "ŸàƒSƒVƒbƒN Medium", YuGothic, "ŸàƒSƒVƒbƒN‘Ì", "ƒƒCƒŠƒI", sans-serif;
+  font-family: "Hiragino Kaku Gothic Pro", "ï¿½qï¿½ï¿½ï¿½Mï¿½mï¿½pï¿½S Pro", "Yu Gothic Medium", "ï¿½ï¿½ï¿½Sï¿½Vï¿½bï¿½N Medium", YuGothic, "ï¿½ï¿½ï¿½Sï¿½Vï¿½bï¿½Nï¿½ï¿½", "ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½I", sans-serif;
   color:#444;
-  background-image: url(../images/—ÎƒtƒŠ[‰æ‘œ.png);
+  background-image: url(../images/ï¿½Îƒtï¿½ï¿½ï¿½[ï¿½æ‘œ.png);
     background-repeat: repeat;
-   background-size: 100% auto;/*‰æ‘œ‚Ì‘å‚«‚³’²®*/
+   background-size: 100% auto;/*ï¿½æ‘œï¿½Ì‘å‚«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 }
 nav>ul{
 	margin:30px 0 0 0 ;
 	padding: 0;
-	list-style-type:none;/*ƒŠƒXƒg€–ÚuEv‚ðÁ‚µ‚Ä‚¢‚éH*/
+	list-style-type:none;/*ï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Úuï¿½Eï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½H*/
 	display:flex;
 	justify-content:center;
 	font-size: 1.25rem;
@@ -75,32 +75,32 @@ th{
 table{
 	width: 100%;
 }
-/* ƒe[ƒuƒ‹“à‚ÌƒZƒ‹‚ÌƒXƒ^ƒCƒ‹ */
+/* ï¿½eï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ÌƒZï¿½ï¿½ï¿½ÌƒXï¿½^ï¿½Cï¿½ï¿½ */
 table {
-  border-collapse: collapse; /* ƒZƒ‹ŠÔ‚Ì—]”’‚ðíœ */
-  width: 100%; /* ƒe[ƒuƒ‹‚ðe—v‘f‚É‡‚í‚¹‚é */
+  border-collapse: collapse; /* ï¿½Zï¿½ï¿½ï¿½Ô‚Ì—]ï¿½ï¿½ï¿½ï¿½ï¿½íœ */
+  width: 100%; /* ï¿½eï¿½[ï¿½uï¿½ï¿½ï¿½ï¿½eï¿½vï¿½fï¿½Éï¿½ï¿½í‚¹ï¿½ï¿½ */
 }
 
 td, th {
-  border: 1px solid #000; /* ƒZƒ‹‚Ì‹«ŠEü‚ð’Ç‰Á */
-  padding: 8px; /* ƒZƒ‹‚Ì“à‘¤‚Ì—]”’ */
-  text-align: center; /* ƒeƒLƒXƒg‚ð’†‰›Šñ‚¹ */
+  border: 1px solid #000; /* ï¿½Zï¿½ï¿½ï¿½Ì‹ï¿½ï¿½Eï¿½ï¿½ï¿½ï¿½Ç‰ï¿½ */
+  padding: 8px; /* ï¿½Zï¿½ï¿½ï¿½Ì“ï¿½ï¿½ï¿½ï¿½Ì—]ï¿½ï¿½ */
+  text-align: center; /* ï¿½eï¿½Lï¿½Xï¿½gï¿½ð’†‰ï¿½ï¿½ï¿½ */
 }
 
-/* ƒwƒbƒ_[s‚Ì”wŒiF‚ðÝ’è */
+/* ï¿½wï¿½bï¿½_ï¿½[ï¿½sï¿½Ì”wï¿½iï¿½Fï¿½ï¿½Ý’ï¿½ */
 th {
   background-color: #ccc;
 }
 
-/* ŒðŒÝ‚És‚Ì”wŒiF‚ðÝ’è */
+/* ï¿½ï¿½ï¿½Ý‚Ésï¿½Ì”wï¿½iï¿½Fï¿½ï¿½Ý’ï¿½ */
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* ƒZƒ‹“à‚ÌƒeƒLƒXƒg‚ª’·‚¢ê‡‚ÌÈ—ª•\Ž¦ */
+/* ï¿½Zï¿½ï¿½ï¿½ï¿½ï¿½Ìƒeï¿½Lï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½ÌÈ—ï¿½ï¿½\ï¿½ï¿½ */
 
 
-/* ƒzƒo[Žž‚ÉƒZƒ‹“à‚ÌƒeƒLƒXƒg‚ð‘S•\Ž¦ */
+/* ï¿½zï¿½oï¿½[ï¿½ï¿½ï¿½ÉƒZï¿½ï¿½ï¿½ï¿½ï¿½Ìƒeï¿½Lï¿½Xï¿½gï¿½ï¿½Sï¿½\ï¿½ï¿½ */
 
 
 th{
@@ -118,3 +118,5 @@ footer>p{
 	margin:0 auto;
 	font-size: 1.25rem;
 }
+.alert-success{
+color:#155724;background-color:#d4edda;border-color:#c3e6cb}.alert-success hr{border-top-color:#b1dfbb}

@@ -21,6 +21,16 @@
 UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
 String userId = userInfoOnSession.getUserId();
 List<MeiboDTO> MeiboDTOlist = (List<MeiboDTO>) request.getAttribute("MEIBO");
+String msg = (String) request.getAttribute("msg");
+%>
+<%
+if (msg != null) {
+%>
+<div class="alert alert-success" role="alert">
+	<%=msg%>
+</div>
+<%
+}
 %>
 
 
@@ -28,6 +38,7 @@ List<MeiboDTO> MeiboDTOlist = (List<MeiboDTO>) request.getAttribute("MEIBO");
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/showallmeibo.css">
 <title>名簿一覧</title>
 </head>
 <body>
@@ -81,7 +92,8 @@ List<MeiboDTO> MeiboDTOlist = (List<MeiboDTO>) request.getAttribute("MEIBO");
 		};
 		%>
 		<tr>
-			<td><a href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>"><%=replaceEscapeChar(dto.getName())%></td>
+			<td><a
+				href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>"><%=replaceEscapeChar(dto.getName())%></td>
 			<td><%=replaceEscapeChar(dto.getYomi())%></td>
 			<td><%=dto.getBirthday()%></td>
 			<td><%=gender[dto.getSex()]%></td>
@@ -94,14 +106,15 @@ List<MeiboDTO> MeiboDTOlist = (List<MeiboDTO>) request.getAttribute("MEIBO");
 				href="<%=request.getContextPath()%>/ExecuteDeleteMeibo?MEIBO_ID=<%=dto.getMeibo_id()%>">削除</a></td>
 			<td><a
 				href="<%=request.getContextPath()%>/ExecuteEditMeibo?MEIBO_ID=<%=dto.getMeibo_id()%>">編集</a></td>
-			<td><a href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>">個人ページ</a></td>
+			<td><a
+				href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>">個人ページ</a></td>
 		</tr>
 		<%
 		}
 		%>
 	</table>
 	<br>
-	<a href="Logoutinfo"class="Logout">ログアウト</a>
+	<a href="Logoutinfo" class="Logout">ログアウト</a>
 
 </body>
-</html>>
+</html>
