@@ -1,16 +1,14 @@
 package model;
 
-import java.util.List;
-
 public class DetailBL {
 
 //	public ShinamonoDTO DetailShinamonoSelect(int id) {
 //		ShinamonoDAO dao = new ShinamonoDAO();
 //		ShinamonoDTO dto =dao.DetailFindOne(id);
-	public List<ShinamonoDTO> DetailShinamono(int id) {
+	public ShinamonoDTO DetailShinamono(int id) {
 
 		ShinamonoDAO dao = new ShinamonoDAO();
-		List<ShinamonoDTO> dto= dao.DetailFindOne(id);
+		ShinamonoDTO dto= dao.DetailFindOne(id);
 		
 		
 		return dto;
