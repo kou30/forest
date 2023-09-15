@@ -49,11 +49,12 @@
 	%>
 
 
-	<table border="1"class="my-table">
+	<table border="1" class="my-table">
 		<tr>
 			<th>相手の名前</th>
 			<th>品物送受日</th>
-			<th>詳細項目</th>
+			<th>詳細項目1</th>
+			<th>詳細項目2</th>
 			<th>品目名</th>
 			<th>金額(項目：お金のみ)</th>
 			<th>備考</th>
@@ -205,6 +206,7 @@
 			}
 			%>
 			<td><%=a%></td>
+			<td><%=dto.getShinamono_name()%></td>
 			<td><%=dto.getShinamono_kingaku()%></td>
 			<td><%=dto.getMemo()%></td>
 			<td><a
@@ -221,11 +223,12 @@
 	</table>
 	<h2>頂いたモノ</h2>
 
-	<table border="1"class="my-table">
+	<table border="1" class="my-table">
 		<tr>
 			<th>相手の名前</th>
 			<th>品物送受日</th>
-			<th>詳細項目</th>
+			<th>詳細項目1</th>
+			<th>詳細項目2</th>
 			<th>品目名</th>
 			<th>金額(項目：お金のみ)</th>
 			<th>備考</th>
@@ -377,6 +380,7 @@
 			}
 			%>
 			<td><%=a%></td>
+			<td><%=dto.getShinamono_name()%></td>
 			<td><%=dto.getShinamono_kingaku()%></td>
 			<td><%=dto.getMemo()%></td>
 			<td><a
@@ -385,7 +389,8 @@
 				href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
 		</tr>
 		<%
-		}}
+		}
+		}
 		%>
 	</table>
 

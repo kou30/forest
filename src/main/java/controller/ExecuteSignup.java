@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,13 @@ import model.UserInfoDto;
  */
 @WebServlet("/ExecuteSignup")
 public class ExecuteSignup extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8"); //文字コードをUTF-8で設定
+		request.setCharacterEncoding("UTF-8");
+		RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/view/signup.jsp");
+		dispatch.forward(request, response);
+	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");

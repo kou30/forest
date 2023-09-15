@@ -21,10 +21,11 @@
 		</p>
 		<div ID="center">
 			<input type="submit" value="ログイン" onclick="return ale()"class="botton">
-			<br>
-			    <a href="ExecuteSignup"class="signup">サインアップする</a>
+
 			
 		</div>
 	</form>
+				<br>
+			    <a href="ExecuteSignup"class="signup">サインアップする</a>
 </body>
 </html>

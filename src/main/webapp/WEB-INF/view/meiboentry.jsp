@@ -30,7 +30,7 @@
 	</header>
 	<main>
 		<h1 class="hero">名簿登録フォーム</h1>
-		<form action="SaveMeibo" method="post" enctype="multipart/form-data">
+		<form action="MeiboEntry" method="post" enctype="multipart/form-data">
 			<p>
 				<input type="text" name="YOMI" maxlength="10" id="yomiInput"placeholder="よみがな" required>
 			</p>
@@ -97,8 +97,9 @@
 		</form>
 		<br> <a href="Logoutinfo"class="logout">ログアウト</a> 
 	</main>
-	<script src="js/script.js"></script>
 	<footer>
+		<script src="js/script.js"></script>
+	
 		<p>&copy; team フォレスト</p>
 	</footer>
 </body>
