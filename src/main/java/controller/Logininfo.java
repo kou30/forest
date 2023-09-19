@@ -55,6 +55,7 @@ public class Logininfo extends HttpServlet {
 			String hashedPassword = null;
 			try {
 				hashedPassword = hashPassword(passWord);
+				System.out.println(hashedPassword);
 			} catch (NoSuchAlgorithmException e) {
 				e.printStackTrace();
 			}
