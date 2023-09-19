@@ -3,6 +3,9 @@ package controller;
 
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,11 +52,17 @@ public class Logininfo extends HttpServlet {
 			//リクエストパラメータからユーザー入力値を取得
 			String userId   = request.getParameter("USER_ID");      //リクエストパラメータ（USER_ID）
 			String passWord = request.getParameter("PASSWORD");     //リクエストパラメータ（PASSWORD）
+			String hashedPassword = null;
+			try {
+				hashedPassword = hashPassword(passWord);
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
 
 			//「user_info」テーブルからユーザー入力値と合致するユーザーデータ（UserInfoDto型）を抽出
 			// ※合致するデータがなかった場合、各フィールドがnullのDTOを得る
 			UserInfoDao logic = new UserInfoDao();
-			UserInfoDto   dto   = logic.executeSelectUserInfo(userId, passWord);
+			UserInfoDto   dto   = logic.executeSelectUserInfo(userId, hashedPassword);
 
 			//ユーザーデータの抽出成功/失敗に応じて表示させる画面を振り分ける
 			if (dto.getUserId() != null) {
@@ -73,5 +82,18 @@ public class Logininfo extends HttpServlet {
 
 			}
 		}
+	}
+	private String hashPassword(String password) throws NoSuchAlgorithmException {
+	    MessageDigest digest = MessageDigest.getInstance("SHA-256");
+	    byte[] hashBytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
+	    StringBuilder hexString = new StringBuilder();
+	    for (byte hashByte : hashBytes) {
+	        String hex = Integer.toHexString(0xff & hashByte);
+	        if (hex.length() == 1)
+	            hexString.append('0');
+	        hexString.append(hex);
+	    }
+	    return hexString.toString();
 	}
 }

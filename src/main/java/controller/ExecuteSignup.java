@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.SignupBL;
 import model.UserInfoDto;
+
 
 /**
  * Servlet implementation class Signup
@@ -33,10 +37,18 @@ public class ExecuteSignup extends HttpServlet {
 		String userName = request.getParameter("USER_NAME");
 		String password = request.getParameter("PASSWORD");
 
+		String hashedPassword = null;
+		try {
+			hashedPassword = hashPassword(password);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+
+		
 		UserInfoDto dto = new UserInfoDto();
 		dto.setUserId(id);
 		dto.setUserName(userName);
-		dto.setPassWord(password);
+		dto.setPassWord(hashedPassword);
 
 		SignupBL logic = new SignupBL();
 		boolean successInsert = false;
@@ -54,5 +66,18 @@ public class ExecuteSignup extends HttpServlet {
 			response.sendRedirect("html/error.html");
 		}
 
+	}
+	private String hashPassword(String password) throws NoSuchAlgorithmException {
+	    MessageDigest digest = MessageDigest.getInstance("SHA-256");
+	    byte[] hashBytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
+	    StringBuilder hexString = new StringBuilder();
+	    for (byte hashByte : hashBytes) {
+	        String hex = Integer.toHexString(0xff & hashByte);
+	        if (hex.length() == 1)
+	            hexString.append('0');
+	        hexString.append(hex);
+	    }
+	    return hexString.toString();
 	}
 }
