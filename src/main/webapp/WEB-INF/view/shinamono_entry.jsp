@@ -17,7 +17,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 </head>
 <header>
 	<h1>贈り物、貰い物登録</h1>
-	<nav>
+	<nav class=nav>
 		<ul>
 			<ol>
 				<a href="MainPage">TOP</a>

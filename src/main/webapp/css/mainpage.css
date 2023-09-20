@@ -1,7 +1,7 @@
 @charset "UTF-8";
 body{
 	background-image: url(../images/mori.jpg);
-	background-repeat: repeat;
+	background-repeat: no-repeat;
    background-size: 100% auto;
 }
 .top{
@@ -24,7 +24,7 @@ h3{
 }
 nav>ul{
 	
-	list-style: none; /* ���X�g�X�^�C�����폜 */
+	list-style: none; 
     padding: 0;
     display: flex;
     justify-content: center;
@@ -45,11 +45,24 @@ footer>p{
 a.logout {
   display: block;
   text-align: center;
-  font-size: 1.25rem; /* �t�H���g�T�C�Y�𒲐� */
+  font-size: 1.25rem;
   margin-top: 20px;
 
 }
+.white{
+color:white;
+}
+a{
+  padding: 0 10px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
+  background-position: 0 0;
+  background-size: 200% auto;
+  transition: .3s;
+}
 
-
+a:hover{
+  background-position: -100% 0;
+  color: #fff;
+}
 
 

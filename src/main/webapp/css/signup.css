@@ -27,10 +27,23 @@ input[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    margin-top: 20px; /* ƒ{ƒ^ƒ“‚Ìã•”‚Ìƒ}[ƒWƒ“‚ğ’Ç‰Á */
+    margin-top: 20px; /* ï¿½{ï¿½^ï¿½ï¿½ï¿½Ìã•”ï¿½Ìƒ}ï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½Ç‰ï¿½ */
     font-size: 1.25rem;
 }
-input[type="submit"]:hover/*ƒ}ƒEƒX‚ª—v‘f‚Ìã‚Éƒzƒo[‚³‚ê‚½‚Æ‚«‚É“K—p‚³‚ê‚éƒXƒ^ƒCƒ‹‚ğw’è‚µ‚Ü‚·B*/
+input[type="submit"]:hover/*ï¿½}ï¿½Eï¿½Xï¿½ï¿½ï¿½vï¿½fï¿½Ìï¿½Éƒzï¿½oï¿½[ï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½ï¿½É“Kï¿½pï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½wï¿½è‚µï¿½Ü‚ï¿½ï¿½B*/
  {
     background-color: #0056b3;
+}
+
+a{
+  padding: 0 10px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
+  background-position: 0 0;
+  background-size: 200% auto;
+  transition: .3s;
+}
+
+a:hover{
+  background-position: -100% 0;
+  color: #fff;
 }

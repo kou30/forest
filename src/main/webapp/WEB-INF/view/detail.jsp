@@ -38,7 +38,26 @@ if (Mdto.getImageData() != null) {
 <link rel="stylesheet" href="css/detail.css">
 </head>
 <body>
-	<h1>個人ページ</h1>
+	<header>
+		<h1>個人ページ</h1>
+		<nav class="nav">
+			<ul>
+				<ol>
+					<a href="MainPage">TOP</a>
+				</ol>
+				<ol>
+					<a href="MeiboEntry">名簿登録</a>
+				</ol>
+				<ol>
+					<a href="ShowAllMeibo">名簿一覧</a>
+				</ol>
+				<ol>
+					<a href="ShowAllShinamono">贈り物・頂いたもの一覧</a>
+				</ol>
+			</ul>
+		</nav>
+	</header>
+	<main>
 	<h2>相手の詳細情報</h2>
 	<table border="1">
 		<tr>
@@ -83,7 +102,7 @@ if (Mdto.getImageData() != null) {
 			<th>編集</th>
 			<th>削除</th>
 		</tr>
-				<%
+		<%
 		for (int i = 0; i < Sdto.size(); i++) {
 			ShinamonoDTO SHdto = Sdto.get(i);
 			if (SHdto.getBunrui() == 1) {
@@ -145,7 +164,8 @@ if (Mdto.getImageData() != null) {
 		}
 		%>
 	</table>
-
+	</main>
+	<footer> </footer>
 
 
 

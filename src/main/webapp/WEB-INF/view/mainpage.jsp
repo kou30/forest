@@ -38,9 +38,10 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
   </header>
   
   <section class="main-content">
+  <div class="white">
     <h2>大切な人との、ご縁をつづる。</h2>
     <p>贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
-  </section>
+  </div></section>
 
   <!-- カレンダーを表示するためのコンテナを作る -->
   <div id="calendar"></div>

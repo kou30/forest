@@ -98,3 +98,15 @@ input[type="submit"]:hover/*�}�E�X���v�f�̏�Ƀz�o�[���
 textarea{
 	height:100px;
 }
+a{
+  padding: 0 10px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
+  background-position: 0 0;
+  background-size: 200% auto;
+  transition: .3s;
+}
+
+a:hover{
+  background-position: -100% 0;
+  color: #fff;
+}

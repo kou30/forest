@@ -3,12 +3,12 @@ body{
   color:#444;
   background-image: url(../images/green.png);
     background-repeat: repeat;
-   background-size: 100% auto;/*�摜�̑傫������*/
+   background-size: 100% auto;
 }
 nav>ul{
 	margin:30px 0 0 0 ;
 	padding: 0;
-	list-style-type:none;/*���X�g���ځu�E�v�������Ă���H*/
+	list-style-type:none;
 	display:flex;
 	justify-content:center;
 	font-size: 1.25rem;
@@ -75,33 +75,24 @@ th{
 table{
 	width: 100%;
 }
-/* �e�[�u�����̃Z���̃X�^�C�� */
 table {
-  border-collapse: collapse; /* �Z���Ԃ̗]�����폜 */
-  width: 100%; /* �e�[�u����e�v�f�ɍ��킹�� */
+  border-collapse: collapse;
+  width: 100%;
 }
 
 td, th {
-  border: 1px solid #000; /* �Z���̋��E����ǉ� */
-  padding: 8px; /* �Z���̓����̗]�� */
-  text-align: center; /* �e�L�X�g�𒆉��� */
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: center;
 }
 
-/* �w�b�_�[�s�̔w�i�F��ݒ� */
 th {
   background-color: #ccc;
 }
 
-/* ���݂ɍs�̔w�i�F��ݒ� */
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-
-/* �Z�����̃e�L�X�g�������ꍇ�̏ȗ��\�� */
-
-
-/* �z�o�[���ɃZ�����̃e�L�X�g��S�\�� */
-
 
 th{
 	width: 500px;
@@ -118,5 +109,18 @@ footer>p{
 	margin:0 auto;
 	font-size: 1.25rem;
 }
+a{
+  padding: 0 10px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
+  background-position: 0 0;
+  background-size: 200% auto;
+  transition: .3s;
+}
+
+a:hover{
+  background-position: -100% 0;
+  color: #fff;
+}
+
 .alert-success{
 color:#155724;background-color:#d4edda;border-color:#c3e6cb}.alert-success hr{border-top-color:#b1dfbb}

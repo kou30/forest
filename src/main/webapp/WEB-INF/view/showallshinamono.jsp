@@ -25,7 +25,7 @@
 <body>
 	<header>
 		<h1>贈ったモノ・頂いたモノ全件一覧</h1>
-		<nav>
+		<nav class="nav">
 			<ul>
 				<ol>
 					<a href="MainPage">TOP</a>

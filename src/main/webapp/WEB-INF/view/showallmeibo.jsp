@@ -61,6 +61,7 @@ if (msg != null) {
 			</ul>
 		</nav>
 	</header>
+	<h2>名簿一覧</h2>
 	<table border="1">
 		<tr>
 			<th>名前</th>
