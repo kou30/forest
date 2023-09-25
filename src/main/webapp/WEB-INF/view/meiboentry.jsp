@@ -10,33 +10,30 @@
 </head>
 <body>
 	<header>
-		<h1 class=pagename>名簿登録</h1>
+		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
 		<nav class=nav>
-			<ul>
-				<ol>
-					<a href="MainPage">TOP</a>
-				</ol>
-				<ol>
-					<a href="MeiboEntry">名簿登録</a>
-				</ol>
-				<ol>
-					<a href="ShowAllMeibo">名簿一覧</a>
-				</ol>
-				<ol>
-					<a href="ShowAllShinamono">贈り物・貰い物一覧</a>
-				</ol>
-			</ul>
+			<div>
+				<img src="./images/ENcounter.png" alt="ENcounter">
+				<div class="menu">
+					<a href="MainPage">TOP</a> <a href="MeiboEntry">名簿登録</a> <a
+						href="ShowAllMeibo">名簿一覧</a> <a href="ShowAllShinamono">贈り物・貰い物一覧</a>
+				</div>
+				<a href="Logoutinfo" class="logout">ログアウト</a>
+			</div>
+			</div>
 		</nav>
 	</header>
 	<main>
 		<h1 class="hero">名簿登録フォーム</h1>
 		<form action="MeiboEntry" method="post" enctype="multipart/form-data">
 			<p>
-				<input type="text" name="YOMI" maxlength="10" id="yomiInput"placeholder="よみがな" required>
+				<input type="text" name="YOMI" maxlength="10" id="yomiInput"
+					placeholder="よみがな" required>
 			</p>
 
 			<p>
-				<input type="text" name="NAME" maxlength="10" id="nameInput"placeholder="氏名" required>
+				<input type="text" name="NAME" maxlength="10" id="nameInput"
+					placeholder="氏名" required>
 			</p>
 
 			<p>
@@ -95,11 +92,10 @@
 			<input type="submit" value="名簿登録" onclick="return itAgg()">
 			<!--itAgg()は仮-->
 		</form>
-		<br> <a href="Logoutinfo"class="logout">ログアウト</a> 
 	</main>
 	<footer>
 		<script src="js/script.js"></script>
-	
+
 		<p>&copy; team フォレスト</p>
 	</footer>
 </body>
