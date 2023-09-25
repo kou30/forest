@@ -1,10 +1,37 @@
 body{
   font-family: "Hiragino Kaku Gothic Pro", "�q���M�m�p�S Pro", "Yu Gothic Medium", "���S�V�b�N Medium", YuGothic, "���S�V�b�N��", "���C���I", sans-serif;
   color:#444;
-  background-image: url(../images/green.png);
-    background-repeat: repeat;
-   background-size: 100% auto;
 }
+body{
+margin:0;}
+.HeaderTagline {
+    background: #0ba360;
+    color: #fff;
+    font-size: .625rem;
+    position: relative;
+    line-height: 1.5;
+    padding: 1px 20px;
+    margin:0;
+}
+img {
+   width: 100px; 
+   height: 30px; 
+}
+div {
+    display: flex;
+    position:relative;}
+.menu{
+    display: flex;
+	position:absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left:30%;
+	gap:40px;
+	}
+	h2{
+	margin:0;
+	text-align:center;
+	}
 nav>ul{
 	margin:30px 0 0 0 ;
 	padding: 0;
@@ -13,6 +40,11 @@ nav>ul{
 	justify-content:center;
 	font-size: 1.25rem;
 }
+main{
+  background-image: url(../images/green.png);
+    background-repeat: no-repeat;
+   background-size: 100% auto;
+   }
 
 #wrapper{
   background:#78909C;
@@ -97,11 +129,10 @@ tr:nth-child(even) {
 th{
 	width: 500px;
 }
-.logout{
-	display:block;
-	text-align: center;
-	margin:0 auto;
-	font-size: 1.25rem;
+.logout {
+    margin-left: auto;
+    	margin-right:0
+	vertical-align : middle;
 }
 footer>p{
 	display:block;

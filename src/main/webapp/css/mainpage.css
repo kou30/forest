@@ -2,7 +2,7 @@
 body{
 	background-image: url(../images/mori.jpg);
 	background-repeat: no-repeat;
-   background-size: 100% auto;
+   background-size: 120% auto;
 }
 .top{
 	text-align: center;
@@ -37,23 +37,21 @@ nav>ul{
 	text-align: center;
 }
 footer>p{
-	display:block;
 	text-align: center;
 	margin:0 auto;
 	font-size: 1.25rem;
 }
-a.logout {
+.logout {
   display: block;
   text-align: center;
   font-size: 1.25rem;
   margin-top: 20px;
-
+  color:white;
 }
 .white{
 color:white;
 }
 a{
-background-clip: text;
   padding: 0 10px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
   background-position: 0 0;

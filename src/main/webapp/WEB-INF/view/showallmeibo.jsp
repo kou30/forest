@@ -43,24 +43,18 @@ if (msg != null) {
 </head>
 <body>
 	<header>
-		<h1>名簿一覧</h1>
-		<nav class="nav">
-			<ul>
-				<ol>
-					<a href="MainPage">TOP</a>
-				</ol>
-				<ol>
-					<a href="MeiboEntry">名簿登録</a>
-				</ol>
-				<ol>
-					<a href="ShowAllMeibo">名簿一覧</a>
-				</ol>
-				<ol>
-					<a href="ShowAllShinamono">贈り物・頂いたもの一覧</a>
-				</ol>
-			</ul>
+		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
+		<div class="nav">
+			<img src="./images/ENcounter.png" alt="ENcounter">
+			<div class="menu">
+				<a href="MainPage">TOP</a> <a href="MeiboEntry">名簿登録</a> <a
+					href="ShowAllMeibo">名簿一覧</a> <a href="ShowAllShinamono">贈り物・貰い物一覧</a>
+			</div>
+			<a href="Logoutinfo" class="logout">ログアウト</a>
+		</div>
 		</nav>
 	</header>
+	<main>
 	<h2>名簿一覧</h2>
 	<table border="1">
 		<tr>
@@ -111,11 +105,12 @@ if (msg != null) {
 				href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>">個人ページ</a></td>
 		</tr>
 		<%
+
 		}
 		%>
 	</table>
 	<br>
-	<a href="Logoutinfo" class="Logout">ログアウト</a>
+	</main>
 
 </body>
 </html>

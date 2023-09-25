@@ -7,7 +7,7 @@ h1{
 
 form{
 	text-align: center;
-	 margin-top: 50px;/*h1���班������*/
+	 margin-top: 50px;
 	 
 }
 p{
@@ -32,12 +32,11 @@ input[type="password"]{
 }
 
 .btn-square:active {
-  /*�{�^�����������Ƃ�*/
   -webkit-transform: translateY(4px);
  transform: translateY(4px);/*���ɓ���*/
   border-bottom: none;/*��������*/
   }
-input[type="submit"]:hover/*�}�E�X���v�f�̏�Ƀz�o�[���ꂽ�Ƃ��ɓK�p�����X�^�C�����w�肵�܂��B*/
+input[type="submit"]:hover
  {
     background-color: #0056b3;
 }
