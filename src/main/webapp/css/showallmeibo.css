@@ -1,45 +1,5 @@
-body{
-  	font-family: "Hiragino Kaku Gothic Pro", "�q���M�m�p�S Pro", "Yu Gothic Medium", "���S�V�b�N Medium", YuGothic, "���S�V�b�N��", "���C���I", sans-serif;
-  	color:#444;
-	margin:0;
-	}
-header{
- 	border-bottom: 1px solid #000;
- }
-.HeaderTagline {
-    background: #0ba360;
-    color: #fff;
-    font-size: .625rem;
-    position: relative;
-    line-height: 1.5;
-    padding: 1px 20px;
-    margin:0;
-}
-h2 {
-  	margin: 20px;
-  	text-align: center;
-}
-.img {
-   	width: 100px; 
-   	height: 30px; 
-}
-.nav {
-    display: flex;
-    position:relative;
-    background:#90ee90;
-    }
-.menu{
-    display: flex;
-	position:absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	left:30%;
-	gap:40px;
-	}
-	h2{
-	margin:0;
-	text-align:center;
-	}
+@charset "UTF-8";
+
 main{
   background-image: url(../images/green.png);
     background-repeat: no-repeat;
@@ -99,40 +59,11 @@ tr:nth-child(even) {
 th{
 	width: 500px;
 }
-.logout {
-	vertical-align : middle;
-    margin-right:0
-}
+
 footer>p{
 	display:block;
 	text-align: center;
 	margin:0 auto;
-	font-size: 1.25rem;
-}
-a{
-  padding: 0 10px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, #4682b4 50%);
-  background-position: 0 0;
-  background-size: 200% auto;
-  transition: .3s;
-    color: #1e1b19;
-    font-family: var(--s-font-07b09f04);
-    font-size: 14px;
-    font-weight: 500;
-    height: auto;
-    letter-spacing: 0.05em;
-    line-height: 1;
-    margin: 0px 0px 0px 0px;
-    text-align: center;
-    transition-timing-function: ease;
-    width: auto;
-    max-width: 100%;
-    justify-content: center;
-}
-
-a:hover{
-  background-position: -100% 0;
-  color: #fff;
 }
 
 .alert-success{

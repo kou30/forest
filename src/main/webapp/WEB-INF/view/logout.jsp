@@ -9,10 +9,9 @@
 </head>
 <div ID="center">
 	<body>
-		<h1>ログアウト完了画面</h1>
-		<p>ログアウトしました。</p>
+		<h2>ログアウトしました。</h2>
+		<br>
 		<a href="Logininfo">ログイン画面に戻る</a>
-
 	</body>
 </div>
 </html>

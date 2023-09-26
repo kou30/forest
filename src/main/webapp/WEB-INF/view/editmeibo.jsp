@@ -13,42 +13,36 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/editmeibo.css">
+<link rel="stylesheet" href="css/main.css">
 <title>名簿編集</title>
 </head>
 <body>
 	<header>
-		<h1>名簿編集</h1>
-		<nav class="nav">
-			<ul>
-				<ol>
-					<a href="MainPage">TOP</a>
-				</ol>
-				<ol>
-					<a href="MeiboEntry">名簿登録</a>
-				</ol>
-				<ol>
-					<a href="ShowAllMeibo">名簿一覧</a>
-				</ol>
-				<ol>
-					<a href="ShowAllShinamono">贈り物・貰い物一覧</a>
-				</ol>
-			</ul>
-		</nav>
+		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
+		<div class="nav">
+			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
+			<div class="menu">
+				<a href="MainPage">TOP</a> <a href="MeiboEntry">名簿登録</a> <a
+					href="ShowAllMeibo">名簿一覧</a> <a href="ShowAllShinamono">贈り物・貰い物一覧</a>
+				<a href="MonthView7">カレンダー</a>
+			</div>
+			<a href="Logoutinfo" class="logout">ログアウト</a>
+		</div>
 	</header>
 	<main>
-		<h1 class="hero">名簿編集フォーム</h1>
+		<h2 class="hero">名簿編集フォーム</h2>
 		<form action="ExecuteEditMeibo" method="post"
 			enctype="multipart/form-data">
 			<input type="hidden" name="MEIBO_ID" value="<%=dto.getMeibo_id()%>"
 				maxlength="10" readonly>
 			<p>
 				<input type="text" name="YOMI" value="<%=dto.getYomi()%>"
-					maxlength="10" id=""placeholder="よみがな">
+					maxlength="10" id="" placeholder="よみがな">
 			</p>
 
 			<p>
 				<input type="text" name="NAME" value="<%=dto.getName()%>"
-					maxlength="10" id=""placeholder="氏名">
+					maxlength="10" id="" placeholder="氏名">
 			</p>
 
 			<p>
@@ -73,11 +67,8 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 			<p>
 				続柄:
 				<%
-			String[] relationships = {
-					"選択なし", "父", "母", "兄", "姉", "弟", "妹", "義父", "義母", "義兄",
-					"義姉", "義弟", "義妹", "義祖父", "義祖母", "義曽祖父", "義曾祖母", "義おじ", "義おば",
-					"義いとこ", "義甥", "義姪", "夫", "妻", "息子", "娘"
-			};
+			String[] relationships = {"選択なし", "父", "母", "兄", "姉", "弟", "妹", "義父", "義母", "義兄", "義姉", "義弟", "義妹", "義祖父", "義祖母",
+					"義曽祖父", "義曾祖母", "義おじ", "義おば", "義いとこ", "義甥", "義姪", "夫", "妻", "息子", "娘"};
 			%>
 				<select name="RELATIONSHIP">
 					<%
@@ -93,37 +84,41 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 				備考:<br>
 				<textarea name="MEMO" rows="4" cols="50" maxlength="250"><%=dto.getMemo()%></textarea>
 			</p>
-		<p><br>
-			  画像を選択：<input id="file-sample" type="file" name="IMAGE" accept="image/png,image/jpeg" 
-			</p><br>
-			<img id="file-preview" src="<%=dto.getImageData()%>" alt="画像プレビュー">
-			
+			<p>
+				<br> 画像を選択：<input id="file-sample" type="file" name="IMAGE"
+					accept="image/png,image/jpeg"
+			</p>
+			<br> <img id="file-preview" src="<%=dto.getImageData()%>"
+				alt="画像プレビュー">
+
 			<script>
-			document.getElementById('file-sample').addEventListener('change', function() {
-			  const fileInput = this;
-			  const imgPreview = document.getElementById('file-preview');
-			
-			  if (fileInput.files && fileInput.files[0]) {
-			    const reader = new FileReader();
-			
-			    reader.onload = function(e) {
-			      imgPreview.src = e.target.result;
-			    };
-			
-			    reader.readAsDataURL(fileInput.files[0]);
-			  }
-			});
+				document.getElementById('file-sample').addEventListener(
+						'change',
+						function() {
+							const fileInput = this;
+							const imgPreview = document
+									.getElementById('file-preview');
+
+							if (fileInput.files && fileInput.files[0]) {
+								const reader = new FileReader();
+
+								reader.onload = function(e) {
+									imgPreview.src = e.target.result;
+								};
+
+								reader.readAsDataURL(fileInput.files[0]);
+							}
+						});
 			</script>
-			 <style>
-				#file-preview {
-					  max-width: 100%;
-					  max-height: 300px;
-					} 
-			</style><br>
-			<input type="submit" value="名簿登録" onclick="return itAgg()">
+			<style>
+#file-preview {
+	max-width: 100%;
+	max-height: 300px;
+}
+</style>
+			<br> <input type="submit" value="名簿登録" onclick="return itAgg()">
 			<!--itAgg()は仮-->
 		</form>
-		<br> <a href="Logoutinfo">ログアウト</a>
 	</main>
 	<script src="js/script.js"></script>
 	<footer>

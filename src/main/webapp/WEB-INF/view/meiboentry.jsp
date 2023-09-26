@@ -5,6 +5,7 @@
 <head class=header>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/meiboentry.css">
 <title>名簿登録</title>
 </head>
@@ -16,12 +17,13 @@
 			<div class="menu">
 				<a href="MainPage">TOP</a> <a href="MeiboEntry">名簿登録</a> <a
 					href="ShowAllMeibo">名簿一覧</a> <a href="ShowAllShinamono">贈り物・貰い物一覧</a>
+				<a href="MonthView7">カレンダー</a>
 			</div>
 			<a href="Logoutinfo" class="logout">ログアウト</a>
 		</div>
 	</header>
 	<main>
-		<h1 class="hero">名簿登録フォーム</h1>
+		<h2 class="hero">名簿登録フォーム</h2>
 		<form action="MeiboEntry" method="post" enctype="multipart/form-data">
 			<p>
 				<input type="text" name="YOMI" maxlength="10" id="yomiInput"

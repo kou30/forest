@@ -17,7 +17,6 @@
 	}%>
 
 <%
-// セッションからユーザーデータを取得
 UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
 String userId = userInfoOnSession.getUserId();
 List<MeiboDTO> MeiboDTOlist = (List<MeiboDTO>) request.getAttribute("MEIBO");
@@ -39,6 +38,7 @@ if (msg != null) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/showallmeibo.css">
+<link rel="stylesheet" href="css/main.css">
 <title>名簿一覧</title>
 </head>
 <body>
@@ -49,10 +49,10 @@ if (msg != null) {
 			<div class="menu">
 				<a href="MainPage">TOP</a> <a href="MeiboEntry">名簿登録</a> <a
 					href="ShowAllMeibo">名簿一覧</a> <a href="ShowAllShinamono">贈り物・貰い物一覧</a>
+				<a href="MonthView7">カレンダー</a>
 			</div>
 			<a href="Logoutinfo" class="logout">ログアウト</a>
 		</div>
-		</nav>
 	</header>
 	<main>
 		<h2>名簿一覧</h2>
@@ -87,8 +87,7 @@ if (msg != null) {
 			};
 			%>
 			<tr>
-				<td><a
-					href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>"><%=replaceEscapeChar(dto.getName())%></td>
+				<td><%=replaceEscapeChar(dto.getName())%></td>
 				<td><%=replaceEscapeChar(dto.getYomi())%></td>
 				<td><%=dto.getBirthday()%></td>
 				<td><%=gender[dto.getSex()]%></td>

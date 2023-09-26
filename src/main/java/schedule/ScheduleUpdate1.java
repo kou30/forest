@@ -192,7 +192,7 @@ import javax.servlet.http.HttpServletResponse;
 	            pstmt.setString(5, memo);
 	            pstmt.setInt(6, id);
 
-	            int num = pstmt.executeUpdate();
+	            pstmt.executeUpdate();
 
 	            pstmt.close();
 

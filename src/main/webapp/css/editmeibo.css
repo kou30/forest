@@ -1,61 +1,17 @@
 @charset "UTF-8";
-body{
 
-   
- margin: 0;
-    padding: 0;
-}
-
-body > header, body > main {
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-header {
-  background: linear-gradient(to top, #FFFFFF 0%, #c1dfc4 100%);
-      padding: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-}
-
-header h1 {
-    color: rgb(0, 0, 128);
-    font-size: 3rem;
-    margin: 10px 0;
-}
-
-.nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    font-size: 1.25rem;
-}
-
-.nav ol {
-    margin: 0;
-    padding: 0;
-    margin-right: 20px; 
-}
-
-.nav a {
-    text-decoration: none;
-    color: #007bff;
-    transition: color 0.2s ease;
-}
-
-.nav a:hover {
-    color: #0056b3;
-}
-
 main {
     padding: 20px;
-     background-image: url(../images/haru.jpg);
+    background-image: url(../images/haru.jpg);
     background-repeat: no-repeat;
-   background-size: 100% auto;
+   	background-size: 100% auto;
 }
 form>p>input[type="text"]{
 	font-size: 1.25rem;
@@ -90,20 +46,8 @@ input[type="submit"]:hover/*�}�E�X���v�f�̏�Ƀz�o�[���
 textarea{
 	height:100px;
 }
-.logout{
-	font-size: 1.25rem;
-	
-}
-
-a{
-  padding: 0 10px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
-  background-position: 0 0;
-  background-size: 200% auto;
-  transition: .3s;
-}
-
-a:hover{
-  background-position: -100% 0;
-  color: #fff;
+footer>p{
+	display:block;
+	text-align: center;
+	margin:0 auto;
 }

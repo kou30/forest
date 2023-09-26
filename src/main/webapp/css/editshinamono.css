@@ -1,67 +1,16 @@
 @charset "UTF-8";
-body{
- background-image: url(../images/haru.jpg);
-    background-repeat: repeat;
-   background-size: 90% auto;/*�摜�̑傫������*/
-   
- margin: 0;
+main{
+ 	background-image: url(../images/haru.jpg);
+    background-repeat: no-repeat;
+   	background-size: 100% auto;
+ 	margin: 0;
     padding: 0;
-}
-
-/* �y�[�W�S�̂̃R���e���c�𒆉��ɔz�u */
-body > header, body > main {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-/* �w�b�_�[�����̃X�^�C�� */
-header {
-    background-color: #fff; /* �w�i�F��ݒ� */
-    padding: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* �V���h�E��ǉ� */
-    width: 100%;
-}
-
-/* �w�b�_�[���̃^�C�g���̃X�^�C�� */
-header h1 {
-    color: rgb(0, 0, 128);
-    font-size: 2rem;
-    margin: 10px 0;
-}
-
-/* �i�r�Q�[�V�������j���[�̃X�^�C�� */
-nav>ul {
-	
-    list-style: none; /* ���X�g�X�^�C�����폜 */
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    font-size: 1.25rem;
-}
-
-.nav ol {
-    margin: 0;
-    padding: 0;
-    margin-right: 20px; /* ���j���[�Ԃ̊Ԋu��ݒ� */
-}
-
-.nav a {
-    text-decoration: none;
-    color: #007bff;
-    transition: color 0.2s ease; /* �����N�̃z�o�[���̃g�����W�V�������� */
-}
-
-.nav a:hover {
-    color: #0056b3;
-}
-
-/* ���C���R���e���c�̃X�^�C�� */
-main {
-    padding: 20px;
-}
 form>p>input[name="AITENAME"]{
 	font-size: 1.25rem;
 }
@@ -78,7 +27,6 @@ select[name="RELATIONSHIP"] option {
 input[type="text"]{
 	font-size: 1.25rem;
 }
-/* �{�^���̃X�^�C�� */
 input[type="submit"] {
     background-color: #007bff;
     color: white;
@@ -87,26 +35,13 @@ input[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    margin-top: 20px; /* �{�^���̏㕔�̃}�[�W����ǉ� */
+    margin-top: 20px; 
     font-size: 1.5rem;
 }
 
-input[type="submit"]:hover/*�}�E�X���v�f�̏�Ƀz�o�[���ꂽ�Ƃ��ɓK�p�����X�^�C�����w�肵�܂��B*/
- {
+input[type="submit"]:hover{
     background-color: #0056b3;
 }
 textarea{
 	height:100px;
-}
-a{
-  padding: 0 10px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
-  background-position: 0 0;
-  background-size: 200% auto;
-  transition: .3s;
-}
-
-a:hover{
-  background-position: -100% 0;
-  color: #fff;
 }

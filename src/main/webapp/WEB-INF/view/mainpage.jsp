@@ -20,10 +20,10 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
 </head>
 <header>
 	<h1 class=en>縁</h1>
-	<h3>
+	<h2 class="hello">
 		こんにちは<%=userInfoOnSession.getUserName()%>
 		さん。
-	</h3>
+	</h2>
 	<nav>
 		<ul>
 			<ol>
@@ -48,33 +48,10 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
 	<p>贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
 </section>
 
-<!-- カレンダーを表示するためのコンテナを作る -->
-<div id="calendar"></div>
-
-<!-- フッター ... -->
-
-<script>
-	// ページが読み込まれたときに、FullCalendarのカレンダーを
-	// 初期化し、表示するスクリプトを追加
-	document.addEventListener('DOMContentLoaded', function() {
-		var calendarEl = document.getElementById('calendar');
-
-		var calendar = new FullCalendar.Calendar(calendarEl, {
-			// カレンダーの設定オプション
-			initialView : 'dayGridMonth', // カレンダーの初期表示ビュー
-			events : [
-			// イベントデータをここに追加
-			// { title: 'イベント名', start: '開始日時', end: '終了日時' }
-			]
-		});
-
-		calendar.render(); // カレンダーを表示
-	});
-</script>
 
 <footer>
 	<a href="Logoutinfo" "class="logout">ログアウト</a>
-	<!--8/30追加-->
+	<br>
 	<p>&copy; team フォレスト</p>
 </footer>
 </body>

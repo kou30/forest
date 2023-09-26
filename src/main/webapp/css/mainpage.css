@@ -2,51 +2,37 @@
 body{
 	background-image: url(../images/mori.jpg);
 	background-repeat: no-repeat;
-   background-size: 120% auto;
-}
-.top{
-	text-align: center;
-  font-family: "Hiragino Mincho Pro", serif;
+   	background-size: 120% auto;
+   	font-family: 'Noto Serif JP', serif;
 }
 .en{
-text-align: center;
-  font-size: 150px;
-  font-family: "Hiragino Mincho Pro", serif;
-   	margin-top: 60px;
-}
-h3{
 	text-align: center;
-	margin-top: -90px;
+  	font-size: 120px;
+  	font-family: "Hiragino Mincho Pro", serif;
+   	margin-top: 40px;
+   	margin-bottom:0px;
 }
+
 nav>ul{
-	
 	list-style: none; 
     padding: 0;
     display: flex;
     justify-content: center;
     margin-top: 20px;
     font-size: 1.25rem;
-	
 }
-
+h2{
+	text-align: center;
+}
 .main-content{
 	text-align: center;
 }
-footer>p{
+footer{
 	text-align: center;
 	margin:0 auto;
 	font-size: 1.25rem;
 }
-.logout {
-  display: block;
-  text-align: center;
-  font-size: 1.25rem;
-  margin-top: 20px;
-  color:white;
-}
-.white{
-color:white;
-}
+
 a{
   padding: 0 10px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);

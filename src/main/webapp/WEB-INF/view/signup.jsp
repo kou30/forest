@@ -24,6 +24,7 @@
       <input type="submit" value="登録する" class="button">
     </form>
   </div>
+  <button onclick="history.back()">戻る</button>
 
   <script>
     function validatePassword() {
