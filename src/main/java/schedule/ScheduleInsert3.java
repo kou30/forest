@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.UserInfoDto;
+
 
 @WebServlet("/ScheduleInsert3")
 public class ScheduleInsert3 extends HttpServlet {
@@ -172,18 +174,17 @@ public class ScheduleInsert3 extends HttpServlet {
         }
 
         /* ユーザー情報を取り出す */
-        HttpSession session = req.getSession(false);
-        String tmpuserid = (String)session.getAttribute("userid");
-        int userid = 0;
-        if (tmpuserid != null){
-            userid = Integer.parseInt(tmpuserid);
-        }
+        HttpSession session = req.getSession();
+		UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
+		int user_nr = userInfoOnSession.getUser_nr();
+
+        
 
         try {
-            String sql = "insert into schedule (userid, scheduledate, starttime, endtime, schedule, schedulememo) values (?, ?, ?, ?, ?, ?)";
+            String sql = "insert into schedule (user_nr, scheduledate, starttime, endtime, schedule, schedulememo) values (?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
-            pstmt.setInt(1, userid);
+            pstmt.setInt(1, user_nr);
             pstmt.setString(2, dateStr);
             pstmt.setString(3, startTimeStr);
             pstmt.setString(4, endTimeStr);

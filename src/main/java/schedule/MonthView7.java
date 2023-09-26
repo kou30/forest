@@ -25,7 +25,7 @@ public class MonthView7 extends HttpServlet {
 
     public void init() throws ServletException {
         String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
-        String JDBC_URL = "jdbc:mysql://192.168.1.21/forest_db?characterEncoding=UTF-8&useSSL=false";
+        String JDBC_URL = "jdbc:mysql://192.168.1.21/forest_db?characterEncoding=UTF-8&useSSL=false&useUnicode=true";
         String USER_ID = "forest_user";
         String USER_PASS = "forest_pass";
 
@@ -205,7 +205,7 @@ public class MonthView7 extends HttpServlet {
                 sb.append("<span class=\"small\">");
 
                 try {
-                    String sql = "SELECT * FROM schedule WHERE userid = ? and scheduledate = ? ORDER BY starttime";
+                    String sql = "SELECT * FROM schedule WHERE user_nr = ? and scheduledate = ? ORDER BY starttime";
                     PreparedStatement pstmt = conn.prepareStatement(sql);
 
                     String startDateStr = year + "-" + (month + 1) + "-" + calendarDay[i];

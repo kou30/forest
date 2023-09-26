@@ -26,6 +26,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.UserInfoDto;
+
 
 @WebServlet("/EditSchedule2")
 public class EditSchedule2 extends HttpServlet {
@@ -83,13 +85,12 @@ public class EditSchedule2 extends HttpServlet {
         }
 
         /* ユーザー情報を取り出す */
-        HttpSession session = req.getSession(false);
-        String username = (String)session.getAttribute("username");
-        String tmpuserid = (String)session.getAttribute("userid");
-        int userid = 0;
-        if (tmpuserid != null){
-            userid = Integer.parseInt(tmpuserid);
-        }
+        HttpSession session = req.getSession();
+		UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
+		int user_nr = userInfoOnSession.getUser_nr();
+		String username = userInfoOnSession.getUserName();
+
+        
 
         try {
             String sql = "SELECT * FROM schedule WHERE id = ?";
@@ -179,7 +180,7 @@ public class EditSchedule2 extends HttpServlet {
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
             String startDateStr = year + "-" + (month + 1) + "-" + day;
-            pstmt.setInt(1, userid);
+            pstmt.setInt(1, user_nr);
             pstmt.setString(2, startDateStr);
 
             ResultSet rs = pstmt.executeQuery();
