@@ -190,7 +190,7 @@ public class ScheduleInsert3 extends HttpServlet {
             pstmt.setString(4, endTimeStr);
             pstmt.setString(5, plan);
             pstmt.setString(6, memo);
-            int num = pstmt.executeUpdate();
+            pstmt.executeUpdate();
 
             pstmt.close();
 

@@ -45,7 +45,7 @@ if (msg != null) {
 	<header>
 		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
 		<div class="nav">
-			<img src="./images/ENcounter.png" alt="ENcounter">
+			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
 			<div class="menu">
 				<a href="MainPage">TOP</a> <a href="MeiboEntry">名簿登録</a> <a
 					href="ShowAllMeibo">名簿一覧</a> <a href="ShowAllShinamono">贈り物・貰い物一覧</a>
@@ -55,62 +55,64 @@ if (msg != null) {
 		</nav>
 	</header>
 	<main>
-	<h2>名簿一覧</h2>
-	<table border="1">
-		<tr>
-			<th>名前</th>
-			<th>よみがな</th>
-			<th>生年月日</th>
-			<th>性別</th>
-			<th>分類</th>
-			<th>続柄</th>
-			<th>備考</th>
-			<th>品物登録</th>
-			<th>削除コマンド</th>
-			<th>編集コマンド</th>
-			<th>個人ページコマンド</th>
-		</tr>
-		<%
-		for (int i = 0; i < MeiboDTOlist.size(); i++) {
-			MeiboDTO dto = MeiboDTOlist.get(i);
-		%>
-		<%
-		String[] relationships = {
-				"選択なし", "父", "母", "兄", "姉", "弟", "妹", "義父", "義母", "義兄",
-				"義姉", "義弟", "義妹", "義祖父", "義祖母", "義曽祖父", "義曾祖母", "義おじ", "義おば",
-				"義いとこ", "義甥", "義姪", "夫", "妻", "息子", "娘"
-		};
-		%>
-		<%
-		String[] gender = {
-				"選択なし", "男", "女" //「選択なし」を選択することはできないが、追加する可能性を加味しこうしている。
-		};
-		%>
-		<tr>
-			<td><a
-				href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>"><%=replaceEscapeChar(dto.getName())%></td>
-			<td><%=replaceEscapeChar(dto.getYomi())%></td>
-			<td><%=dto.getBirthday()%></td>
-			<td><%=gender[dto.getSex()]%></td>
-			<td><%=dto.getBunrui()%></td>
-			<td><%=relationships[dto.getRelationship() - 1]%></a></td>
-			<td><%=replaceEscapeChar(dto.getMemo())%></td>
-			<td><a
-				href="<%=request.getContextPath()%>/ShinamonoEntry?MEIBO_ID=<%=dto.getMeibo_id()%>">品物登録</a></td>
-			<td><a
-				href="<%=request.getContextPath()%>/ExecuteDeleteMeibo?MEIBO_ID=<%=dto.getMeibo_id()%>">削除</a></td>
-			<td><a
-				href="<%=request.getContextPath()%>/ExecuteEditMeibo?MEIBO_ID=<%=dto.getMeibo_id()%>">編集</a></td>
-			<td><a
-				href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>">個人ページ</a></td>
-		</tr>
-		<%
-
-		}
-		%>
-	</table>
-	<br>
+		<h2>名簿一覧</h2>
+		<table border="1">
+			<tr>
+				<th>名前</th>
+				<th>よみがな</th>
+				<th>生年月日</th>
+				<th>性別</th>
+				<th>分類</th>
+				<th>続柄</th>
+				<th>備考</th>
+				<th>品物登録</th>
+				<th>削除コマンド</th>
+				<th>編集コマンド</th>
+				<th>個人ページコマンド</th>
+			</tr>
+			<%
+			for (int i = 0; i < MeiboDTOlist.size(); i++) {
+				MeiboDTO dto = MeiboDTOlist.get(i);
+			%>
+			<%
+			String[] relationships = {
+					"選択なし", "父", "母", "兄", "姉", "弟", "妹", "義父", "義母", "義兄",
+					"義姉", "義弟", "義妹", "義祖父", "義祖母", "義曽祖父", "義曾祖母", "義おじ", "義おば",
+					"義いとこ", "義甥", "義姪", "夫", "妻", "息子", "娘"
+			};
+			%>
+			<%
+			String[] gender = {
+					"選択なし", "男", "女" //「選択なし」を選択することはできないが、追加する可能性を加味しこうしている。
+			};
+			%>
+			<tr>
+				<td><a
+					href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>"><%=replaceEscapeChar(dto.getName())%></td>
+				<td><%=replaceEscapeChar(dto.getYomi())%></td>
+				<td><%=dto.getBirthday()%></td>
+				<td><%=gender[dto.getSex()]%></td>
+				<td><%=dto.getBunrui()%></td>
+				<td><%=relationships[dto.getRelationship() - 1]%></a></td>
+				<td><%=replaceEscapeChar(dto.getMemo())%></td>
+				<td><a
+					href="<%=request.getContextPath()%>/ShinamonoEntry?MEIBO_ID=<%=dto.getMeibo_id()%>">品物登録</a></td>
+				<td><a
+					href="<%=request.getContextPath()%>/ExecuteDeleteMeibo?MEIBO_ID=<%=dto.getMeibo_id()%>">削除</a></td>
+				<td><a
+					href="<%=request.getContextPath()%>/ExecuteEditMeibo?MEIBO_ID=<%=dto.getMeibo_id()%>">編集</a></td>
+				<td><a
+					href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>">個人ページ</a></td>
+			</tr>
+			<%
+			}
+			%>
+		</table>
+		<br>
 	</main>
+	<footer>
+		<p>&copy; team フォレスト</p>
+	</footer>
 
 </body>
 </html>
