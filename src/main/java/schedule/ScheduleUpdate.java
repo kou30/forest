@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 	@WebServlet("/ScheduleUpdate1")
-	public class ScheduleUpdate1 extends HttpServlet {
+	public class ScheduleUpdate extends HttpServlet {
 	    protected Connection conn = null;
 
 	    public void init() throws ServletException {
