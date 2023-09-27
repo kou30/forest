@@ -1,17 +1,17 @@
 @charset "UTF-8";
 
-main {
+.image{
+ 	background-image: url(../images/haru.jpg);
+    background-repeat: no-repeat;
+   	background-size: 100% auto;
+ 	margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-}
-
-main {
-    padding: 20px;
-    background-image: url(../images/haru.jpg);
-    background-repeat: no-repeat;
-   	background-size: 100% auto;
+    height: 100% auto;
+    background-attachment: fixed;
 }
 form>p>input[type="text"]{
 	font-size: 1.25rem;
@@ -50,4 +50,8 @@ footer>p{
 	display:block;
 	text-align: center;
 	margin:0 auto;
+}
+#file-preview {
+    height     : 180px; 
+    object-fit: contain;
 }

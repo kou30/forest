@@ -147,6 +147,5 @@ Date now = new Date();
 	<footer>
 		<p>&copy; team フォレスト</p>
 	</footer>
-
 </body>
 </html>

@@ -22,7 +22,6 @@ public class ExecuteDeleteShinamono extends HttpServlet {
 
 		if (userInfoOnSession != null) {
 			int id = Integer.parseInt(request.getParameter("ID"));
-			System.out.println(id);
 			ShinamonoDAO dao = new ShinamonoDAO();
 			dao.deleteOne(id);
 			request.setAttribute("msg", "1件削除しました");

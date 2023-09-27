@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-main{
+.image{
 	background-image: url(../images/haru.jpg);
     background-repeat: no-repeat;
     background-size: 100% auto;  
@@ -10,6 +10,8 @@ main{
     flex-direction: column;
     align-items: center;
     text-align: center;
+    height: 100% auto;
+    background-attachment: fixed;
 }
 
 
@@ -47,4 +49,8 @@ input[type="submit"]:hover
 textarea{
 	height:70px;
 	width: 300px;
+}
+#file-preview {
+    height     : 180px; 
+    object-fit: contain;
 }
