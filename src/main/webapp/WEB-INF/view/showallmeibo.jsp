@@ -125,7 +125,6 @@ Date now = new Date();
 			<tr>
 				<td><%=replaceEscapeChar(dto.getYomi())%></td>
 				<td><%=replaceEscapeChar(dto.getName())%></td>
-				<td><%=dto.getBirthday()%></td>
 				<td><%=dto.getBirthday()%> <%=calcAge(dto.getBirthday(), now)%>歳</td>
 				<td><%=gender[dto.getSex()]%></td>
 				<td><%=dto.getBunrui()%></td>
