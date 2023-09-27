@@ -19,7 +19,7 @@ import model.UserInfoDto;
 
 
 @WebServlet("/ScheduleInsert3")
-public class ScheduleInsert3 extends HttpServlet {
+public class ScheduleInsert extends HttpServlet {
     protected Connection conn = null;
 
     public void init() throws ServletException {

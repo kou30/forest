@@ -20,8 +20,8 @@ import javax.servlet.http.HttpSession;
 import model.UserInfoDto;
 
 
-	@WebServlet("/ScheduleView2")
-	public class ScheduleView2 extends HttpServlet {
+	@WebServlet("/DeleteCheck2")
+	public class DeleteCheck extends HttpServlet {
 	    protected Connection conn = null;
 
 	    public void init() throws ServletException {
@@ -49,8 +49,7 @@ import model.UserInfoDto;
 	        req.setCharacterEncoding("UTF-8"); // リクエストの文字エンコーディングを設定
 	        res.setCharacterEncoding("UTF-8"); // レスポンスの文字エンコーディングを設定
 	        PrintWriter out = res.getWriter();
-	        
-	        
+
         int year = -1;
         int month = -1;
         int day = -1;
@@ -77,10 +76,16 @@ import model.UserInfoDto;
         }
 
         /* ユーザー情報を取り出す */
-		HttpSession session = req.getSession();
+        HttpSession session = req.getSession(false);
 		UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
-		int user_nr = userInfoOnSession.getUser_nr();
+
+        
+        
+        
+    	int user_nr = userInfoOnSession.getUser_nr();
 		String username = userInfoOnSession.getUserName();
+
+        
 
 
         try {
@@ -120,7 +125,7 @@ import model.UserInfoDto;
         sb.append("<head>");
         sb.append("<meta http-equiv=\"Content-Type\" Content=\"text/html;charset=UTF-8\">");
 
-        sb.append("<title>スケジュール登録</title>");
+        sb.append("<title>スケジュール削除</title>");
 
         sb.append("<style>");
         sb.append("table.sche{border:1px solid #a9a9a9;padding:0px;margin:0px;border-collapse:collapse;}");
@@ -136,29 +141,26 @@ import model.UserInfoDto;
         sb.append("table.view td.left{width:70px;background-color:#f0f8ff;}");
         sb.append("img{border:0px;}");
         sb.append("p{font-size:0.75em;}");
-
-        sb.append("#contents{margin:0;padding:0;width:710px;}");
-        sb.append("#left{margin:0;padding:0;float:left;width:400px;}");
-        sb.append("#right{margin:0;padding:0;float:right;width:300px;background-color:#ffffff;}");
-        sb.append("#contents:after{content:\".\";display:block;height:0;clear:both;visibility:hidden;}");
         sb.append("</style>");
+		sb.append("<link rel=\"stylesheet\" href=\"css/main.css\">");
+
 
         sb.append("</head>");
         sb.append("<body>");
+		sb.append("	<header><p class=\"HeaderTagline\">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p><div class=\"nav\"><img src=\"./images/ENcounter.png\" alt=\"ENcounter\" class=\"img\"><div class=\"menu\"><a href=\"MainPage\">TOP</a> <a href=\"MeiboEntry\">名簿登録</a> <a href=\"ShowAllMeibo\">名簿一覧</a> <a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a><a href=\"MonthView7\">カレンダー</a></div><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></div></header>");
 
-        sb.append("<p>");
+
+        sb.append("<main><p>");
         sb.append(username);
         sb.append("さんのスケジュールです");
         sb.append("</p>");
 
         sb.append("<p>");
-        sb.append("既存スケジュール確認  ");
-        sb.append("[<a href=\"MonthView7");
-        sb.append("?YEAR=");
-        sb.append(year);
-        sb.append("&MONTH=");
-        sb.append(month);
-        sb.append("\">カレンダーへ戻る</a>]");
+        sb.append("スケジュールの削除確認  ");
+        sb.append("[<a href=\"ScheduleView2");
+        sb.append("?ID=");
+        sb.append(currentscheduleid);
+        sb.append("\">スケジュール表示へ戻る</a>]");
         sb.append("</p>");
 
         String[] scheduleArray = new String[49];
@@ -257,54 +259,6 @@ import model.UserInfoDto;
             log("SQLException:" + e.getMessage());
         }
 
-        sb.append("<div id=\"contents\">");
-
-        sb.append("<div id=\"left\">");
-
-        sb.append("<table class=\"sche\">");
-        sb.append("<tr><td class=\"top\" style=\"width:80px\">時刻</td><td class=\"top\" style=\"width:300px\">予定</td></tr>");
-
-        sb.append("<tr><td class=\"timeb\">未定</td>");
-        sb.append("<td class=\"contentsb\">");
-        if (widthArray[0] == 1){
-            sb.append(scheduleArray[0]);
-        }
-        sb.append("</td></tr>");
-
-        for (int i = 1 ; i < 49 ; i++){
-            if (i % 2 == 1){
-                sb.append("<tr><td class=\"time\">");
-                sb.append(i / 2);
-                sb.append(":00</td>");
-            }else{
-                sb.append("<tr><td class=\"timeb\"></td>");
-            }
-
-            if (widthArray[i] != 0){
-                if (widthArray[i] != -1){
-                    sb.append("<td class=\"ex\" rowspan=\"");
-                    sb.append(widthArray[i]);
-                    sb.append("\">");
-
-                    sb.append(scheduleArray[i]);
-                }
-            }else{
-                if (i % 2 == 1){
-                    sb.append("<td class=\"contents\">");
-                }else{
-                    sb.append("<td class=\"contentsb\">");
-                }
-            }
-
-            sb.append("</td></tr>");
-        }
-
-        sb.append("</table>");
-
-        sb.append("</div>");
-
-        sb.append("<div id=\"right\">");
-
         sb.append("<table class=\"view\">");
         sb.append("<tr><td class=\"left\">日付</td><td>");
         sb.append(year);
@@ -332,20 +286,24 @@ import model.UserInfoDto;
         sb.append("</td></tr>");
         sb.append("</table>");
 
+        sb.append("<p>スケジュールを削除します。一度削除すると元には戻せません</p>");
+        sb.append("<p>削除しますか？</p>");
+
         sb.append("<p>");
-        sb.append("[<a href=\"EditSchedule2?ID=");
+        sb.append("[<a href=\"ScheduleDelete1?ID=");
         sb.append(currentscheduleid);
-        sb.append("\">スケジュールの変更</a>]");
+        sb.append("&YEAR=");
+        sb.append(year);
+        sb.append("&MONTH=");
+        sb.append(month);
+        sb.append("\">削除する</a>]");
         sb.append("  ");
-        sb.append("[<a href=\"DeleteCheck2?ID=");
+        sb.append("[<a href=\"ScheduleView2?ID=");
         sb.append(currentscheduleid);
-        sb.append("\">スケジュールの削除</a>]");
+        sb.append("\">キャンセル</a>]");
         sb.append("</p>");
 
-        sb.append("</div>");
-        sb.append("</div>");
-
-        sb.append("</body>");
+        sb.append("</main></body>");
         sb.append("</html>");
 
         out.println(new String(sb));

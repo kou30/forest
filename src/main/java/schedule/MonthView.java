@@ -19,12 +19,12 @@ import javax.servlet.http.HttpSession;
 import model.UserInfoDto;
 
 @WebServlet("/MonthView7")
-public class MonthView7 extends HttpServlet {
+public class MonthView extends HttpServlet {
 	protected Connection conn = null;
 
 	public void init() throws ServletException {
 		String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
-		String JDBC_URL = "jdbc:mysql://192.168.1.21/forest_db?characterEncoding=UTF-8&useSSL=false&useUnicode=true";
+		String JDBC_URL = "jdbc:mysql://192.168.1.21/forest_db?characterEncoding=UTF-8&useSSL=false";
 		String USER_ID = "forest_user";
 		String USER_PASS = "forest_pass";
 
@@ -123,11 +123,13 @@ public class MonthView7 extends HttpServlet {
 		sb.append("img{border:0px;}");
 		sb.append("span.small{font-size:0.75em;}");
 		sb.append("</style>");
+		sb.append("<link rel=\"stylesheet\" href=\"css/main.css\">");
 
 		sb.append("</head>");
 		sb.append("<body>");
-
-		sb.append("<p>");
+//		header
+		sb.append("	<header><p class=\"HeaderTagline\">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p><div class=\"nav\"><img src=\"./images/ENcounter.png\" alt=\"ENcounter\" class=\"img\"><div class=\"menu\"><a href=\"MainPage\">TOP</a> <a href=\"MeiboEntry\">名簿登録</a> <a href=\"ShowAllMeibo\">名簿一覧</a> <a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a><a href=\"MonthView7\">カレンダー</a></div><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></div></header>");
+		sb.append("<main><p>");
 		sb.append(username);
 		sb.append("さんのスケジュールです");
 		sb.append("</p>");
@@ -207,20 +209,20 @@ public class MonthView7 extends HttpServlet {
 					String sql1 = "SELECT * FROM meibo WHERE user_nr = ? and birthday like ? ;";
 					PreparedStatement pstmt = conn.prepareStatement(sql1);
 
-				    String monthStr = String.format("%02d", month + 1);
-				    String dayStr = String.format("%02d", calendarDay[i]);	
-				    String startDateStr = "%" + monthStr + "-" + dayStr;
-				    pstmt.setInt(1, userid);
+					String monthStr = String.format("%02d", month + 1);
+					String dayStr = String.format("%02d", calendarDay[i]);
+					String startDateStr = "%" + monthStr + "-" + dayStr;
+					pstmt.setInt(1, userid);
 					pstmt.setString(2, startDateStr);
 
 					ResultSet rs = pstmt.executeQuery();
 
 					while (rs.next()) {
 						String name = rs.getString("name");
-						String schedule=name+"さんの誕生日";
+						String schedule = name + "さんの誕生日";
 						sb.append("<p>");
 						sb.append(schedule);
-						sb.append("</p><br>");
+						sb.append("</p>");
 					}
 
 					rs.close();
@@ -275,6 +277,7 @@ public class MonthView7 extends HttpServlet {
 		}
 
 		sb.append("</tr>");
+		sb.append("</main>");
 
 		return (new String(sb));
 

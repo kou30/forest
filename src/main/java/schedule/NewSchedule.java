@@ -16,9 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.UserInfoDto;
+
 
 	@WebServlet("/NewSchedule6")
-	public class NewSchedule6 extends HttpServlet {
+	public class NewSchedule extends HttpServlet {
 	    protected Connection conn = null;
 
 	    public void init() throws ServletException {
@@ -94,13 +96,10 @@ import javax.servlet.http.HttpSession;
         }
 
         /* ユーザー情報を取り出す */
-        HttpSession session = req.getSession(false);
-        String username = (String)session.getAttribute("username");
-        String tmpuserid = (String)session.getAttribute("userid");
-        int userid = 0;
-        if (tmpuserid != null){
-            userid = Integer.parseInt(tmpuserid);
-        }
+		HttpSession session = req.getSession();
+		UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
+		int user_nr = userInfoOnSession.getUser_nr();
+		String username = userInfoOnSession.getUserName();
 
         StringBuffer sb = new StringBuffer();
 
@@ -129,11 +128,13 @@ import javax.servlet.http.HttpSession;
         sb.append("#right{margin:0;padding:0;float:right;width:300px;background-color:#ffffff;}");
         sb.append("#contents:after{content:\".\";display:block;height:0;clear:both;visibility:hidden;}");
         sb.append("</style>");
+		sb.append("<link rel=\"stylesheet\" href=\"css/main.css\">");
+
 
         sb.append("</head>");
         sb.append("<body>");
-
-        sb.append("<p>");
+		sb.append("	<header><p class=\"HeaderTagline\">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p><div class=\"nav\"><img src=\"./images/ENcounter.png\" alt=\"ENcounter\" class=\"img\"><div class=\"menu\"><a href=\"MainPage\">TOP</a> <a href=\"MeiboEntry\">名簿登録</a> <a href=\"ShowAllMeibo\">名簿一覧</a> <a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a><a href=\"MonthView7\">カレンダー</a></div><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></div></header>");
+        sb.append("<main><p>");
         sb.append(username);
         sb.append("さんのスケジュールです");
         sb.append("</p>");
@@ -157,11 +158,11 @@ import javax.servlet.http.HttpSession;
         }
 
         try {
-            String sql = "SELECT * FROM schedule WHERE userid = ? and scheduledate = ? ORDER BY starttime";
+            String sql = "SELECT * FROM schedule WHERE user_nr = ? and scheduledate = ? ORDER BY starttime";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
             String startDateStr = year + "-" + (month + 1) + "-" + day;
-            pstmt.setInt(1, userid);
+            pstmt.setInt(1, user_nr);
             pstmt.setString(2, startDateStr);
 
             ResultSet rs = pstmt.executeQuery();
@@ -416,7 +417,7 @@ import javax.servlet.http.HttpSession;
         sb.append("</div>");
         sb.append("</div>");
 
-        sb.append("</body>");
+        sb.append("</main></body>");
         sb.append("</html>");
 
         out.println(new String(sb));

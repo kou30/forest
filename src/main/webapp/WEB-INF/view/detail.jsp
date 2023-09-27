@@ -6,6 +6,10 @@
 <%@ page import="model.ShinamonoDTO"%>
 <%@ page import="model.MeiboDTO"%>
 <%@ page import="java.io.FileOutputStream"%>
+<%@ page import="java.text.ParseException"%>
+<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Calendar"%>
+<%@ page import="java.util.Date"%>
 
 <%
 List<ShinamonoDTO> Sdto = (List<ShinamonoDTO>) request.getAttribute("Slist");
@@ -21,6 +25,39 @@ MeiboDTO Mdto = (MeiboDTO) request.getAttribute("Mlist");
 		return inputText;
 	}%>
 <%
+Date now = new Date();
+%>
+
+<%!public static int calcAge(String Birthday, Date now) throws ParseException {
+
+		SimpleDateFormat sdfInput = new SimpleDateFormat("yyyy-MM-dd");
+		Date birthday = sdfInput.parse(Birthday);
+
+		SimpleDateFormat sdfOutput = new SimpleDateFormat("yyyy/MM/dd");
+		String formattedBirthday = sdfOutput.format(birthday);
+
+		Calendar calendarBirth = Calendar.getInstance();
+		Calendar calendarNow = Calendar.getInstance();
+
+		calendarBirth.setTime(birthday);
+		calendarNow.setTime(now);
+
+		// （現在年ー生まれ年）で年齢の計算
+		int age = calendarNow.get(Calendar.YEAR) - calendarBirth.get(Calendar.YEAR);
+		// 誕生月を迎えていなければ年齢-1
+		if (calendarNow.get(Calendar.MONTH) < calendarBirth.get(Calendar.MONTH)) {
+			age -= 1;
+		} else if (calendarNow.get(Calendar.MONTH) == calendarBirth.get(Calendar.MONTH)) {
+			// 誕生月は迎えているが、誕生日を迎えていなければ年齢−１
+			if (calendarNow.get(Calendar.DATE) < calendarBirth.get(Calendar.DATE)) {
+				age -= 1;
+			}
+		}
+
+		return age;
+	}%>
+
+<%
 if (Mdto.getImageData() != null) {
 	String webContentPath = getServletContext().getRealPath("/img");
 	String imageFileName = webContentPath + "/image_" + Mdto.getMeibo_id() + ".jpg";
@@ -30,8 +67,10 @@ if (Mdto.getImageData() != null) {
 }
 ;
 %>
-<% String msg = (String) request.getAttribute("msg");%>
-	<%
+<%
+String msg = (String) request.getAttribute("msg");
+%>
+<%
 if (msg != null) {
 %>
 <div class="alert alert-success" role="alert">
@@ -80,7 +119,7 @@ if (msg != null) {
 
 				<td><%=replaceEscapeChar(Mdto.getName())%></td>
 				<td><%=replaceEscapeChar(Mdto.getYomi())%></td>
-				<td><%=Mdto.getBirthday()%></td>
+				<td><%=Mdto.getBirthday()%> <%=calcAge(Mdto.getBirthday(), now)%>歳</td>
 				<td><%=Mdto.getSex() == 1 ? "男性" : "女性"%></td>
 				<td><%=replaceEscapeChar(Mdto.getBunrui())%></td>
 				<td><%=replaceEscapeChar(Integer.toString(Mdto.getRelationship()))%></td>
