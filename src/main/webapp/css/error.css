@@ -1,0 +1,29 @@
+@charset "UTF-8";
+p {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 50px;
+  color: #ff0000; /* 赤色のテキストカラー */
+}
+
+/* リンクのスタイル */
+a {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #007bff; /* リンクのカラーを指定 */
+}
+
+/* リンクにホバー時のスタイルを追加 */
+a:hover {
+  color: #0056b3; /* ホバー時のカラーを指定 */
+}
+
+/* ページ全体の背景色を指定 */
+body {
+  background-color: #f0f0f0; /* ページ全体の背景色を指定 */
+  margin: 0;
+  padding: 0;
+}
