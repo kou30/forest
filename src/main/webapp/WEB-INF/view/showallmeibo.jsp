@@ -58,8 +58,8 @@ if (msg != null) {
 		<h2>名簿一覧</h2>
 		<table border="1">
 			<tr>
-				<th>名前</th>
 				<th>よみがな</th>
+				<th>氏名</th>
 				<th>生年月日</th>
 				<th>性別</th>
 				<th>分類</th>
@@ -87,8 +87,8 @@ if (msg != null) {
 			};
 			%>
 			<tr>
-				<td><%=replaceEscapeChar(dto.getName())%></td>
 				<td><%=replaceEscapeChar(dto.getYomi())%></td>
+				<td><%=replaceEscapeChar(dto.getName())%></td>
 				<td><%=dto.getBirthday()%></td>
 				<td><%=gender[dto.getSex()]%></td>
 				<td><%=dto.getBunrui()%></td>

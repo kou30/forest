@@ -78,17 +78,45 @@
 					<option value="26">娘</option>
 				</select>
 			</p>
-
-
-
-
 			<p>
 				備考:<br>
 				<textarea name="MEMO" rows="4" cols="50" maxlength="250"></textarea>
 			</p>
-			<input type="file" name="IMAGE" accept="image/png,image/jpeg">
-			</p>
-			<input type="submit" value="名簿登録" onclick="return itAgg()">
+			<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 画像を選択した<input>要素
+            const fileInput = document.getElementById('file-sample');
+            
+            // 画像を表示する<img>要素
+            const imgPreview = document.getElementById('file-preview');
+            
+            if (fileInput && imgPreview) {
+                fileInput.addEventListener('change', function() {
+                    if (fileInput.files && fileInput.files[0]) {
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(e) {
+                            imgPreview.src = e.target.result;
+                        };
+                        
+                        reader.readAsDataURL(fileInput.files[0]);
+                    }
+                });
+            }
+        });
+    </script>
+			 <p>
+        画像を選択：<input id="file-sample" type="file" name="IMAGE" accept="image/png,image/jpeg">
+    </p>
+    <br>
+    <img id="file-preview" src="" alt="画像プレビュー">
+    <style>
+    #file-preview {
+		max-width: 100%;
+		max-height: 300px;
+}
+	</style>
+			<br><input type="submit" value="名簿登録" onclick="return itAgg()">
 			<!--itAgg()は仮-->
 		</form>
 	</main>
