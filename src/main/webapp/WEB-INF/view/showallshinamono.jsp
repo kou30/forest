@@ -416,7 +416,6 @@ if (msg != null) {
 <script>
 function deleteEvent(shinamonoId){
 	var result = confirm('本当に削除してよろしいですか？');
-
 	if( result ) {
         var url = '<%=request.getContextPath()%>/ExecuteDeleteShinamono?ID=' + shinamonoId + '&pageID=0&MEIBO_ID=0';
         window.location.href = url;
@@ -425,6 +424,5 @@ function deleteEvent(shinamonoId){
 
 	}
 }
-
 </script>
 </html>
