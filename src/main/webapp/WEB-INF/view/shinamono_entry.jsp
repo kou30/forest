@@ -32,7 +32,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 	<div class="image">
 		<main>
 			<h2 class="hero">贈り物・頂き物登録フォーム</h2>
-			<form action="ShinamonoEntry" method="post">
+			<form action="ShinamonoEntry" method="post" ID="ShinamonoEntry">
 				<p>
 					<input type="hidden" name="MEIBO_ID" value="<%=dto.getMeibo_id()%>"
 						maxlength="10" readonly> <input type="hidden"
@@ -74,7 +74,8 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 				</p>
 
 				<p>
-					品目名：<input type="text" name="SHINAMONONAME" maxlength="20" id="">
+					品目名：<input type="text" name="SHINAMONONAME" maxlength="20" id=""
+						required>
 				</p>
 				<div id="amountField" style="display: none;">
 					金額：<input type="text" name="KINGAKU" value=0 maxlength="20" id="">
@@ -84,16 +85,31 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 					備考:<br>
 					<textarea name="MEMO" rows="4" cols="50" maxlength="250"></textarea>
 				</p>
-				<br> <input type="submit" value="贈り物・頂き物登録">
+				<br> <input type="submit" value="贈り物・頂き物登録"> <input
+					type="reset" value="入力し直す">
+
 			</form>
 
 		</main>
 		<footer>
-			<script src="js/script.js"></script>
 			<br>
 			<p>&copy; team フォレスト</p>
 		</footer>
 	</div>
 
 </body>
+<script src="js/script.js"></script>
+<script>
+	document.getElementById('ShinamonoEntry')
+			.addEventListener(
+					'submit',
+					function(event) {
+						var selectedValue = document
+								.getElementById('bunruiSelect').value;
+						if (selectedValue === '0') {
+							alert('分類を選択してください');
+							event.preventDefault(); // フォームの送信をキャンセル
+						}
+					});
+</script>
 </html>

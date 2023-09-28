@@ -101,8 +101,8 @@ Date now = new Date();
 				<th>分類</th>
 				<th>続柄</th>
 				<th>品物登録</th>
-				<th>削除</th>
 				<th>編集</th>
+				<th>削除</th>
 				<th>個人ページ</th>
 			</tr>
 			<%
@@ -110,31 +110,32 @@ Date now = new Date();
 				MeiboDTO dto = MeiboDTOlist.get(i);
 			%>
 			<%
-			String[] relationships = {
-					"選択なし", "父", "母", "兄", "姉", "弟", "妹", "義父", "義母", "義兄",
-					"義姉", "義弟", "義妹", "義祖父", "義祖母", "義曽祖父", "義曾祖母", "義おじ", "義おば",
-					"義いとこ", "義甥", "義姪", "夫", "妻", "息子", "娘"
-			};
+			String[] relationships = {"選択なし", "父", "母", "兄", "姉", "弟", "妹", "義父", "義母", "義兄", "義姉", "義弟", "義妹", "義祖父", "義祖母",
+					"義曽祖父", "義曾祖母", "義おじ", "義おば", "義いとこ", "義甥", "義姪", "夫", "妻", "息子", "娘"};
 			%>
 			<%
-			String[] gender = {
-					"選択なし", "男", "女" //「選択なし」を選択することはできないが、追加する可能性を加味しこうしている。
+			String[] gender = {"選択なし", "男", "女" //「選択なし」を選択することはできないが、追加する可能性を加味しこうしている。
 			};
 			%>
 
 			<tr>
 				<td><%=replaceEscapeChar(dto.getYomi())%></td>
 				<td><%=replaceEscapeChar(dto.getName())%></td>
-				<td><%=dto.getBirthday()%> <%=calcAge(dto.getBirthday(), now)%>歳</td>
+				<td><%=dto.getBirthday()%> <%
+ String birthday = dto.getBirthday();
+ if (birthday != null) {
+ %><%=calcAge(dto.getBirthday(), now)%>歳<%
+ }
+ %></td>
 				<td><%=gender[dto.getSex()]%></td>
 				<td><%=dto.getBunrui()%></td>
 				<td><%=relationships[dto.getRelationship() - 1]%></a></td>
 				<td><a
 					href="<%=request.getContextPath()%>/ShinamonoEntry?MEIBO_ID=<%=dto.getMeibo_id()%>">品物登録</a></td>
 				<td><a
-					href="<%=request.getContextPath()%>/ExecuteDeleteMeibo?MEIBO_ID=<%=dto.getMeibo_id()%>">削除</a></td>
-				<td><a
 					href="<%=request.getContextPath()%>/ExecuteEditMeibo?MEIBO_ID=<%=dto.getMeibo_id()%>">編集</a></td>
+				<td><a href="#" onclick="deleteEvent(<%=dto.getMeibo_id()%>)">削除</a></td>
+
 				<td><a
 					href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>">個人ページ</a></td>
 			</tr>
@@ -148,4 +149,18 @@ Date now = new Date();
 		<p>&copy; team フォレスト</p>
 	</footer>
 </body>
+<script>
+function deleteEvent(meiboId){
+	var result = confirm('本当に削除してよろしいですか？');
+
+	if( result ) {
+        var url = '<%=request.getContextPath()%>/ExecuteDeleteMeibo?MEIBO_ID=' + meiboId;
+        window.location.href = url;
+	}
+	else {
+
+	}
+}
+
+</script>
 </html>

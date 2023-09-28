@@ -164,7 +164,7 @@ if (msg != null) {
 					<td><a
 						href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=SHdto.getShinamono_id()%>">編集</a></td>
 					<td><a
-						href="<%=request.getContextPath()%>/ExecuteDeleteShinamono?ID=<%=SHdto.getShinamono_id()%>">削除</a></td>
+						href="#" onclick="deleteEvent(<%=SHdto.getShinamono_id()%>)">削除</a></td>
 				</tr>
 				<%
 			}
@@ -201,7 +201,7 @@ if (msg != null) {
 					<td><a
 						href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=SHdto.getShinamono_id()%>">編集</a></td>
 					<td><a
-						href="<%=request.getContextPath()%>/ExecuteDeleteShinamono?ID=<%=SHdto.getShinamono_id()%>">削除</a></td>
+						href="#" onclick="deleteEvent(<%=SHdto.getShinamono_id()%>)">削除</a></td>
 				</tr>
 				<%
 			}
@@ -217,4 +217,18 @@ if (msg != null) {
 	</div>
 
 </body>
+<script>
+function deleteEvent(shinamonoId){
+	var result = confirm('本当に削除してよろしいですか？');
+
+	if( result ) {
+        var url = '<%=request.getContextPath()%>/ExecuteDeleteShinamono?ID=' + shinamonoId + '&pageID=2&MEIBO_ID=<%=Mdto.getMeibo_id()%>';
+        window.location.href = url;
+	}
+	else {
+
+	}
+}
+
+</script>
 </html>

@@ -22,12 +22,20 @@ public class ExecuteDeleteShinamono extends HttpServlet {
 
 		if (userInfoOnSession != null) {
 			int id = Integer.parseInt(request.getParameter("ID"));
+			int pageid = Integer.parseInt(request.getParameter("pageID"));
+			int meiboid = Integer.parseInt(request.getParameter("MEIBO_ID"));
 			ShinamonoDAO dao = new ShinamonoDAO();
 			dao.deleteOne(id);
 			request.setAttribute("msg", "1件削除しました");
 
-			RequestDispatcher rd = request.getRequestDispatcher("/ShowAllShinamono");
-			rd.forward(request, response);
+			if (pageid == 2) {
+				request.setAttribute("MEIBO_ID", meiboid);
+				RequestDispatcher rd = request.getRequestDispatcher("/Detail");
+				rd.forward(request, response);
+			} else {
+				RequestDispatcher rd = request.getRequestDispatcher("/ShowAllShinamono");
+				rd.forward(request, response);
+			}
 		} else {
 			response.sendRedirect("Login");
 		}

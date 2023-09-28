@@ -83,40 +83,14 @@
 					備考:<br>
 					<textarea name="MEMO" rows="4" cols="50" maxlength="250"></textarea>
 				</p>
-				<script>
-					document.addEventListener('DOMContentLoaded', function() {
-						// 画像を選択した<input>要素
-						const fileInput = document
-								.getElementById('file-sample');
 
-						// 画像を表示する<img>要素
-						const imgPreview = document
-								.getElementById('file-preview');
-
-						if (fileInput && imgPreview) {
-							fileInput.addEventListener('change', function() {
-								if (fileInput.files && fileInput.files[0]) {
-									const reader = new FileReader();
-
-									reader.onload = function(e) {
-										imgPreview.src = e.target.result;
-									};
-
-									reader.readAsDataURL(fileInput.files[0]);
-								}
-							});
-						}
-					});
-				</script>
 				<p>
 					画像を選択：<input id="file-sample" type="file" name="IMAGE"
 						accept="image/png,image/jpeg">
 				</p>
-				<br> <img id="file-preview" src="" alt="画像プレビュー">
-
-				<br>
-				<input type="submit" value="名簿登録" onclick="return itAgg()">
-				<!--itAgg()は仮-->
+				<br> <img id="file-preview" src=""  style="display:none;" alt="画像プレビュー"> <br>
+				<input type="submit" value="名簿登録"> <input type="reset"
+					value="入力し直す" id="reset-button">
 			</form>
 		</main>
 		<footer>
@@ -125,4 +99,35 @@
 		</footer>
 	</div>
 </body>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const fileInput = document.getElementById('file-sample');
+		const imgPreview = document.getElementById('file-preview');
+        const resetButton = document.getElementById('reset-button');		
+
+		if (fileInput && imgPreview  && resetButton) {
+			fileInput.addEventListener('change', function() {
+				if (fileInput.files && fileInput.files[0]) {
+					const reader = new FileReader();
+
+					reader.onload = function(e) {
+						imgPreview.src = e.target.result;
+						imgPreview.style.display = 'block'; // 画像を表示
+					};
+
+					reader.readAsDataURL(fileInput.files[0]);
+				} else {
+					imgPreview.src = ''; // 画像プレビューの初期化
+					imgPreview.style.display = 'none'; // 画像を非表示
+				}
+			});
+            resetButton.addEventListener('click', function() {
+                imgPreview.src = '';
+                imgPreview.style.display = 'none';
+            });
+		}
+	});
+</script>
+
+
 </html>
