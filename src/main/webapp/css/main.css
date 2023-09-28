@@ -24,27 +24,34 @@ h2 {
     margin:0;
 }
 .img {
-   width: 100px; 
-   height: 30px; 
+	
+   width: 140px; 
+   height: 80px; 
 }
 .nav {
+	
     display: flex;
     position:relative;
     background:#90ee90;
+    background-size: cover;
     }
+ 
 .menu{
-    display: flex;
+    list-style-type: none;
 	position:absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	left:30%;
-	gap:40px;
+	left:35%;
+	display: flex;
+	justify-content: center;
+	gap:5px;
+	flex-wrap: wrap;
 	}
 .logout{
 	text-align: center;
 	right:0%;
-	position:absolute;
-	top: 50%;
+	position: relative;
+	top: 25%;
 	transform: translateY(-50%);	
 }
 header {
@@ -72,6 +79,7 @@ a{
     width: auto;
     max-width: 100%;
     justify-content: center;
+    display: inline-block;
 }
 
 a:hover{
@@ -79,4 +87,12 @@ a:hover{
   color: #fff;
 }
 
+@media(max-width:768px){
+	.menu{
+		flex-wrap: wrap;
+	padding: 0.4px;
+		gap: 5px;
+	}
+	
+}
 

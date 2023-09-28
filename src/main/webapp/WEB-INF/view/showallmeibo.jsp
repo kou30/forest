@@ -79,16 +79,19 @@ Date now = new Date();
 </head>
 <body>
 	<header>
-		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
-		<div class="nav">
-			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
-			<div class="menu">
-				<a href="MainPage">TOP</a> <a href="MeiboEntry">名簿登録</a> <a
-					href="ShowAllMeibo">名簿一覧</a> <a href="ShowAllShinamono">贈り物・貰い物一覧</a>
-				<a href="MonthView7">カレンダー</a>
+		<ul>
+			<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
+			<div class="nav">
+				<img src="./images/ENcounter.png" alt="ENcounter" class="img">
+				<div class="menu">
+					<a href="MainPage">TOP</a> <a href="MeiboEntry">名簿登録</a> <a
+						href="ShowAllMeibo">名簿一覧</a> <a href="ShowAllShinamono">贈り物・貰い物一覧</a>
+					<li><a href="MonthView7">カレンダー</a></li>
+	//;;;;
+				</div>
+				<a href="Logoutinfo" class="logout">ログアウト</a>
 			</div>
-			<a href="Logoutinfo" class="logout">ログアウト</a>
-		</div>
+		</ul>
 	</header>
 	<main>
 		<h2>名簿一覧</h2>
@@ -128,7 +131,8 @@ Date now = new Date();
 				<td><%=dto.getBirthday()%> <%=calcAge(dto.getBirthday(), now)%>歳</td>
 				<td><%=gender[dto.getSex()]%></td>
 				<td><%=dto.getBunrui()%></td>
-				<td><%=relationships[dto.getRelationship() - 1]%></a></td>
+				<td><a
+					href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>"><%=relationships[dto.getRelationship() - 1]%></a></td>
 				<td><a
 					href="<%=request.getContextPath()%>/ShinamonoEntry?MEIBO_ID=<%=dto.getMeibo_id()%>">品物登録</a></td>
 				<td><a
