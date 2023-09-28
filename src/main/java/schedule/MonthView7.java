@@ -200,35 +200,7 @@ public class MonthView7 extends HttpServlet {
 				sb.append("<img src=\"./images/touroku2.png\" width=\"14\" height=\"16\">");
 				sb.append("</a><br>");
 
-				/* スケジュールの表示 */
 
-				sb.append("<span class=\"small\">");
-				try {
-					String sql1 = "SELECT * FROM meibo WHERE user_nr = ? and birthday like ? ;";
-					PreparedStatement pstmt = conn.prepareStatement(sql1);
-
-				    String monthStr = String.format("%02d", month + 1);
-				    String dayStr = String.format("%02d", calendarDay[i]);	
-				    String startDateStr = "%" + monthStr + "-" + dayStr;
-				    pstmt.setInt(1, userid);
-					pstmt.setString(2, startDateStr);
-
-					ResultSet rs = pstmt.executeQuery();
-
-					while (rs.next()) {
-						String name = rs.getString("name");
-						String schedule=name+"さんの誕生日";
-						sb.append("<p>");
-						sb.append(schedule);
-						sb.append("</p><br>");
-					}
-
-					rs.close();
-					pstmt.close();
-
-				} catch (SQLException e) {
-					log("SQLException:" + e.getMessage());
-				}
 				try {
 					String sql = "SELECT * FROM schedule WHERE user_nr = ? and scheduledate = ? ORDER BY starttime";
 					PreparedStatement pstmt = conn.prepareStatement(sql);
