@@ -30,7 +30,7 @@ import model.UserInfoDto;
 
 
 @WebServlet("/EditSchedule2")
-public class EditSchedule2 extends HttpServlet {
+public class EditSchedule extends HttpServlet {
     protected Connection conn = null;
 
     public void init() throws ServletException {
@@ -151,11 +151,15 @@ public class EditSchedule2 extends HttpServlet {
         sb.append("#right{margin:0;padding:0;float:right;width:300px;background-color:#ffffff;}");
         sb.append("#contents:after{content:\".\";display:block;height:0;clear:both;visibility:hidden;}");
         sb.append("</style>");
+		sb.append("<link rel=\"stylesheet\" href=\"css/main.css\">");
+
 
         sb.append("</head>");
         sb.append("<body>");
+		sb.append("	<header><p class=\"HeaderTagline\">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p><div class=\"nav\"><img src=\"./images/ENcounter.png\" alt=\"ENcounter\" class=\"img\"><div class=\"menu\"><a href=\"MainPage\">TOP</a> <a href=\"MeiboEntry\">名簿登録</a> <a href=\"ShowAllMeibo\">名簿一覧</a> <a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a><a href=\"MonthView7\">カレンダー</a></div><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></div></header>");
 
-        sb.append("<p>");
+
+        sb.append("<main><p>");
         sb.append(username);
         sb.append("さんのスケジュールです");
         sb.append("</p>");
@@ -555,7 +559,7 @@ sb.append("<input type=\"submit\" name=\"Register\" value=\"変更する\">");
         sb.append("</div>");
         sb.append("</div>");
 
-        sb.append("</body>");
+        sb.append("</main></body>");
         sb.append("</html>");
 
         out.println(new String(sb));
