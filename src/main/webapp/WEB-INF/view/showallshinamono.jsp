@@ -13,8 +13,10 @@
 		inputText = inputText.replace("\"", "&quot");
 		return inputText;
 	}%>
-	<% String msg = (String) request.getAttribute("msg");%>
-	<%
+<%
+String msg = (String) request.getAttribute("msg");
+%>
+<%
 if (msg != null) {
 %>
 <div class="alert alert-success" role="alert">
@@ -23,15 +25,15 @@ if (msg != null) {
 <%
 }
 %>
-	
-	
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/showallmeibo.css">
-<link rel="stylesheet" href="css/main.css" >
+<link rel="stylesheet" href="css/main.css">
 <title>贈ったモノ・頂いたモノ全件一覧</title>
 </head>
 <body>
@@ -215,9 +217,10 @@ if (msg != null) {
 				<td><%=dto.getShinamono_kingaku()%></td>
 				<td><%=dto.getMemo()%></td>
 				<td><a
-					href="<%=request.getContextPath()%>/ExecuteDeleteShinamono?ID=<%=dto.getShinamono_id()%>">削除</a></td>
-				<td><a
 					href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
+
+				<td><a
+					href="#" onclick="deleteEvent(<%=dto.getShinamono_id()%>)">削除</a></td>
 			</tr>
 			<%
 			}
@@ -389,9 +392,10 @@ if (msg != null) {
 				<td><%=dto.getShinamono_kingaku()%></td>
 				<td><%=dto.getMemo()%></td>
 				<td><a
-					href="<%=request.getContextPath()%>/ExecuteDeleteShinamono?ID=<%=dto.getShinamono_id()%>">削除</a></td>
-				<td><a
 					href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
+
+				<td><a
+					href="#" onclick="deleteEvent(<%=dto.getShinamono_id()%>)">削除</a></td>
 			</tr>
 			<%
 			}
@@ -408,4 +412,19 @@ if (msg != null) {
 	</footer>
 
 </body>
+
+<script>
+function deleteEvent(shinamonoId){
+	var result = confirm('本当に削除してよろしいですか？');
+
+	if( result ) {
+        var url = '<%=request.getContextPath()%>/ExecuteDeleteShinamono?ID=' + shinamonoId + '&pageID=0&MEIBO_ID=0';
+        window.location.href = url;
+	}
+	else {
+
+	}
+}
+
+</script>
 </html>

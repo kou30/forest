@@ -1,16 +1,17 @@
 @charset "UTF-8";
-body{
+.image{
 	background-image: url(../images/mori.jpg);
 	background-repeat: no-repeat;
    	background-size: 120% auto;
    	font-family: 'Noto Serif JP', serif;
+   	height: 95vh;
 }
 .en{
 	text-align: center;
   	font-size: 120px;
   	font-family: "Hiragino Mincho Pro", serif;
-   	margin-top: 40px;
-   	margin-bottom:0px;
+   	border-top: 30px;
+   	margin:0px;
 }
 
 nav>ul{
@@ -21,6 +22,9 @@ nav>ul{
     margin-top: 20px;
     font-size: 1.25rem;
 }
+.topmenu{
+	font-size:1.5rem;
+	}
 h2{
 	text-align: center;
 }
