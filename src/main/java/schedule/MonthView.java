@@ -109,7 +109,8 @@ public class MonthView extends HttpServlet {
 		sb.append("<html lang=\"ja\">");
 		sb.append("<head>");
 		sb.append("<meta http-equiv=\"Content-Type\" Content=\"text/html;charset=UTF-8\">");
-
+		sb.append("<link rel=\"stylesheet\" href=\"css/Schedul.css\">");
+		
 		sb.append("<title>スケジュール管理</title>");
 
 		sb.append("<style>");
@@ -127,12 +128,13 @@ public class MonthView extends HttpServlet {
 
 		sb.append("</head>");
 		sb.append("<body>");
-		//		header
-		sb.append(
-				"	<header><p class=\"HeaderTagline\">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p><div class=\"nav\"><img src=\"./images/ENcounter.png\" alt=\"ENcounter\" class=\"img\"><div class=\"menu\"><a href=\"MainPage\">TOP</a> <a href=\"MeiboEntry\">名簿登録</a> <a href=\"ShowAllMeibo\">名簿一覧</a> <a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a><a href=\"MonthView7\">カレンダー</a></div><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></div></header>");
-		sb.append("<main><p>");
+	
+//		header
+		sb.append("	<header><p class=\"HeaderTagline\">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p><div class=\"nav\"><img src=\"./images/ENcounter.png\" alt=\"ENcounter\" class=\"img\"><div class=\"menu\"><a href=\"MainPage\">TOP</a> <a href=\"MeiboEntry\">名簿登録</a> <a href=\"ShowAllMeibo\">名簿一覧</a> <a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a><a href=\"MonthView7\">カレンダー</a></div><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></div></header>");
+		sb.append("<main><p class=WelcomeMessage>");
+	
 		sb.append(username);
-		sb.append("さんのスケジュールです");
+		sb.append("さんのスケジュール帳");
 		sb.append("</p>");
 
 		/* 日付データを配列に格納 */
