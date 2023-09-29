@@ -1,12 +1,13 @@
 .WelcomeMessage {
-    font-size: 25px;
+    transform: translateX(43%);
+    font-size: 150%;
     font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
     font-weight: bold; /* 太字に設定 */
     color: rgb(0, 128, 0); /* 明るめの緑色のRGB値 */
 }
 
 
-main{
+body{
 	background-repeat: no-repeat;
 	
 	
@@ -15,3 +16,18 @@ main{
    background-size: 100% auto;
    padding:50px ;
    }
+
+   
+
+    
+    
+        table{
+  transform: translateX(12%);
+}
+
+
+.monthNext{
+	transform: translateX(45%);
+	 font-weight: bold; 
+	 font-size:30px;
+}

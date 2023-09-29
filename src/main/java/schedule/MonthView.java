@@ -110,6 +110,8 @@ public class MonthView extends HttpServlet {
 		sb.append("<head>");
 		sb.append("<meta http-equiv=\"Content-Type\" Content=\"text/html;charset=UTF-8\">");
 		sb.append("<link rel=\"stylesheet\" href=\"css/Schedul.css\">");
+		sb.append("<link rel=\"stylesheet\" href=\"css/main.css\">");
+
 		
 		sb.append("<title>スケジュール管理</title>");
 
@@ -124,7 +126,7 @@ public class MonthView extends HttpServlet {
 		sb.append("img{border:0px;}");
 		sb.append("span.small{font-size:0.75em;}");
 		sb.append("</style>");
-		sb.append("<link rel=\"stylesheet\" href=\"css/main.css\">");
+	
 
 		sb.append("</head>");
 		sb.append("<body>");
@@ -348,7 +350,7 @@ public class MonthView extends HttpServlet {
 	protected String createMonthLink(int year, int month) {
 		StringBuffer sb = new StringBuffer();
 
-		sb.append("<p>");
+		sb.append("<p class=\"monthNext\">");
 
 		sb.append("<a href=\"MonthView7?YEAR=");
 		sb.append(year);
