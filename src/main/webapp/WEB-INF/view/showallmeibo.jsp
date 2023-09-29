@@ -87,7 +87,6 @@ Date now = new Date();
 					<a href="MainPage">TOP</a> <a href="MeiboEntry">名簿登録</a> <a
 						href="ShowAllMeibo">名簿一覧</a> <a href="ShowAllShinamono">贈り物・貰い物一覧</a>
 					<li><a href="MonthView7">カレンダー</a></li>
-	//;;;;
 				</div>
 				<a href="Logoutinfo" class="logout">ログアウト</a>
 			</div>
