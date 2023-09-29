@@ -219,4 +219,37 @@ public class ShinamonoDAO {
 		return shinamono;
 	}
 
+
+public List<ShinamonoDTO> NarrowDownSelect(String year) {
+	List<ShinamonoDTO> Narrowdown = new ArrayList<>();
+	try {
+		this.connect();
+		ps = db.prepareStatement("SELECT * FROM shinamono WHERE YEAR(re_time) = ?");
+		ps.setString(1, year);
+		rs = ps.executeQuery();
+		while (rs.next()) {
+				int shinamono_id = rs.getInt("shinamono_id");
+				int user_nr = rs.getInt("user_nr");
+				int meibo_id = rs.getInt("meibo_id");
+				String aite_name = rs.getString("aite_name");
+				String re_time = rs.getString("re_time");
+				int bunrui = rs.getInt("bunrui");
+				int category = rs.getInt("category");
+				int item = rs.getInt("item");
+				String shinamono_name = rs.getString("shinamono_name");
+				int shinamono_kingaku = rs.getInt("shinamono_id");
+				String memo = rs.getString("memo");
+				Narrowdown.add(new ShinamonoDTO(shinamono_id, user_nr, meibo_id, aite_name, re_time, bunrui, category,
+						item,
+						shinamono_name, shinamono_kingaku, memo));
+		}
+	} catch (NamingException | SQLException e) {
+		e.printStackTrace();
+	} finally {
+		this.disconnect();
+	}
+	return Narrowdown;
 }
+
+}
+

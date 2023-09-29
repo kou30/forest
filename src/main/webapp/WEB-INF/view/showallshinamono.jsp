@@ -37,6 +37,17 @@ if (msg != null) {
 <title>贈ったモノ・頂いたモノ全件一覧</title>
 </head>
 <body>
+
+<div class="search-area">
+<script src="js/search.js"></script>
+<form action="NarrowDown" method="post">
+  
+    <label>年を入力</label>
+<input type="number" name="birthday" id="year"placeholder="絞り込みたい年（数字）">
+    <input type="button" value="絞り込む" id="button"> <input type="button" value="すべて表示" id="button2">
+  </form>
+</div>
+
 	<header>
 		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
 		<div class="nav">
@@ -45,8 +56,9 @@ if (msg != null) {
 				<a href="MainPage">TOP</a> <a href="MeiboEntry">名簿登録</a> <a
 					href="ShowAllMeibo">名簿一覧</a> <a href="ShowAllShinamono">贈り物・貰い物一覧</a>
 				<a href="MonthView7">カレンダー</a>
+				<a href="Logoutinfo" class="logout">ログアウト</a>
 			</div>
-			<a href="Logoutinfo" class="logout">ログアウト</a>
+			
 		</div>
 	</header>
 	<main>
