@@ -106,6 +106,7 @@
 		</footer>
 	</div>
 </body>
+<script src="js/birthday.js"></script>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		const fileInput = document.getElementById('file-sample');

@@ -110,6 +110,8 @@ public class MonthView extends HttpServlet {
 		sb.append("<head>");
 		sb.append("<meta http-equiv=\"Content-Type\" Content=\"text/html;charset=UTF-8\">");
 		sb.append("<link rel=\"stylesheet\" href=\"css/Schedul.css\">");
+		sb.append("<link rel=\"stylesheet\" href=\"css/main.css\">");
+
 		
 		sb.append("<title>スケジュール管理</title>");
 
@@ -124,7 +126,7 @@ public class MonthView extends HttpServlet {
 		sb.append("img{border:0px;}");
 		sb.append("span.small{font-size:0.75em;}");
 		sb.append("</style>");
-		sb.append("<link rel=\"stylesheet\" href=\"css/main.css\">");
+	
 
 		sb.append("</head>");
 		sb.append("<body>");
@@ -204,15 +206,14 @@ public class MonthView extends HttpServlet {
 				sb.append("\">");
 				sb.append("<img src=\"./images/touroku2.png\" width=\"14\" height=\"16\">");
 				sb.append("</a><br>");
-
-
 				try {
-					String sql1 = "SELECT * FROM meibo WHERE user_nr = ? and birthday like ? ;";
+					String sql1 = "SELECT * FROM meibo WHERE user_nr = ? and birthday like ?";
 					PreparedStatement pstmt = conn.prepareStatement(sql1);
 
 					String monthStr = String.format("%02d", month + 1);
 					String dayStr = String.format("%02d", calendarDay[i]);
 					String startDateStr = "%" + monthStr + "-" + dayStr;
+
 					pstmt.setInt(1, userid);
 					pstmt.setString(2, startDateStr);
 
@@ -228,10 +229,36 @@ public class MonthView extends HttpServlet {
 
 					rs.close();
 					pstmt.close();
+					if (isLeapYear(year)==false && (month + 1) == 2 && calendarDay[i] == 28) {
+						try {
+							String sql2 = "SELECT * FROM meibo WHERE user_nr = ? and birthday like ?";
+							PreparedStatement pstmt1 = conn.prepareStatement(sql2);
 
+							// For February 29th
+							String startDateStr1 = "%02-29";
+							pstmt1.setInt(1, userid);
+							pstmt1.setString(2, startDateStr1);
+
+							ResultSet rs1 = pstmt1.executeQuery();
+
+							while (rs1.next()) {
+								String name = rs1.getString("name");
+								String schedule = name + "さんの誕生日(2/29生まれ)";
+								sb.append("<p>");
+								sb.append(schedule);
+								sb.append("</p>");
+							}
+
+							rs1.close();
+							pstmt1.close();
+						} catch (SQLException e) {
+							log("SQLException:" + e.getMessage());
+						}
+					}
 				} catch (SQLException e) {
 					log("SQLException:" + e.getMessage());
 				}
+
 				try {
 					String sql = "SELECT * FROM schedule WHERE user_nr = ? and scheduledate = ? ORDER BY starttime";
 					PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -286,7 +313,6 @@ public class MonthView extends HttpServlet {
 
 	protected int setDateArray(int year, int month, int day, int[] calendarDay, int count) {
 		Calendar calendar = Calendar.getInstance();
-
 		/* 今月が何曜日から開始されているか確認する */
 		calendar.set(year, month, 1);
 		int startWeek = calendar.get(Calendar.DAY_OF_WEEK);
@@ -324,7 +350,7 @@ public class MonthView extends HttpServlet {
 	protected String createMonthLink(int year, int month) {
 		StringBuffer sb = new StringBuffer();
 
-		sb.append("<p>");
+		sb.append("<p class=\"monthNext\">");
 
 		sb.append("<a href=\"MonthView7?YEAR=");
 		sb.append(year);
@@ -346,6 +372,10 @@ public class MonthView extends HttpServlet {
 		sb.append("</p>");
 
 		return (new String(sb));
+	}
+
+	public static boolean isLeapYear(int year) {
+		return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 	}
 
 }
