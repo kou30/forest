@@ -220,12 +220,20 @@ public class ShinamonoDAO {
 	}
 
 
-public List<ShinamonoDTO> NarrowDownSelect(String year,int id) {
+public List<ShinamonoDTO> NarrowDownSelect(String selectedOption,String Write,int id) {
 	List<ShinamonoDTO> Narrowdown = new ArrayList<>();
 	try {
 		this.connect();
 		ps = db.prepareStatement("SELECT * FROM  forest_db.shinamono WHERE YEAR(re_time) = ? and user_nr=?");
-		ps.setString(1, year);
+		String query = "SELECT * FROM your_table WHERE ";
+		if ("1".equals(selectedOption)) {
+		    query += "meibo_id = ?";
+		} else if ("2".equals(selectedOption)) {
+		    query += "aite_name = ?";
+		} else if ("3".equals(selectedOption)) {
+		    query += "re_time = ?";
+		}
+//		ps.setString(1, year);
 		ps.setInt(2,id);
 		rs = ps.executeQuery();
 		while (rs.next()) {

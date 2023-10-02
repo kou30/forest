@@ -2,9 +2,10 @@
 
 body{
 	font-family: 'Noto Serif JP', serif;
-	margin:0;
+	margin:0 0 0 0;
 }
 header{
+    width: 100%;
  	border-bottom: 1px solid #000;
  	background-color: #fff;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
@@ -23,42 +24,36 @@ h2 {
     padding: 1px 20px;
     margin:0;
 }
+.container{
+  	display: flex;
+  	align-items: center;
+  	background:#90ee90;
+  	  justify-content: center;
+}
+
+.nav ul {
+  display: flex;
+	gap: 40px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+    justify-content: center;
+
+}
+
+.nav ul li {
+  display: inline;
+  margin-right: 10px; 
+}
+
 .img {
-	
-   width: 140px; 
-   height: 80px; 
+   	width: 100px; 
+   	height: 30px; 
+   	 margin-right: auto;
 }
-.nav {
-	
-    display: flex;
-    position:relative;
-    background:#90ee90;
-    background-size: cover;
-    }
- 
-.menu{
-    list-style-type: none;
-	position:absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	left:35%;
-	display: flex;
-	justify-content: center;
-	gap:5px;
-	flex-wrap: wrap;
-	}
 .logout{
-	text-align: center;
-	right:0%;
-	position: relative;
-	top: 25%;
-	transform: translateY(-50%);	
-}
-header {
-    background-color: #fff;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
-    width: 100%;
-}
+	gap:60px;
+	}
 
 a{
   padding: 0 10px;

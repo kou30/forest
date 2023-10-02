@@ -45,7 +45,7 @@ if (msg != null) {
 <script src="js/search.js"></script>
 <form action="NarrowDown" method="post">
   <p>
-					続柄: <select name="re">
+					続柄: <selec name="selectedOption">
 						<option value="1">選択なし</option>
 						<option value="2">相手の名前</option>
 						<option value="3">品物送受日</option>
@@ -57,8 +57,13 @@ if (msg != null) {
 					</select>
 				</p>
 		
-    <label>年を入力</label>
-    <input type="number" name="year" id="year" placeholder="絞り込みたい年（数字）">
+    <label>検索</label>
+    <p>
+                    検索欄:<br>
+                    <textarea name="write" rows="１" cols="50" maxlength="250"></textarea>
+                </p>
+    <!-- <input type="number" name="year" id="year" placeholder="絞り込みたい年（数字）"> -->
+    
     <input type="submit" value="絞り込む" id="button"> 
 </form>
 </div>
