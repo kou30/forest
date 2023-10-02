@@ -2,9 +2,12 @@
 .image{
 	background-image: url(../images/mori.jpg);
 	background-repeat: no-repeat;
-   	background-size: 120% auto;
+	margin: 0;
+    padding: 0;
+   	background-size: 130% ;
    	font-family: 'Noto Serif JP', serif;
-   	height: 95vh;
+   	background-position:50% 0%;
+   	background-attachment: fixed;
 }
 .en{
 	text-align: center;
@@ -14,7 +17,7 @@
    	margin:0px;
 }
 
-nav>ul{
+.topnav ul{
 	list-style: none; 
     padding: 0;
     display: flex;
@@ -49,5 +52,23 @@ a:hover{
   background-position: -100% 0;
   color: #fff;
 }
-
-
+@media(max-width:767px){
+	.image {
+	   	background-size: auto ;
+	   	text-align:center
+	}
+	.en{
+  	font-size: 60px;
+}
+.topnav{
+	    flex-direction: column;
+}
+	.topnav ul {
+		flex-wrap: wrap;
+		padding: 0.4px;
+		gap: 10px;
+	}
+	.topmenu{
+			font-size: 20px;
+			}
+	ol{padding:10px

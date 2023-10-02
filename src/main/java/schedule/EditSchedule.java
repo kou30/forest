@@ -156,8 +156,22 @@ public class EditSchedule extends HttpServlet {
 
         sb.append("</head>");
         sb.append("<body>");
-		sb.append("	<header><p class=\"HeaderTagline\">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p><div class=\"nav\"><img src=\"./images/ENcounter.png\" alt=\"ENcounter\" class=\"img\"><div class=\"menu\"><a href=\"MainPage\">TOP</a> <a href=\"MeiboEntry\">名簿登録</a> <a href=\"ShowAllMeibo\">名簿一覧</a> <a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a><a href=\"MonthView7\">カレンダー</a></div><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></div></header>");
-
+		sb.append("		<header>\r\n"
+				+ "		<p class=\"HeaderTagline\">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>\r\n"
+				+ "		<div class=\"container\">\r\n"
+				+ "			<img src=\"./images/ENcounter.png\" alt=\"ENcounter\" class=\"img\">\r\n"
+				+ "			<nav class=\"nav\">\r\n"
+				+ "				<ul>\r\n"
+				+ "					<li><a href=\"MainPage\">TOP</a></li>\r\n"
+				+ "					<li><a href=\"MeiboEntry\">名簿登録</a></li>\r\n"
+				+ "					<li><a href=\"ShowAllMeibo\">名簿一覧</a></li>\r\n"
+				+ "					<li><a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a></li>\r\n"
+				+ "					<li><a href=\"MonthView7\">カレンダー</a></li>\r\n"
+				+ "					<li><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></li>\r\n"
+				+ "				</ul>\r\n"
+				+ "			</nav>\r\n"
+				+ "		</div>\r\n"
+				+ "	</header>");
 
         sb.append("<main><p>");
         sb.append(username);
