@@ -119,7 +119,7 @@ public class MonthView extends HttpServlet {
 		sb.append("table{border:1px solid #a9a9a9;width:90%;padding:0px;margin:0px;border-collapse:collapse;}");
 		sb.append(
 				"td{width:12%;border-top:1px solid #a9a9a9;border-left:1px solid #a9a9a9;vertical-align:top;margin:0px;padding:2px;}");
-		sb.append("td.week{background-color:#f0f8ff;text-align:center;}");
+		sb.append("td.week{text-align:center;}");
 		sb.append("td.day{background-color:#f5f5f5;text-align:right;font-size:0.75em;}");
 		sb.append("td.otherday{background-color:#f5f5f5;color:#d3d3d3;text-align:right;font-size:0.75em;}");
 		sb.append("td.sche{background-color:#fffffff;text-align:left;height:80px;}");
@@ -148,7 +148,7 @@ public class MonthView extends HttpServlet {
 		sb.append("<table>");
 
 		sb.append(
-				"<tr><td class=\"week\">日</td><td class=\"week\">月</td><td class=\"week\">火</td><td class=\"week\">水</td><td class=\"week\">木</td><td class=\"week\">金</td><td class=\"week\">土</td></tr>");
+				"<tr><td class=\"week sun\">日</td><td class=\"week\">月</td><td class=\"week\">火</td><td class=\"week\">水</td><td class=\"week\">木</td><td class=\"week\">金</td><td class=\"week sut\">土</td></tr>");
 
 		int weekCount = count / 7;
 

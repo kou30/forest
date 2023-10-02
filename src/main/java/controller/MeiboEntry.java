@@ -52,6 +52,7 @@ public class MeiboEntry extends HttpServlet {
 		if ("".equals(birthday)) {
 			birthday = null;
 		}
+		
 		int sex = Integer.parseInt(request.getParameter("SEX"));
 		String bunrui = request.getParameter("BUNRUI");
 		int relationship = Integer.parseInt(request.getParameter("RELATIONSHIP"));
