@@ -106,7 +106,7 @@ public class ShinamonoEntry extends HttpServlet {
 	} else {
 		
 	    // DB登録に失敗した場合、ポップアップメッセージを表示して、編集画面にとどまる
-	    String errorMessage = "送信できませんでした\n正しく入力されていません。入力し直して下さい。\n※絵文字は入力できません。"; // 表示したいエラーメッセージ
+	    String errorMessage = "エラー"; // 表示したいエラーメッセージ
 
 		request.setAttribute("errorMessage", errorMessage);
 		request.setCharacterEncoding("UTF-8");
