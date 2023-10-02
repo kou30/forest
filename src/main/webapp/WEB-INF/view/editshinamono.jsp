@@ -3,6 +3,11 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="model.ShinamonoDTO"%>
+
+<%-- 今日の日付を取得 --%>
+<%@ page import="java.time.LocalDate" %>
+<% LocalDate now = LocalDate.now(); %>
+
 <%
 ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 %>
@@ -39,8 +44,11 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 				<p>
 					名前:<%=dto.getAite_name()%>
 				</p>
-				<label for="DATE">贈った、または頂いた日時:</label> <input type="date"
-					id="inputDate" value="<%=dto.getRe_time()%>" name="DATE">
+
+						<p>
+                    <label for="start">贈った、または頂いた日時:</label>
+                    <input type="date" id="inputDate" name="DATE" value="<%=dto.getRe_time()%>" min="1950-01-01" max="<%= now %>" />
+                </p>
 
 
 				<!-- 第一分類 -->

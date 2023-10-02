@@ -43,6 +43,7 @@ public class ShinamonoEntry extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		int meibo_id = Integer.parseInt(request.getParameter("MEIBO_ID"));
 		String aite_name = request.getParameter("AITENAME"); //リクエストパラメータ（NAME）
 		String date = request.getParameter("DATE"); // "date"はパラメータ名。適切に変更してください。
@@ -98,14 +99,19 @@ public class ShinamonoEntry extends HttpServlet {
 		boolean succesInsert = logic.executeInsertShinamono(dto);
 
 		if (succesInsert) {
-			//DB登録に成功した場合、回答完了画面（finish.html）を表示する
-			response.sendRedirect("html/finish.html");
+		    // DB登録に成功した場合、回答完了画面（finish.html）を表示する
+		    response.sendRedirect("html/finish.html");
+	
+		
+	} else {
+	    // DB登録に失敗した場合、ポップアップメッセージを表示して、編集画面にとどまる
+	    String errorMessage = "送信できませんでした\n正しく入力されていません。入力し直して下さい。\n※絵文字は入力できません。"; // 表示したいエラーメッセージ
+	    request.setAttribute("errorMessage", errorMessage);
 
-		} else {
-
-			//DB登録に失敗した場合、エラー画面（error.html）を表示する
-			response.sendRedirect("html/error.html");
-		}
+	    // ポップアップメッセージを表示するJavaScriptを生成
+	    String jsScript = "<script>alert(\"" + errorMessage.replace("\"", "\\\"").replace("\n", "\\n") + "\"); history.go(-1);</script>";
+	    response.getWriter().write(jsScript);
+	}
 
 	}
 }
