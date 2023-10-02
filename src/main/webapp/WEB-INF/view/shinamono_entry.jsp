@@ -3,6 +3,11 @@
 <%@ page import="model.MeiboDTO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
+
+<%-- 今日の日付を取得 --%>
+<%@ page import="java.time.LocalDate" %>
+<% LocalDate now = LocalDate.now(); %>
+
 <%
 MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 %>
@@ -44,10 +49,12 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 				<p>
 					名前:<%=dto.getName()%>
 				</p>
-				<!--名簿一覧に登録した個人の氏名と続柄を表示-->
-				<label for="DATE">贈った、または頂いた日時:</label> <input type="date"
-					id="inputDate" name="DATE">
+		
 
+       			<p>
+                    <label for="start">贈った、または頂いた日時:</label>
+                    <input type="date" id="inputDate" name="DATE" value="2023-09-01" min="1950-01-01" max="<%= now %>" />
+                </p>
 
 				<!-- 第一分類 -->
 				<p>
