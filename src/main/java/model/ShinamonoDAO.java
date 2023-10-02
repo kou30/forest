@@ -136,7 +136,7 @@ public class ShinamonoDAO {
 				int category = rs.getInt("category");
 				int item = rs.getInt("item");
 				String shinamono_name = rs.getString("shinamono_name");
-				int shinamono_kingaku = rs.getInt("shinamono_id");
+				int shinamono_kingaku = rs.getInt("shinamono_kingaku");
 				String memo = rs.getString("memo");
 				shinamono = new ShinamonoDTO(shinamono_id, user_nr, meibo_id, aite_name, re_time, bunrui, category,
 						item,
@@ -205,7 +205,7 @@ public class ShinamonoDAO {
 				int category = rs.getInt("category");
 				int item = rs.getInt("item");
 				String shinamono_name = rs.getString("shinamono_name");
-				int shinamono_kingaku = rs.getInt("shinamono_id");
+				int shinamono_kingaku = rs.getInt("shinamono_kingaku");
 				String memo = rs.getString("memo");
 				shinamono.add(new ShinamonoDTO(shinamono_id, user_nr, meibo_id, aite_name, re_time, bunrui, category,
 						item,
@@ -220,12 +220,13 @@ public class ShinamonoDAO {
 	}
 
 
-public List<ShinamonoDTO> NarrowDownSelect(String year) {
+public List<ShinamonoDTO> NarrowDownSelect(String year,int id) {
 	List<ShinamonoDTO> Narrowdown = new ArrayList<>();
 	try {
 		this.connect();
-		ps = db.prepareStatement("SELECT * FROM shinamono WHERE YEAR(re_time) = ?");
+		ps = db.prepareStatement("SELECT * FROM  forest_db.shinamono WHERE YEAR(re_time) = ? and user_nr=?");
 		ps.setString(1, year);
+		ps.setInt(2,id);
 		rs = ps.executeQuery();
 		while (rs.next()) {
 				int shinamono_id = rs.getInt("shinamono_id");
@@ -237,7 +238,7 @@ public List<ShinamonoDTO> NarrowDownSelect(String year) {
 				int category = rs.getInt("category");
 				int item = rs.getInt("item");
 				String shinamono_name = rs.getString("shinamono_name");
-				int shinamono_kingaku = rs.getInt("shinamono_id");
+				int shinamono_kingaku = rs.getInt("shinamono_kingaku");
 				String memo = rs.getString("memo");
 				Narrowdown.add(new ShinamonoDTO(shinamono_id, user_nr, meibo_id, aite_name, re_time, bunrui, category,
 						item,

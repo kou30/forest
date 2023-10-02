@@ -148,16 +148,153 @@ if (msg != null) {
 					<th>編集</th>
 					<th>削除</th>
 				</tr>
+			
+		<% for (int i = 0; i < Sdto.size(); i++) {
+						ShinamonoDTO SHdto = Sdto.get(i);%>
+				
 				<%
-			for (int i = 0; i < Sdto.size(); i++) {
-				ShinamonoDTO SHdto = Sdto.get(i);
+			
 				if (SHdto.getBunrui() == 1) {
 			%>
+			<tr>
+				<td><%=SHdto.getAite_name()%></td>
+				<td><%=SHdto.getRe_time()%></td>
 
-				<tr>
-					<td><%=SHdto.getAite_name()%></td>
-					<td><%=SHdto.getRe_time()%></td>
-					<td><%=SHdto.getBunrui()%></td>
+				<%
+				String a = "0";
+				switch (SHdto.getCategory()) {
+				case 0:
+					a = "未選択";
+					break;
+				case 1:
+					a = "品物";
+					break;
+				case 2:
+					a = "お金";
+					break;
+				case 3:
+					a = "手紙など";
+					break;
+				}
+				%>
+				<td><%=a%></td>
+				<%
+				if (SHdto.getCategory() == 0) {
+					a = "未選択";
+				}
+				if (SHdto.getCategory() == 1) {
+					switch (SHdto.getItem()) {
+					case 0:
+						a = "未選択";
+						break;
+					case 1:
+						a = "お中元";
+						break;
+					case 2:
+						a = "お供え物";
+						break;
+					case 3:
+						a = "お祝いもの";
+						break;
+					case 4:
+						a = "お見舞い品";
+						break;
+					case 5:
+						a = "贈答品";
+						break;
+					case 6:
+						a = "お土産";
+						break;
+					case 7:
+						a = "記念品";
+						break;
+					case 8:
+						a = "誕生日プレゼント";
+						break;
+					case 9:
+						a = "結婚祝い品";
+						break;
+					case 10:
+						a = "出産祝い品";
+						break;
+					case 11:
+						a = "引っ越し祝い品";
+						break;
+					case 12:
+						a = "その他";
+						break;
+					}
+				}
+				if (SHdto.getCategory() == 2) {
+					switch (SHdto.getItem()) {
+					case 0:
+						a = "未選択";
+						break;
+					case 1:
+						a = "寄付金";
+						break;
+					case 2:
+						a = "贈与金";
+						break;
+					case 3:
+						a = "祝儀金";
+						break;
+					case 4:
+						a = "贈答金";
+						break;
+					case 5:
+						a = "報酬金";
+						break;
+					case 6:
+						a = "賞金";
+						break;
+					case 7:
+						a = "贈賄金";
+						break;
+					case 8:
+						a = "支援金";
+						break;
+					case 9:
+						a = "貢献金";
+						break;
+					case 10:
+						a = "ギフト券";
+						break;
+					case 11:
+						a = "仏教関連金";
+						break;
+					case 12:
+						a = "お祝い金";
+						break;
+					case 13:
+						a = "その他";
+						break;
+					}
+				}
+				if (SHdto.getCategory() == 3) {
+					switch (SHdto.getItem()) {
+					case 0:
+						a = "未選択";
+						break;
+					case 1:
+						a = "年賀状";
+						break;
+					case 2:
+						a = "招待状";
+						break;
+					case 3:
+						a = "お詫び状";
+						break;
+					case 4:
+						a = "通知状";
+						break;
+					case 5:
+						a = "その他";
+						break;
+					}
+				}
+				%>
+					
 					<td><%=SHdto.getShinamono_name()%></td>
 					<td><%=SHdto.getShinamono_kingaku()%></td>
 					<td><%=replaceEscapeChar(SHdto.getMemo())%></td>
@@ -194,7 +331,143 @@ if (msg != null) {
 				<tr>
 					<td><%=SHdto.getAite_name()%></td>
 					<td><%=SHdto.getRe_time()%></td>
-					<td><%=SHdto.getBunrui()%></td>
+			
+			
+
+				<%
+				String a = "0";
+				switch (SHdto.getCategory()) {
+				case 0:
+					a = "未選択";
+					break;
+				case 1:
+					a = "品物";
+					break;
+				case 2:
+					a = "お金";
+					break;
+				case 3:
+					a = "手紙など";
+					break;
+				}
+				%>
+				<td><%=a%></td>
+				<%
+				if (SHdto.getCategory() == 0) {
+					a = "未選択";
+				}
+				if (SHdto.getCategory() == 1) {
+					switch (SHdto.getItem()) {
+					case 0:
+						a = "未選択";
+						break;
+					case 1:
+						a = "お中元";
+						break;
+					case 2:
+						a = "お供え物";
+						break;
+					case 3:
+						a = "お祝いもの";
+						break;
+					case 4:
+						a = "お見舞い品";
+						break;
+					case 5:
+						a = "贈答品";
+						break;
+					case 6:
+						a = "お土産";
+						break;
+					case 7:
+						a = "記念品";
+						break;
+					case 8:
+						a = "誕生日プレゼント";
+						break;
+					case 9:
+						a = "結婚祝い品";
+						break;
+					case 10:
+						a = "出産祝い品";
+						break;
+					case 11:
+						a = "引っ越し祝い品";
+						break;
+					case 12:
+						a = "その他";
+						break;
+					}
+				}
+				if (SHdto.getCategory() == 2) {
+					switch (SHdto.getItem()) {
+					case 0:
+						a = "未選択";
+						break;
+					case 1:
+						a = "寄付金";
+						break;
+					case 2:
+						a = "贈与金";
+						break;
+					case 3:
+						a = "祝儀金";
+						break;
+					case 4:
+						a = "贈答金";
+						break;
+					case 5:
+						a = "報酬金";
+						break;
+					case 6:
+						a = "賞金";
+						break;
+					case 7:
+						a = "贈賄金";
+						break;
+					case 8:
+						a = "支援金";
+						break;
+					case 9:
+						a = "貢献金";
+						break;
+					case 10:
+						a = "ギフト券";
+						break;
+					case 11:
+						a = "仏教関連金";
+						break;
+					case 12:
+						a = "お祝い金";
+						break;
+					case 13:
+						a = "その他";
+						break;
+					}
+				}
+				if (SHdto.getCategory() == 3) {
+					switch (SHdto.getItem()) {
+					case 0:
+						a = "未選択";
+						break;
+					case 1:
+						a = "年賀状";
+						break;
+					case 2:
+						a = "招待状";
+						break;
+					case 3:
+						a = "お詫び状";
+						break;
+					case 4:
+						a = "通知状";
+						break;
+					case 5:
+						a = "その他";
+						break;
+					}
+				}
+				%>
 					<td><%=SHdto.getShinamono_name()%></td>
 					<td><%=SHdto.getShinamono_kingaku()%></td>
 					<td><%=replaceEscapeChar(SHdto.getMemo())%></td>

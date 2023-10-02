@@ -26,6 +26,9 @@ if (msg != null) {
 }
 %>
 
+<%
+		List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
+		%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -41,11 +44,23 @@ if (msg != null) {
 <div class="search-area">
 <script src="js/search.js"></script>
 <form action="NarrowDown" method="post">
-  
+  <p>
+					続柄: <select name="re">
+						<option value="1">選択なし</option>
+						<option value="2">相手の名前</option>
+						<option value="3">品物送受日</option>
+						<option value="4">詳細項目1</option>
+						<option value="5">詳細項目2</option>
+						<option value="6">品物名</option>
+						<option value="7">金額</option>
+						<option value="8">備考</option>
+					</select>
+				</p>
+		
     <label>年を入力</label>
-<input type="number" name="birthday" id="year"placeholder="絞り込みたい年（数字）">
-    <input type="button" value="絞り込む" id="button"> <input type="button" value="すべて表示" id="button2">
-  </form>
+    <input type="number" name="year" id="year" placeholder="絞り込みたい年（数字）">
+    <input type="submit" value="絞り込む" id="button"> 
+</form>
 </div>
 
 	<header>
@@ -63,9 +78,7 @@ if (msg != null) {
 	</header>
 	<main>
 		<h2>贈ったモノ</h2>
-		<%
-		List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
-		%>
+		
 
 
 		<table border="1" class="my-table">
@@ -436,5 +449,18 @@ function deleteEvent(shinamonoId){
 
 	}
 }
+</script>
+<script>
+	document.getElementById('ShinamonoEntry')
+			.addEventListener(
+					'submit',
+					function(event) {
+						var selectedValue = document
+								.getElementById('bunruiSelect').value;
+						if (selectedValue === '0') {
+							alert('分類を選択してください');
+							event.preventDefault(); // フォームの送信をキャンセル
+						}
+					});
 </script>
 </html>
