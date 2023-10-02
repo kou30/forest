@@ -16,14 +16,18 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
 <body>
 	<header>
 		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
-		<div class="nav">
+		<div class="container">
 			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
-			<div class="menu">
-				<a href="MainPage">TOP</a> <a href="MeiboEntry">名簿登録</a> <a
-					href="ShowAllMeibo">名簿一覧</a> <a href="ShowAllShinamono">贈り物・貰い物一覧</a>
-				<a href="MonthView7">カレンダー</a>
-			</div>
-			<a href="Logoutinfo" class="logout">ログアウト</a>
+			<nav class="nav">
+				<ul>
+					<li><a href="MainPage">TOP</a></li>
+					<li><a href="MeiboEntry">名簿登録</a></li>
+					<li><a href="ShowAllMeibo">名簿一覧</a></li>
+					<li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
+					<li><a href="MonthView7">カレンダー</a></li>
+					<li><a href="Logoutinfo" class="logout">ログアウト</a></li>
+				</ul>
+			</nav>
 		</div>
 	</header>
 	<div class="image">
@@ -33,7 +37,7 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
 				こんにちは<%=userInfoOnSession.getUserName()%>
 				さん。
 			</h2>
-			<nav>
+			<nav class="topnav">
 				<ul>
 					<ol>
 						<a href="MeiboEntry" class="topmenu">名簿登録</a>
@@ -56,13 +60,14 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
 			<h2>大切な人との、ご縁をつづる。</h2>
 			<p>贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
 		</section>
+		<br><br><br><br>
 
 
 		<footer>
 			<a href="Logoutinfo" "class="logout">ログアウト</a> <br>
 			<p>&copy; team フォレスト</p>
 		</footer>
+	</div>
 </body>
-</div>
 
 </html>
