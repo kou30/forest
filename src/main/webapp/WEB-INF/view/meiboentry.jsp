@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page import="model.UserInfoDto"%>
+<%
+UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
+%>
 
 <%-- 今日の日付を取得 --%>
 <%@ page import="java.time.LocalDate"%>

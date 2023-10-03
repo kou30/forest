@@ -138,7 +138,9 @@ public class MonthView extends HttpServlet {
 				+ "			<img src=\"./images/ENcounter.png\" alt=\"ENcounter\" class=\"img\">\r\n"
 				+ "			<nav class=\"nav\">\r\n"
 				+ "				<ul>\r\n"
-				+ "					<li><p class=\"name\"><%=userInfoOnSession.getUserName()%>さんのページ\r\n"
+				+ "					<li><p class=\"name\">");
+		sb.append(username);
+		sb.append("さんのページ\r\n"
 				+ "						</p></li>\r\n"
 				+ "					<li><a href=\"MainPage\">TOP</a></li>\r\n"
 				+ "					<li><a href=\"MeiboEntry\">名簿登録</a></li>\r\n"
@@ -149,7 +151,7 @@ public class MonthView extends HttpServlet {
 				+ "				</ul>\r\n"
 				+ "			</nav>\r\n"
 				+ "		</div>\r\n"
-				+ "	</header>");		
+				+ "	</header>");	
 		sb.append("<div class=\"image\"><main><p class=WelcomeMessage>");
 		sb.append(username);
 		sb.append("さんのスケジュール帳");

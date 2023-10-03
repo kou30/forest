@@ -10,6 +10,10 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Calendar"%>
 <%@ page import="java.util.Date"%>
+<%@ page import="model.UserInfoDto"%>
+<%
+UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
+%>
 
 <%
 List<ShinamonoDTO> Sdto = (List<ShinamonoDTO>) request.getAttribute("Slist");

@@ -3,6 +3,10 @@
 <%@ page import="model.MeiboDTO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
+<%@ page import="model.UserInfoDto"%>
+<%
+UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
+%>
 
 <%-- 今日の日付を取得 --%>
 <%@ page import="java.time.LocalDate"%>
