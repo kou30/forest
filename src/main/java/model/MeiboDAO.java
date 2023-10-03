@@ -194,8 +194,8 @@ public class MeiboDAO {
 			buf.append("  BIRTHDAY=?,                ");
 			buf.append("  RELATIONSHIP=?, ");
 			buf.append("  MEMO=?,            ");
-			buf.append("  IMAGE=?                ");
-			buf.append("   WHERE MEIBO_ID=?)                     ");
+			buf.append("  IMAGE=? ");
+			buf.append("WHERE MEIBO_ID=?");
 
 			ps = db.prepareStatement(buf.toString());
 			ps.setString(1, dto.getName());

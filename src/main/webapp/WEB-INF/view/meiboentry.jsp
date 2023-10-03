@@ -72,19 +72,33 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 					<input type="radio" name="BUNRUI" value="知人">知人 <input
 						type="radio" name="BUNRUI" value="なし">なし
 				</p>
-				<p>
-					続柄:
-					<%
-				String[] relationships = {"選択なし", "父", "母", "兄", "姉", "弟", "妹", "義父", "義母", "義兄", "義姉", "義弟", "義妹", "義祖父", "義祖母",
-						"義曽祖父", "義曾祖母", "義おじ", "義おば", "義いとこ", "義甥", "義姪", "夫", "妻", "息子", "娘"};
-				%><select name="RELATIONSHIP">
-						<%
-						for (int i = 0; i < relationships.length; i++) {
-						%>
-						<option><%=relationships[i]%></option>
-						<%
-						}
-						%>
+				<p>					続柄: <select name="RELATIONSHIP">
+						<option value="1">選択なし</option>
+						<option value="2">父</option>
+						<option value="3">母</option>
+						<option value="4">兄</option>
+						<option value="5">姉</option>
+						<option value="6">弟</option>
+						<option value="7">妹</option>
+						<option value="8">義父</option>
+						<option value="9">義母</option>
+						<option value="10">義兄</option>
+						<option value="11">義姉</option>
+						<option value="12">義弟</option>
+						<option value="13">義妹</option>
+						<option value="14">義祖父</option>
+						<option value="15">義祖母</option>
+						<option value="16">義曽祖父</option>
+						<option value="17">義曾祖母</option>
+						<option value="18">義おじ</option>
+						<option value="19">義おば</option>
+						<option value="20">義いとこ</option>
+						<option value="21">義甥</option>
+						<option value="22">義姪</option>
+						<option value="23">夫</option>
+						<option value="24">妻</option>
+						<option value="25">息子</option>
+						<option value="26">娘</option>
 					</select>
 				</p>
 				<p>

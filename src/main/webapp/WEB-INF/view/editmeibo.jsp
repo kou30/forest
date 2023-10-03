@@ -116,6 +116,7 @@ if (dto.getImageData() != null) {
 						}
 						%>
 					</select>
+				</p>
 				<p>
 					備考:<br>
 					<textarea name="MEMO" rows="4" cols="50" maxlength="250"><%=dto.getMemo()%></textarea>
