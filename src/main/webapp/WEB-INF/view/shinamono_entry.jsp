@@ -152,7 +152,7 @@ document.getElementById('ShinamonoEntry').addEventListener('submit', function(ev
 
     // 金額のバリデーション
     var kingaku = document.getElementsByName('KINGAKU')[0].value;
-    if (isNaN(kingaku) || kingaku <= 0) {
+    if (isNaN(kingaku) || kingaku >0) {
         alert('金額を正しい形式で入力してください');
         event.preventDefault();
         return;
