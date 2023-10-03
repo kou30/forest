@@ -26,10 +26,6 @@ form>p>input[type="radio"]{
 	font-size:1.5rem;
 }
 
-select[name="RELATIONSHIP"] {
-  width: 100px; 
-  
-}
 input[type="submit"] {
     background-color: #007bff;
     color: white;

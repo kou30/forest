@@ -46,7 +46,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
     <div class="image">
         <main>
             <h2 class="hero">名簿登録フォーム</h2>
-            <form action="MeiboEntry" method="post" enctype="multipart/form-data">
+            <form action="MeiboEntry" ID="MeiboEntry" method="post" enctype="multipart/form-data">
                 <p>
                     <input type="text" name="YOMI" maxlength="10" id="yomiInput" placeholder="よみがな" required>
                 </p>
@@ -153,14 +153,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         resetButton.addEventListener('click', function(event) {
             // リセットボタンがクリックされたときの処理を追加
+            meiboEntryForm.reset();
         });
 
         meiboEntryForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
             // 名前のバリデーション
             var name = document.getElementsByName('NAME')[0].value;
             if (name.trim() === '') {
                 alert('氏名を入力してください');
-                event.preventDefault();
                 return;
             }
 
@@ -168,7 +170,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var birthday = document.getElementsByName('BIRTHDAY')[0].value;
             if (birthday.trim() === '') {
                 alert('成年月日を入力してください');
-                event.preventDefault();
                 return;
             }
 
@@ -176,7 +177,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var sex = document.querySelectorAll('input[name="SEX"]:checked');
             if (sex.length === 0) {
                 alert('性別を選択してください');
-                event.preventDefault();
                 return;
             }
 
@@ -184,7 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var bunrui = document.querySelectorAll('input[name="BUNRUI"]:checked');
             if (bunrui.length === 0) {
                 alert('分類を選択してください');
-                event.preventDefault();
                 return;
             }
 
@@ -192,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var relationship = document.getElementsByName('RELATIONSHIP')[0].value;
             if (relationship === '1') {
                 alert('続柄を選択してください');
-                event.preventDefault();
                 return;
             }
 
@@ -200,17 +198,20 @@ document.addEventListener('DOMContentLoaded', function() {
             var memo = document.getElementsByName('MEMO')[0].value;
             if (memo.length > 100) {
                 alert('備考は100文字以内で入力してください');
-                event.preventDefault();
                 return;
             }
 
-            // 絵文字のバリデーション (必要に応じて実装)
+            // 絵文字のバリデーション
+            var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
+            if (emojiRegex.test(memo)) {
+                alert('備考に絵文字を使用しないでください');
+                return;
+            }
 
-            // その他のバリデーションルールを追加 (必要に応じて実装)
-
-            // バリデーションがすべて成功した場合、フォームが送信されます
+            meiboEntryForm.submit();
         });
     }
 });
 </script>
+
 </html>
