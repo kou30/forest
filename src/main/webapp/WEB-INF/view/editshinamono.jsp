@@ -67,9 +67,9 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 				<!-- 第一分類 -->
 				<p>
 					分類 <select name="BUNRUI" id="bunruiSelect">
-						<option value="0" <%=dto.getBunrui() == 0 ? "checked" : ""%>>選択してください</option>
-						<option value="1" <%=dto.getBunrui() == 1 ? "checked" : ""%>>贈り物</option>
-						<option value="2" <%=dto.getBunrui() == 2 ? "checked" : ""%>>頂き物</option>
+						<option value="0" <%=dto.getBunrui() == 0 ? "selected" : ""%>>選択してください</option>
+						<option value="1" <%=dto.getBunrui() == 1 ? "selected" : ""%>>贈り物</option>
+						<option value="2" <%=dto.getBunrui() == 2 ? "selected" : ""%>>頂き物</option>
 					</select>
 				</p>
 
@@ -77,10 +77,10 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 				<!-- 第二分類 -->
 				<p>
 					項目選択 <select name="CATEGORY" id="nextOptionSelect" disabled>
-						<option value="0" <%=dto.getCategory() == 0 ? "checked" : ""%>>選択してください</option>
-						<option value="1" <%=dto.getCategory() == 1 ? "checked" : ""%>>品物</option>
-						<option value="2" <%=dto.getCategory() == 2 ? "checked" : ""%>>お金</option>
-						<option value="3" <%=dto.getCategory() == 3 ? "checked" : ""%>>手紙など</option>
+						<option value="0" <%=dto.getCategory() == 0 ? "selected" : ""%>>選択してください</option>
+						<option value="1" <%=dto.getCategory() == 1 ? "selected" : ""%>>品物</option>
+						<option value="2" <%=dto.getCategory() == 2 ? "selected" : ""%>>お金</option>
+						<option value="3" <%=dto.getCategory() == 3 ? "selected" : ""%>>手紙など</option>
 					</select>
 				</p>
 
