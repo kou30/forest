@@ -8,8 +8,10 @@
 <%@ page import="java.util.*, java.io.FileOutputStream"%>
 
 <%-- 今日の日付を取得 --%>
-<%@ page import="java.time.LocalDate" %>
-<% LocalDate now = LocalDate.now(); %>
+<%@ page import="java.time.LocalDate"%>
+<%
+LocalDate now = LocalDate.now();
+%>
 
 
 
@@ -28,7 +30,7 @@ if (dto.getImageData() != null) {
 	FileOutputStream outputStream = new FileOutputStream(imageFileName);
 	outputStream.write(dto.getImageData());
 	outputStream.close();
-};
+} ;
 %>
 
 <!DOCTYPE html>
@@ -47,6 +49,8 @@ if (dto.getImageData() != null) {
 			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
 			<nav class="nav">
 				<ul>
+					<li><p class="name"><%=userInfoOnSession.getUserName()%>さんのページ
+						</p></li>
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
@@ -75,11 +79,12 @@ if (dto.getImageData() != null) {
 				</p>
 
 
-				
-				  <p>
-                    <label for="">成年月日:</label>
-                    <input type="date" id="" name="BIRTHDAY" value="<%=sdfInput.format(birthday)%>"  min="1950-01-01" max="<%= now %>" />
-                </p>
+
+				<p>
+					<label for="">成年月日:</label> <input type="date" id=""
+						name="BIRTHDAY" value="<%=sdfInput.format(birthday)%>"
+						min="1950-01-01" max="<%=now%>" />
+				</p>
 
 				<p>
 					性別:<input type="radio" name="SEX" value="1"
@@ -119,7 +124,8 @@ if (dto.getImageData() != null) {
 					<br> 画像を選択：<input id="file-preview" type="file" name="IMAGE"
 						accept="image/png,image/jpeg"
 				</p>
-				<br> <img id="file-preview" src="<%=request.getContextPath()%>/img/image_<%=dto.getMeibo_id()%>.jpg"
+				<br> <img id="file-preview"
+					src="<%=request.getContextPath()%>/img/image_<%=dto.getMeibo_id()%>.jpg"
 					alt="画像プレビュー">
 
 				<script>

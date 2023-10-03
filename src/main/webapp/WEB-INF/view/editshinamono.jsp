@@ -5,8 +5,10 @@
 <%@ page import="model.ShinamonoDTO"%>
 
 <%-- 今日の日付を取得 --%>
-<%@ page import="java.time.LocalDate" %>
-<% LocalDate now = LocalDate.now(); %>
+<%@ page import="java.time.LocalDate"%>
+<%
+LocalDate now = LocalDate.now();
+%>
 
 <%
 ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
@@ -27,6 +29,8 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
 			<nav class="nav">
 				<ul>
+					<li><p class="name"><%=userInfoOnSession.getUserName()%>さんのページ
+						</p></li>
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
@@ -49,10 +53,11 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 					名前:<%=dto.getAite_name()%>
 				</p>
 
-						<p>
-                    <label for="start">贈った、または頂いた日時:</label>
-                    <input type="date" id="inputDate" name="DATE" value="<%=dto.getRe_time()%>" min="1950-01-01" max="<%= now %>" />
-                </p>
+				<p>
+					<label for="start">贈った、または頂いた日時:</label> <input type="date"
+						id="inputDate" name="DATE" value="<%=dto.getRe_time()%>"
+						min="1950-01-01" max="<%=now%>" />
+				</p>
 
 
 				<!-- 第一分類 -->

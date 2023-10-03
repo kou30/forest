@@ -84,15 +84,17 @@ Date now = new Date();
 			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
 			<nav class="nav">
 				<ul>
+					<li><p class="name"><%=userInfoOnSession.getUserName()%>さんのページ
+						</p></li>
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
 					<li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
 					<li><a href="MonthView7">カレンダー</a></li>
-				</div>
-				
-			</div>
-		</ul>
+					<li><a href="Logoutinfo" class="logout">ログアウト</a></li>
+				</ul>
+			</nav>
+		</div>
 	</header>
 	<main>
 		<h2>名簿一覧</h2>

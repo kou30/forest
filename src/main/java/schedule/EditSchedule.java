@@ -159,12 +159,14 @@ public class EditSchedule extends HttpServlet {
 
         sb.append("</head>");
         sb.append("<body>");
-		sb.append("		<header>\r\n"
+		sb.append("	<header>\r\n"
 				+ "		<p class=\"HeaderTagline\">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>\r\n"
 				+ "		<div class=\"container\">\r\n"
 				+ "			<img src=\"./images/ENcounter.png\" alt=\"ENcounter\" class=\"img\">\r\n"
 				+ "			<nav class=\"nav\">\r\n"
 				+ "				<ul>\r\n"
+				+ "					<li><p class=\"name\"><%=userInfoOnSession.getUserName()%>さんのページ\r\n"
+				+ "						</p></li>\r\n"
 				+ "					<li><a href=\"MainPage\">TOP</a></li>\r\n"
 				+ "					<li><a href=\"MeiboEntry\">名簿登録</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllMeibo\">名簿一覧</a></li>\r\n"
