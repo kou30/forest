@@ -35,7 +35,8 @@ public class ShowAllShinamono extends HttpServlet {
 			ShowAllShinamonoBL logic = new ShowAllShinamonoBL();
 			list = logic.executeSelectShinamono(user_nr);
 			request.setAttribute("list", list);
-
+			
+			
 			request.getRequestDispatcher("/WEB-INF/view/showallshinamono.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("Logininfo");

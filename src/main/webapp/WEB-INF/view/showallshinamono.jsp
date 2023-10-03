@@ -3,6 +3,10 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="model.ShinamonoDTO"%>
+<%@ page import="model.UserInfoDto"%>
+<%
+UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
+%>
 
 
 <%!String replaceEscapeChar(String inputText) {
@@ -26,6 +30,9 @@ if (msg != null) {
 }
 %>
 
+<%
+		List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
+		%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -37,12 +44,42 @@ if (msg != null) {
 <title>贈ったモノ・頂いたモノ全件一覧</title>
 </head>
 <body>
+
+<div class="search-area">
+<script src="js/search.js"></script>
+<form action="NarrowDown" method="post">
+  <p>
+					続柄: <selec name="selectedOption">
+						<option value="1">選択なし</option>
+						<option value="2">相手の名前</option>
+						<option value="3">品物送受日</option>
+						<option value="4">詳細項目1</option>
+						<option value="5">詳細項目2</option>
+						<option value="6">品物名</option>
+						<option value="7">金額</option>
+						<option value="8">備考</option>
+					</select>
+				</p>
+		
+    <label>検索</label>
+    <p>
+                    検索欄:<br>
+                    <textarea name="write" rows="１" cols="50" maxlength="250"></textarea>
+                </p>
+    <!-- <input type="number" name="year" id="year" placeholder="絞り込みたい年（数字）"> -->
+    
+    <input type="submit" value="絞り込む" id="button"> 
+</form>
+</div>
+
 	<header>
 		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
 		<div class="container">
 			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
 			<nav class="nav">
 				<ul>
+					<li><p class="name"><%=userInfoOnSession.getUserName()%>さんのページ
+						</p></li>
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
@@ -55,9 +92,7 @@ if (msg != null) {
 	</header>
 	<main>
 		<h2>贈ったモノ</h2>
-		<%
-		List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
-		%>
+		
 
 
 		<table border="1" class="my-table">
@@ -428,5 +463,18 @@ function deleteEvent(shinamonoId){
 
 	}
 }
+</script>
+<script>
+	document.getElementById('ShinamonoEntry')
+			.addEventListener(
+					'submit',
+					function(event) {
+						var selectedValue = document
+								.getElementById('bunruiSelect').value;
+						if (selectedValue === '0') {
+							alert('分類を選択してください');
+							event.preventDefault(); // フォームの送信をキャンセル
+						}
+					});
 </script>
 </html>

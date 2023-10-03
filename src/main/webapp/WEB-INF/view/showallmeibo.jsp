@@ -84,6 +84,8 @@ Date now = new Date();
 			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
 			<nav class="nav">
 				<ul>
+					<li><p class="name"><%=userInfoOnSession.getUserName()%>さんのページ
+						</p></li>
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>

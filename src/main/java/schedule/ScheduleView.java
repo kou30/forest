@@ -117,7 +117,7 @@ import model.UserInfoDto;
         sb.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0.1//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">");
 
         sb.append("<html lang=\"ja\">");
-        sb.append("<head>");
+		sb.append("<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
         sb.append("<meta http-equiv=\"Content-Type\" Content=\"text/html;charset=UTF-8\">");
 
         sb.append("<title>スケジュール登録</title>");
@@ -143,16 +143,22 @@ import model.UserInfoDto;
         sb.append("#contents:after{content:\".\";display:block;height:0;clear:both;visibility:hidden;}");
         sb.append("</style>");
 		sb.append("<link rel=\"stylesheet\" href=\"css/main.css\">");
+		sb.append("<link rel=\"stylesheet\" href=\"css/schedule2.css\">");
+
 
 
         sb.append("</head>");
         sb.append("<body>");
-		sb.append("		<header>\r\n"
+		sb.append("	<header>\r\n"
 				+ "		<p class=\"HeaderTagline\">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>\r\n"
 				+ "		<div class=\"container\">\r\n"
 				+ "			<img src=\"./images/ENcounter.png\" alt=\"ENcounter\" class=\"img\">\r\n"
 				+ "			<nav class=\"nav\">\r\n"
 				+ "				<ul>\r\n"
+				+ "					<li><p class=\"name\">");
+		sb.append(username);
+		sb.append("さんのページ\r\n"
+				+ "						</p></li>\r\n"
 				+ "					<li><a href=\"MainPage\">TOP</a></li>\r\n"
 				+ "					<li><a href=\"MeiboEntry\">名簿登録</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllMeibo\">名簿一覧</a></li>\r\n"
@@ -164,7 +170,7 @@ import model.UserInfoDto;
 				+ "		</div>\r\n"
 				+ "	</header>");
 
-        sb.append("<main><p>");
+        sb.append("<div class=\"image\"><main><p>");
         sb.append(username);
         sb.append("さんのスケジュールです");
         sb.append("</p>");
@@ -362,7 +368,7 @@ import model.UserInfoDto;
 
         sb.append("</div>");
         sb.append("</div>");
-        sb.append("</main></body>");
+        sb.append("</main></div></body>");
         sb.append("</html>");
 
         out.println(new String(sb));
