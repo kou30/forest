@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@ page import="model.UserInfoDto"%>
+    pageEncoding="UTF-8"%>
+<%@ page import="model.UserInfoDto"%>
 <%
 UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
 %>
@@ -51,75 +51,54 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
                     <input type="text" name="YOMI" maxlength="10" id="yomiInput" placeholder="よみがな" required>
                 </p>
 
-				<p>
-					<input type="text" name="NAME" maxlength="10" id="nameInput"
-						placeholder="氏名" required>
-				</p>
+                <p>
+                    <input type="text" name="NAME" maxlength="10" id="nameInput"
+                        placeholder="氏名" required>
+                </p>
 
-				<p>
-					<label for="">成年月日:</label> <input type="date" id=""
-						name="BIRTHDAY" value="2023-09-01" min="1950-01-01"
-						max="<%=now%>" />
-				</p>
+                <p>
+                    <label for="">成年月日:</label> <input type="date" id=""
+                        name="BIRTHDAY" value="2023-09-01" min="1950-01-01"
+                        max="<%=now%>" />
+                </p>
 
-				<p>
-					性別:<input type="radio" name="SEX" value="1" checked>男性<input
-						type="radio" name="SEX" value="2">女性
-				</p>
-				<p>
-					分類: <input type="radio" name="BUNRUI" value="親族" checked>親族
-					<input type="radio" name="BUNRUI" value="知人">知人 <input
-						type="radio" name="BUNRUI" value="なし">なし
-				</p>
-				<p>
-					続柄: <select name="RELATIONSHIP">
-						<option value="1">選択なし</option>
-						<option value="2">父</option>
-						<option value="3">母</option>
-						<option value="4">兄</option>
-						<option value="5">姉</option>
-						<option value="6">弟</option>
-						<option value="7">妹</option>
-						<option value="8">義父</option>
-						<option value="9">義母</option>
-						<option value="10">義兄</option>
-						<option value="11">義姉</option>
-						<option value="12">義弟</option>
-						<option value="13">義妹</option>
-						<option value="14">義祖父</option>
-						<option value="15">義祖母</option>
-						<option value="16">義曽祖父</option>
-						<option value="17">義曾祖母</option>
-						<option value="18">義おじ</option>
-						<option value="19">義おば</option>
-						<option value="20">義いとこ</option>
-						<option value="21">義甥</option>
-						<option value="22">義姪</option>
-						<option value="23">夫</option>
-						<option value="24">妻</option>
-						<option value="25">息子</option>
-						<option value="26">娘</option>
-					</select>
-				</p>
-				<p>
-					備考:<br>
-					<textarea name="MEMO" rows="4" cols="50" maxlength="250"></textarea>
-				</p>
+                <p>
+                    性別:<input type="radio" name="SEX" value="1" checked>男性<input
+                        type="radio" name="SEX" value="2">女性
+                </p>
+                <p>
+                    分類: <input type="radio" name="BUNRUI" value="親族" checked>親族
+                    <input type="radio" name="BUNRUI" value="知人">知人 <input
+                        type="radio" name="BUNRUI" value="なし">なし
+                </p>
+                <p>
+                    続柄: <select name="RELATIONSHIP">
+                        <option value="1">選択なし</option>
+                        <option value="2">父</option>
+                        <option value="3">母</option>
+                        <!-- 続柄のオプションを追加 -->
+                    </select>
+                </p>
+                <p>
+                    備考:<br>
+                    <textarea name="MEMO" rows="4" cols="50" maxlength="250"></textarea>
+                </p>
 
-				<p>
-					画像を選択：<input id="file-sample" type="file" name="IMAGE"
-						accept="image/png,image/jpeg">
-				</p>
-				<br> <img id="file-preview" src="" style="display: none;"
-					alt="画像プレビュー"> <br> <input type="submit" value="名簿登録">
-				<input type="reset" value="入力し直す" id="reset-button">
-			</form>
-		</main>
-		<footer>
-			<script src="js/script.js"></script>
-			<p>&copy; team フォレスト</p>
-		</footer>
-	</div>
+                <p>
+                    画像を選択：<input id="file-sample" type="file" name="IMAGE"
+                        accept="image/png,image/jpeg" required>
+                </p>
+                <p id="file-validation-message" style="color: red;"></p>
+                <br> <img id="file-preview" src="" style="display: none;"
+                    alt="画像プレビュー"> <br> <input type="submit" value="名簿登録">
+                <input type="reset" value="入力し直す" id="reset-button">
+            </form>
+        </main>
+        <footer>
+            <script src="js/script.js"></script>
+            <p>&copy; team フォレスト</p>
+        </footer>
+    </div>
 </body>
 <script src="js/script.js"></script>
 <script>
@@ -127,7 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.getElementById('file-sample');
     const imgPreview = document.getElementById('file-preview');
     const resetButton = document.getElementById('reset-button');
-    const meiboEntryForm = document.getElementById('MeiboEntry');
+    const meiboEntryForm = document.querySelector('form');
+    const fileValidationMessage = document.getElementById('file-validation-message');
 
     if (fileInput && imgPreview && resetButton && meiboEntryForm) {
         fileInput.addEventListener('change', function() {
@@ -140,9 +120,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
 
                 reader.readAsDataURL(fileInput.files[0]);
+                
+                // 画像サイズのバリデーション
+                const fileSize = fileInput.files[0].size; // バイト単位でファイルサイズを取得
+                const maxSize = 5 * 1024 * 1024; // 5MBまで許容
+                if (fileSize > maxSize) {
+                    fileValidationMessage.textContent = '画像のサイズは5MB以下にしてください。';
+                    fileInput.value = ''; // ファイル選択をクリア
+                    imgPreview.src = ''; // 画像プレビューの初期化
+                    imgPreview.style.display = 'none'; // 画像を非表示
+                } else {
+                    fileValidationMessage.textContent = '';
+                }
+                
+                // 画像拡張子のバリデーション
+                const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i; // jpg, jpeg, png形式のファイルを許容
+                const fileName = fileInput.files[0].name;
+                if (!allowedExtensions.exec(fileName)) {
+                    fileValidationMessage.textContent = '画像はjpg, jpeg, png形式のファイルを選択してください。';
+                    fileInput.value = ''; // ファイル選択をクリア
+                    imgPreview.src = ''; // 画像プレビューの初期化
+                    imgPreview.style.display = 'none'; // 画像を非表示
+                } else {
+                    fileValidationMessage.textContent = '';
+                }
             } else {
                 imgPreview.src = ''; // 画像プレビューの初期化
                 imgPreview.style.display = 'none'; // 画像を非表示
+                fileValidationMessage.textContent = '';
             }
         });
 
@@ -151,9 +156,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         meiboEntryForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            return;
-
             // 名前のバリデーション
             var name = document.getElementsByName('NAME')[0].value;
             if (name.trim() === '') {
@@ -194,32 +196,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-
-            // 文字数のバリデーション
+            // 備考のバリデーション
+            var memo = document.getElementsByName('MEMO')[0].value;
             if (memo.length > 100) {
                 alert('備考は100文字以内で入力してください');
                 event.preventDefault();
                 return;
             }
 
+            // 絵文字のバリデーション (必要に応じて実装)
 
-            // 絵文字のバリデーション
-            var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
-            if (emojiRegex.test(memo) || emojiRegex.test(memo)) {
-                alert('品目名と備考に絵文字を使用しないでください');
-                event.preventDefault();
-                return;
-            }
+            // その他のバリデーションルールを追加 (必要に応じて実装)
 
-
+            // バリデーションがすべて成功した場合、フォームが送信されます
         });
     }
-    // ここで他のバリデーションルールを追加
-
-    // バリデーションが成功した場合、フォームが送信されます
 });
 </script>
-
-
-
 </html>
