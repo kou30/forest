@@ -98,5 +98,6 @@
       amountField.style.display = 'none'; // 第二セレクト変更時に金額コメント欄を非表示に
     }
   });
+  
 });
 

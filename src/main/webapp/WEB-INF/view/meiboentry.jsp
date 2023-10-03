@@ -1,50 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="model.MeiboDTO"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List"%>
 
 <%-- 今日の日付を取得 --%>
 <%@ page import="java.time.LocalDate" %>
 <% LocalDate now = LocalDate.now(); %>
 
+<%
+MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
+%>
 <!DOCTYPE html>
 <html lang="ja">
-<head class=header>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/shinamonoentry.css">
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/meiboentry.css">
 <title>名簿登録</title>
 </head>
 <body>
     <header>
-        <ul>
-            <p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
-            <nav>
-                <div class="nav">
-                    <img src="./images/ENcounter.png" alt="ENcounter" class="img">
-                    <div class="menu">
-                        <li><a href="MainPage">TOP</a></li>
-                        <li><a href="MeiboEntry">名簿登録</a></li>
-                        <li><a href="ShowAllMeibo">名簿一覧</a></li>
-                        <li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
-                        <li><a href="MonthView7">カレンダー</a></li>
-                        <li><a href="Logoutinfo" class="logout">ログアウト</a></li>
-                    </div>
-                <!-- logout ga motomoto arimasita	 -->
-                </div>
+        <p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
+        <div class="container">
+            <img src="./images/ENcounter.png" alt="ENcounter" class="img">
+            <nav class="nav">
+                <ul>
+                    <li><a href="MainPage">TOP</a></li>
+                    <li><a href="MeiboEntry">名簿登録</a></li>
+                    <li><a href="ShowAllMeibo">名簿一覧</a></li>
+                    <li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
+                    <li><a href="MonthView7">カレンダー</a></li>
+                    <li><a href="Logoutinfo" class="logout">ログアウト</a></li>
+                </ul>
             </nav>
-        </ul>
+        </div>
     </header>
     <div class="image">
         <main>
             <h2 class="hero">名簿登録フォーム</h2>
             <form action="MeiboEntry" method="post" enctype="multipart/form-data">
                 <p>
-                    <input type="text" name="YOMI" maxlength="10" id="yomiInput"
-                        placeholder="よみがな" required>
+                    <input type="text" name="YOMI" maxlength="10" id="yomiInput" placeholder="よみがな" required>
                 </p>
 
                 <p>
-                    <input type="text" name="NAME" maxlength="10" id="nameInput"
-                        placeholder="氏名" required>
+                    <input type="text" name="NAME" maxlength="10" id="nameInput" placeholder="氏名" required>
                 </p>
 
                 <p>
@@ -53,13 +54,11 @@
                 </p>
 
                 <p>
-                    性別:<input type="radio" name="SEX" value="1" checked>男性<input
-                        type="radio" name="SEX" value="2">女性
+                    性別:<input type="radio" name="SEX" value="1" checked>男性<input type="radio" name="SEX" value="2">女性
                 </p>
                 <p>
                     分類: <input type="radio" name="BUNRUI" value="親族" checked>親族
-                    <input type="radio" name="BUNRUI" value="知人">知人 <input
-                        type="radio" name="BUNRUI" value="なし">なし
+                    <input type="radio" name="BUNRUI" value="知人">知人 <input type="radio" name="BUNRUI" value="なし">なし
                 </p>
                 <p>
                     続柄: <select name="RELATIONSHIP">
@@ -93,16 +92,14 @@
                 </p>
                 <p>
                     備考:<br>
-                    <textarea name="MEMO" rows="4" cols="50" maxlength="250"></textarea>
+                    <textarea name="MEMO" rows="4" cols="50" maxlength="250" required></textarea>
                 </p>
 
                 <p>
-                    画像を選択：<input id="file-sample" type="file" name="IMAGE"
-                        accept="image/png,image/jpeg">
+                    画像を選択：<input id="file-sample" type="file" name="IMAGE" accept="image/png,image/jpeg">
                 </p>
-                <br> <img id="file-preview" src=""  style="display:none;" alt="画像プレビュー"> <br>
-                <input type="submit" value="名簿登録"> <input type="reset"
-                    value="入力し直す" id="reset-button">
+                <br> <img id="file-preview" src="" style="display:none;" alt="画像プレビュー"> <br>
+                <input type="submit" value="名簿登録"> <input type="reset" value="入力し直す" id="reset-button">
             </form>
         </main>
         <footer>
@@ -111,27 +108,105 @@
         </footer>
     </div>
 </body>
-
+<script src="js/script.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const fileInput = document.getElementById('file-sample');
-        const imgPreview = document.getElementById('file-preview');
-        const resetButton = document.getElementById('reset-button');		
+document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('file-sample');
+    const imgPreview = document.getElementById('file-preview');
+    const resetButton = document.getElementById('reset-button');
+    const meiboEntryForm = document.getElementById('MeiboEntry');
 
-        if (fileInput && imgPreview  && resetButton) {
-            fileInput.addEventListener('change', function() {
-                if (fileInput.files && fileInput.files[0]) {
-                    const reader = new FileReader();
+    if (fileInput && imgPreview && resetButton && meiboEntryForm) {
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
 
-                    reader.onload = function(e) {
-                        imgPreview.src = e.target.result;
-                        imgPreview.style.display = 'block'; // 画像を表示
-                    };
+                reader.onload = function(e) {
+                    imgPreview.src = e.target.result;
+                    imgPreview.style.display = 'block'; // 画像を表示
+                };
 
-                    reader.readAsDataURL(fileInput.files[0]);
-                } else {
-                    imgPreview.src = ''; // 画像プレビューの初期化
-                    imgPreview.style.display = 'none'; // 画像を非表示
-                }
-            });
-            resetButton.addEventListener('click', function
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                imgPreview.src = ''; // 画像プレビューの初期化
+                imgPreview.style.display = 'none'; // 画像を非表示
+            }
+        });
+
+        resetButton.addEventListener('click', function(event) {
+            // リセットボタンがクリックされたときの処理を追加
+        });
+
+        meiboEntryForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            return;
+
+            // 名前のバリデーション
+            var name = document.getElementsByName('NAME')[0].value;
+            if (name.trim() === '') {
+                alert('氏名を入力してください');
+                event.preventDefault();
+                return;
+            }
+
+            // 成年月日のバリデーション
+            var birthday = document.getElementsByName('BIRTHDAY')[0].value;
+            if (birthday.trim() === '') {
+                alert('成年月日を入力してください');
+                event.preventDefault();
+                return;
+            }
+
+            // 性別のバリデーション
+            var sex = document.querySelectorAll('input[name="SEX"]:checked');
+            if (sex.length === 0) {
+                alert('性別を選択してください');
+                event.preventDefault();
+                return;
+            }
+
+            // 分類のバリデーション
+            var bunrui = document.querySelectorAll('input[name="BUNRUI"]:checked');
+            if (bunrui.length === 0) {
+                alert('分類を選択してください');
+                event.preventDefault();
+                return;
+            }
+
+            // 続柄のバリデーション
+            var relationship = document.getElementsByName('RELATIONSHIP')[0].value;
+            if (relationship === '1') {
+                alert('続柄を選択してください');
+                event.preventDefault();
+                return;
+            }
+
+
+            // 文字数のバリデーション
+            if (memo.length > 100) {
+                alert('備考は100文字以内で入力してください');
+                event.preventDefault();
+                return;
+            }
+
+
+            // 絵文字のバリデーション
+            var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
+            if (emojiRegex.test(memo) || emojiRegex.test(memo)) {
+                alert('品目名と備考に絵文字を使用しないでください');
+                event.preventDefault();
+                return;
+            }
+
+
+        });
+    }
+    // ここで他のバリデーションルールを追加
+
+    // バリデーションが成功した場合、フォームが送信されます
+});
+</script>
+
+
+
+</html>

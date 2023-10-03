@@ -76,13 +76,24 @@ public class MeiboEntry extends HttpServlet {
 		dto.setRelationship(relationship);
 		dto.setMemo(memo);
 		dto.setImageData(image);
+	
+			
 		InsertMeiboBL logic = new InsertMeiboBL();
-		boolean successInsert = logic.executeInsertMeibo(dto);
-		if (successInsert) {
-			response.sendRedirect("html/finish.html");
-		} else {
+			boolean succesInsert = logic.executeInsertMeibo(dto);
 
-			response.sendRedirect("html/error.html");
+			if (succesInsert) {
+			    // DB登録に成功した場合、回答完了画面（finish.html）にリダイレクト
+			    response.sendRedirect("html/finish.html");
+			} else {
+			    // DB登録に失敗した場合、エラーメッセージを設定して、入力画面にフォワード
+			    String errorMessage = "データベースへの登録に失敗しました。"; // エラーメッセージを設定
+
+			    // エラーメッセージをリクエスト属性にセット
+			    request.setAttribute("errorMessage", errorMessage);
+
+			    // 入力画面にフォワード
+			    RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/view/meiboentry.jsp");
+			    dispatch.forward(request, response);
 		}
 
 	}
