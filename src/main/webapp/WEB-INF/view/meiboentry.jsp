@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="model.UserInfoDto"%>
 <%
 UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
@@ -22,196 +22,228 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/shinamonoentry.css">
+<link rel="stylesheet" href="css/meiboentry.css">
 <link rel="stylesheet" href="css/main.css">
 <title>名簿登録</title>
 </head>
 <body>
-    <header>
-        <p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
-        <div class="container">
-            <img src="./images/ENcounter.png" alt="ENcounter" class="img">
-            <nav class="nav">
-                <ul>
-                    <li><a href="MainPage">TOP</a></li>
-                    <li><a href="MeiboEntry">名簿登録</a></li>
-                    <li><a href="ShowAllMeibo">名簿一覧</a></li>
-                    <li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
-                    <li><a href="MonthView7">カレンダー</a></li>
-                    <li><a href="Logoutinfo" class="logout">ログアウト</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <div class="image">
-        <main>
-            <h2 class="hero">名簿登録フォーム</h2>
-            <form action="MeiboEntry" ID="MeiboEntry" method="post" enctype="multipart/form-data">
-                <p>
-                    <input type="text" name="YOMI" maxlength="10" id="yomiInput" placeholder="よみがな" required>
-                </p>
+	<header>
+		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
+		<div class="container">
+			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
+			<nav class="nav">
+				<ul>
+					<li><a href="MainPage">TOP</a></li>
+					<li><a href="MeiboEntry">名簿登録</a></li>
+					<li><a href="ShowAllMeibo">名簿一覧</a></li>
+					<li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
+					<li><a href="MonthView7">カレンダー</a></li>
+					<li><a href="Logoutinfo" class="logout">ログアウト</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="image">
+		<main>
+			<h2 class="hero">名簿登録フォーム</h2>
+			<form action="MeiboEntry" ID="MeiboEntry" method="post"
+				enctype="multipart/form-data">
+				<p>
+					<input type="text" name="YOMI" maxlength="10" id="yomiInput"
+						placeholder="よみがな" required>
+				</p>
 
-                <p>
-                    <input type="text" name="NAME" maxlength="10" id="nameInput"
-                        placeholder="氏名" required>
-                </p>
+				<p>
+					<input type="text" name="NAME" maxlength="10" id="nameInput"
+						placeholder="氏名" required>
+				</p>
 
-                <p>
-                    <label for="">成年月日:</label> <input type="date" id=""
-                        name="BIRTHDAY" value="2023-09-01" min="1950-01-01"
-                        max="<%=now%>" />
-                </p>
+				<p>
+					<label for="">成年月日:</label> <input type="date" id=""
+						name="BIRTHDAY" value="2023-09-01" min="1950-01-01" max="<%=now%>" />
+				</p>
 
-                <p>
-                    性別:<input type="radio" name="SEX" value="1" checked>男性<input
-                        type="radio" name="SEX" value="2">女性
-                </p>
-                <p>
-                    分類: <input type="radio" name="BUNRUI" value="親族" checked>親族
-                    <input type="radio" name="BUNRUI" value="知人">知人 <input
-                        type="radio" name="BUNRUI" value="なし">なし
-                </p>
-                <p>
-                    続柄: <select name="RELATIONSHIP">
-                        <option value="1">選択なし</option>
-                        <option value="2">父</option>
-                        <option value="3">母</option>
-                        <!-- 続柄のオプションを追加 -->
-                    </select>
-                </p>
-                <p>
-                    備考:<br>
-                    <textarea name="MEMO" rows="4" cols="50" maxlength="250"></textarea>
-                </p>
+				<p>
+					性別:<input type="radio" name="SEX" value="1" checked>男性<input
+						type="radio" name="SEX" value="2">女性
+				</p>
+				<p>
+					分類: <input type="radio" name="BUNRUI" value="親族" checked>親族
+					<input type="radio" name="BUNRUI" value="知人">知人 <input
+						type="radio" name="BUNRUI" value="なし">なし
+				</p>
+				<p>
+					続柄:
+					<%
+				String[] relationships = {"選択なし", "父", "母", "兄", "姉", "弟", "妹", "義父", "義母", "義兄", "義姉", "義弟", "義妹", "義祖父", "義祖母",
+						"義曽祖父", "義曾祖母", "義おじ", "義おば", "義いとこ", "義甥", "義姪", "夫", "妻", "息子", "娘"};
+				%><select name="RELATIONSHIP">
+						<%
+						for (int i = 0; i < relationships.length; i++) {
+						%>
+						<option><%=relationships[i]%></option>
+						<%
+						}
+						%>
+					</select>
+				</p>
+				<p>
+					備考:<br>
+					<textarea name="MEMO" rows="4" cols="50" maxlength="250"></textarea>
+				</p>
 
-                <p>
-                    画像を選択：<input id="file-sample" type="file" name="IMAGE"
-                        accept="image/png,image/jpeg" required>
-                </p>
-                <p id="file-validation-message" style="color: red;"></p>
-                <br> <img id="file-preview" src="" style="display: none;"
-                    alt="画像プレビュー"> <br> <input type="submit" value="名簿登録">
-                <input type="reset" value="入力し直す" id="reset-button">
-            </form>
-        </main>
-        <footer>
-            <script src="js/script.js"></script>
-            <p>&copy; team フォレスト</p>
-        </footer>
-    </div>
+				<p>
+					画像を選択：<input id="file-sample" type="file" name="IMAGE"
+						accept="image/png,image/jpeg" required>
+				</p>
+				<p id="file-validation-message" style="color: red;"></p>
+				<br> <img id="file-preview" src="" style="display: none;"
+					alt="画像プレビュー"> <br> <input type="submit" value="名簿登録">
+				<input type="reset" value="入力し直す" id="reset-button">
+			</form>
+		</main>
+		<footer>
+			<script src="js/script.js"></script>
+			<p>&copy; team フォレスト</p>
+		</footer>
+	</div>
 </body>
 <script src="js/script.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const fileInput = document.getElementById('file-sample');
-    const imgPreview = document.getElementById('file-preview');
-    const resetButton = document.getElementById('reset-button');
-    const meiboEntryForm = document.querySelector('form');
-    const fileValidationMessage = document.getElementById('file-validation-message');
+	document
+			.addEventListener(
+					'DOMContentLoaded',
+					function() {
+						const fileInput = document
+								.getElementById('file-sample');
+						const imgPreview = document
+								.getElementById('file-preview');
+						const resetButton = document
+								.getElementById('reset-button');
+						const meiboEntryForm = document.querySelector('form');
+						const fileValidationMessage = document
+								.getElementById('file-validation-message');
 
-    if (fileInput && imgPreview && resetButton && meiboEntryForm) {
-        fileInput.addEventListener('change', function() {
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
+						if (fileInput && imgPreview && resetButton
+								&& meiboEntryForm) {
+							fileInput
+									.addEventListener(
+											'change',
+											function() {
+												if (fileInput.files
+														&& fileInput.files[0]) {
+													const reader = new FileReader();
 
-                reader.onload = function(e) {
-                    imgPreview.src = e.target.result;
-                    imgPreview.style.display = 'block'; // 画像を表示
-                };
+													reader.onload = function(e) {
+														imgPreview.src = e.target.result;
+														imgPreview.style.display = 'block'; // 画像を表示
+													};
 
-                reader.readAsDataURL(fileInput.files[0]);
-                
-                // 画像サイズのバリデーション
-                const fileSize = fileInput.files[0].size; // バイト単位でファイルサイズを取得
-                const maxSize = 5 * 1024 * 1024; // 5MBまで許容
-                if (fileSize > maxSize) {
-                    fileValidationMessage.textContent = '画像のサイズは5MB以下にしてください。';
-                    fileInput.value = ''; // ファイル選択をクリア
-                    imgPreview.src = ''; // 画像プレビューの初期化
-                    imgPreview.style.display = 'none'; // 画像を非表示
-                } else {
-                    fileValidationMessage.textContent = '';
-                }
-                
-                // 画像拡張子のバリデーション
-                const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i; // jpg, jpeg, png形式のファイルを許容
-                const fileName = fileInput.files[0].name;
-                if (!allowedExtensions.exec(fileName)) {
-                    fileValidationMessage.textContent = '画像はjpg, jpeg, png形式のファイルを選択してください。';
-                    fileInput.value = ''; // ファイル選択をクリア
-                    imgPreview.src = ''; // 画像プレビューの初期化
-                    imgPreview.style.display = 'none'; // 画像を非表示
-                } else {
-                    fileValidationMessage.textContent = '';
-                }
-            } else {
-                imgPreview.src = ''; // 画像プレビューの初期化
-                imgPreview.style.display = 'none'; // 画像を非表示
-                fileValidationMessage.textContent = '';
-            }
-        });
+													reader
+															.readAsDataURL(fileInput.files[0]);
 
-        resetButton.addEventListener('click', function(event) {
-            // リセットボタンがクリックされたときの処理を追加
-            meiboEntryForm.reset();
-        });
+													// 画像サイズのバリデーション
+													const fileSize = fileInput.files[0].size; // バイト単位でファイルサイズを取得
+													const maxSize = 5 * 1024 * 1024; // 5MBまで許容
+													if (fileSize > maxSize) {
+														fileValidationMessage.textContent = '画像のサイズは5MB以下にしてください。';
+														fileInput.value = ''; // ファイル選択をクリア
+														imgPreview.src = ''; // 画像プレビューの初期化
+														imgPreview.style.display = 'none'; // 画像を非表示
+													} else {
+														fileValidationMessage.textContent = '';
+													}
 
-        meiboEntryForm.addEventListener('submit', function(event) {
-            event.preventDefault();
+													// 画像拡張子のバリデーション
+													const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i; // jpg, jpeg, png形式のファイルを許容
+													const fileName = fileInput.files[0].name;
+													if (!allowedExtensions
+															.exec(fileName)) {
+														fileValidationMessage.textContent = '画像はjpg, jpeg, png形式のファイルを選択してください。';
+														fileInput.value = ''; // ファイル選択をクリア
+														imgPreview.src = ''; // 画像プレビューの初期化
+														imgPreview.style.display = 'none'; // 画像を非表示
+													} else {
+														fileValidationMessage.textContent = '';
+													}
+												} else {
+													imgPreview.src = ''; // 画像プレビューの初期化
+													imgPreview.style.display = 'none'; // 画像を非表示
+													fileValidationMessage.textContent = '';
+												}
+											});
 
-            // 名前のバリデーション
-            var name = document.getElementsByName('NAME')[0].value;
-            if (name.trim() === '') {
-                alert('氏名を入力してください');
-                return;
-            }
+							resetButton.addEventListener('click', function(
+									event) {
+								// リセットボタンがクリックされたときの処理を追加
+								meiboEntryForm.reset();
+							});
 
-            // 成年月日のバリデーション
-            var birthday = document.getElementsByName('BIRTHDAY')[0].value;
-            if (birthday.trim() === '') {
-                alert('成年月日を入力してください');
-                return;
-            }
+							meiboEntryForm
+									.addEventListener(
+											'submit',
+											function(event) {
+												event.preventDefault();
 
-            // 性別のバリデーション
-            var sex = document.querySelectorAll('input[name="SEX"]:checked');
-            if (sex.length === 0) {
-                alert('性別を選択してください');
-                return;
-            }
+												// 名前のバリデーション
+												var name = document
+														.getElementsByName('NAME')[0].value;
+												if (name.trim() === '') {
+													alert('氏名を入力してください');
+													return;
+												}
 
-            // 分類のバリデーション
-            var bunrui = document.querySelectorAll('input[name="BUNRUI"]:checked');
-            if (bunrui.length === 0) {
-                alert('分類を選択してください');
-                return;
-            }
+												// 成年月日のバリデーション
+												var birthday = document
+														.getElementsByName('BIRTHDAY')[0].value;
+												if (birthday.trim() === '') {
+													alert('成年月日を入力してください');
+													return;
+												}
 
-            // 続柄のバリデーション
-            var relationship = document.getElementsByName('RELATIONSHIP')[0].value;
-            if (relationship === '1') {
-                alert('続柄を選択してください');
-                return;
-            }
+												// 性別のバリデーション
+												var sex = document
+														.querySelectorAll('input[name="SEX"]:checked');
+												if (sex.length === 0) {
+													alert('性別を選択してください');
+													return;
+												}
 
-            // 備考のバリデーション
-            var memo = document.getElementsByName('MEMO')[0].value;
-            if (memo.length > 100) {
-                alert('備考は100文字以内で入力してください');
-                return;
-            }
+												// 分類のバリデーション
+												var bunrui = document
+														.querySelectorAll('input[name="BUNRUI"]:checked');
+												if (bunrui.length === 0) {
+													alert('分類を選択してください');
+													return;
+												}
 
-            // 絵文字のバリデーション
-            var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
-            if (emojiRegex.test(memo)) {
-                alert('備考に絵文字を使用しないでください');
-                return;
-            }
+												// 続柄のバリデーション
+												var relationship = document
+														.getElementsByName('RELATIONSHIP')[0].value;
+												if (relationship === '1') {
+													alert('続柄を選択してください');
+													return;
+												}
 
-            meiboEntryForm.submit();
-        });
-    }
-});
+												// 備考のバリデーション
+												var memo = document
+														.getElementsByName('MEMO')[0].value;
+												if (memo.length > 100) {
+													alert('備考は100文字以内で入力してください');
+													return;
+												}
+
+												// 絵文字のバリデーション
+												var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
+												if (emojiRegex.test(memo)) {
+													alert('備考に絵文字を使用しないでください');
+													return;
+												}
+
+												meiboEntryForm.submit();
+											});
+						}
+					});
 </script>
 
 </html>
