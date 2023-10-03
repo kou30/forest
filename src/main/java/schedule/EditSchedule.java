@@ -126,7 +126,7 @@ public class EditSchedule extends HttpServlet {
         sb.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0.1//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">");
 
         sb.append("<html lang=\"ja\">");
-        sb.append("<head>");
+		sb.append("<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
         sb.append("<meta http-equiv=\"Content-Type\" Content=\"text/html;charset=UTF-8\">");
 
         sb.append("<title>スケジュール変更</title>");
@@ -152,6 +152,9 @@ public class EditSchedule extends HttpServlet {
         sb.append("#contents:after{content:\".\";display:block;height:0;clear:both;visibility:hidden;}");
         sb.append("</style>");
 		sb.append("<link rel=\"stylesheet\" href=\"css/main.css\">");
+		sb.append("<link rel=\"stylesheet\" href=\"css/schedule2.css\">");
+
+
 
 
         sb.append("</head>");
@@ -173,7 +176,7 @@ public class EditSchedule extends HttpServlet {
 				+ "		</div>\r\n"
 				+ "	</header>");
 
-        sb.append("<main><p>");
+        sb.append("<div class=\"image\"><main><p>");
         sb.append(username);
         sb.append("さんのスケジュールです");
         sb.append("</p>");
@@ -573,7 +576,7 @@ sb.append("<input type=\"submit\" name=\"Register\" value=\"変更する\">");
         sb.append("</div>");
         sb.append("</div>");
 
-        sb.append("</main></body>");
+        sb.append("</main></div></body>");
         sb.append("</html>");
 
         out.println(new String(sb));

@@ -54,3 +54,7 @@ textarea{
     height     : 180px; 
     object-fit: contain;
 }
+
+@media(max-width:767px){
+
+}

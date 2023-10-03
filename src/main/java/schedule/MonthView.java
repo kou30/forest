@@ -107,7 +107,7 @@ public class MonthView extends HttpServlet {
 		sb.append("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.0.1//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">");
 
 		sb.append("<html lang=\"ja\">");
-		sb.append("<head>");
+		sb.append("<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
 		sb.append("<meta http-equiv=\"Content-Type\" Content=\"text/html;charset=UTF-8\">");
 		sb.append("<link rel=\"stylesheet\" href=\"css/Schedul.css\">");
 		sb.append("<link rel=\"stylesheet\" href=\"css/main.css\">");
@@ -147,8 +147,8 @@ public class MonthView extends HttpServlet {
 				+ "				</ul>\r\n"
 				+ "			</nav>\r\n"
 				+ "		</div>\r\n"
-				+ "	</header>");		sb.append("<main><p class=WelcomeMessage>");
-	
+				+ "	</header>");		
+		sb.append("<div class=\"image\"><main><p class=WelcomeMessage>");
 		sb.append(username);
 		sb.append("さんのスケジュール帳");
 		sb.append("</p>");
@@ -189,7 +189,7 @@ public class MonthView extends HttpServlet {
 
 		sb.append("</table>");
 
-		sb.append("</body>");
+		sb.append("</div></body>");
 		sb.append("</html>");
 
 		out.println(new String(sb));
@@ -330,17 +330,14 @@ public class MonthView extends HttpServlet {
 		/* 今月が何曜日から開始されているか確認する */
 		calendar.set(year, month, 1);
 		int startWeek = calendar.get(Calendar.DAY_OF_WEEK);
-		System.out.println("今月の曜日は" + startWeek + "から");
 
 		/* 先月が何日までだったかを確認する */
 		calendar.set(year, month, 0);
 		int beforeMonthlastDay = calendar.get(Calendar.DATE);
-		System.out.println("先月は" + beforeMonthlastDay + "日まで");
 
 		/* 今月が何日までかを確認する */
 		calendar.set(year, month + 1, 0);
 		int thisMonthlastDay = calendar.get(Calendar.DATE);
-		System.out.println("今月は" + thisMonthlastDay + "日まで\r\n");
 
 		/* 先月分の日付を格納する */
 		for (int i = startWeek - 2; i >= 0; i--) {
