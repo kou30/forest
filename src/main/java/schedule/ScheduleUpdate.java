@@ -1,3 +1,24 @@
+/** 
+ * Filename: ScheduleUpdate.java 
+ * 
+ * Description: 
+ * このクラスは、「EditSchedule」(再編集)から受け取ったパラメーターを
+ * SQLの「shinamono」テーブルへ再挿入し直す
+ * 
+ * 
+ * Author: kuroda yukie 
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+
+
 package schedule;
 
 
@@ -15,7 +36,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-	@WebServlet("/ScheduleUpdate1")
+	@WebServlet("/ScheduleUpdate")
 	public class ScheduleUpdate extends HttpServlet {
 	    protected Connection conn = null;
 

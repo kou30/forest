@@ -1,3 +1,26 @@
+/** 
+ * Filename: DeleteCheck.java 
+ * 
+ * Description: 
+ * このクラスは、カレンダーの1件分削除を最終確認し
+ *商品一覧ページの削除対象行１件分のパラメーター
+ *（int id、String starttime、String endtime、String schedule）と
+ *セッション「user_nr」をdogetで利用し、
+ *「ScheduleDelete」(SQL「schedule」削除機能)へ遷移する機能
+ *
+ * 
+ * Author: kuroda yukie 
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+
 package schedule;
 
 
@@ -20,7 +43,7 @@ import javax.servlet.http.HttpSession;
 import model.UserInfoDto;
 
 
-	@WebServlet("/DeleteCheck2")
+	@WebServlet("/DeleteCheck")
 	public class DeleteCheck extends HttpServlet {
 	    protected Connection conn = null;
 

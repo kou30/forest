@@ -1,13 +1,29 @@
-////新しく「EditSchedule」サーブレットを作成します。パラメータとしては「id」カラムの情報を受け取ります。
-////
-////
-////パラメータとして受け取った「id」から登録済みのスケジュールの情報を取り出し、フォームの初期値として表示します。修正した内容でスケジュールを変更するにはフォームのボタンから「SheduleUpdate」サーブレットを呼び出します。
-////
-////SQL文がINSERTの替わりにUPDATEに変更になっている点を除けば基本的な構成は「ScheduleInsert」サーブレットとほぼ同じです。
-////
-//
-//
-//
+/** 
+ * Filename: EditSchedule.java 
+ * 
+ * Description: 
+ * このクラスは、カレンダーの1件分編集機能を提供するためのものです。 
+ *商品一覧ページの編集対象行１件分のパラメーター
+ *（int year、int month、int day、nt currentscheduleid、
+ *	String currentStartTime、String currentEndTime、
+ *	String currentSchedule、String currentMemo、String param）と
+ *セッション「user_nr」をdogetで利用し、SQLの「shinamono」テーブルから
+ *対象の行を再表示・編集した内容を保存する
+ *
+ * 
+ * Author: kuroda yukie 
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+
+
 package schedule;
 
 import java.io.IOException;
@@ -28,7 +44,7 @@ import javax.servlet.http.HttpSession;
 
 import model.UserInfoDto;
 
-@WebServlet("/EditSchedule2")
+@WebServlet("/EditSchedule")
 public class EditSchedule extends HttpServlet {
 	protected Connection conn = null;
 
