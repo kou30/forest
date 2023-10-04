@@ -1,3 +1,20 @@
+/** 
+* Filename: ShinamonoDTO.java
+* 
+* Description: 
+* このクラスは、名簿情報の各フィールドを保持し、
+* セッターゲッターを提供します。
+* 商品情報には、品物ID、ユーザー番号、名簿ID、相手名、記録日時、
+* 分類、カテゴリ、アイテム、商品名、商品金額、メモが含まれています。
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
 package model;
 
 public class ShinamonoDTO {

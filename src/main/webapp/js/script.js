@@ -1,3 +1,16 @@
+/** 
+* Filename: script.js
+* 
+* Description: 
+* このjsファイルは品物の選択肢の機能を提供するためのものです。
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
 
   const bunruiSelect = document.getElementById('bunruiSelect');
   const nextOptionSelect = document.getElementById('nextOptionSelect');
