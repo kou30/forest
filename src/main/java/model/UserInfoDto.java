@@ -1,17 +1,29 @@
+/** 
+* Filename: UserInfoDto.java
+* 
+* Description: 
+* このクラスは、ユーザー情報の各フィールドを保持し、
+* セッターゲッターを提供します。
+* ユーザー情報には、ユーザー番号、ユーザーID、
+* ユーザー名、ユーザーパスワードが含まれています。
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
 package model;
 
 
-
-/**----------------------------------------------------------------------*
- *■■■UserInfoDtoクラス■■■
- *概要：DTO（「user_info」テーブル）
- *----------------------------------------------------------------------**/
 public class UserInfoDto {
 
 	//----------------------------------------------------------------
 	//フィールド
 	//----------------------------------------------------------------
-	private int user_nr;
+	private int user_nr;		//ユーザー番号
 	private String userId;         //ユーザーID
 	private String userName;       //ユーザー名
 	private String passWord;       //ユーザーパスワード

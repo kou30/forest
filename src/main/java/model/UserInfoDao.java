@@ -1,3 +1,18 @@
+/** 
+* Filename: UserInfoDao.java
+* 
+* Description: 
+* このクラスは、データベースとのやり取りを担当し、
+* ユーザ情報の操作（選択、挿入）を行うためのメソッドを提供します。  
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
 package model;
 
 import java.sql.Connection;

@@ -1,3 +1,17 @@
+/** 
+* Filename: finish.css
+* 
+* Description: 
+* このcssファイルは、finish.jspのstyleを提供するためのものです。 
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
 @charset "UTF-8";
 h1 {
   text-align: center; 
