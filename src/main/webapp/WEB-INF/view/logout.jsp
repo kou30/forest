@@ -1,3 +1,25 @@
+<!--
+/** 
+ * Filename: logout.jsp
+ * 
+ * Description: 
+ * このJSPは、「Logoutinfo.java」が実行されセッションが破棄され、
+ *このJSPへ遷移しログアウト完了
+ * 
+ * 
+ * Author: tanaka kotaro
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
