@@ -1,3 +1,31 @@
+<!--
+/** 
+ * Filename: login.jsp
+ * 
+ * Description: 
+ * このJSPは、「Logininfo.java」からこのJSPへ遷移し、
+ *①サインアップリンクで「ExecuteSignup.java」へ遷移し、
+ 　新しくログイン会員登録をする
+ 
+ *②既に会員登録している場合は、ユーザーIDとパスワードを入力し、
+ * SQL「user_info」テーブルに登録しているユーザーIDとパスワードと
+   一致するか確認。「SignupBL.java」へ処理が移る
+ * 
+ * 
+ * Author: tanaka kotaro
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+ -->
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 

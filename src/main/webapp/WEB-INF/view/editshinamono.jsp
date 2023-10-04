@@ -1,3 +1,26 @@
+<!--
+/** 
+ * Filename: editshinamono.jsp
+ * 
+ * Description: 
+ * このJSPは、「ExecuteEditShinamono.java」からこのJSPへ遷移し、既にSQL「shinamono」テーブルに
+ *登録されている情報を呼び出し、再編集後「UpdateShinamonoBL」へ処理が移り、
+ *SQL「shinamono」テーブルへ上書き登録をする
+ * 
+ * 
+ * Author: morioka shogo
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
