@@ -4,7 +4,7 @@
  * 
  * Description: 
  * このクラスは、「NewSchedule」から受け取ったパラメーターを
- * SQLの「shinamono」テーブルへ挿入する
+ * SQLの「schedule」テーブルへ挿入する
  * 
  * 
  * Author: kuroda yukie 
@@ -181,7 +181,7 @@ public class ScheduleInsert extends HttpServlet {
 
         /* 日付が不正な値で来た場合はパラメータ無しで「MonthView」へリダイレクトする */
         if (year == -999 || month == -999 || day == -999){
-            res.sendRedirect("MonthView7");
+            res.sendRedirect("MonthView");
         }
         String dateStr = year + "-" + month + "-" + day;
 
@@ -219,7 +219,7 @@ public class ScheduleInsert extends HttpServlet {
         }
 
         StringBuffer sb = new StringBuffer();
-        sb.append("MonthView7");
+        sb.append("MonthView");
         sb.append("?YEAR=");
         sb.append(year);
         sb.append("&MONTH=");

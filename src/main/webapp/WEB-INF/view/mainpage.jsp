@@ -71,7 +71,7 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
 						<a href="ShowAllShinamono" class="topmenu">贈り物・貰い物一覧</a>
 					</ol>
 					<ol>
-						<a href="MonthView7" class="topmenu">カレンダー</a>
+						<a href="MonthView" class="topmenu">カレンダー</a>
 					</ol>
 				</ul>
 			</nav>

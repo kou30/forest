@@ -4,20 +4,20 @@
  * Description: 
  * このクラスは、
  * ●カレンダー1カ月分の表フォーマットを表示し
- * 	ログイン日に合わせ今月がいつのか判断し日付と曜日を表示する
+ * 	ログイン日に合わせ今月がいつなのか判断し日付と曜日を表示する
  * 
- * ●「createMonthLink」クラスで前月と翌月のリンクを押すと、
+ * ●「createMonthLink」メソッドで前月と翌月のリンクを押すと、
  * 	　対応する日付と曜日を表示
  * 
- * ●「isLeapYear」で閏年か判断し2月末日の日付を調整する
+ * ●「isLeapYear」メソッドで閏年か判断し2月末日の日付を調整する
  * 
- * ●「createScheduleStr」
- * 	①新規スケジュール(「NewSchedule6」)へのリンクを作成
+ * ●「createScheduleStr」メソッド
+ * 	①新規スケジュール(「NewSchedule」)のタグを作成
  * 	　対象月の日付枠にしか編集リンクを表示させない
  * 
  * 	②SQLの「meibo」テーブルの誕生日を利用し、該当月日に
  * 	 「○○さんの誕生日」と該当月のカレンダーを開く毎に
- * 	  SQLから読み取り表示
+ * 	  SQLから読み取りカレンダーに自動表示
  * 
  * 	③SQLから「schedule」テーブルのログイン者が登録したスケジュールの
  * 	　表示対象月分を読み取りカレンダーへ表示
@@ -189,7 +189,7 @@ public class MonthView extends HttpServlet {
 				+ "					<li><a href=\"MeiboEntry\">名簿登録</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllMeibo\">名簿一覧</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a></li>\r\n"
-				+ "					<li><a href=\"MonthView7\">カレンダー</a></li>\r\n"
+				+ "					<li><a href=\"MonthView\">カレンダー</a></li>\r\n"
 				+ "					<li><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></li>\r\n"
 				+ "				</ul>\r\n"
 				+ "			</nav>\r\n"
@@ -254,7 +254,7 @@ public class MonthView extends HttpServlet {
 				sb.append("<td class=\"sche\"></td>");
 			} else {
 				sb.append("<td class=\"sche\">");
-				sb.append("<a href=\"NewSchedule6");
+				sb.append("<a href=\"NewSchedule");
 
 				/* パラメータの作成 */
 				sb.append("?YEAR=");
@@ -344,7 +344,7 @@ public class MonthView extends HttpServlet {
 							sb.append(endtime.substring(0, 5));
 							sb.append(" ");
 						}
-						sb.append("<a href=\"ScheduleView2?ID=");
+						sb.append("<a href=\"ScheduleView?ID=");
 						sb.append(id);
 						sb.append("\">");
 						sb.append(schedule);
@@ -410,7 +410,7 @@ public class MonthView extends HttpServlet {
 
 		sb.append("<p class=\"monthNext\">");
 
-		sb.append("<a href=\"MonthView7?YEAR=");
+		sb.append("<a href=\"MonthView?YEAR=");
 		sb.append(year);
 		sb.append("&MONTH=");
 		sb.append(month - 1);
@@ -421,7 +421,7 @@ public class MonthView extends HttpServlet {
 		sb.append(month + 1);
 		sb.append("月  ");
 
-		sb.append("<a href=\"MonthView7?YEAR=");
+		sb.append("<a href=\"MonthView?YEAR=");
 		sb.append(year);
 		sb.append("&MONTH=");
 		sb.append(month + 1);

@@ -3,7 +3,7 @@
  * 
  * Description: 
  * このクラスは、「EditSchedule」(再編集)から受け取ったパラメーターを
- * SQLの「shinamono」テーブルへ再挿入し直す
+ * SQLの「schedul」テーブルへ上書き登録する
  * 
  * 
  * Author: kuroda yukie 
@@ -190,7 +190,7 @@ import javax.servlet.http.HttpServletResponse;
 
 	        /* IDや日付が不正な値で来た場合はパラメータ無しで「MonthView」へリダイレクトする */
 	        if (id == -999 || year == -999 || month == -999 || day == -999){
-	            res.sendRedirect("MonthView6");
+	            res.sendRedirect("MonthView");
 	        }
 	        String dateStr = year + "-" + month + "-" + day;
 
@@ -222,7 +222,7 @@ import javax.servlet.http.HttpServletResponse;
 	        }
 
 	        StringBuffer sb = new StringBuffer();
-	        sb.append("ScheduleView2");
+	        sb.append("ScheduleView");
 	        sb.append("?ID=");
 	        sb.append(id);
 	        res.sendRedirect(new String(sb));

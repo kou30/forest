@@ -8,7 +8,8 @@
  *	String currentStartTime、String currentEndTime、
  *	String currentSchedule、String currentMemo、String param）と
  *セッション「user_nr」をdogetで利用し、SQLの「shinamono」テーブルから
- *対象の行を再表示・編集した内容を保存する
+ *対象の行を再表示、その後編集した内容を「ScheduleUpdate.java」へパラメーターを
+ *渡し上書き保存させる
  *
  * 
  * Author: kuroda yukie 
@@ -184,7 +185,7 @@ public class EditSchedule extends HttpServlet {
 				+ "					<li><a href=\"MeiboEntry\">名簿登録</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllMeibo\">名簿一覧</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a></li>\r\n"
-				+ "					<li><a href=\"MonthView7\">カレンダー</a></li>\r\n"
+				+ "					<li><a href=\"MonthView\">カレンダー</a></li>\r\n"
 				+ "					<li><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></li>\r\n"
 				+ "				</ul>\r\n"
 				+ "			</nav>\r\n"
@@ -198,7 +199,7 @@ public class EditSchedule extends HttpServlet {
 
 		sb.append("<p>");
 		sb.append("スケジュールの変更  ");
-		sb.append("[<a href=\"ScheduleView2?ID=");
+		sb.append("[<a href=\"ScheduleView?ID=");
 		sb.append(currentscheduleid);
 		sb.append("\">スケジュール表示に戻る</a>]");
 		sb.append("</p>");
@@ -231,7 +232,7 @@ public class EditSchedule extends HttpServlet {
 					widthArray[0] = 1;
 
 					StringBuffer sbSchedule = new StringBuffer();
-					sbSchedule.append("<a href=\"ScheduleView2?ID=");
+					sbSchedule.append("<a href=\"ScheduleView?ID=");
 					sbSchedule.append(id);
 					sbSchedule.append("\">");
 					sbSchedule.append(schedule);
@@ -275,7 +276,7 @@ public class EditSchedule extends HttpServlet {
 						sbSchedule.append(":");
 						sbSchedule.append(endMinuteStr);
 						sbSchedule.append(" ");
-						sbSchedule.append("<a href=\"ScheduleView2?ID=");
+						sbSchedule.append("<a href=\"ScheduleView?ID=");
 						sbSchedule.append(id);
 						sbSchedule.append("\">");
 						sbSchedule.append(schedule);
@@ -348,7 +349,7 @@ public class EditSchedule extends HttpServlet {
 
 		sb.append("<div id=\"right\">");
 
-		sb.append("<form method=\"post\" action=\"ScheduleUpdate1\">");
+		sb.append("<form method=\"post\" action=\"ScheduleUpdate\">");
 		sb.append("<table>");
 		sb.append("<tr>");
 
