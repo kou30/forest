@@ -6,7 +6,7 @@
  *商品一覧ページの削除対象行１件分のパラメーター
  *（int id、String starttime、String endtime、String schedule）と
  *セッション「user_nr」をdogetで利用し、
- *「ScheduleDelete」(SQL「schedule」削除機能)へ遷移する機能
+ *「ScheduleDelete.java」(SQL「schedule」削除機能)へ遷移する機能
  *
  * 
  * Author: kuroda yukie 

@@ -4,7 +4,7 @@
  * Description: 
  * このクラスは、
  * ①「MonthView」(対象月のカレンダーTOPページ)で　
- * 　登録済のスケジュールリンクをクリックし SQLの「shinamono」テーブルから
+ * 　登録済のスケジュールリンクをクリックし SQLの「Schedule」テーブルから
  * 　詳細情報を取得表示
  * ②「ScheduleView」内に編集「ScheduleUpdate」・削除「DeleteCheck」ボタンで
  * 	　各処理へパラメーターを渡す
