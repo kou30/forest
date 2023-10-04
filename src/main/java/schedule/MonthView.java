@@ -1,3 +1,46 @@
+/** 
+ * Filename: MonthView.java 
+ * 
+ * Description: 
+ * このクラスは、
+ * ●カレンダー1カ月分の表フォーマットを表示し
+ * 	ログイン日に合わせ今月がいつのか判断し日付と曜日を表示する
+ * 
+ * ●「createMonthLink」クラスで前月と翌月のリンクを押すと、
+ * 	　対応する日付と曜日を表示
+ * 
+ * ●「isLeapYear」で閏年か判断し2月末日の日付を調整する
+ * 
+ * ●「createScheduleStr」
+ * 	①新規スケジュール(「NewSchedule6」)へのリンクを作成
+ * 	　対象月の日付枠にしか編集リンクを表示させない
+ * 
+ * 	②SQLの「meibo」テーブルの誕生日を利用し、該当月日に
+ * 	 「○○さんの誕生日」と該当月のカレンダーを開く毎に
+ * 	  SQLから読み取り表示
+ * 
+ * 	③SQLから「schedule」テーブルのログイン者が登録したスケジュールの
+ * 	　表示対象月分を読み取りカレンダーへ表示
+ * 
+ *  ④ログイン者が登録したスケジュールをクリックすると
+ *   「ScheduleView」(スケジュール詳細確認、削除・編集確認画面)へ遷移
+ *   
+ *  ⑤「createMonthLink」メソッドで今月は何月か何日から何日まであるか確認
+ *     前月・当月・翌月の情報を読み取っておく
+
+ * 
+ * Author: kuroda yukie 
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+
 package schedule;
 
 import java.io.IOException;
@@ -18,7 +61,7 @@ import javax.servlet.http.HttpSession;
 
 import model.UserInfoDto;
 
-@WebServlet("/MonthView7")
+@WebServlet("/MonthView")
 public class MonthView extends HttpServlet {
 	protected Connection conn = null;
 
@@ -389,6 +432,7 @@ public class MonthView extends HttpServlet {
 		return (new String(sb));
 	}
 
+//	閏年か判断↓
 	public static boolean isLeapYear(int year) {
 		return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 	}

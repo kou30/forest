@@ -1,3 +1,27 @@
+/** 
+ * Filename: ScheduleView.java 
+ * 
+ * Description: 
+ * このクラスは、
+ * ①「MonthView」(対象月のカレンダーTOPページ)で　
+ * 　登録済のスケジュールリンクをクリックし SQLの「shinamono」テーブルから
+ * 　詳細情報を取得表示
+ * ②「ScheduleView」内に編集「ScheduleUpdate」・削除「DeleteCheck」ボタンで
+ * 	　各処理へパラメーターを渡す
+ * 
+ * 
+ * Author: kuroda yukie 
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+
 package schedule;
 
 
@@ -20,7 +44,7 @@ import javax.servlet.http.HttpSession;
 import model.UserInfoDto;
 
 
-	@WebServlet("/ScheduleView2")
+	@WebServlet("/ScheduleView")
 	public class ScheduleView extends HttpServlet {
 	    protected Connection conn = null;
 

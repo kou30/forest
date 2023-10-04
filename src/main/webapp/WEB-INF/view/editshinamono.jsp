@@ -76,7 +76,7 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 
 				<!-- 第二分類 -->
 				<p>
-					項目選択 <select name="CATEGORY" id="nextOptionSelect" disabled>
+					項目選択 <select name="CATEGORY" id="nextOptionSelect" >
 						<option value="0" <%=dto.getCategory() == 0 ? "selected" : ""%>>選択してください</option>
 						<option value="1" <%=dto.getCategory() == 1 ? "selected" : ""%>>品物</option>
 						<option value="2" <%=dto.getCategory() == 2 ? "selected" : ""%>>お金</option>
@@ -87,7 +87,7 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 
 				<!-- 第三分類 -->
 				<p>
-					詳細項目選択 <select name="ITEM" id="thirdOptionSelect" disabled>
+					詳細項目選択 <select name="ITEM" id="thirdOptionSelect">
 						<option value="0">選択してください</option>
 					</select>
 				</p>

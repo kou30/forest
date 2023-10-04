@@ -1,3 +1,23 @@
+
+/** 
+ * Filename: NewSchedule.java 
+ * 
+ * Description: 
+ * このクラスは、新規スケジュールの入力フォーマットに記入した内容の
+ * パラメーターを「ScheduleInsert」(SQLへの登録処理)へ渡す
+ * 
+ * 
+ * Author: kuroda yukie 
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
 package schedule;
 
 import java.io.IOException;
@@ -19,7 +39,7 @@ import javax.servlet.http.HttpSession;
 import model.UserInfoDto;
 
 
-	@WebServlet("/NewSchedule6")
+	@WebServlet("/NewSchedule")
 	public class NewSchedule extends HttpServlet {
 	    protected Connection conn = null;
 

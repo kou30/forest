@@ -1,3 +1,25 @@
+
+/** 
+ * Filename: ScheduleDelete.java 
+ * 
+ * Description: 
+ * このクラスは、「DeleteCheck」(削除確認ページ)から
+ * カレンダーの1件分削除対象情報を受け取り、 
+ * SQLの「shinamono」テーブルから対象の行を削除する
+ * 
+ * 
+ * Author: kuroda yukie 
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+
 package schedule;
 
 
@@ -16,7 +38,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-	@WebServlet("/ScheduleDelete1")
+	@WebServlet("/ScheduleDelete")
 	public class ScheduleDelete extends HttpServlet {
 	    protected Connection conn = null;
 

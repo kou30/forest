@@ -1,4 +1,24 @@
 
+/** 
+ * Filename: ScheduleInsert.java 
+ * 
+ * Description: 
+ * このクラスは、「NewSchedule」から受け取ったパラメーターを
+ * SQLの「shinamono」テーブルへ挿入する
+ * 
+ * 
+ * Author: kuroda yukie 
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+
 package schedule;
 
 import java.io.IOException;
@@ -18,7 +38,7 @@ import javax.servlet.http.HttpSession;
 import model.UserInfoDto;
 
 
-@WebServlet("/ScheduleInsert3")
+@WebServlet("/ScheduleInsert")
 public class ScheduleInsert extends HttpServlet {
     protected Connection conn = null;
 
