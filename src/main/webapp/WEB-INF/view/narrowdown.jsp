@@ -1,3 +1,26 @@
+<!--
+/** 
+ * Filename: narrowdown.jsp
+ * 
+ * Description: 「showallshinamono.jsp」左上検索画面の絞り込むをクリックすると
+ *「NarrowDown.java」が実行され、商品一覧をさらに検索条件で絞り込んだ結果が
+ * 遷移後のこのページ(narrowdown.jsp)に表示される
+
+ * 
+ * Author: morioka shogo
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+ -->
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>

@@ -1,3 +1,26 @@
+<!--
+/** 
+ * Filename:signup.jsp
+ * 
+ * Description: 「login.jsp」の「サインアップ」リンクが押されたら、
+ *「ExecuteSingnup.java」が実行され、このページ「signup.jsp」へ遷移する
+ * 新規ログインユーザー情報を入力し、そのパラメーターを
+ *「SignupBL.java」へ送りSQL「user_info」へ登録させる
+ * 
+ * Author:tanaka kotaro
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+ -->
+
+
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>

@@ -1,3 +1,24 @@
+<!--
+/** 
+ * Filename: mainpage.jsp
+ * 
+ * Description: 
+ * logininfoでユーザーIDとパスワードを確認後「MainPage.java」が
+ *実行されこのJSP(mainpage.jsp)へ遷移する
+ * 
+ * Author: nagai kosuke
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="model.UserInfoDto"%>
