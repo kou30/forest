@@ -1,3 +1,16 @@
+/**
+ * Filename: Logoutinfo.java
+ *
+ * Description:
+ * このクラスは,doGetリクエストでセッションを削除し、logout.jspにフォワード機能を提供するためのものです。
+ *
+ * Author: morioka shougo 
+ * Creation Date: 2023-10-4
+ * 
+ * Copyright (C) 2023 KEG forest All rights reserved.
+ *
+ *
+ */
 package controller;
 
 

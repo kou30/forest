@@ -1,3 +1,17 @@
+/**
+ * Filename: ExcuteDeleteMeibo.java
+ *
+ * Description:
+ * このクラスは、ShowAllMeibo.jspにフォワードと「1件削除しました」を変数msgに入れ
+ * JSPに渡すためリクエストスコープで格納する機能を提供するためのものです。
+ *
+ * Author: morioka shougo 
+ * Creation Date: 2023-10-4
+ * 
+ * Copyright (C) 2023 KEG forest All rights reserved.
+ *
+ *
+ */
 package controller;
 
 import java.io.IOException;
@@ -13,9 +27,6 @@ import javax.servlet.http.HttpSession;
 import model.MeiboDAO;
 import model.UserInfoDto;
 
-/**
- * Servlet implementation class ExecuteDeleteMeibo
- */
 @WebServlet("/ExecuteDeleteMeibo")
 public class ExecuteDeleteMeibo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -1,3 +1,22 @@
+/**
+ * Filename: ExecuteEditMeibo.java
+ *
+ * Description:
+ * このクラスは、dogetリクエストでeditmeibo.jspにフォワードと
+ * MEIBO_IDを取得しExecuteSelectMeiboBLに送りデータベースから返された情報を
+ * JSPに渡すためリクエストスコープ格納する。
+ * 
+ * doPostリクエストでgetParameterで取得した情報をMeiboDTOに格納して
+ * MeiboBLに送りデータベースに情報が更新の可否情報が返された場合、
+ * できた場合finish.htmlにリダイレクト、できなかった場合error.htmlにリダイレクトする機能を提供するためのものです。
+ *
+ * Author: morioka shougo 
+ * Creation Date: 2023-10-4
+ * 
+ * Copyright (C) 2023 KEG forest All rights reserved.
+ *
+ *
+ */
 package controller;
 
 import java.io.IOException;
@@ -18,9 +37,7 @@ import model.MeiboDTO;
 import model.UpdateMeiboBL;
 import model.UserInfoDto;
 
-/**
- * Servlet implementation class ExecuteEditMeibo
- */
+
 @MultipartConfig
 @WebServlet("/ExecuteEditMeibo")
 public class ExecuteEditMeibo extends HttpServlet {

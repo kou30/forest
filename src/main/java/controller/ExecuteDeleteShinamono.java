@@ -1,3 +1,20 @@
+/**
+ * Filename: ExecuteDeleteShinamono.java
+ *
+ * Description:
+ *  * このクラスは、条件分岐でpageIDが2Detail.jspにフォワードし２以外の場合は
+ *  ShowAllShinamono.jspにフォワードします。
+ * 「1件削除しました」を変数msgに入れJSPに渡すためリクエストスコープで格納する機能を提供するためのものです。
+ *
+ * Author: morioka shougo 
+ * Creation Date: 2023-10-4
+ * 
+ * Copyright (C) 2023 KEG forest All rights reserved.
+ *
+ *
+ */
+
+
 package controller;
 
 import java.io.IOException;

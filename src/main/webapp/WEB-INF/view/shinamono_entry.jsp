@@ -23,6 +23,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 
 </head>
 <body>
+
 	<header>
 		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
 		<div class="container">

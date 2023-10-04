@@ -1,3 +1,23 @@
+/**
+ * Filename:ShinamonoEntry.java
+ *
+ * Description:
+ * このクラスは、doGetリクエストでユーザ情報（userInfoOnSession）がある場合ExecuteSelectMeiboBL
+ * にgetParameterで取得したMEIBO_IDを送りDBから返ってきた情報をリクエストスコープにセットして
+ * shinamono_entry.jspにフォワードする。
+ *情報がない場合はLogininfo.jspにフォワードする。
+ *
+ * doPostリクエストでgetParameterで取得した情報をShinamonoDTOにセットInsertShinamonoBLに送り
+ * DB追加の可否で条件分岐がありできた場合finish.htmlにリダイレクト
+ * できなかった場合ポップアップメッセージを表示して、編集画面にとどまる機能を提供するためのものです。
+ *
+ * Author: morioka shougo 
+ * Creation Date: 2023-10-4
+ * 
+ * Copyright (C) 2023 KEG forest All rights reserved.
+ *
+ *
+ */
 package controller;
 
 import java.io.IOException;
