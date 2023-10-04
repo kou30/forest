@@ -1,3 +1,19 @@
+/** 
+* Filename: MeiboDAO.java
+* 
+* Description: 
+* このクラスは、データベースとのやり取りを担当し、
+* 名簿情報の操作（挿入、選択、更新、削除）を行うためのメソッドを提供します。  
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
+
 package model;
 
 import java.sql.Connection;
@@ -194,8 +210,8 @@ public class MeiboDAO {
 			buf.append("  BIRTHDAY=?,                ");
 			buf.append("  RELATIONSHIP=?, ");
 			buf.append("  MEMO=?,            ");
-			buf.append("  IMAGE=?                ");
-			buf.append("   WHERE MEIBO_ID=?)                     ");
+			buf.append("  IMAGE=? ");
+			buf.append("WHERE MEIBO_ID=?");
 
 			ps = db.prepareStatement(buf.toString());
 			ps.setString(1, dto.getName());

@@ -1,9 +1,23 @@
+/** 
+* Filename: editmeibo.css
+* 
+* Description: 
+* このcssファイルは、editmeibo.jspのstyleを提供するためのものです。 
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
 @charset "UTF-8";
 
 .image{
  	background-image: url(../images/haru.jpg);
     background-repeat: no-repeat;
-   	background-size: 100% auto;
+   	background-size: cover;
  	margin: 0;
     padding: 0;
     display: flex;

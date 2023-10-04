@@ -1,0 +1,33 @@
+/** 
+* Filename: schedule2.css
+* 
+* Description: 
+* このcssファイルは、スケジュールのstyleを提供するためのものです。 
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
+@charset "UTF-8";
+
+@media(max-width:767px){
+	.WelcomeMessage {
+		transform: translateX(0%);
+		font-size:15px;
+		align-items: center;
+    	text-align: center;
+	}
+	.monthNext {
+	    transform: translateX(0%);
+		font-size:15px;
+		align-items: center;
+    	text-align: center;
+	}
+	.p{
+		font-size:7px;
+		}
+	}

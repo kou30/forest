@@ -1,3 +1,19 @@
+/** 
+* Filename: ShinamonoDAO.java
+* 
+* Description: 
+* このクラスは、データベースとのやり取りを担当し、
+* 品物情報の操作（挿入、選択、更新、削除）を行うためのメソッドを提供します。  
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
+
 package model;
 
 import java.sql.Connection;

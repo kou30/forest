@@ -1,3 +1,19 @@
+/** 
+* Filename: InsertShinamonoBL.java
+* 
+* Description: 
+* このクラスは、品物情報を登録するためのメソッドを定義しています。
+* 引数品物DTOを取り、DAOクラスを利用してデータベースに品物データを登録し、
+* DB操作フラグ（true/false)を返します。
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-01 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
 package model;
 
 public class InsertShinamonoBL {
@@ -9,7 +25,6 @@ public class InsertShinamonoBL {
 		//データベースへの接続を実施
 		//-------------------------------------------
 
-		//DAOクラスをインスタンス化＆対象のユーザーデータを登録するよう依頼
 		ShinamonoDAO dao = new ShinamonoDAO();
 		succesInsert = dao.doInsertShinamono(dto);
 

@@ -3,10 +3,16 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="model.ShinamonoDTO"%>
+<%@ page import="model.UserInfoDto"%>
+<%
+UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
+%>
 
 <%-- 今日の日付を取得 --%>
-<%@ page import="java.time.LocalDate" %>
-<% LocalDate now = LocalDate.now(); %>
+<%@ page import="java.time.LocalDate"%>
+<%
+LocalDate now = LocalDate.now();
+%>
 
 <%
 ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
@@ -27,6 +33,8 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
 			<nav class="nav">
 				<ul>
+					<li><p class="name"><%=userInfoOnSession.getUserName()%>さんのページ
+						</p></li>
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
@@ -49,18 +57,19 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 					名前:<%=dto.getAite_name()%>
 				</p>
 
-						<p>
-                    <label for="start">贈った、または頂いた日時:</label>
-                    <input type="date" id="inputDate" name="DATE" value="<%=dto.getRe_time()%>" min="1950-01-01" max="<%= now %>" />
-                </p>
+				<p>
+					<label for="start">贈った、または頂いた日時:</label> <input type="date"
+						id="inputDate" name="DATE" value="<%=dto.getRe_time()%>"
+						min="1950-01-01" max="<%=now%>" />
+				</p>
 
 
 				<!-- 第一分類 -->
 				<p>
 					分類 <select name="BUNRUI" id="bunruiSelect">
-						<option value="0" <%=dto.getBunrui() == 0 ? "checked" : ""%>>選択してください</option>
-						<option value="1" <%=dto.getBunrui() == 1 ? "checked" : ""%>>贈り物</option>
-						<option value="2" <%=dto.getBunrui() == 2 ? "checked" : ""%>>頂き物</option>
+						<option value="0" <%=dto.getBunrui() == 0 ? "selected" : ""%>>選択してください</option>
+						<option value="1" <%=dto.getBunrui() == 1 ? "selected" : ""%>>贈り物</option>
+						<option value="2" <%=dto.getBunrui() == 2 ? "selected" : ""%>>頂き物</option>
 					</select>
 				</p>
 
@@ -68,10 +77,10 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 				<!-- 第二分類 -->
 				<p>
 					項目選択 <select name="CATEGORY" id="nextOptionSelect" disabled>
-						<option value="0" <%=dto.getCategory() == 0 ? "checked" : ""%>>選択してください</option>
-						<option value="1" <%=dto.getCategory() == 1 ? "checked" : ""%>>品物</option>
-						<option value="2" <%=dto.getCategory() == 2 ? "checked" : ""%>>お金</option>
-						<option value="3" <%=dto.getCategory() == 3 ? "checked" : ""%>>手紙など</option>
+						<option value="0" <%=dto.getCategory() == 0 ? "selected" : ""%>>選択してください</option>
+						<option value="1" <%=dto.getCategory() == 1 ? "selected" : ""%>>品物</option>
+						<option value="2" <%=dto.getCategory() == 2 ? "selected" : ""%>>お金</option>
+						<option value="3" <%=dto.getCategory() == 3 ? "selected" : ""%>>手紙など</option>
 					</select>
 				</p>
 

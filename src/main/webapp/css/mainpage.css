@@ -1,12 +1,31 @@
+/** 
+* Filename: mainpage.css
+* 
+* Description: 
+* このcssファイルは、mainpage.jspのstyleを提供するためのものです。 
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
 @charset "UTF-8";
 .image{
 	background-image: url(../images/mori.jpg);
 	background-repeat: no-repeat;
+	background-size: cover;
 	margin: 0;
     padding: 0;
-   	background-size: 130% ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100% auto ;
+    height: cover;
    	font-family: 'Noto Serif JP', serif;
-   	background-position:50% 0%;
    	background-attachment: fixed;
 }
 .en{
@@ -41,16 +60,16 @@ footer{
 }
 
 a{
-  padding: 0 10px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
-  background-position: 0 0;
-  background-size: 200% auto;
-  transition: .3s;
+  	padding: 0 10px;
+  	background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
+  	background-position: 0 0;
+  	background-size: 200% auto;
+  	transition: .3s;
 }
 
 a:hover{
-  background-position: -100% 0;
-  color: #fff;
+  	background-position: -100% 0;
+  	color: #fff;
 }
 @media(max-width:767px){
 	.image {
@@ -58,11 +77,11 @@ a:hover{
 	   	text-align:center
 	}
 	.en{
-  	font-size: 60px;
-}
-.topnav{
+  		font-size: 60px;
+	}
+	.topnav{
 	    flex-direction: column;
-}
+	}
 	.topnav ul {
 		flex-wrap: wrap;
 		padding: 0.4px;
@@ -71,4 +90,6 @@ a:hover{
 	.topmenu{
 			font-size: 20px;
 			}
-	ol{padding:10px
+	ol{
+	padding:10px
+	}

@@ -119,22 +119,19 @@ public class ShinamonoEntry extends HttpServlet {
 		boolean succesInsert = logic.executeInsertShinamono(dto);
 
 		if (succesInsert) {
-		    // DB登録に成功した場合、回答完了画面（finish.html）を表示する
+		    // DB登録に成功した場合、回答完了画面（finish.html）にリダイレクト
 		    response.sendRedirect("html/finish.html");
-	
-		
-	} else {
-		
-	    // DB登録に失敗した場合、ポップアップメッセージを表示して、編集画面にとどまる
-	    String errorMessage = "エラー"; // 表示したいエラーメッセージ
+		} else {
+		    // DB登録に失敗した場合、エラーメッセージを設定して、入力画面にフォワード
+		    String errorMessage = "データベースへの登録に失敗しました。"; // エラーメッセージを設定
 
-		request.setAttribute("errorMessage", errorMessage);
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
+		    // エラーメッセージをリクエスト属性にセット
+		    request.setAttribute("errorMessage", errorMessage);
 
-	    // ポップアップメッセージを表示するJavaScriptを生成
-	    String jsScript = "<script>alert(\"" + errorMessage.replace("\"", "\\\"").replace("\n", "\\n") + "\"); history.go(-1);</script>";
-	    response.getWriter().write(jsScript);
+		    // 入力画面にフォワード
+		    RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/view/shinamono_entry.jsp");
+		    dispatch.forward(request, response);
+		
 	}
 
 	}

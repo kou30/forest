@@ -1,33 +1,47 @@
+/** 
+* Filename: Schdul.css
+* 
+* Description: 
+* このcssファイルは、MonthViewのstyleを提供するためのものです。 
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
+@charset "UTF-8";
+
+
 .WelcomeMessage {
-    transform: translateX(43%);
+    transform: translateX(40%);
     font-size: 150%;
+   	margin: 0;
+    padding: 20px;
     font-family: "Yu Mincho", "Hiragino Mincho Pro", serif;
     font-weight: bold; /* 太字に設定 */
     color: rgb(0, 128, 0); /* 明るめの緑色のRGB値 */
 }
 
-
-body{
-	background-repeat: no-repeat;
-	
-	
-  background-image: url(../images/haikei2.png);
+.image{
+	background-image: url(../images/haikei2.png);
     background-repeat: repeat;
-   background-size: 100% auto;
-   padding:50px ;
-   }
-
-   
-
-    
+    background-size: cover;
+	margin: 0;
+    padding: 0;
+    height: 100% auto;
+    background-attachment: fixed;
+}
     
         table{
-  transform: translateX(12%);
+  transform: translateX(10%);
 }
 
 
 .monthNext{
-	transform: translateX(45%);
+	transform: translateX(42%);
 	 font-weight: bold; 
 	 font-size:30px;
 }
@@ -40,3 +54,21 @@ body{
 	  background-color: rgba(0, 0, 255, 0.5);
 
 }
+
+@media(max-width:767px){
+	.WelcomeMessage {
+		transform: translateX(0%);
+		font-size:15px;
+		align-items: center;
+    	text-align: center;
+	}
+	.monthNext {
+	    transform: translateX(0%);
+		font-size:15px;
+		align-items: center;
+    	text-align: center;
+	}
+	.sche{
+		font-size:5px;
+		}
+	}

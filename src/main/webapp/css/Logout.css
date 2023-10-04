@@ -1,9 +1,23 @@
+/** 
+* Filename: Logout.css
+* 
+* Description: 
+* このcssファイルは、Logout.jspのstyleを提供するためのものです。 
+* 
+* Author: nagai kosuke 
+* Creation Date: 2023-10-04 
+* 
+* Copyright (C) 2023 Forest All rights reserved. 
+* 
+* 
+*/
+
 @charset "UTF-8";
 body{
 	text-align: center;
 	background-image: url(../images/mori.jpg);
     background-repeat: no-repeat;
-   	background-size: 100% auto;/*�摜�̑傫������*/
+   	background-size: cover;
    	vertical-align:center;
 }
 
@@ -41,4 +55,10 @@ a:hover{
   background-position: -100% 0;
   color: #fff;
 }
+
+@media(max-width:767px){
+	body {
+	   	background-size: auto ;
+	   	text-align:center
+	}
 
