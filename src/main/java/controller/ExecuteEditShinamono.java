@@ -1,3 +1,22 @@
+/**
+ * Filename: ExecuteEditshinamono.java
+ *
+ * Description:
+ * このクラスは、dogetリクエストでeditshinamono.jspにフォワードと
+ * IDを取得しExecuteSelectShinamonoBLに送りデータベースから返された情報を
+ * JSPに渡すため変数shinamonoに入れリクエストスコープに格納する。
+ * 
+ * doPostリクエストでgetParameterで取得した情報をShinamonoDTOに格納して
+ * UpdateShinamonoBLに送りデータベースに情報が更新された場合
+ * finish.htmlにリダイレクト、できなかった場合error.htmlにリダイレクトする機能を提供するためのものです。
+ *
+ * Author: morioka shougo 
+ * Creation Date: 2023-10-4
+ * 
+ * Copyright (C) 2023 KEG forest All rights reserved.
+ *
+ *
+ */
 package controller;
 
 import java.io.IOException;
@@ -15,9 +34,7 @@ import model.ShinamonoDTO;
 import model.UpdateShinamonoBL;
 import model.UserInfoDto;
 
-/**
- * Servlet implementation class ExecuteEdit
- */
+
 @WebServlet("/ExecuteEditShinamono")
 public class ExecuteEditShinamono extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,7 +62,7 @@ public class ExecuteEditShinamono extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");	
 		int shinamono_id = Integer.parseInt(request.getParameter("SHINAMONO_ID"));
 
-	    String date = request.getParameter("DATE"); // "date"はパラメータ名。適切に変更してください。
+	    String date = request.getParameter("DATE"); 
 		if ("".equals(date)) {
 			date = null;
 		}
@@ -92,12 +109,12 @@ public class ExecuteEditShinamono extends HttpServlet {
 		boolean succesInsert = logic.executeUpdateShinamono(dto);
 
 		if (succesInsert) {
-			//DB登録に成功した場合、回答完了画面（finish.html）を表示する
+			
 			response.sendRedirect("html/finish.html");
 
 		} else {
 
-			//DB登録に失敗した場合、エラー画面（error.html）を表示する
+			
 			response.sendRedirect("html/error.html");
 		}
 		

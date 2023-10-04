@@ -41,31 +41,41 @@ if (msg != null) {
 </head>
 <body>
 
+
 <div class="search-area">
 <script src="js/search.js"></script>
 <form action="NarrowDown" method="post">
-  <p>
-					続柄: <selec name="selectedOption">
-						<option value="1">選択なし</option>
-						<option value="2">相手の名前</option>
-						<option value="3">品物送受日</option>
-						<option value="4">詳細項目1</option>
-						<option value="5">詳細項目2</option>
-						<option value="6">品物名</option>
-						<option value="7">金額</option>
-						<option value="8">備考</option>
-					</select>
-				</p>
-		
-    <label>検索</label>
     <p>
-                    検索欄:<br>
-                    <textarea name="write" rows="１" cols="50" maxlength="250"></textarea>
-                </p>
-    <!-- <input type="number" name="year" id="year" placeholder="絞り込みたい年（数字）"> -->
-    
-    <input type="submit" value="絞り込む" id="button"> 
+        選択<select name="selectedOption" id="selectedOptionSelect" onchange="toggleInputs()">
+            <option value="1">選択なし</option>
+            <option value="2">相手の名前</option>
+            <option value="3">品物送受日</option>
+        </select>
+    </p>
+    <p>
+        検索欄:<br>
+        <textarea name="write" rows="1" cols="50" maxlength="250"  id="searchInput" ></textarea>
+    </p>
+
+    <input type="submit" value="絞り込む" id="button">
 </form>
+<script>
+function toggleInputs() {
+    var selectedOption = document.getElementById("selectedOptionSelect").value;
+    var textarea = document.getElementById("searchInput");
+    var button = document.getElementById("button");
+
+    if (selectedOption === "1") { // 選択が「選択なし」の場合
+        textarea.disabled = true; // テキストエリアを無効にする
+        button.disabled = true;   // 送信ボタンを無効にする
+    } else {
+        textarea.disabled = false; // 選択が「選択なし」以外の場合、テキストエリアを有効にする
+        button.disabled = false;   // 送信ボタンを有効にする
+    }
+}
+//ページ読み込み時に初期設定を行う
+toggleInputs();
+</script>
 </div>
 
 	<header>

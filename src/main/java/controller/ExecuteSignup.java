@@ -1,3 +1,24 @@
+/**
+ * Filename: ExecuteSignup.java
+ *
+ * Description:
+ * このクラスは、dogetリクエストでsignup.jspにフォワード。
+ * 
+ * doPostリクエストでgetParameterで取得した情報をUserInfoDtoに格納して
+ * SignupBLに送りデータベースに情報が追加された場合
+ * finish.htmlにリダイレクト、できなかった場合error.htmlにリダイレクトする。
+ *
+ *パスワードをハッシュ化してセキュアに保存できます。
+ *ハッシュ化されたパスワードは元のパスワードから逆引き不可能で、
+ *セキュリティを向上させる機能を提供するためのものです。
+
+ * Author: morioka shougo 
+ * Creation Date: 2023-10-4
+ * 
+ * Copyright (C) 2023 KEG forest All rights reserved.
+ *
+ *
+ */
 package controller;
 
 import java.io.IOException;

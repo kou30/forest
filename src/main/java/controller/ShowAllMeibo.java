@@ -1,3 +1,21 @@
+/**
+ * Filename:ShowAllMeibo.java
+ *
+ * Description:
+ * このクラスは、doGetリクエストで条件分岐でユーザ情報（userInfoOnSession）がある場合
+ * userInfoOnSessionの中にあるUser_nrをgetして変数int型のuser_nrに格納。
+ * list はMeiboDTOオブジェクトのリストでありMeiboDTOオブジェクトを追加したり、
+ * リスト内の要素を操作したりできるようになります。
+ * ShowAllMeiboBLにuser_nrを送りDBから返ってきた抽出した情報をリクエストスコープに入れ
+ * showallmeibo.jspにフォワードする。機能を提供するためのものです。
+ *
+ * Author: morioka shougo 
+ * Creation Date: 2023-10-4
+ * 
+ * Copyright (C) 2023 KEG forest All rights reserved.
+ *
+ *
+ */
 package controller;
 
 import java.io.IOException;

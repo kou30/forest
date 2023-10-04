@@ -1,3 +1,17 @@
+/**
+ * Filename: Main.java
+ *
+ * Description:
+ * このクラスは、セッションの情報を変数userInfoOnSessionに入れ条件分岐で情報がnull以外の場合に
+ * mainpage.jspにフォワードする。nullの場合はlogin.jspにフォワードする機能を提供するためのものです。
+ *
+ * Author: morioka shougo 
+ * Creation Date: 2023-10-4
+ * 
+ * Copyright (C) 2023 KEG forest All rights reserved.
+ *
+ *
+ */
 package controller;
 
 import java.io.IOException;

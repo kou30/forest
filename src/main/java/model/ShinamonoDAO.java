@@ -224,17 +224,17 @@ public List<ShinamonoDTO> NarrowDownSelect(String selectedOption,String Write,in
 	List<ShinamonoDTO> Narrowdown = new ArrayList<>();
 	try {
 		this.connect();
-		ps = db.prepareStatement("SELECT * FROM  forest_db.shinamono WHERE YEAR(re_time) = ? and user_nr=?");
-		String query = "SELECT * FROM your_table WHERE ";
-		if ("1".equals(selectedOption)) {
-		    query += "meibo_id = ?";
-		} else if ("2".equals(selectedOption)) {
-		    query += "aite_name = ?";
+//		ps = db.prepareStatement("SELECT * FROM  forest_db.shinamono WHERE YEAR(re_time) = ? and user_nr=?");
+		String query = "SELECT * FROM forest_db.shinamono WHERE user_nr = ?";
+
+		if ("2".equals(selectedOption)) {
+		    query += " AND aite_name = ?";
 		} else if ("3".equals(selectedOption)) {
-		    query += "re_time = ?";
+		    query += " AND re_time = ?";
 		}
-//		ps.setString(1, year);
-		ps.setInt(2,id);
+		ps = db.prepareStatement(query);
+		ps.setInt(1, id);  
+        ps.setString(2, Write);
 		rs = ps.executeQuery();
 		while (rs.next()) {
 				int shinamono_id = rs.getInt("shinamono_id");

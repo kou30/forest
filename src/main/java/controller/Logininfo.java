@@ -1,3 +1,23 @@
+/**
+ * Filename: Logininfo.java
+ *
+ * Description:
+ * このクラスは、dopostリクエストでgetParameterで取得した情報をUserInfoDtoに格納して
+ * UserInfoDaoに送りデータベースからデータ抽出の可否で条件分岐し
+ * できた場合ユーザデータをセッションスコープにセットしてMain.jspにフォワード、
+ * できなかった場合Logininfo.jspにリダイレクトする。
+ *
+ *パスワードをハッシュ化してセキュアに保存できます。
+ *ハッシュ化されたパスワードは元のパスワードから逆引き不可能で、
+ *セキュリティを向上させる機能を提供するためのものです。
+
+ * Author: morioka shougo 
+ * Creation Date: 2023-10-4
+ * 
+ * Copyright (C) 2023 KEG forest All rights reserved.
+ *
+ *
+ */
 package controller;
 
 
