@@ -17,7 +17,10 @@ body{
 	text-align: center;
 	background-image: url(../images/mori.jpg);
     background-repeat: no-repeat;
-   	background-size: 120% auto;
+   	background-size: cover;
+   	width: 100% auto ;
+    height: cover;
+    background-attachment: fixed;
 }
 h1{
 	text-align:center;
