@@ -22,6 +22,12 @@
 
 
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<% if (request.getAttribute("isDuplicateID") != null) { %>
+    <% boolean isDuplicateID = (boolean) request.getAttribute("isDuplicateID"); %>
+    <!-- 以降のコードで isDuplicateID を使用 -->
+<% } %>
+<% boolean isDuplicateID = (boolean) request.getAttribute("isDuplicateID"); %>
+
 <html>
 <head>
   <title>サインアップ</title>
@@ -32,7 +38,8 @@
   <div style="width:500px;">
     <form action="ExecuteSignup" method="post" onsubmit="return validatePassword()">
       <p>ID
-        <input type="text" name="USER_ID" maxlength="20" placeholder="ID" required>
+        <input type="text" name="USER_ID" pattern="^[0-9a-zA-Z]+$" maxlength="20" placeholder="ID(半角英数字のみ)" required>
+        <span id="IDdup" style="color: red;"></span>
       </p>
       <p>USER_NAME
         <input type="text" name="USER_NAME" maxlength="20" placeholder="USER_NAME" required>
@@ -64,5 +71,12 @@
       }
     }
   </script>
+   <% if (isDuplicateID) { %>
+  <script>
+  var IDdup = document.getElementById("IDdup");
+  IDdup.innerHTML = "異なるIDでサインアップしてください"; 
+  //alert("このIDは既に使用されています。別のIDを選択してください。");
+  </script>
+  <% } %>
 </body>
 </html>
