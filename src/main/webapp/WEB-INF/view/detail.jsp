@@ -189,7 +189,7 @@ if (msg != null) {
 				if (SHdto.getBunrui() == 1) {
 				%>
 				<tr>
-					<td><%=SHdto.getAite_name()%></td>
+					<td><%=replaceEscapeChar(SHdto.getAite_name())%></td>
 					<td><%=SHdto.getRe_time()%></td>
 
 					<%
@@ -327,7 +327,7 @@ if (msg != null) {
 					}
 					%>
 
-					<td><%=SHdto.getShinamono_name()%></td>
+					<td><%=replaceEscapeChar(SHdto.getShinamono_name())%></td>
 					<td><%=SHdto.getShinamono_kingaku()%></td>
 					<td><%=replaceEscapeChar(SHdto.getMemo())%></td>
 					<td><a
@@ -361,7 +361,7 @@ if (msg != null) {
 					if (SHdto.getBunrui() == 2) {
 				%>
 				<tr>
-					<td><%=SHdto.getAite_name()%></td>
+					<td><%=replaceEscapeChar(SHdto.getAite_name())%></td>
 					<td><%=SHdto.getRe_time()%></td>
 
 
@@ -500,7 +500,7 @@ if (msg != null) {
 						}
 					}
 					%>
-					<td><%=SHdto.getShinamono_name()%></td>
+					<td><%=replaceEscapeChar(SHdto.getShinamono_name())%></td>
 					<td><%=SHdto.getShinamono_kingaku()%></td>
 					<td><%=replaceEscapeChar(SHdto.getMemo())%></td>
 					<td><a

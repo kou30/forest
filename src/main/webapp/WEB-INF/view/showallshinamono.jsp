@@ -57,8 +57,8 @@ if (msg != null) {
 %>
 
 <%
-		List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
-		%>
+List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
+%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -70,43 +70,6 @@ if (msg != null) {
 <title>贈ったモノ・頂いたモノ全件一覧</title>
 </head>
 <body>
-
-
-<div class="search-area">
-<script src="js/search.js"></script>
-<form action="NarrowDown" method="post">
-    <p>
-        選択<select name="selectedOption" id="selectedOptionSelect" onchange="toggleInputs()">
-            <option value="1">選択なし</option>
-            <option value="2">相手の名前</option>
-            <option value="3">品物送受日</option>
-        </select>
-    </p>
-    <p>
-        検索欄:<br>
-        <textarea name="write" rows="1" cols="50" maxlength="250"  id="searchInput" ></textarea>
-    </p>
-
-    <input type="submit" value="絞り込む" id="button">
-</form>
-<script>
-function toggleInputs() {
-    var selectedOption = document.getElementById("selectedOptionSelect").value;
-    var textarea = document.getElementById("searchInput");
-    var button = document.getElementById("button");
-
-    if (selectedOption === "1") { // 選択が「選択なし」の場合
-        textarea.disabled = true; // テキストエリアを無効にする
-        button.disabled = true;   // 送信ボタンを無効にする
-    } else {
-        textarea.disabled = false; // 選択が「選択なし」以外の場合、テキストエリアを有効にする
-        button.disabled = false;   // 送信ボタンを有効にする
-    }
-}
-//ページ読み込み時に初期設定を行う
-toggleInputs();
-</script>
-</div>
 
 	<header>
 		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
@@ -127,11 +90,15 @@ toggleInputs();
 		</div>
 	</header>
 	<main>
+		<label for="filterYear">絞り込む年:</label> <input type="text"
+			id="filterYear" placeholder="年を入力">
+		<button onclick="filterTable()">絞り込む</button>
+		<button onclick="showAll()">すべて表示</button>
 		<h2>贈ったモノ</h2>
-		
 
 
-		<table border="1" class="my-table">
+
+		<table border="1" class="my-table" id="data1">
 			<tr>
 				<th>相手の名前</th>
 				<th>品物送受日</th>
@@ -156,18 +123,18 @@ toggleInputs();
 				<%
 				String a = "0";
 				switch (dto.getCategory()) {
-				case 0:
-					a = "未選択";
-					break;
-				case 1:
-					a = "品物";
-					break;
-				case 2:
-					a = "お金";
-					break;
-				case 3:
-					a = "手紙など";
-					break;
+					case 0 :
+						a = "未選択";
+						break;
+					case 1 :
+						a = "品物";
+						break;
+					case 2 :
+						a = "お金";
+						break;
+					case 3 :
+						a = "手紙など";
+						break;
 				}
 				%>
 				<td><%=a%></td>
@@ -177,125 +144,125 @@ toggleInputs();
 				}
 				if (dto.getCategory() == 1) {
 					switch (dto.getItem()) {
-					case 0:
-						a = "未選択";
-						break;
-					case 1:
-						a = "お中元";
-						break;
-					case 2:
-						a = "お供え物";
-						break;
-					case 3:
-						a = "お祝いもの";
-						break;
-					case 4:
-						a = "お見舞い品";
-						break;
-					case 5:
-						a = "贈答品";
-						break;
-					case 6:
-						a = "お土産";
-						break;
-					case 7:
-						a = "記念品";
-						break;
-					case 8:
-						a = "誕生日プレゼント";
-						break;
-					case 9:
-						a = "結婚祝い品";
-						break;
-					case 10:
-						a = "出産祝い品";
-						break;
-					case 11:
-						a = "引っ越し祝い品";
-						break;
-					case 12:
-						a = "その他";
-						break;
+						case 0 :
+					a = "未選択";
+					break;
+						case 1 :
+					a = "お中元";
+					break;
+						case 2 :
+					a = "お供え物";
+					break;
+						case 3 :
+					a = "お祝いもの";
+					break;
+						case 4 :
+					a = "お見舞い品";
+					break;
+						case 5 :
+					a = "贈答品";
+					break;
+						case 6 :
+					a = "お土産";
+					break;
+						case 7 :
+					a = "記念品";
+					break;
+						case 8 :
+					a = "誕生日プレゼント";
+					break;
+						case 9 :
+					a = "結婚祝い品";
+					break;
+						case 10 :
+					a = "出産祝い品";
+					break;
+						case 11 :
+					a = "引っ越し祝い品";
+					break;
+						case 12 :
+					a = "その他";
+					break;
 					}
 				}
 				if (dto.getCategory() == 2) {
 					switch (dto.getItem()) {
-					case 0:
-						a = "未選択";
-						break;
-					case 1:
-						a = "寄付金";
-						break;
-					case 2:
-						a = "贈与金";
-						break;
-					case 3:
-						a = "祝儀金";
-						break;
-					case 4:
-						a = "贈答金";
-						break;
-					case 5:
-						a = "報酬金";
-						break;
-					case 6:
-						a = "賞金";
-						break;
-					case 7:
-						a = "贈賄金";
-						break;
-					case 8:
-						a = "支援金";
-						break;
-					case 9:
-						a = "貢献金";
-						break;
-					case 10:
-						a = "ギフト券";
-						break;
-					case 11:
-						a = "仏教関連金";
-						break;
-					case 12:
-						a = "お祝い金";
-						break;
-					case 13:
-						a = "その他";
-						break;
+						case 0 :
+					a = "未選択";
+					break;
+						case 1 :
+					a = "寄付金";
+					break;
+						case 2 :
+					a = "贈与金";
+					break;
+						case 3 :
+					a = "祝儀金";
+					break;
+						case 4 :
+					a = "贈答金";
+					break;
+						case 5 :
+					a = "報酬金";
+					break;
+						case 6 :
+					a = "賞金";
+					break;
+						case 7 :
+					a = "贈賄金";
+					break;
+						case 8 :
+					a = "支援金";
+					break;
+						case 9 :
+					a = "貢献金";
+					break;
+						case 10 :
+					a = "ギフト券";
+					break;
+						case 11 :
+					a = "仏教関連金";
+					break;
+						case 12 :
+					a = "お祝い金";
+					break;
+						case 13 :
+					a = "その他";
+					break;
 					}
 				}
 				if (dto.getCategory() == 3) {
 					switch (dto.getItem()) {
-					case 0:
-						a = "未選択";
-						break;
-					case 1:
-						a = "年賀状";
-						break;
-					case 2:
-						a = "招待状";
-						break;
-					case 3:
-						a = "お詫び状";
-						break;
-					case 4:
-						a = "通知状";
-						break;
-					case 5:
-						a = "その他";
-						break;
+						case 0 :
+					a = "未選択";
+					break;
+						case 1 :
+					a = "年賀状";
+					break;
+						case 2 :
+					a = "招待状";
+					break;
+						case 3 :
+					a = "お詫び状";
+					break;
+						case 4 :
+					a = "通知状";
+					break;
+						case 5 :
+					a = "その他";
+					break;
 					}
 				}
 				%>
 				<td><%=a%></td>
-				<td><%=dto.getShinamono_name()%></td>
+				<td><%=replaceEscapeChar(dto.getShinamono_name())%></td>
 				<td><%=dto.getShinamono_kingaku()%></td>
-				<td><%=dto.getMemo()%></td>
+				<td><%=replaceEscapeChar(dto.getMemo())%></td>
 				<td><a
 					href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
 
-				<td><a
-					href="#" onclick="deleteEvent(<%=dto.getShinamono_id()%>)">削除</a></td>
+				<td><a href="#"
+					onclick="deleteEvent(<%=dto.getShinamono_id()%>)">削除</a></td>
 			</tr>
 			<%
 			}
@@ -306,7 +273,7 @@ toggleInputs();
 		</table>
 		<h2>頂いたモノ</h2>
 
-		<table border="1" class="my-table">
+		<table border="1" class="my-table" id="data2">
 			<tr>
 				<th>相手の名前</th>
 				<th>品物送受日</th>
@@ -331,18 +298,18 @@ toggleInputs();
 				<%
 				String a = "0";
 				switch (dto.getCategory()) {
-				case 0:
-					a = "未選択";
-					break;
-				case 1:
-					a = "品物";
-					break;
-				case 2:
-					a = "お金";
-					break;
-				case 3:
-					a = "手紙など";
-					break;
+					case 0 :
+						a = "未選択";
+						break;
+					case 1 :
+						a = "品物";
+						break;
+					case 2 :
+						a = "お金";
+						break;
+					case 3 :
+						a = "手紙など";
+						break;
 				}
 				%>
 				<td><%=a%></td>
@@ -352,125 +319,125 @@ toggleInputs();
 				}
 				if (dto.getCategory() == 1) {
 					switch (dto.getItem()) {
-					case 0:
-						a = "未選択";
-						break;
-					case 1:
-						a = "お中元";
-						break;
-					case 2:
-						a = "お供え物";
-						break;
-					case 3:
-						a = "お祝いもの";
-						break;
-					case 4:
-						a = "お見舞い品";
-						break;
-					case 5:
-						a = "贈答品";
-						break;
-					case 6:
-						a = "お土産";
-						break;
-					case 7:
-						a = "記念品";
-						break;
-					case 8:
-						a = "誕生日プレゼント";
-						break;
-					case 9:
-						a = "結婚祝い品";
-						break;
-					case 10:
-						a = "出産祝い品";
-						break;
-					case 11:
-						a = "引っ越し祝い品";
-						break;
-					case 12:
-						a = "その他";
-						break;
+						case 0 :
+					a = "未選択";
+					break;
+						case 1 :
+					a = "お中元";
+					break;
+						case 2 :
+					a = "お供え物";
+					break;
+						case 3 :
+					a = "お祝いもの";
+					break;
+						case 4 :
+					a = "お見舞い品";
+					break;
+						case 5 :
+					a = "贈答品";
+					break;
+						case 6 :
+					a = "お土産";
+					break;
+						case 7 :
+					a = "記念品";
+					break;
+						case 8 :
+					a = "誕生日プレゼント";
+					break;
+						case 9 :
+					a = "結婚祝い品";
+					break;
+						case 10 :
+					a = "出産祝い品";
+					break;
+						case 11 :
+					a = "引っ越し祝い品";
+					break;
+						case 12 :
+					a = "その他";
+					break;
 					}
 				}
 				if (dto.getCategory() == 2) {
 					switch (dto.getItem()) {
-					case 0:
-						a = "未選択";
-						break;
-					case 1:
-						a = "寄付金";
-						break;
-					case 2:
-						a = "贈与金";
-						break;
-					case 3:
-						a = "祝儀金";
-						break;
-					case 4:
-						a = "贈答金";
-						break;
-					case 5:
-						a = "報酬金";
-						break;
-					case 6:
-						a = "賞金";
-						break;
-					case 7:
-						a = "贈賄金";
-						break;
-					case 8:
-						a = "支援金";
-						break;
-					case 9:
-						a = "貢献金";
-						break;
-					case 10:
-						a = "ギフト券";
-						break;
-					case 11:
-						a = "仏教関連金";
-						break;
-					case 12:
-						a = "お祝い金";
-						break;
-					case 13:
-						a = "その他";
-						break;
+						case 0 :
+					a = "未選択";
+					break;
+						case 1 :
+					a = "寄付金";
+					break;
+						case 2 :
+					a = "贈与金";
+					break;
+						case 3 :
+					a = "祝儀金";
+					break;
+						case 4 :
+					a = "贈答金";
+					break;
+						case 5 :
+					a = "報酬金";
+					break;
+						case 6 :
+					a = "賞金";
+					break;
+						case 7 :
+					a = "贈賄金";
+					break;
+						case 8 :
+					a = "支援金";
+					break;
+						case 9 :
+					a = "貢献金";
+					break;
+						case 10 :
+					a = "ギフト券";
+					break;
+						case 11 :
+					a = "仏教関連金";
+					break;
+						case 12 :
+					a = "お祝い金";
+					break;
+						case 13 :
+					a = "その他";
+					break;
 					}
 				}
 				if (dto.getCategory() == 3) {
 					switch (dto.getItem()) {
-					case 0:
-						a = "未選択";
-						break;
-					case 1:
-						a = "年賀状";
-						break;
-					case 2:
-						a = "招待状";
-						break;
-					case 3:
-						a = "お詫び状";
-						break;
-					case 4:
-						a = "通知状";
-						break;
-					case 5:
-						a = "その他";
-						break;
+						case 0 :
+					a = "未選択";
+					break;
+						case 1 :
+					a = "年賀状";
+					break;
+						case 2 :
+					a = "招待状";
+					break;
+						case 3 :
+					a = "お詫び状";
+					break;
+						case 4 :
+					a = "通知状";
+					break;
+						case 5 :
+					a = "その他";
+					break;
 					}
 				}
 				%>
 				<td><%=a%></td>
-				<td><%=dto.getShinamono_name()%></td>
+				<td><%=replaceEscapeChar(dto.getShinamono_name())%></td>
 				<td><%=dto.getShinamono_kingaku()%></td>
-				<td><%=dto.getMemo()%></td>
+				<td><%=replaceEscapeChar(dto.getMemo())%></td>
 				<td><a
 					href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
 
-				<td><a
-					href="#" onclick="deleteEvent(<%=dto.getShinamono_id()%>)">削除</a></td>
+				<td><a href="#"
+					onclick="deleteEvent(<%=dto.getShinamono_id()%>)">削除</a></td>
 			</tr>
 			<%
 			}
@@ -481,7 +448,6 @@ toggleInputs();
 
 
 	<br>
-	<script src="js/script.js"></script>
 	<footer>
 		<p>&copy; team フォレスト</p>
 	</footer>
@@ -501,16 +467,36 @@ function deleteEvent(shinamonoId){
 }
 </script>
 <script>
-	document.getElementById('ShinamonoEntry')
-			.addEventListener(
-					'submit',
-					function(event) {
-						var selectedValue = document
-								.getElementById('bunruiSelect').value;
-						if (selectedValue === '0') {
-							alert('分類を選択してください');
-							event.preventDefault(); // フォームの送信をキャンセル
-						}
-					});
-</script>
+    function filterTable() {
+      const filterYear = document.getElementById('filterYear').value;
+      filterTables('data1', filterYear);
+      filterTables('data2', filterYear);
+    }
+
+    function filterTables(tableId, filterYear) {
+      const rows = document.getElementById(tableId).getElementsByTagName('tr');
+      for (let i = 1; i < rows.length; i++) {
+        const yearInRow = rows[i].getElementsByTagName('td')[1].innerText.substr(0, 4);
+
+        if (yearInRow === filterYear) {
+          rows[i].style.display = '';
+        } else {
+          rows[i].style.display = 'none';
+        }
+      }
+    }
+
+    function showAll() {
+      const rows1 = document.getElementById('data1').getElementsByTagName('tr');
+      for (let i = 1; i < rows1.length; i++) {
+        rows1[i].style.display = '';
+      }
+
+      const rows2 = document.getElementById('data2').getElementsByTagName('tr');
+      for (let i = 1; i < rows2.length; i++) {
+        rows2[i].style.display = '';
+      }
+    }
+  </script>
+
 </html>
