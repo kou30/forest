@@ -255,9 +255,9 @@ List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
 				}
 				%>
 				<td><%=a%></td>
-				<td><%=dto.getShinamono_name()%></td>
+				<td><%=replaceEscapeChar(dto.getShinamono_name())%></td>
 				<td><%=dto.getShinamono_kingaku()%></td>
-				<td><%=dto.getMemo()%></td>
+				<td><%=replaceEscapeChar(dto.getMemo())%></td>
 				<td><a
 					href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
 
@@ -430,9 +430,9 @@ List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
 				}
 				%>
 				<td><%=a%></td>
-				<td><%=dto.getShinamono_name()%></td>
+				<td><%=replaceEscapeChar(dto.getShinamono_name())%></td>
 				<td><%=dto.getShinamono_kingaku()%></td>
-				<td><%=dto.getMemo()%></td>
+				<td><%=replaceEscapeChar(dto.getMemo())%></td>
 				<td><a
 					href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
 
