@@ -127,7 +127,7 @@ if (msg != null) {
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
 					<li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
-					<li><a href="MonthView7">カレンダー</a></li>
+					<li><a href="MonthView">カレンダー</a></li>
 					<li><a href="Logoutinfo" class="logout">ログアウト</a></li>
 				</ul>
 			</nav>
