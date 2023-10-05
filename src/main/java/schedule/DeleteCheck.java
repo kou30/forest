@@ -6,7 +6,7 @@
  *商品一覧ページの削除対象行１件分のパラメーター
  *（int id、String starttime、String endtime、String schedule）と
  *セッション「user_nr」をdogetで利用し、
- *「ScheduleDelete」(SQL「schedule」削除機能)へ遷移する機能
+ *「ScheduleDelete.java」(SQL「schedule」削除機能)へ遷移する機能
  *
  * 
  * Author: kuroda yukie 
@@ -186,7 +186,7 @@ import model.UserInfoDto;
 				+ "					<li><a href=\"MeiboEntry\">名簿登録</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllMeibo\">名簿一覧</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a></li>\r\n"
-				+ "					<li><a href=\"MonthView7\">カレンダー</a></li>\r\n"
+				+ "					<li><a href=\"MonthView\">カレンダー</a></li>\r\n"
 				+ "					<li><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></li>\r\n"
 				+ "				</ul>\r\n"
 				+ "			</nav>\r\n"
@@ -201,7 +201,7 @@ import model.UserInfoDto;
 
         sb.append("<p>");
         sb.append("スケジュールの削除確認  ");
-        sb.append("[<a href=\"ScheduleView2");
+        sb.append("[<a href=\"ScheduleView");
         sb.append("?ID=");
         sb.append(currentscheduleid);
         sb.append("\">スケジュール表示へ戻る</a>]");
@@ -235,7 +235,7 @@ import model.UserInfoDto;
                     widthArray[0] = 1;
 
                     StringBuffer sbSchedule = new StringBuffer();
-                    sbSchedule.append("<a href=\"ScheduleView2?ID=");
+                    sbSchedule.append("<a href=\"ScheduleView?ID=");
                     sbSchedule.append(id);
                     sbSchedule.append("\">");
                     sbSchedule.append(schedule);
@@ -279,7 +279,7 @@ import model.UserInfoDto;
                         sbSchedule.append(":");
                         sbSchedule.append(endMinuteStr);
                         sbSchedule.append(" ");
-                        sbSchedule.append("<a href=\"ScheduleView2?ID=");
+                        sbSchedule.append("<a href=\"ScheduleView?ID=");
                         sbSchedule.append(id);
                         sbSchedule.append("\">");
                         sbSchedule.append(schedule);
@@ -334,7 +334,7 @@ import model.UserInfoDto;
         sb.append("<p>削除しますか？</p>");
 
         sb.append("<p>");
-        sb.append("[<a href=\"ScheduleDelete1?ID=");
+        sb.append("[<a href=\"ScheduleDelete?ID=");
         sb.append(currentscheduleid);
         sb.append("&YEAR=");
         sb.append(year);
@@ -342,7 +342,7 @@ import model.UserInfoDto;
         sb.append(month);
         sb.append("\">削除する</a>]");
         sb.append("  ");
-        sb.append("[<a href=\"ScheduleView2?ID=");
+        sb.append("[<a href=\"ScheduleView?ID=");
         sb.append(currentscheduleid);
         sb.append("\">キャンセル</a>]");
         sb.append("</p>");

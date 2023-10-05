@@ -170,7 +170,7 @@ import model.UserInfoDto;
 				+ "					<li><a href=\"MeiboEntry\">名簿登録</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllMeibo\">名簿一覧</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a></li>\r\n"
-				+ "					<li><a href=\"MonthView7\">カレンダー</a></li>\r\n"
+				+ "					<li><a href=\"MonthView\">カレンダー</a></li>\r\n"
 				+ "					<li><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></li>\r\n"
 				+ "				</ul>\r\n"
 				+ "			</nav>\r\n"
@@ -182,7 +182,7 @@ import model.UserInfoDto;
 
         sb.append("<p>");
         sb.append("スケジュール登録  ");
-        sb.append("[<a href=\"MonthView7");
+        sb.append("[<a href=\"MonthView");
         sb.append("?YEAR=");
         sb.append(year);
         sb.append("&MONTH=");
@@ -253,7 +253,7 @@ import model.UserInfoDto;
                         sbSchedule.append(":");
                         sbSchedule.append(endMinuteStr);
                         sbSchedule.append(" ");
-                        sbSchedule.append("<a href=\"ScheduleView2?ID=");
+                        sbSchedule.append("<a href=\"ScheduleView?ID=");
                         sbSchedule.append(id);
                         sbSchedule.append("\">");
                         sbSchedule.append(schedule);
@@ -325,7 +325,7 @@ import model.UserInfoDto;
 
         sb.append("<div id=\"right\">");
 
-        sb.append("<form method=\"post\" action=\"ScheduleInsert3\">");
+        sb.append("<form method=\"post\" action=\"ScheduleInsert\">");
         sb.append("<table>");
         sb.append("<tr>");
 

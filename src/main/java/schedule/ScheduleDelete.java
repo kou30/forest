@@ -108,7 +108,7 @@ import javax.servlet.http.HttpServletResponse;
 
         /* IDが不正な値で来た場合はパラメータ無しで「MonthView」へリダイレクトする */
         if (id == -999){
-            res.sendRedirect("MonthView7");
+            res.sendRedirect("MonthView");
         }
 
         try {
@@ -125,7 +125,7 @@ import javax.servlet.http.HttpServletResponse;
         }
 
         StringBuffer sb = new StringBuffer();
-        sb.append("MonthView7");
+        sb.append("MonthView");
         sb.append("?YEAR=");
         sb.append(year);
         sb.append("?MONTH=");

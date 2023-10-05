@@ -4,7 +4,7 @@
  * Description: 
  * このクラスは、
  * ①「MonthView」(対象月のカレンダーTOPページ)で　
- * 　登録済のスケジュールリンクをクリックし SQLの「shinamono」テーブルから
+ * 　登録済のスケジュールリンクをクリックし SQLの「Schedule」テーブルから
  * 　詳細情報を取得表示
  * ②「ScheduleView」内に編集「ScheduleUpdate」・削除「DeleteCheck」ボタンで
  * 	　各処理へパラメーターを渡す
@@ -187,7 +187,7 @@ import model.UserInfoDto;
 				+ "					<li><a href=\"MeiboEntry\">名簿登録</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllMeibo\">名簿一覧</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a></li>\r\n"
-				+ "					<li><a href=\"MonthView7\">カレンダー</a></li>\r\n"
+				+ "					<li><a href=\"MonthView\">カレンダー</a></li>\r\n"
 				+ "					<li><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></li>\r\n"
 				+ "				</ul>\r\n"
 				+ "			</nav>\r\n"
@@ -201,7 +201,7 @@ import model.UserInfoDto;
 
         sb.append("<p>");
         sb.append("既存スケジュール確認  ");
-        sb.append("[<a href=\"MonthView7");
+        sb.append("[<a href=\"MonthView");
         sb.append("?YEAR=");
         sb.append(year);
         sb.append("&MONTH=");
@@ -237,7 +237,7 @@ import model.UserInfoDto;
                     widthArray[0] = 1;
 
                     StringBuffer sbSchedule = new StringBuffer();
-                    sbSchedule.append("<a href=\"ScheduleView2?ID=");
+                    sbSchedule.append("<a href=\"ScheduleView?ID=");
                     sbSchedule.append(id);
                     sbSchedule.append("\">");
                     sbSchedule.append(schedule);
@@ -281,7 +281,7 @@ import model.UserInfoDto;
                         sbSchedule.append(":");
                         sbSchedule.append(endMinuteStr);
                         sbSchedule.append(" ");
-                        sbSchedule.append("<a href=\"ScheduleView2?ID=");
+                        sbSchedule.append("<a href=\"ScheduleView?ID=");
                         sbSchedule.append(id);
                         sbSchedule.append("\">");
                         sbSchedule.append(schedule);
@@ -381,11 +381,11 @@ import model.UserInfoDto;
         sb.append("</table>");
 
         sb.append("<p>");
-        sb.append("[<a href=\"EditSchedule2?ID=");
+        sb.append("[<a href=\"EditSchedule?ID=");
         sb.append(currentscheduleid);
         sb.append("\">スケジュールの変更</a>]");
         sb.append("  ");
-        sb.append("[<a href=\"DeleteCheck2?ID=");
+        sb.append("[<a href=\"DeleteCheck?ID=");
         sb.append(currentscheduleid);
         sb.append("\">スケジュールの削除</a>]");
         sb.append("</p>");

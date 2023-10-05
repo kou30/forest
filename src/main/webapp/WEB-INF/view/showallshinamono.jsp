@@ -1,3 +1,29 @@
+<!--
+/** 
+ * Filename:showallshinamono.jsp
+ * 
+ * Description: 「ShowAllShinamono.java」が実行され、
+ *「ShowAllShinamonoBL.java」が実行され、SQL「shinamono」テーブルに
+ *既に登録されている、ログインユーザーが登録したデータのみの
+ *一覧を抽出し、このページ(showallshinamono.jsp)へ表示する
+
+ * 
+
+ * 
+ * Author:morioka shogo
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+ -->
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>

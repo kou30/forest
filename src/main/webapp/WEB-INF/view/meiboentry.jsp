@@ -1,3 +1,24 @@
+<!--
+/** 
+ * Filename: meiboentry.jsp
+ * 
+ * Description: 「MeiboEntry.java」からこのページへ遷移し、
+ * 名簿登録フォームに入力された情報を「InsertMeiboBL.java」へ
+ * パラメーターを送る
+ * 
+ * Author: tanaka kotaro
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="model.UserInfoDto"%>

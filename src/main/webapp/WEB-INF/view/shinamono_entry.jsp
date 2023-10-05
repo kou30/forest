@@ -1,3 +1,26 @@
+<!--
+/** 
+ * Filename:shinamono_entry.jsp
+ * 
+ * Description: 「ShinamonoEntry.jsp」が実行され、
+ * このページ(shinamono_entry.jsp)へ遷移する、
+ * 品物登録フォームに入力された情報を「InsertShinamonoBL.java」へ
+ * パラメーターを送る
+ * 
+
+ * 
+ * Author:kuroda yukie
+ * Creation Date: 2023-10-4
+ * 
+ * Modified By: 
+ * Modification Date:  
+ * Reason for Modification:  
+ * 
+ * Copyright (C) 2023 Forest All rights reserved. 
+ * 
+ * 
+ */
+ -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
