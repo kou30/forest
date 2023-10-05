@@ -96,7 +96,7 @@ public class Logininfo extends HttpServlet {
 
 			} else {
 				//ユーザーデータの抽出に失敗：ログインNGとしてログイン画面へ転送
-				request.setAttribute("error_msg", "IDまたはpasswordが違います。");
+				//request.setAttribute("error_msg", "IDまたはpasswordが違います。");
 				response.sendRedirect("Logininfo");
 				
 

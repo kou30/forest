@@ -139,4 +139,25 @@ public class UserInfoDao {
 		return isSuccess;
 
 	}
+	public boolean doCheckID(String id) throws NamingException {
+	    boolean isSuccess = false;
+	    try {
+	        this.connect();
+	        StringBuffer buf = new StringBuffer();
+	        buf.append("SELECT USER_ID FROM user_info WHERE USER_ID = ?");
+	        ps = db.prepareStatement(buf.toString());
+
+	        ps.setString(1, id);
+	        rs = ps.executeQuery();
+	        
+	        if (rs.next()) {
+	            isSuccess = true; // データが存在する場合、isSuccessをfalseに設定
+	        }
+	    } catch (NamingException | SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        this.disconnect();
+	    }
+	    return isSuccess;
+	}
 }
