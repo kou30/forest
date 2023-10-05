@@ -63,4 +63,3 @@ public class Detail extends HttpServlet {
 	}
 
 }
-//test
