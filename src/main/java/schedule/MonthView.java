@@ -265,7 +265,7 @@ public class MonthView extends HttpServlet {
 				sb.append(calendarDay[i]);
 
 				sb.append("\">");
-				sb.append("<img src=\"./images/touroku2.png\" width=\"14\" height=\"16\">");
+				sb.append("<img src=\"./images/icon .png\" width=\"25\" height=\"25\">");
 				sb.append("</a><br>");
 				try {
 					String sql1 = "SELECT * FROM meibo WHERE user_nr = ? and birthday like ?";
