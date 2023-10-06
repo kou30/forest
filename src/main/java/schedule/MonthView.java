@@ -267,7 +267,7 @@ public class MonthView extends HttpServlet {
 				sb.append(calendarDay[i]);
 
 				sb.append("\">");
-				sb.append("<img src=\"./images/touroku2.png\" width=\"14\" height=\"16\">");
+				sb.append("<img src=\"./images/icon .png\" width=\"25\" height=\"25\">");
 				sb.append("</a><br>");
 				//名簿テーブルのその日誕生日のデータを取得し表示
 				try {
