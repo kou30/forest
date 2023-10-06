@@ -43,7 +43,7 @@ bunruiSelect.addEventListener('change', function () {
                     { value: '11', label: '引っ越し祝い品' },
                     { value: '12', label: 'その他' }
                 ];
-
+				console.log("品物");
                 thirdOptionSelect.innerHTML = '';
                 thirdOptions.forEach(option => {
                     const optionElement = document.createElement('option');
@@ -51,6 +51,8 @@ bunruiSelect.addEventListener('change', function () {
                     optionElement.textContent = option.label;
                     thirdOptionSelect.appendChild(optionElement);
                 });
+                 
+                amountField.style.display = 'none'; 
             } else if (selectedNextOption === '2') { // 第二分類が「お金」の場合、第三分類を更新
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
@@ -68,7 +70,7 @@ bunruiSelect.addEventListener('change', function () {
                     { value: '12', label: 'お祝い金' },
                     { value: '13', label: 'その他' }
                 ];
-
+				console.log("okane");
                 thirdOptionSelect.innerHTML = '';
                 thirdOptions.forEach(option => {
                     const optionElement = document.createElement('option');
@@ -76,6 +78,7 @@ bunruiSelect.addEventListener('change', function () {
                     optionElement.textContent = option.label;
                     thirdOptionSelect.appendChild(optionElement);
                 });
+                 
                 amountField.style.display = 'block'; // 金額コメント欄を表示
             } else if (selectedNextOption === '3') { // 第二分類が「手紙など」の場合、第三分類を更新
                 const thirdOptions = [
@@ -86,7 +89,7 @@ bunruiSelect.addEventListener('change', function () {
                     { value: '4', label: '通知状' },
                     { value: '5', label: 'その他' }
                 ];
-
+				console.log("手紙");
                 thirdOptionSelect.innerHTML = '';
                 thirdOptions.forEach(option => {
                     const optionElement = document.createElement('option');
@@ -94,6 +97,7 @@ bunruiSelect.addEventListener('change', function () {
                     optionElement.textContent = option.label;
                     thirdOptionSelect.appendChild(optionElement);
                 });
+                
                 amountField.style.display = 'none'; // 第二セレクト変更時に金額コメント欄を非表示に
             } else { // その他の場合はデフォルトの選択肢を表示
                 thirdOptionSelect.innerHTML = '<option value="0">選択してください</option>';
