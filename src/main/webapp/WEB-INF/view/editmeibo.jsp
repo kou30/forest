@@ -145,8 +145,8 @@ if (dto.getImageData() != null) {
 					<textarea name="MEMO" rows="4" cols="50" maxlength="250"><%=dto.getMemo()%></textarea>
 				</p>
 				<p>
-					<br> 画像を選択：<input id="file-preview" type="file" name="IMAGE"
-						accept="image/png,image/jpeg"
+					<br> 画像を選択：<input id="file-sample" type="file" name="IMAGE"
+						accept="image/png,image/jpeg" onchange="setImage(this);" onclick="this.value = '';"
 				</p>
 				<br> <img id="file-preview"
 					src="<%=request.getContextPath()%>/img/image_<%=dto.getMeibo_id()%>.jpg"
@@ -170,6 +170,7 @@ if (dto.getImageData() != null) {
 									reader.readAsDataURL(fileInput.files[0]);
 								}
 							});
+					
 				</script>
 				<br> <input type="submit" value="名簿登録" onclick="return itAgg()">
 			</form>
