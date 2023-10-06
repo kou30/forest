@@ -43,12 +43,15 @@ public class Detail extends HttpServlet {
 		if (userInfoOnSession != null) {
 			int id = Integer.parseInt(request.getParameter("MEIBO_ID"));
 			
+			//ビジネスロジックインスタンスを作成
 			DetailBL logic = new DetailBL();
 			
+			//名簿IDを引数にとり品物の情報を取得、リクエストに設定
 			List<ShinamonoDTO> Slist=new ArrayList<ShinamonoDTO>();
 			Slist =  logic.DetailShinamono(id);
 			request.setAttribute("Slist", Slist);
 			
+			//名簿IDを引数にとり名簿の情報を取得、リクエストに設定
 			MeiboDTO Mlist = new MeiboDTO();
 			Mlist = logic.DetailMeiboSelect(id);
 			request.setAttribute("Mlist", Mlist);

@@ -45,9 +45,17 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/meiboentry.css">
 <link rel="stylesheet" href="css/main.css">
+<script>
+        function displayAlert() {
+            var errorMessage = '<%=request.getAttribute("errorMessage")%>';
+		if (errorMessage && errorMessage !== 'null') {
+			alert(errorMessage);
+		}
+	}
+</script>
 <title>名簿登録</title>
 </head>
-<body>
+<body onload="displayAlert()">
 	<header>
 		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
 		<div class="container">

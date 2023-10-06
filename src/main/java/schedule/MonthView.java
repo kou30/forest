@@ -74,11 +74,11 @@ public class MonthView extends HttpServlet {
 		try {
 			Class.forName(DRIVER_NAME);
 			conn = DriverManager.getConnection(JDBC_URL, USER_ID, USER_PASS);
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {	//JDBCドライバのクラスが見つからない場合
 			log("ClassNotFoundException: " + e.getMessage());
-		} catch (SQLException e) {
+		} catch (SQLException e) {	//SQL関連の例外が発生した場合
 			log("SQLException: " + e.getMessage());
-		} catch (Exception e) {
+		} catch (Exception e) {	//それ以外の例外が発生した場合
 			log("Exception: " + e.getMessage());
 			e.printStackTrace();
 			throw new ServletException("初期化エラー: " + e.getMessage(), e);
@@ -99,7 +99,8 @@ public class MonthView extends HttpServlet {
 
 		calendarDay = new int[42]; /* 最大で7日×6週 */
 		count = 0;
-
+		
+		//HTTP リクエストから "YEAR" および "MONTH" パラメータを取得
 		String param = req.getParameter("YEAR");
 		if (param == null || param.length() == 0) {
 			year = -999;
@@ -139,7 +140,7 @@ public class MonthView extends HttpServlet {
 				year--;
 			}
 		}
-
+		//ユーザ情報の取得
 		HttpSession session = req.getSession();
 		UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
 		int user_nr = userInfoOnSession.getUser_nr();
@@ -243,6 +244,7 @@ public class MonthView extends HttpServlet {
 	}
 
 	/* スケジュール登録へのリンクを設定する */
+	/* スケジュール情報と名簿の誕生日を表示 */
 	protected String createScheduleStr(int year, int month, int startDayNo, int[] calendarDay, int userid) {
 		StringBuffer sb = new StringBuffer();
 
@@ -267,6 +269,7 @@ public class MonthView extends HttpServlet {
 				sb.append("\">");
 				sb.append("<img src=\"./images/touroku2.png\" width=\"14\" height=\"16\">");
 				sb.append("</a><br>");
+				//名簿テーブルのその日誕生日のデータを取得し表示
 				try {
 					String sql1 = "SELECT * FROM meibo WHERE user_nr = ? and birthday like ?";
 					PreparedStatement pstmt = conn.prepareStatement(sql1);
@@ -404,7 +407,7 @@ public class MonthView extends HttpServlet {
 
 		return count;
 	}
-
+	//前月翌月リンクを作成
 	protected String createMonthLink(int year, int month) {
 		StringBuffer sb = new StringBuffer();
 
@@ -432,7 +435,7 @@ public class MonthView extends HttpServlet {
 		return (new String(sb));
 	}
 
-//	閏年か判断↓
+//	うるう年か判断↓
 	public static boolean isLeapYear(int year) {
 		return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 	}

@@ -33,27 +33,36 @@
 <html>
 <link rel="stylesheet" href="css/Login.css">
 <head>
+<script>
+        function displayAlert() {
+            var errorMessage = '<%=request.getAttribute("error_msg")%>';
+		if (errorMessage && errorMessage !== 'null') {
+			alert(errorMessage);
+		}
+	}
+</script>
 <script src="js/javaScript1.js"></script>
 <title>ログイン画面</title>
 </head>
-<body>
+<body onload="displayAlert()">
 	<h1>ログイン画面</h1>
 	<form action="Logininfo" method="post">
 		<p>
 			ユーザーID：<br> <input type="text" ID="Id" name="USER_ID"
-				maxlength="20"placeholder="ユーザーID" required >
+				maxlength="20" placeholder="ユーザーID" required>
 		</p>
 		<p>
 			パスワード：<br> <input type="password" ID="Pass" name="PASSWORD"
-				maxlength="20"placeholder="パスワード" required>
+				maxlength="20" placeholder="パスワード" required>
 		</p>
 		<div ID="center">
-			<input type="submit" value="ログイン" onclick="return ale()"class="botton">
+			<input type="submit" value="ログイン" onclick="return ale()"
+				class="botton">
 
-			
+
 		</div>
 	</form>
-				<br>
-			    <a href="ExecuteSignup"class="signup">サインアップする</a>
+	<br>
+	<a href="ExecuteSignup" class="signup">サインアップする</a>
 </body>
 </html>

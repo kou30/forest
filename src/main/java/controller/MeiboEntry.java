@@ -35,11 +35,8 @@ import model.InsertMeiboBL;
 import model.MeiboDTO;
 import model.UserInfoDto;
 
-/**
- * Servlet implementation class MeiboEntry
- */
 @WebServlet("/MeiboEntry")
-@MultipartConfig
+@MultipartConfig  //ファイルアップロード処理のためのアノテーション
 public class MeiboEntry extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

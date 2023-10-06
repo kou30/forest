@@ -21,7 +21,6 @@
 package controller;
 
 
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -43,7 +42,7 @@ import model.UserInfoDto;
 public class Logininfo extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+		response.setContentType("text/html;charset=UTF-8");
 		RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/view/login.jsp");
 		dispatch.forward(request, response);
 	}
@@ -74,8 +73,9 @@ public class Logininfo extends HttpServlet {
 			String passWord = request.getParameter("PASSWORD");     //リクエストパラメータ（PASSWORD）
 			String hashedPassword = null;
 			try {
-				hashedPassword = hashPassword(passWord);
-			} catch (NoSuchAlgorithmException e) {
+				hashedPassword = hashPassword(passWord);	//SHA256を使いハッシュ化
+															//パスワードのセキュリティを強化するため
+			} catch (NoSuchAlgorithmException e) {		//アルゴリズムが利用不可の場合にスローされる例外
 				e.printStackTrace();
 			}
 
@@ -96,16 +96,16 @@ public class Logininfo extends HttpServlet {
 
 			} else {
 				//ユーザーデータの抽出に失敗：ログインNGとしてログイン画面へ転送
-				//request.setAttribute("error_msg", "IDまたはpasswordが違います。");
-				response.sendRedirect("Logininfo");
-				
-
+				//エラーメッセージを送る
+				request.setAttribute("error_msg", "IDまたはpasswordが違います。");
+				RequestDispatcher rd =request.getRequestDispatcher("/WEB-INF/view/login.jsp");
+	            rd.forward(request, response);
 			}
 		}
 	}
 	private String hashPassword(String password) throws NoSuchAlgorithmException {
-	    MessageDigest digest = MessageDigest.getInstance("SHA-256");
-	    byte[] hashBytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+	    MessageDigest digest = MessageDigest.getInstance("SHA-256");		//MessageDigest クラスを使用して、SHA-256アルゴリズムのインスタンスを取得
+	    byte[] hashBytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));	//UTF-8エンコーディングでバイト配列としてパスワードをハッシュ化
 
 	    StringBuilder hexString = new StringBuilder();
 	    for (byte hashByte : hashBytes) {
@@ -113,7 +113,7 @@ public class Logininfo extends HttpServlet {
 	        if (hex.length() == 1)
 	            hexString.append('0');
 	        hexString.append(hex);
-	    }
+	    }//ハッシュ化されたバイト配列を16進数の文字列に変換。このループは、各バイトを16進数の文字列に変換し、必要に応じて先頭に0を付け加えて、hexString に追加
 	    return hexString.toString();
 	}
 }
