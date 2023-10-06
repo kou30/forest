@@ -27,6 +27,10 @@
 <%@ page import="model.MeiboDTO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
+<%@ page import="model.UserInfoDto"%>
+<%
+UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
+%>
 
 <%-- 今日の日付を取得 --%>
 <%@ page import="java.time.LocalDate" %>
@@ -46,13 +50,13 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 
 </head>
 <body>
-
 	<header>
 		<p class="HeaderTagline">贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
 		<div class="container">
 			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
 			<nav class="nav">
 				<ul>
+					<li><p class="name"><%=userInfoOnSession.getUserName()%>さんのページ</p></li>
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
@@ -78,7 +82,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 
        			<p>
                     <label for="start">贈った、または頂いた日時:</label>
-                    <input type="date" id="inputDate" name="DATE" value="2023-09-01" min="1950-01-01" max="<%= now %>" />
+                    <input type="date" id="inputDate" name="DATE" value="<%=now%>" min="1950-01-01" max="<%= now %>" />
                 </p>
 
 				<!-- 第一分類 -->

@@ -89,368 +89,372 @@ List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
 			</nav>
 		</div>
 	</header>
-	<main>
-		<label for="filterYear">絞り込む年:</label> <input type="text"
-			id="filterYear" placeholder="年を入力">
-		<button onclick="filterTable()">絞り込む</button>
-		<button onclick="showAll()">すべて表示</button>
-		<h2>贈ったモノ</h2>
+	<div class="image">
+		<main>
+			<div class="filter">
+				<label for="filterYear">絞り込む年:</label> <input type="text"
+					id="filterYear" placeholder="年を入力">
+				<button onclick="filterTable()">絞り込む</button>
+				<button onclick="showAll()">すべて表示</button>
+			</div>
+			<h2>贈ったモノ</h2>
 
 
 
-		<table border="1" class="my-table" id="data1">
-			<tr>
-				<th>相手の名前</th>
-				<th>品物送受日</th>
-				<th>詳細項目1</th>
-				<th>詳細項目2</th>
-				<th>品目名</th>
-				<th>金額(項目：お金のみ)</th>
-				<th>備考</th>
-				<th>編集</th>
-				<th>削除</th>
-			</tr>
-			<%
-			for (int i = 0; i < list.size(); i++) {
-				ShinamonoDTO dto = list.get(i);
-				if (dto.getBunrui() == 1) {
-			%>
-
-			<tr>
-				<td><%=dto.getAite_name()%></td>
-				<td><%=dto.getRe_time()%></td>
-
+			<table border="1" class="my-table" id="data1">
+				<tr>
+					<th>相手の名前</th>
+					<th>品物送受日</th>
+					<th>詳細項目1</th>
+					<th>詳細項目2</th>
+					<th>品目名</th>
+					<th>金額(項目：お金のみ)</th>
+					<th>備考</th>
+					<th>編集</th>
+					<th>削除</th>
+				</tr>
 				<%
-				String a = "0";
-				switch (dto.getCategory()) {
-					case 0 :
+				for (int i = 0; i < list.size(); i++) {
+					ShinamonoDTO dto = list.get(i);
+					if (dto.getBunrui() == 1) {
+				%>
+
+				<tr>
+					<td><%=dto.getAite_name()%></td>
+					<td><%=dto.getRe_time()%></td>
+
+					<%
+					String a = "0";
+					switch (dto.getCategory()) {
+						case 0 :
+							a = "未選択";
+							break;
+						case 1 :
+							a = "品物";
+							break;
+						case 2 :
+							a = "お金";
+							break;
+						case 3 :
+							a = "手紙など";
+							break;
+					}
+					%>
+					<td><%=a%></td>
+					<%
+					if (dto.getCategory() == 0) {
+						a = "未選択";
+					}
+					if (dto.getCategory() == 1) {
+						switch (dto.getItem()) {
+							case 0 :
 						a = "未選択";
 						break;
-					case 1 :
-						a = "品物";
+							case 1 :
+						a = "お中元";
 						break;
-					case 2 :
-						a = "お金";
+							case 2 :
+						a = "お供え物";
 						break;
-					case 3 :
-						a = "手紙など";
+							case 3 :
+						a = "お祝いもの";
 						break;
-				}
-				%>
-				<td><%=a%></td>
-				<%
-				if (dto.getCategory() == 0) {
-					a = "未選択";
-				}
-				if (dto.getCategory() == 1) {
-					switch (dto.getItem()) {
-						case 0 :
-					a = "未選択";
-					break;
-						case 1 :
-					a = "お中元";
-					break;
-						case 2 :
-					a = "お供え物";
-					break;
-						case 3 :
-					a = "お祝いもの";
-					break;
-						case 4 :
-					a = "お見舞い品";
-					break;
-						case 5 :
-					a = "贈答品";
-					break;
-						case 6 :
-					a = "お土産";
-					break;
-						case 7 :
-					a = "記念品";
-					break;
-						case 8 :
-					a = "誕生日プレゼント";
-					break;
-						case 9 :
-					a = "結婚祝い品";
-					break;
-						case 10 :
-					a = "出産祝い品";
-					break;
-						case 11 :
-					a = "引っ越し祝い品";
-					break;
-						case 12 :
-					a = "その他";
-					break;
+							case 4 :
+						a = "お見舞い品";
+						break;
+							case 5 :
+						a = "贈答品";
+						break;
+							case 6 :
+						a = "お土産";
+						break;
+							case 7 :
+						a = "記念品";
+						break;
+							case 8 :
+						a = "誕生日プレゼント";
+						break;
+							case 9 :
+						a = "結婚祝い品";
+						break;
+							case 10 :
+						a = "出産祝い品";
+						break;
+							case 11 :
+						a = "引っ越し祝い品";
+						break;
+							case 12 :
+						a = "その他";
+						break;
+						}
 					}
-				}
-				if (dto.getCategory() == 2) {
-					switch (dto.getItem()) {
-						case 0 :
-					a = "未選択";
-					break;
-						case 1 :
-					a = "寄付金";
-					break;
-						case 2 :
-					a = "贈与金";
-					break;
-						case 3 :
-					a = "祝儀金";
-					break;
-						case 4 :
-					a = "贈答金";
-					break;
-						case 5 :
-					a = "報酬金";
-					break;
-						case 6 :
-					a = "賞金";
-					break;
-						case 7 :
-					a = "贈賄金";
-					break;
-						case 8 :
-					a = "支援金";
-					break;
-						case 9 :
-					a = "貢献金";
-					break;
-						case 10 :
-					a = "ギフト券";
-					break;
-						case 11 :
-					a = "仏教関連金";
-					break;
-						case 12 :
-					a = "お祝い金";
-					break;
-						case 13 :
-					a = "その他";
-					break;
-					}
-				}
-				if (dto.getCategory() == 3) {
-					switch (dto.getItem()) {
-						case 0 :
-					a = "未選択";
-					break;
-						case 1 :
-					a = "年賀状";
-					break;
-						case 2 :
-					a = "招待状";
-					break;
-						case 3 :
-					a = "お詫び状";
-					break;
-						case 4 :
-					a = "通知状";
-					break;
-						case 5 :
-					a = "その他";
-					break;
-					}
-				}
-				%>
-				<td><%=a%></td>
-				<td><%=replaceEscapeChar(dto.getShinamono_name())%></td>
-				<td><%=dto.getShinamono_kingaku()%></td>
-				<td><%=replaceEscapeChar(dto.getMemo())%></td>
-				<td><a
-					href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
-
-				<td><a href="#"
-					onclick="deleteEvent(<%=dto.getShinamono_id()%>)">削除</a></td>
-			</tr>
-			<%
-			}
-			%>
-			<%
-			}
-			%>
-		</table>
-		<h2>頂いたモノ</h2>
-
-		<table border="1" class="my-table" id="data2">
-			<tr>
-				<th>相手の名前</th>
-				<th>品物送受日</th>
-				<th>詳細項目1</th>
-				<th>詳細項目2</th>
-				<th>品目名</th>
-				<th>金額(項目：お金のみ)</th>
-				<th>備考</th>
-				<th>編集</th>
-				<th>削除</th>
-			</tr>
-			<%
-			for (int i = 0; i < list.size(); i++) {
-				ShinamonoDTO dto = list.get(i);
-				if (dto.getBunrui() == 2) {
-			%>
-
-			<tr>
-				<td><%=dto.getAite_name()%></td>
-				<td><%=dto.getRe_time()%></td>
-
-				<%
-				String a = "0";
-				switch (dto.getCategory()) {
-					case 0 :
+					if (dto.getCategory() == 2) {
+						switch (dto.getItem()) {
+							case 0 :
 						a = "未選択";
 						break;
-					case 1 :
-						a = "品物";
+							case 1 :
+						a = "寄付金";
 						break;
-					case 2 :
-						a = "お金";
+							case 2 :
+						a = "贈与金";
 						break;
-					case 3 :
-						a = "手紙など";
+							case 3 :
+						a = "祝儀金";
 						break;
-				}
-				%>
-				<td><%=a%></td>
+							case 4 :
+						a = "贈答金";
+						break;
+							case 5 :
+						a = "報酬金";
+						break;
+							case 6 :
+						a = "賞金";
+						break;
+							case 7 :
+						a = "贈賄金";
+						break;
+							case 8 :
+						a = "支援金";
+						break;
+							case 9 :
+						a = "貢献金";
+						break;
+							case 10 :
+						a = "ギフト券";
+						break;
+							case 11 :
+						a = "仏教関連金";
+						break;
+							case 12 :
+						a = "お祝い金";
+						break;
+							case 13 :
+						a = "その他";
+						break;
+						}
+					}
+					if (dto.getCategory() == 3) {
+						switch (dto.getItem()) {
+							case 0 :
+						a = "未選択";
+						break;
+							case 1 :
+						a = "年賀状";
+						break;
+							case 2 :
+						a = "招待状";
+						break;
+							case 3 :
+						a = "お詫び状";
+						break;
+							case 4 :
+						a = "通知状";
+						break;
+							case 5 :
+						a = "その他";
+						break;
+						}
+					}
+					%>
+					<td><%=a%></td>
+					<td><%=replaceEscapeChar(dto.getShinamono_name())%></td>
+					<td><%=dto.getShinamono_kingaku()%></td>
+					<td><%=replaceEscapeChar(dto.getMemo())%></td>
+					<td><a
+						href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
+
+					<td><a href="#"
+						onclick="deleteEvent(<%=dto.getShinamono_id()%>)">削除</a></td>
+				</tr>
 				<%
-				if (dto.getCategory() == 0) {
-					a = "未選択";
-				}
-				if (dto.getCategory() == 1) {
-					switch (dto.getItem()) {
-						case 0 :
-					a = "未選択";
-					break;
-						case 1 :
-					a = "お中元";
-					break;
-						case 2 :
-					a = "お供え物";
-					break;
-						case 3 :
-					a = "お祝いもの";
-					break;
-						case 4 :
-					a = "お見舞い品";
-					break;
-						case 5 :
-					a = "贈答品";
-					break;
-						case 6 :
-					a = "お土産";
-					break;
-						case 7 :
-					a = "記念品";
-					break;
-						case 8 :
-					a = "誕生日プレゼント";
-					break;
-						case 9 :
-					a = "結婚祝い品";
-					break;
-						case 10 :
-					a = "出産祝い品";
-					break;
-						case 11 :
-					a = "引っ越し祝い品";
-					break;
-						case 12 :
-					a = "その他";
-					break;
-					}
-				}
-				if (dto.getCategory() == 2) {
-					switch (dto.getItem()) {
-						case 0 :
-					a = "未選択";
-					break;
-						case 1 :
-					a = "寄付金";
-					break;
-						case 2 :
-					a = "贈与金";
-					break;
-						case 3 :
-					a = "祝儀金";
-					break;
-						case 4 :
-					a = "贈答金";
-					break;
-						case 5 :
-					a = "報酬金";
-					break;
-						case 6 :
-					a = "賞金";
-					break;
-						case 7 :
-					a = "贈賄金";
-					break;
-						case 8 :
-					a = "支援金";
-					break;
-						case 9 :
-					a = "貢献金";
-					break;
-						case 10 :
-					a = "ギフト券";
-					break;
-						case 11 :
-					a = "仏教関連金";
-					break;
-						case 12 :
-					a = "お祝い金";
-					break;
-						case 13 :
-					a = "その他";
-					break;
-					}
-				}
-				if (dto.getCategory() == 3) {
-					switch (dto.getItem()) {
-						case 0 :
-					a = "未選択";
-					break;
-						case 1 :
-					a = "年賀状";
-					break;
-						case 2 :
-					a = "招待状";
-					break;
-						case 3 :
-					a = "お詫び状";
-					break;
-						case 4 :
-					a = "通知状";
-					break;
-						case 5 :
-					a = "その他";
-					break;
-					}
 				}
 				%>
-				<td><%=a%></td>
-				<td><%=replaceEscapeChar(dto.getShinamono_name())%></td>
-				<td><%=dto.getShinamono_kingaku()%></td>
-				<td><%=replaceEscapeChar(dto.getMemo())%></td>
-				<td><a
-					href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
+				<%
+				}
+				%>
+			</table>
+			<h2>頂いたモノ</h2>
 
-				<td><a href="#"
-					onclick="deleteEvent(<%=dto.getShinamono_id()%>)">削除</a></td>
-			</tr>
-			<%
-			}
-			}
-			%>
-		</table>
-	</main>
+			<table border="1" class="my-table" id="data2">
+				<tr>
+					<th>相手の名前</th>
+					<th>品物送受日</th>
+					<th>詳細項目1</th>
+					<th>詳細項目2</th>
+					<th>品目名</th>
+					<th>金額(項目：お金のみ)</th>
+					<th>備考</th>
+					<th>編集</th>
+					<th>削除</th>
+				</tr>
+				<%
+				for (int i = 0; i < list.size(); i++) {
+					ShinamonoDTO dto = list.get(i);
+					if (dto.getBunrui() == 2) {
+				%>
+
+				<tr>
+					<td><%=dto.getAite_name()%></td>
+					<td><%=dto.getRe_time()%></td>
+
+					<%
+					String a = "0";
+					switch (dto.getCategory()) {
+						case 0 :
+							a = "未選択";
+							break;
+						case 1 :
+							a = "品物";
+							break;
+						case 2 :
+							a = "お金";
+							break;
+						case 3 :
+							a = "手紙など";
+							break;
+					}
+					%>
+					<td><%=a%></td>
+					<%
+					if (dto.getCategory() == 0) {
+						a = "未選択";
+					}
+					if (dto.getCategory() == 1) {
+						switch (dto.getItem()) {
+							case 0 :
+						a = "未選択";
+						break;
+							case 1 :
+						a = "お中元";
+						break;
+							case 2 :
+						a = "お供え物";
+						break;
+							case 3 :
+						a = "お祝いもの";
+						break;
+							case 4 :
+						a = "お見舞い品";
+						break;
+							case 5 :
+						a = "贈答品";
+						break;
+							case 6 :
+						a = "お土産";
+						break;
+							case 7 :
+						a = "記念品";
+						break;
+							case 8 :
+						a = "誕生日プレゼント";
+						break;
+							case 9 :
+						a = "結婚祝い品";
+						break;
+							case 10 :
+						a = "出産祝い品";
+						break;
+							case 11 :
+						a = "引っ越し祝い品";
+						break;
+							case 12 :
+						a = "その他";
+						break;
+						}
+					}
+					if (dto.getCategory() == 2) {
+						switch (dto.getItem()) {
+							case 0 :
+						a = "未選択";
+						break;
+							case 1 :
+						a = "寄付金";
+						break;
+							case 2 :
+						a = "贈与金";
+						break;
+							case 3 :
+						a = "祝儀金";
+						break;
+							case 4 :
+						a = "贈答金";
+						break;
+							case 5 :
+						a = "報酬金";
+						break;
+							case 6 :
+						a = "賞金";
+						break;
+							case 7 :
+						a = "贈賄金";
+						break;
+							case 8 :
+						a = "支援金";
+						break;
+							case 9 :
+						a = "貢献金";
+						break;
+							case 10 :
+						a = "ギフト券";
+						break;
+							case 11 :
+						a = "仏教関連金";
+						break;
+							case 12 :
+						a = "お祝い金";
+						break;
+							case 13 :
+						a = "その他";
+						break;
+						}
+					}
+					if (dto.getCategory() == 3) {
+						switch (dto.getItem()) {
+							case 0 :
+						a = "未選択";
+						break;
+							case 1 :
+						a = "年賀状";
+						break;
+							case 2 :
+						a = "招待状";
+						break;
+							case 3 :
+						a = "お詫び状";
+						break;
+							case 4 :
+						a = "通知状";
+						break;
+							case 5 :
+						a = "その他";
+						break;
+						}
+					}
+					%>
+					<td><%=a%></td>
+					<td><%=replaceEscapeChar(dto.getShinamono_name())%></td>
+					<td><%=dto.getShinamono_kingaku()%></td>
+					<td><%=replaceEscapeChar(dto.getMemo())%></td>
+					<td><a
+						href="<%=request.getContextPath()%>/ExecuteEditShinamono?ID=<%=dto.getShinamono_id()%>">編集</a></td>
+
+					<td><a href="#"
+						onclick="deleteEvent(<%=dto.getShinamono_id()%>)">削除</a></td>
+				</tr>
+				<%
+				}
+				}
+				%>
+			</table>
+		</main>
 
 
-	<br>
-	<footer>
-		<p>&copy; team フォレスト</p>
-	</footer>
+		<br>
+		<footer>
+			<p>&copy; team フォレスト</p>
+		</footer>
+	</div>
 
 </body>
 

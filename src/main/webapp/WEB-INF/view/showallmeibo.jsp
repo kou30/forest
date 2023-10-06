@@ -122,6 +122,7 @@ Date now = new Date();
 			</nav>
 		</div>
 	</header>
+	<div class="image">
 	<main>
 		<h2>名簿一覧</h2>
 		<table border="1">
@@ -181,6 +182,7 @@ Date now = new Date();
 	<footer>
 		<p>&copy; team フォレスト</p>
 	</footer>
+	</div>
 </body>
 <script>
 function deleteEvent(meiboId){

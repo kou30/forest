@@ -41,7 +41,8 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
 			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
 			<nav class="nav">
 				<ul>
-					<li><p class="name"><%=userInfoOnSession.getUserName()%>さんのページ</p></li>
+					<li><p class="name"><%=userInfoOnSession.getUserName()%>さんのページ
+						</p></li>
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
@@ -82,7 +83,7 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
 			<h2>大切な人との、ご縁をつづる。</h2>
 			<p>贈り物・頂き物・記念日・年賀状送付管理・お年玉管理・弔慶事金額を一括管理</p>
 		</section>
-		<br><br><br><br>
+		<br> <br> <br> <br>
 
 
 		<footer>
