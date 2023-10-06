@@ -43,7 +43,7 @@ bunruiSelect.addEventListener('change', function () {
                     { value: '11', label: '引っ越し祝い品' },
                     { value: '12', label: 'その他' }
                 ];
-				console.log("品物");
+				
                 thirdOptionSelect.innerHTML = '';
                 thirdOptions.forEach(option => {
                     const optionElement = document.createElement('option');
@@ -70,7 +70,7 @@ bunruiSelect.addEventListener('change', function () {
                     { value: '12', label: 'お祝い金' },
                     { value: '13', label: 'その他' }
                 ];
-				console.log("okane");
+				
                 thirdOptionSelect.innerHTML = '';
                 thirdOptions.forEach(option => {
                     const optionElement = document.createElement('option');
@@ -89,7 +89,7 @@ bunruiSelect.addEventListener('change', function () {
                     { value: '4', label: '通知状' },
                     { value: '5', label: 'その他' }
                 ];
-				console.log("手紙");
+				
                 thirdOptionSelect.innerHTML = '';
                 thirdOptions.forEach(option => {
                     const optionElement = document.createElement('option');
