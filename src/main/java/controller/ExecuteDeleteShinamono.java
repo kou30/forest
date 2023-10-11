@@ -42,9 +42,12 @@ public class ExecuteDeleteShinamono extends HttpServlet {
 			int pageid = Integer.parseInt(request.getParameter("pageID"));
 			int meiboid = Integer.parseInt(request.getParameter("MEIBO_ID"));
 			ShinamonoDAO dao = new ShinamonoDAO();
-			dao.deleteOne(id);
-			request.setAttribute("msg", "1件削除しました");
-
+			boolean isDeleted =dao.deleteOne(id);
+			if (isDeleted) {
+				request.setAttribute("msg", "1件削除しました");
+			} else {
+				request.setAttribute("msg", "削除に失敗しました");
+			}
 			if (pageid == 2) {
 				request.setAttribute("MEIBO_ID", meiboid);
 				RequestDispatcher rd = request.getRequestDispatcher("/Detail");

@@ -13,7 +13,6 @@
 * 
 */
 
-
 package model;
 
 import java.sql.Connection;
@@ -166,17 +165,23 @@ public class ShinamonoDAO {
 		return shinamono;
 	}
 
-	public void deleteOne(int id) {
+	public boolean deleteOne(int id) {
+		boolean result = false;
 		try {
 			this.connect();
 			ps = db.prepareStatement("DELETE FROM shinamono WHERE shinamono_id=?");
 			ps.setInt(1, id);
-			ps.execute();
+			int affectedRows = ps.executeUpdate();
+			if (affectedRows > 0) {
+				result = true;
+			}
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
 		} finally {
 			this.disconnect();
 		}
+		return result;
+
 	}
 
 	@SuppressWarnings("finally")
@@ -235,24 +240,23 @@ public class ShinamonoDAO {
 		return shinamono;
 	}
 
+	public List<ShinamonoDTO> NarrowDownSelect(String selectedOption, String Write, int id) {
+		List<ShinamonoDTO> Narrowdown = new ArrayList<>();
+		try {
+			this.connect();
+			//		ps = db.prepareStatement("SELECT * FROM  forest_db.shinamono WHERE YEAR(re_time) = ? and user_nr=?");
+			String query = "SELECT * FROM forest_db.shinamono WHERE user_nr = ?";
 
-public List<ShinamonoDTO> NarrowDownSelect(String selectedOption,String Write,int id) {
-	List<ShinamonoDTO> Narrowdown = new ArrayList<>();
-	try {
-		this.connect();
-//		ps = db.prepareStatement("SELECT * FROM  forest_db.shinamono WHERE YEAR(re_time) = ? and user_nr=?");
-		String query = "SELECT * FROM forest_db.shinamono WHERE user_nr = ?";
-
-		if ("2".equals(selectedOption)) {
-		    query += " AND aite_name = ?";
-		} else if ("3".equals(selectedOption)) {
-		    query += " AND re_time = ?";
-		}
-		ps = db.prepareStatement(query);
-		ps.setInt(1, id);  
-        ps.setString(2, Write);
-		rs = ps.executeQuery();
-		while (rs.next()) {
+			if ("2".equals(selectedOption)) {
+				query += " AND aite_name = ?";
+			} else if ("3".equals(selectedOption)) {
+				query += " AND re_time = ?";
+			}
+			ps = db.prepareStatement(query);
+			ps.setInt(1, id);
+			ps.setString(2, Write);
+			rs = ps.executeQuery();
+			while (rs.next()) {
 				int shinamono_id = rs.getInt("shinamono_id");
 				int user_nr = rs.getInt("user_nr");
 				int meibo_id = rs.getInt("meibo_id");
@@ -267,14 +271,13 @@ public List<ShinamonoDTO> NarrowDownSelect(String selectedOption,String Write,in
 				Narrowdown.add(new ShinamonoDTO(shinamono_id, user_nr, meibo_id, aite_name, re_time, bunrui, category,
 						item,
 						shinamono_name, shinamono_kingaku, memo));
+			}
+		} catch (NamingException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			this.disconnect();
 		}
-	} catch (NamingException | SQLException e) {
-		e.printStackTrace();
-	} finally {
-		this.disconnect();
+		return Narrowdown;
 	}
-	return Narrowdown;
-}
 
 }
-

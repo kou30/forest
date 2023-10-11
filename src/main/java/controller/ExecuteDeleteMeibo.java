@@ -37,9 +37,12 @@ public class ExecuteDeleteMeibo extends HttpServlet {
 		if (userInfoOnSession != null) {
 			int id = Integer.parseInt(request.getParameter("MEIBO_ID"));
 			MeiboDAO dao = new MeiboDAO();
-			dao.deleteOne(id);
-			request.setAttribute("msg", "1件削除しました");
-
+			boolean isDeleted = dao.deleteOne(id);
+			if (isDeleted) {
+				request.setAttribute("msg", "1件削除しました");
+			} else {
+				request.setAttribute("msg", "削除に失敗しました");
+			}
 			RequestDispatcher rd = request.getRequestDispatcher("/ShowAllMeibo");
 			rd.forward(request, response);
 		} else {

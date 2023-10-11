@@ -179,6 +179,9 @@ document.getElementById('ShinamonoEntry').addEventListener('submit', function(ev
     }
 
 
+    // 備考のバリデーション
+    var memo = document.getElementsByName('MEMO')[0].value;
+
     // 絵文字のバリデーション
     var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
     if (emojiRegex.test(memo) || emojiRegex.test(shinamonoName)) {

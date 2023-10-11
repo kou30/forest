@@ -13,7 +13,6 @@
 * 
 */
 
-
 package model;
 
 import java.sql.Connection;
@@ -32,6 +31,7 @@ public class MeiboDAO {
 	private Connection db;
 	private PreparedStatement ps;
 	private ResultSet rs;
+
 	private void connect() throws NamingException, SQLException {
 		Context context = new InitialContext();
 		DataSource ds = (DataSource) context.lookup("java:comp/env/forest_db");
@@ -182,17 +182,22 @@ public class MeiboDAO {
 		return dto;
 	}
 
-	public void deleteOne(int id) {
+	public boolean deleteOne(int id) {
+		boolean result = false;
 		try {
 			this.connect();
 			ps = db.prepareStatement("DELETE FROM meibo WHERE meibo_id=?");
 			ps.setInt(1, id);
-			ps.execute();
+			int affectedRows = ps.executeUpdate();
+			if (affectedRows > 0) {
+				result = true;
+			}
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
 		} finally {
 			this.disconnect();
 		}
+		return result;
 	}
 
 	@SuppressWarnings("finally")
