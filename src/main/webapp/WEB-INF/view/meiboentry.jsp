@@ -62,7 +62,8 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 			<img src="./images/ENcounter.png" alt="ENcounter" class="img">
 			<nav class="nav">
 				<ul>
-					<li><p class="name"><%=userInfoOnSession.getUserName()%>さんのページ</p></li>
+					<li><p class="name"><%=userInfoOnSession.getUserName()%>さんのページ
+						</p></li>
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
@@ -102,7 +103,8 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 					<input type="radio" name="BUNRUI" value="知人">知人 <input
 						type="radio" name="BUNRUI" value="なし">なし
 				</p>
-				<p>					続柄: <select name="RELATIONSHIP">
+				<p>
+					続柄: <select name="RELATIONSHIP">
 						<option value="1">選択なし</option>
 						<option value="2">父</option>
 						<option value="3">母</option>
