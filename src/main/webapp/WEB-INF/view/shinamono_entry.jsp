@@ -114,11 +114,11 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 				</p>
 
 				<p>
-					品目名：<input type="text" name="SHINAMONONAME" maxlength="20" id=""
+					品目名：<input type="text" name="SHINAMONONAME" maxlength="32" id=""
 						required>
 				</p>
 				<div id="amountField" style="display: none;">
-					金額：<input type="text" name="KINGAKU" value=0 maxlength="20" id="">
+					金額：<input type="text" name="KINGAKU" value=0 maxlength="10" id="">
 				</div>
 
 				<p>

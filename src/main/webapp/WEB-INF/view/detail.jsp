@@ -113,6 +113,10 @@ if (msg != null) {
 <title>個人ページ</title>
 <link rel="stylesheet" href="css/detail.css">
 <link rel="stylesheet" href="css/main.css">
+<%
+String[] relationships = {"選択なし", "父", "母", "兄", "姉", "弟", "妹", "義父", "義母", "義兄", "義姉", "義弟", "義妹", "義祖父", "義祖母",
+		"義曽祖父", "義曾祖母", "義おじ", "義おば", "義いとこ", "義甥", "義姪", "夫", "妻", "息子", "娘"};
+%>
 </head>
 <body>
 	<header>
@@ -154,7 +158,7 @@ if (msg != null) {
 					<td><%=Mdto.getBirthday()%> <%=calcAge(Mdto.getBirthday(), now)%>歳</td>
 					<td><%=Mdto.getSex() == 1 ? "男性" : "女性"%></td>
 					<td><%=replaceEscapeChar(Mdto.getBunrui())%></td>
-					<td><%=replaceEscapeChar(Integer.toString(Mdto.getRelationship()))%></td>
+					<td><%=relationships[Mdto.getRelationship() - 1]%></td>
 					<td><%=replaceEscapeChar(Mdto.getMemo())%></td>
 
 				</tr>

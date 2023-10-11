@@ -80,17 +80,17 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 			<form action="MeiboEntry" ID="MeiboEntry" method="post"
 				enctype="multipart/form-data">
 				<p>
-					<input type="text" name="YOMI" maxlength="10" id="yomiInput"
+					<input type="text" name="YOMI" maxlength="30" id="yomiInput"
 						placeholder="よみがな" required>
 				</p>
 
 				<p>
-					<input type="text" name="NAME" maxlength="10" id="nameInput"
+					<input type="text" name="NAME" maxlength="20" id="nameInput"
 						placeholder="氏名" required>
 				</p>
 
 				<p>
-					<label for="">成年月日:</label> <input type="date" id=""
+					<label for="">生年月日:</label> <input type="date" id=""
 						name="BIRTHDAY" value="<%=now%>" min="1950-01-01" max="<%=now%>" />
 				</p>
 
@@ -135,7 +135,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 				</p>
 				<p>
 					備考:<br>
-					<textarea name="MEMO" rows="4" cols="50" maxlength="250"></textarea>
+					<textarea name="MEMO" rows="4" cols="50" maxlength="100"></textarea>
 				</p>
 
 				<p>
@@ -243,7 +243,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 												var birthday = document
 														.getElementsByName('BIRTHDAY')[0].value;
 												if (birthday.trim() === '') {
-													alert('成年月日を入力してください');
+													alert('生年月日を入力してください');
 													return;
 												}
 
