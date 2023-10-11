@@ -73,7 +73,7 @@ public class ExecuteSignup extends HttpServlet {
                 e.printStackTrace();
             }
             if (successInsert) {
-                response.sendRedirect("html/finish.html");
+                response.sendRedirect("html/signupfinish.html");
             } else {
                 response.sendRedirect("html/error.html");
             }

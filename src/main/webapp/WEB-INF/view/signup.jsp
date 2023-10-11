@@ -38,17 +38,17 @@
   <div style="width:500px;">
     <form action="ExecuteSignup" method="post" onsubmit="return validatePassword()">
       <p>ID
-        <input type="text" name="USER_ID" pattern="^[0-9a-zA-Z]+$" maxlength="20" placeholder="ID(半角英数字のみ)" required>
+        <input type="text" name="USER_ID" pattern="^[0-9a-zA-Z]+$" minlength="6" maxlength="20" placeholder="ID(半角英数字のみ)" required>
         <span id="IDdup" style="color: red;"></span>
       </p>
       <p>USER_NAME
-        <input type="text" name="USER_NAME" maxlength="20" placeholder="USER_NAME" required>
+        <input type="text" name="USER_NAME" minlength="6" maxlength="20" placeholder="USER_NAME" required>
       </p>
       <p>PASSWORD
-        <input type="password" name="PASSWORD" id="pass1" maxlength="20" placeholder="PASSWORD" required>
+        <input type="password" name="PASSWORD" id="pass1" minlength="6" maxlength="20" placeholder="PASSWORD" required>
       </p>
       <p>確認のためにPASSWORDを入力
-        <input type="password" name="PASSWORDcheck" id="pass2" maxlength="20" placeholder="確認用PASSWORDを入力" required>
+        <input type="password" name="PASSWORDcheck" id="pass2" minlength="6" maxlength="20" placeholder="確認用PASSWORDを入力" required>
         <span id="passwordError" style="color: red;"></span>
       </p>
       <input type="submit" value="登録する" class="button">
