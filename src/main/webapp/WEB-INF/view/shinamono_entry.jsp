@@ -178,6 +178,7 @@ document.getElementById('ShinamonoEntry').addEventListener('submit', function(ev
         return;
     }
 
+
     // 備考のバリデーション
     var memo = document.getElementsByName('MEMO')[0].value;
 
