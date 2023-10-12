@@ -91,7 +91,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 
 				<p>
 					<label for="">生年月日:</label> <input type="date" id=""
-						name="BIRTHDAY" value="<%=now%>" min="1950-01-01" max="<%=now%>" />
+						name="BIRTHDAY" value="1980-01-01" min="1950-01-01" max="<%=now%>" />
 				</p>
 
 				<p>
