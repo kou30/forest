@@ -84,14 +84,14 @@ public class MeiboDAO {
 
 			//PreparedStatementオブジェクトを生成＆発行するSQLをセット
 			ps = db.prepareStatement(buf.toString()); //パラメータをセット
-			ps.setInt(1, dto.getUser_nr()); //第1パラメータ：更新データ（名前）
-			ps.setString(2, dto.getName()); //第1パラメータ：更新データ（名前）
-			ps.setString(3, dto.getYomi()); //第2パラメータ：更新データ（年齢）
-			ps.setInt(4, dto.getSex()); //第3パラメータ：更新データ（性別）
-			ps.setString(5, dto.getBunrui()); //第1パラメータ：更新データ（食べ物）
-			ps.setString(6, dto.getBirthday()); //第1パラメータ：更新データ（食べ物）
-			ps.setInt(7, dto.getRelationship()); //第4パラメータ：更新データ（満足度）
-			ps.setString(8, dto.getMemo()); //第5パラメータ：更新データ（メッセージ）
+			ps.setInt(1, dto.getUser_nr()); 
+			ps.setString(2, dto.getName());
+			ps.setString(3, dto.getYomi());
+			ps.setInt(4, dto.getSex()); 
+			ps.setString(5, dto.getBunrui());
+			ps.setString(6, dto.getBirthday());
+			ps.setInt(7, dto.getRelationship());
+			ps.setString(8, dto.getMemo()); 
 			ps.setBytes(9, dto.getImageData());
 			ps.execute();
 		} catch (NamingException | SQLException e) {
@@ -121,7 +121,6 @@ public class MeiboDAO {
 			buf.append("  IMAGE                ");
 			buf.append("FROM                  ");
 			buf.append("  MEIBO              ");
-			//buf.append("  WHERE  DEL=0              ");
 			buf.append("  WHERE  USER_NR=?              ");
 			buf.append("  ORDER BY              ");
 			buf.append("  MEIBO_ID;                ");
@@ -130,7 +129,6 @@ public class MeiboDAO {
 			ps.setInt(1, user_nr);
 			rs = ps.executeQuery();
 
-			//ResultSetオブジェクトからDTOリストに格納
 			while (rs.next()) {
 				MeiboDTO dto = new MeiboDTO();
 				dto.setMeibo_id(rs.getInt("MEIBO_ID"));

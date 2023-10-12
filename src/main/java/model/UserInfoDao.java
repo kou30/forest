@@ -65,23 +65,20 @@ public class UserInfoDao {
 			buf.append(" FROM               ");
 			buf.append("   USER_INFO        ");
 			buf.append(" WHERE              ");
-			buf.append("   USER_ID  = ? AND "); //第1パラメータ
-			buf.append("   PASSWORD = ?     "); //第2パラメータ
+			buf.append("   USER_ID  = ? AND "); 
+			buf.append("   PASSWORD = ?     "); 
 
-			//PreparedStatement（SQL発行用オブジェクト）を生成＆発行するSQLをセット
 			ps = db.prepareStatement(buf.toString());
 
-			//パラメータをセット
-			ps.setString(1, inputUserId); //第1パラメータ：ユーザーID（ユーザー入力）
-			ps.setString(2, inputPassWord); //第2パラメータ：ユーザーパスワード（ユーザー入力）
+			ps.setString(1, inputUserId); 
+			ps.setString(2, inputPassWord);
 
-			//SQL文の送信＆戻り値としてResultSet（SQL抽出結果）を取得
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				dto.setUser_nr(rs.getInt("USER_NR"));
-				dto.setUserId(rs.getString("USER_ID")); //ユーザーID
-				dto.setUserName(rs.getString("USER_NAME")); //ユーザー名
-				dto.setPassWord(rs.getString("PASSWORD")); //ユーザーパスワード
+				dto.setUserId(rs.getString("USER_ID")); 
+				dto.setUserName(rs.getString("USER_NAME")); 
+				dto.setPassWord(rs.getString("PASSWORD")); 
 			}
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();
@@ -93,9 +90,8 @@ public class UserInfoDao {
 
 	public UserInfoDto executeSelectUserInfo(String inputUserId, String inputPassWord) {
 
-		UserInfoDto dto = new UserInfoDto(); //ユーザーデータ（UserInfoDto型）
+		UserInfoDto dto = new UserInfoDto();
 
-		//DAOクラスをインスタンス化＆「user_info」テーブルからユーザーデータを抽出するよう依頼
 		UserInfoDao dao = new UserInfoDao();
 		dto = dao.doSelect(inputUserId, inputPassWord);
 
@@ -122,8 +118,8 @@ public class UserInfoDao {
 			ps = db.prepareStatement(buf.toString());
 
 			//パラメータをセット
-			ps.setString(1, dto.getUserId()); //第1パラメータ：ユーザーID（ユーザー入力）
-			ps.setString(2, dto.getUserName()); //第2パラメータ：ユーザーパスワード（ユーザー入力）
+			ps.setString(1, dto.getUserId()); 
+			ps.setString(2, dto.getUserName());
 			ps.setString(3, dto.getPassWord());
 
 			ps.executeUpdate();
@@ -151,7 +147,7 @@ public class UserInfoDao {
 	        rs = ps.executeQuery();
 	        
 	        if (rs.next()) {
-	            isSuccess = true; // データが存在する場合、isSuccessをfalseに設定
+	            isSuccess = true;
 	        }
 	    } catch (NamingException | SQLException e) {
 	        e.printStackTrace();

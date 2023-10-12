@@ -63,6 +63,6 @@
 		</div>
 	</form>
 	<br>
-	<a href="ExecuteSignup" class="signup">サインアップする</a>
+	<a href="ExecuteSignup" class="signup">新規登録する</a>
 </body>
 </html>

@@ -162,8 +162,7 @@ Date now = new Date();
  %></td>
 				<td><%=gender[dto.getSex()]%></td>
 				<td><%=dto.getBunrui()%></td>
-				<td><a
-					href="<%=request.getContextPath()%>/Detail?MEIBO_ID=<%=dto.getMeibo_id()%>"><%=relationships[dto.getRelationship() - 1]%></a></td>
+				<td><%=relationships[dto.getRelationship() - 1]%></td>
 				<td><a
 					href="<%=request.getContextPath()%>/ShinamonoEntry?MEIBO_ID=<%=dto.getMeibo_id()%>">品物登録</a></td>
 				<td><a

@@ -11,11 +11,8 @@
 
 <body>
 
-<img src="./images/ENcounter.png" alt="ENcounter" class="img">
-
-
-
-<p><a href="Logininfo">ログイン画面へ</a></p>
+	<a href="Logininfo"><img src="./images/ENcounter.png"
+		alt="ENcounter" class="img"></a>
 
 </body>
 </html>

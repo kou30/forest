@@ -81,7 +81,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 				enctype="multipart/form-data">
 				<p>
 					<input type="text" name="YOMI" maxlength="30" id="yomiInput"
-						placeholder="よみがな" required>
+						placeholder="よみがな" pattern="^[ぁ-ん]+$" required>
 				</p>
 
 				<p>
