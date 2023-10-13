@@ -52,6 +52,7 @@
         
       </p>
       <span id="passwordError" style="color: red;"></span>
+      <p></p>
       <input type="submit" value="登録する" class="button">
     </form>
   </div>
