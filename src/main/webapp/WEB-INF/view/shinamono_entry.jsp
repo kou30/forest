@@ -60,7 +60,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
-					<li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
+					<li><a href="ShowAllShinamono">贈り物・頂き物一覧</a></li>
 					<li><a href="MonthView">カレンダー</a></li>
 					<li><a href="Logoutinfo" class="logout">ログアウト</a></li>
 				</ul>
@@ -81,7 +81,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 		
 
        			<p>
-                    <label for="start">贈った、または頂いた日時:</label>
+                    <label for="start">日時:</label>
                     <input type="date" id="inputDate" name="DATE" value=<%=now%> min="1950-01-01" max="<%= now %>" />
                 </p>
 
@@ -118,7 +118,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 					品目名：<input type="text" name="SHINAMONONAME" maxlength="32" id=""
 						required>
 				</p>
-				<div id="amountField" style="display: none;">
+				<div id="amountField">
 					金額：<input type="text" name="KINGAKU" value=0 maxlength="10" id="">
 				</div>
 

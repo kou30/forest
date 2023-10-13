@@ -82,7 +82,7 @@ List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
-					<li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
+					<li><a href="ShowAllShinamono">贈り物・頂き物一覧</a></li>
 					<li><a href="MonthView">カレンダー</a></li>
 					<li><a href="Logoutinfo" class="logout">ログアウト</a></li>
 				</ul>
@@ -97,7 +97,7 @@ List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
 				<button onclick="filterTable()">絞り込む</button>
 				<button onclick="showAll()">すべて表示</button>
 			</div>
-			<h2>贈ったモノ</h2>
+			<h2>贈りもの</h2>
 
 
 
@@ -274,7 +274,7 @@ List<ShinamonoDTO> list = (List<ShinamonoDTO>) request.getAttribute("list");
 				}
 				%>
 			</table>
-			<h2>頂いたモノ</h2>
+			<h2>頂きもの</h2>
 
 			<table border="1" class="my-table" id="data2">
 				<tr>

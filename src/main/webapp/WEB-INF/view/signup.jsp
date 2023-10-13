@@ -49,8 +49,9 @@
       </p>
       <p>確認のためにパスワードを入力
         <input type="password" name="PASSWORDcheck" id="pass2" minlength="6" maxlength="20" placeholder="6文字以上20文字以下" required>
-        <span id="passwordError" style="color: red;"></span>
+        
       </p>
+      <span id="passwordError" style="color: red;"></span>
       <input type="submit" value="登録する" class="button">
     </form>
   </div>
