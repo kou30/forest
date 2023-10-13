@@ -163,7 +163,7 @@ function thirdItem() {
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
-					<li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
+					<li><a href="ShowAllShinamono">贈り物・頂き物一覧</a></li>
 					<li><a href="MonthView">カレンダー</a></li>
 					<li><a href="Logoutinfo" class="logout">ログアウト</a></li>
 				</ul>
@@ -183,7 +183,7 @@ function thirdItem() {
 				</p>
 
 				<p>
-					<label for="start">贈った、または頂いた日時:</label> <input type="date"
+					<label for="start">日付:</label> <input type="date"
 						id="inputDate" name="DATE" value="<%=dto.getRe_time()%>"
 						min="1950-01-01" max="<%=now%>" />
 				</p>

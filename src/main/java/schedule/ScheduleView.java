@@ -186,7 +186,7 @@ import model.UserInfoDto;
 				+ "					<li><a href=\"MainPage\">TOP</a></li>\r\n"
 				+ "					<li><a href=\"MeiboEntry\">名簿登録</a></li>\r\n"
 				+ "					<li><a href=\"ShowAllMeibo\">名簿一覧</a></li>\r\n"
-				+ "					<li><a href=\"ShowAllShinamono\">贈り物・貰い物一覧</a></li>\r\n"
+				+ "					<li><a href=\"ShowAllShinamono\">贈り物・頂き物一覧</a></li>\r\n"
 				+ "					<li><a href=\"MonthView\">カレンダー</a></li>\r\n"
 				+ "					<li><a href=\"Logoutinfo\" class=\"logout\">ログアウト</a></li>\r\n"
 				+ "				</ul>\r\n"
