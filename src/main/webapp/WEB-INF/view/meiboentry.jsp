@@ -86,17 +86,14 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 
 				<p>
 					<input type="text" name="NAME" maxlength="20" id="nameInput"
-						placeholder="氏名" required>
+						placeholder="氏名" pattern="^[ぁ-ん]+$" required>
 				</p>
 
 				<p>
-<<<<<<< HEAD
 					生年月日: <input type="date" id=""
 						name="BIRTHDAY" value="<%=now%>" min="1950-01-01" max="<%=now%>" />
-=======
 					<label for="">生年月日:</label> <input type="date" id=""
 						name="BIRTHDAY" value="1980-01-01" min="1950-01-01" max="<%=now%>" />
->>>>>>> e49905cd7f525b4e59543ea21398e3698afad35f
 				</p>
 
 				<p>
