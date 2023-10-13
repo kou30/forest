@@ -40,13 +40,7 @@ console.log("エディットシング");
         return;
     }
 
-    // 備考のバリデーション
-    var memo = document.getElementsByName('MEMO')[0].value;
-    if (memo.trim() === '') {
-        alert('備考を入力してください');
-        event.preventDefault();
-        return;
-    }
+
 
     // 絵文字のバリデーション
     var emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;

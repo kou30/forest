@@ -107,6 +107,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 
 
 				<!-- 第三分類 -->
+		
 				<p>
 					詳細項目選択 <select name="ITEM" id="thirdOptionSelect" disabled>
 						<option value="0">選択してください</option>
