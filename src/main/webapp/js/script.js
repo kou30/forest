@@ -52,7 +52,6 @@ bunruiSelect.addEventListener('change', function () {
                     thirdOptionSelect.appendChild(optionElement);
                 });
                  
-                amountField.style.display = 'none'; 
             } else if (selectedNextOption === '2') { // 第二分類が「お金」の場合、第三分類を更新
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
@@ -79,7 +78,6 @@ bunruiSelect.addEventListener('change', function () {
                     thirdOptionSelect.appendChild(optionElement);
                 });
                  
-                amountField.style.display = 'block'; // 金額コメント欄を表示
             } else if (selectedNextOption === '3') { // 第二分類が「手紙など」の場合、第三分類を更新
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
@@ -98,15 +96,12 @@ bunruiSelect.addEventListener('change', function () {
                     thirdOptionSelect.appendChild(optionElement);
                 });
                 
-                amountField.style.display = 'none'; // 第二セレクト変更時に金額コメント欄を非表示に
             } else { // その他の場合はデフォルトの選択肢を表示
                 thirdOptionSelect.innerHTML = '<option value="0">選択してください</option>';
-                amountField.style.display = 'none'; // 第二セレクト変更時に金額コメント欄を非表示に
             }
         } else {
             thirdOptionSelect.disabled = true;
             thirdOptionSelect.value = '0';
-            amountField.style.display = 'none'; // 第二セレクト変更時に金額コメント欄を非表示に
         }
     });
 });
@@ -164,7 +159,6 @@ function thirdItem() {
                     thirdOptionSelect.appendChild(optionElement);
                 });
                  
-                amountField.style.display = 'none'; 
             } else if (selectedNextOption === '2') { // 第二分類が「お金」の場合、第三分類を更新
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
@@ -191,7 +185,6 @@ function thirdItem() {
                     thirdOptionSelect.appendChild(optionElement);
                 });
                  
-                amountField.style.display = 'block'; // 金額コメント欄を表示
             } else if (selectedNextOption === '3') { // 第二分類が「手紙など」の場合、第三分類を更新
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
@@ -210,15 +203,12 @@ function thirdItem() {
                     thirdOptionSelect.appendChild(optionElement);
                 });
                 
-                amountField.style.display = 'none'; // 第二セレクト変更時に金額コメント欄を非表示に
             } else { // その他の場合はデフォルトの選択肢を表示
                 thirdOptionSelect.innerHTML = '<option value="0">選択してください</option>';
-                amountField.style.display = 'none'; // 第二セレクト変更時に金額コメント欄を非表示に
             }
         } else {
             thirdOptionSelect.disabled = true;
             thirdOptionSelect.value = '0';
-            amountField.style.display = 'none'; // 第二セレクト変更時に金額コメント欄を非表示に
         }
     });
 };

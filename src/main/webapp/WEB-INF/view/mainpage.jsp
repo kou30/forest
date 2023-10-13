@@ -46,7 +46,7 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
-					<li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
+					<li><a href="ShowAllShinamono">贈り物・頂き物一覧</a></li>
 					<li><a href="MonthView">カレンダー</a></li>
 					<li><a href="Logoutinfo" class="logout">ログアウト</a></li>
 				</ul>
@@ -69,7 +69,7 @@ UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO")
 						<a href="ShowAllMeibo" class="topmenu">名簿一覧</a>
 					</ol>
 					<ol>
-						<a href="ShowAllShinamono" class="topmenu">贈り物・貰い物一覧</a>
+						<a href="ShowAllShinamono" class="topmenu">贈り物・頂き物一覧</a>
 					</ol>
 					<ol>
 						<a href="MonthView" class="topmenu">カレンダー</a>

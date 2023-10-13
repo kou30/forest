@@ -80,7 +80,6 @@ function thirdItem() {
                     thirdOptionSelect.appendChild(optionElement);
                 });
                  
-                amountField.style.display = 'none'; 
             } else if (selectedNextOption === '2') { // 第二分類が「お金」の場合、第三分類を更新
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
@@ -107,7 +106,6 @@ function thirdItem() {
                     thirdOptionSelect.appendChild(optionElement);
                 });
                  
-                amountField.style.display = 'block'; // 金額コメント欄を表示
             } else if (selectedNextOption === '3') { // 第二分類が「手紙など」の場合、第三分類を更新
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
@@ -126,15 +124,12 @@ function thirdItem() {
                     thirdOptionSelect.appendChild(optionElement);
                 });
                 
-                amountField.style.display = 'none'; // 第二セレクト変更時に金額コメント欄を非表示に
             } else { // その他の場合はデフォルトの選択肢を表示
                 thirdOptionSelect.innerHTML = '<option value="0">選択してください</option>';
-                amountField.style.display = 'none'; // 第二セレクト変更時に金額コメント欄を非表示に
             }
         } else {
             thirdOptionSelect.disabled = true;
             thirdOptionSelect.value = '0';
-            amountField.style.display = 'none'; // 第二セレクト変更時に金額コメント欄を非表示に
         }
     
 };
@@ -163,7 +158,7 @@ function thirdItem() {
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
-					<li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
+					<li><a href="ShowAllShinamono">贈り物・頂き物一覧</a></li>
 					<li><a href="MonthView">カレンダー</a></li>
 					<li><a href="Logoutinfo" class="logout">ログアウト</a></li>
 				</ul>
@@ -183,7 +178,7 @@ function thirdItem() {
 				</p>
 
 				<p>
-					<label for="start">贈った、または頂いた日時:</label> <input type="date"
+					<label for="start">日付:</label> <input type="date"
 						id="inputDate" name="DATE" value="<%=dto.getRe_time()%>"
 						min="1950-01-01" max="<%=now%>" />
 				</p>
@@ -223,7 +218,7 @@ function thirdItem() {
 				品目名：<input type="text" name="SHINAMONONAME"
 					value="<%=dto.getShinamono_name()%>" maxlength="20" id="">
 				</p>
-				<div id="amountField" style="display: none;">
+				<div id="amountField">
 					金額：<input type="text" name="KINGAKU"
 						value="<%=dto.getShinamono_kingaku()%>" maxlength="20" id="">
 				</div>
