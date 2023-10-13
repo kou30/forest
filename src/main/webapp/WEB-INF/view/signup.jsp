@@ -39,8 +39,8 @@
     <form action="ExecuteSignup" method="post" onsubmit="return validatePassword()">
       <p>ID
         <input type="text" name="USER_ID" pattern="^[0-9a-zA-Z]+$" minlength="6" maxlength="20" placeholder="ID(半角英数字のみ)" required>
-        <span id="IDdup" style="color: red;"></span>
-      </p>
+        
+      </p><span id="IDdup" style="color: red;"></span>
       <p>USER_NAME
         <input type="text" name="USER_NAME" minlength="6" maxlength="20" placeholder="USER_NAME" required>
       </p>
