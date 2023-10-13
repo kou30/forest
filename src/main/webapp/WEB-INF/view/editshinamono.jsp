@@ -218,7 +218,7 @@ function thirdItem() {
 				</p>
 
 
-<script >thirdItem()</script>
+				<script >thirdItem()</script>
 
 				品目名：<input type="text" name="SHINAMONONAME"
 					value="<%=dto.getShinamono_name()%>" maxlength="20" id="">
