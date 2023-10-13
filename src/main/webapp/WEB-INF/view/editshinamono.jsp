@@ -218,7 +218,6 @@ function thirdItem() {
 				</p>
 
 
-
 <script >thirdItem()</script>
 
 				品目名：<input type="text" name="SHINAMONONAME"
