@@ -38,17 +38,17 @@
   <div style="width:500px;">
     <form action="ExecuteSignup" method="post" onsubmit="return validatePassword()">
       <p>ID
-        <input type="text" name="USER_ID" pattern="^[0-9a-zA-Z]+$" minlength="6" maxlength="20" placeholder="ID(半角英数字のみ)" required>
+        <input type="text" name="USER_ID" pattern="^[0-9a-zA-Z]+$" minlength="6" maxlength="20" placeholder="半角英数字のみ、6文字以上20文字以下" required>
         
       </p><span id="IDdup" style="color: red;"></span>
-      <p>USER_NAME
-        <input type="text" name="USER_NAME" minlength="6" maxlength="20" placeholder="USER_NAME" required>
+      <p>ユーザー名
+        <input type="text" name="USER_NAME" minlength="6" maxlength="20" placeholder="6文字以上20文字以下" required>
       </p>
-      <p>PASSWORD
-        <input type="password" name="PASSWORD" id="pass1" minlength="6" maxlength="20" placeholder="PASSWORD" required>
+      <p>パスワード
+        <input type="password" name="PASSWORD" id="pass1" minlength="6" maxlength="20" placeholder="6文字以上20文字以下" required>
       </p>
-      <p>確認のためにPASSWORDを入力
-        <input type="password" name="PASSWORDcheck" id="pass2" minlength="6" maxlength="20" placeholder="確認用PASSWORDを入力" required>
+      <p>確認のためにパスワードを入力
+        <input type="password" name="PASSWORDcheck" id="pass2" minlength="6" maxlength="20" placeholder="6文字以上20文字以下" required>
         <span id="passwordError" style="color: red;"></span>
       </p>
       <input type="submit" value="登録する" class="button">
@@ -74,7 +74,7 @@
    <% if (isDuplicateID) { %>
   <script>
   var IDdup = document.getElementById("IDdup");
-  IDdup.innerHTML = "異なるIDでサインアップしてください"; 
+  IDdup.innerHTML = "このIDは既に使用されています。別のIDを選択してください。"; 
   //alert("このIDは既に使用されています。別のIDを選択してください。");
   </script>
   <% } %>
