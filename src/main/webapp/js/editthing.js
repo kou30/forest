@@ -1,7 +1,7 @@
 document.getElementById('ExecuteEditShinamono').addEventListener('submit', function(event) {
 	
 	
-console.log(エディットシング)
+console.log("エディットシング");
 	
     var selectedValue = document.getElementById('bunruiSelect').value;
     if (selectedValue === '0') {
