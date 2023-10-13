@@ -86,12 +86,10 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 
 				<p>
 					<input type="text" name="NAME" maxlength="20" id="nameInput"
-						placeholder="氏名" pattern="^[ぁ-ん]+$" required>
+						placeholder="氏名"  required>
 				</p>
 
 				<p>
-					生年月日: <input type="date" id=""
-						name="BIRTHDAY" value="<%=now%>" min="1950-01-01" max="<%=now%>" />
 					<label for="">生年月日:</label> <input type="date" id=""
 						name="BIRTHDAY" value="1980-01-01" min="1950-01-01" max="<%=now%>" />
 				</p>
@@ -146,7 +144,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
                 relationshipSelect.innerHTML = ""; // 既存の選択肢をクリア
 
                 const newOptions = [
-                    { value: "0", text: "選択なし" },
+                    { value: "1", text: "選択なし" },
                     { value: "27", text: "友人" },
                     { value: "28", text: "同僚" },
                     { value: "29", text: "取引先" },
