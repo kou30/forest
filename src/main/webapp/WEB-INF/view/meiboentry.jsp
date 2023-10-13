@@ -90,7 +90,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 				</p>
 
 				<p>
-					<label for="">生年月日:</label> <input type="date" id=""
+					生年月日: <input type="date" id=""
 						name="BIRTHDAY" value="<%=now%>" min="1950-01-01" max="<%=now%>" />
 				</p>
 
@@ -99,10 +99,10 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 						type="radio" name="SEX" value="2">女性
 				</p>
 				<p>
-					分類: <input type="radio" name="BUNRUI" value="親族" checked>親族
-					<input type="radio" name="BUNRUI" value="知人">知人 <input
-						type="radio" name="BUNRUI" value="なし">なし
+					分類: <input type="radio" name="BUNRUI" value="親族"  checked>親族
+					<input type="radio" name="BUNRUI" value="知人">知人 
 				</p>
+				
 				<p>
 					続柄: <select name="RELATIONSHIP">
 						<option value="1">選択なし</option>
@@ -133,6 +133,81 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 						<option value="26">娘</option>
 					</select>
 				</p>
+				<script type="text/javascript">
+    const radio = document.querySelectorAll('input[name="BUNRUI"]');
+    const relationshipSelect = document.querySelector('select[name="RELATIONSHIP"]');
+
+    radio.forEach(function (radioButton) {
+        radioButton.addEventListener("change", function () {
+            if (radioButton.value === "知人") {
+                // 「知人」が選択された場合、プルダウンの選択肢を変更
+                relationshipSelect.innerHTML = ""; // 既存の選択肢をクリア
+
+                const newOptions = [
+                    { value: "0", text: "選択なし" },
+                    { value: "27", text: "友人" },
+                    { value: "28", text: "同僚" },
+                    { value: "29", text: "取引先" },
+                    { value: "30", text: "隣人" },
+                    { value: "31", text: "顧客" },
+                    { value: "32", text: "先生" },
+                    { value: "33", text: "仕事仲間" },
+                    { value: "34", text: "趣味仲間" },
+                    { value: "35", text: "関係者" },
+                    // 他の選択肢を追加
+                ];
+
+                newOptions.forEach(function (option) {
+                    const newOption = document.createElement("option");
+                    newOption.value = option.value;
+                    newOption.text = option.text;
+                    relationshipSelect.appendChild(newOption);
+                });
+            } else {
+                // それ以外の場合、通常の選択肢に戻す
+                relationshipSelect.innerHTML = ""; // 既存の選択肢をクリア
+
+                const commonOptions = [
+                    { value: "1", text: "選択なし" },
+                    { value: "2", text: "父" },
+                    { value: "3", text: "母" },
+                    { value: "4", text: "兄" },
+                    { value: "5", text: "姉" },
+                    { value: "6", text: "弟" },
+                    { value: "7", text: "妹" },
+                    { value: "8", text: "義父" },
+                    { value: "9", text: "義母" },
+                    { value: "10", text: "義兄" },
+                    { value: "11", text: "義姉" },
+                    { value: "12", text: "義弟" },
+                    { value: "13", text: "義妹" },
+                    { value: "14", text: "義祖父" },
+                    { value: "15", text: "義祖母" },
+                    { value: "16", text: "義曽祖父" },
+                    { value: "17", text: "義曾祖母" },
+                    { value: "18", text: "義おじ" },
+                    { value: "19", text: "義おば" },
+                    { value: "20", text: "義いとこ" },
+                    { value: "21", text: "義甥" },
+                    { value: "22", text: "義姪" },
+                    { value: "23", text: "夫" },
+                    { value: "24", text: "妻" },
+                    { value: "25", text: "息子" },
+                    { value: "26", text: "娘" },
+                   
+                    // 他の共通の選択肢を追加
+                ];
+
+                commonOptions.forEach(function (option) {
+                    const newOption = document.createElement("option");
+                    newOption.value = option.value;
+                    newOption.text = option.text;
+                    relationshipSelect.appendChild(newOption);
+                });
+            }
+        });
+    });
+</script>
 				<p>
 					備考:<br>
 					<textarea name="MEMO" rows="4" cols="50" maxlength="100"></textarea>
