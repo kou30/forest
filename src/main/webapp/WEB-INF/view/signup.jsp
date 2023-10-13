@@ -30,7 +30,7 @@
 
 <html>
 <head>
-  <title>サインアップ</title>
+  <title>新規登録</title>
   <link rel="stylesheet" href="css/signup.css">
 </head>
 <body style="margin-left: 20px;">

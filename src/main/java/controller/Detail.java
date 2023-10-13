@@ -34,8 +34,12 @@ import model.UserInfoDto;
 
 @WebServlet("/Detail")
 public class Detail extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
 		UserInfoDto userInfoOnSession = (UserInfoDto) session.getAttribute("LOGIN_INFO");
@@ -55,6 +59,13 @@ public class Detail extends HttpServlet {
 			MeiboDTO Mlist = new MeiboDTO();
 			Mlist = logic.DetailMeiboSelect(id);
 			request.setAttribute("Mlist", Mlist);
+			
+			int Mnr=Mlist.getUser_nr();
+			int Unr=userInfoOnSession.getUser_nr();
+			if(Mnr!=Unr) {
+				RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/view/mainpage.jsp");
+				dispatch.forward(request, response);
+			}
 			
 			RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/view/detail.jsp");
 			dispatch.forward(request, response);

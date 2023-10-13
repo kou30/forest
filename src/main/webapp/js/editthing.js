@@ -1,5 +1,8 @@
 document.getElementById('ExecuteEditShinamono').addEventListener('submit', function(event) {
 	
+	
+console.log(エディットシング)
+	
     var selectedValue = document.getElementById('bunruiSelect').value;
     if (selectedValue === '0') {
         alert('分類を選択してください');

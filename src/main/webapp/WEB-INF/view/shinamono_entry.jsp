@@ -82,7 +82,7 @@ MeiboDTO dto = (MeiboDTO) request.getAttribute("meibo");
 
        			<p>
                     <label for="start">贈った、または頂いた日時:</label>
-                    <input type="date" id="inputDate" name="DATE" value="<%=now%>" min="1950-01-01" max="<%= now %>" />
+                    <input type="date" id="inputDate" name="DATE" value=<%=now%> min="1950-01-01" max="<%= now %>" />
                 </p>
 
 				<!-- 第一分類 -->
