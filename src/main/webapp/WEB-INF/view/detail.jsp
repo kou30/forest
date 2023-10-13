@@ -130,7 +130,7 @@ String[] relationships = {"選択なし", "父", "母", "兄", "姉", "弟", "�
 					<li><a href="MainPage">TOP</a></li>
 					<li><a href="MeiboEntry">名簿登録</a></li>
 					<li><a href="ShowAllMeibo">名簿一覧</a></li>
-					<li><a href="ShowAllShinamono">贈り物・貰い物一覧</a></li>
+					<li><a href="ShowAllShinamono">贈り物・頂き物一覧</a></li>
 					<li><a href="MonthView">カレンダー</a></li>
 					<li><a href="Logoutinfo" class="logout">ログアウト</a></li>
 				</ul>
@@ -170,7 +170,7 @@ String[] relationships = {"選択なし", "父", "母", "兄", "姉", "弟", "�
 					alt="Image" />
 			</div>
 
-			<h2>贈ったモノ</h2>
+			<h2>贈りもの</h2>
 
 			<table border="1">
 				<tr>
@@ -348,7 +348,7 @@ String[] relationships = {"選択なし", "父", "母", "兄", "姉", "弟", "�
 			</table>
 
 			<table border="1">
-				<h2>頂いたモノ</h2>
+				<h2>頂きもの</h2>
 				<tr>
 					<th>相手の名前</th>
 					<th>品物送受日</th>
