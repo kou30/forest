@@ -48,7 +48,7 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 function thirdItem() {
     const selectedBunrui = bunruiSelect.value;
 	const item = <%=dto.getItem()%>;
-	console.log(item);
+	
     // 第二分類が選択されたら第三分類を有効化
    
         const selectedNextOption = nextOptionSelect.value;
@@ -56,7 +56,7 @@ function thirdItem() {
             thirdOptionSelect.disabled = false;
 
             if (selectedNextOption === '1') { // 第二分類が「品物」の場合、第三分類を更新
-                console.log("1da");
+                
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
                     { value: '1', label: 'お中元' },
@@ -85,7 +85,7 @@ function thirdItem() {
                 });
                  
             } else if (selectedNextOption === '2') { // 第二分類が「お金」の場合、第三分類を更新
-            	console.log("2da");
+            	
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
                     { value: '1', label: '寄付金' },
@@ -115,7 +115,7 @@ function thirdItem() {
                 });
                  
             } else if (selectedNextOption === '3') { // 第二分類が「手紙など」の場合、第三分類を更新
-            	console.log("3da");
+            	
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
                     { value: '1', label: '年賀状' },
@@ -132,7 +132,7 @@ function thirdItem() {
                     optionElement.textContent = option.label;
                     console.log('option.value:', option.value);
                     if (option.value === String(item)) {
-                        console.log("イコールした");
+                        
                         optionElement.selected = true;
                     }
                     thirdOptionSelect.appendChild(optionElement);
