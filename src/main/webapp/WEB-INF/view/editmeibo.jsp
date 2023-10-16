@@ -104,7 +104,7 @@ if (dto.getImageData() != null) {
 
 
 				<p>
-					<label for="">成年月日:</label> <input type="date" id=""
+					<label for="">生年月日:</label> <input type="date" id=""
 						name="BIRTHDAY" value="<%=sdfInput.format(birthday)%>"
 						min="1950-01-01" max="<%=now%>" />
 				</p>
