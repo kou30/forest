@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="css/signup.css">
 </head>
 <body style="margin-left: 20px;">
-  <h2 class="kaza">サインアップ</h2>
+  <h2 class="kaza">新規登録</h2>
   <div style="width:500px;">
     <form action="ExecuteSignup" method="post" onsubmit="return validatePassword()">
       <p>ID
