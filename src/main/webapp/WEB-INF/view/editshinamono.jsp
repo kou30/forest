@@ -47,8 +47,8 @@ ShinamonoDTO dto = (ShinamonoDTO) request.getAttribute("shinamono");
 <script>
 function thirdItem() {
     const selectedBunrui = bunruiSelect.value;
-
-
+	const item = <%=dto.getItem()%>;
+	
     // 第二分類が選択されたら第三分類を有効化
    
         const selectedNextOption = nextOptionSelect.value;
@@ -56,6 +56,7 @@ function thirdItem() {
             thirdOptionSelect.disabled = false;
 
             if (selectedNextOption === '1') { // 第二分類が「品物」の場合、第三分類を更新
+                
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
                     { value: '1', label: 'お中元' },
@@ -77,10 +78,14 @@ function thirdItem() {
                     const optionElement = document.createElement('option');
                     optionElement.value = option.value;
                     optionElement.textContent = option.label;
+                    if (option.value ===String(item)) {
+                        optionElement.selected = true;
+                    }
                     thirdOptionSelect.appendChild(optionElement);
                 });
                  
             } else if (selectedNextOption === '2') { // 第二分類が「お金」の場合、第三分類を更新
+            	
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
                     { value: '1', label: '寄付金' },
@@ -103,10 +108,14 @@ function thirdItem() {
                     const optionElement = document.createElement('option');
                     optionElement.value = option.value;
                     optionElement.textContent = option.label;
+                    if (option.value === String(item)) {
+                        optionElement.selected = true;
+                    }
                     thirdOptionSelect.appendChild(optionElement);
                 });
                  
             } else if (selectedNextOption === '3') { // 第二分類が「手紙など」の場合、第三分類を更新
+            	
                 const thirdOptions = [
                     { value: '0', label: '選択してください' },
                     { value: '1', label: '年賀状' },
@@ -121,6 +130,11 @@ function thirdItem() {
                     const optionElement = document.createElement('option');
                     optionElement.value = option.value;
                     optionElement.textContent = option.label;
+                    console.log('option.value:', option.value);
+                    if (option.value === String(item)) {
+                        
+                        optionElement.selected = true;
+                    }
                     thirdOptionSelect.appendChild(optionElement);
                 });
                 
@@ -168,7 +182,7 @@ function thirdItem() {
 	<div class="image">
 		<main>
 			<h2 class="hero">贈り物・頂き物編集フォーム</h2>
-			<form action="ExecuteEditShinamono" method="post" enctype="">
+			<form action="ExecuteEditShinamono" method="post" enctype="" id="ExecuteEditShinamono">
 				<input type="hidden" name="SHINAMONO_ID"
 					value="<%=dto.getShinamono_id()%>" maxlength="10" readonly>
 				<input type="hidden" name="AITE_NAME" value=<%=dto.getAite_name()%>>
@@ -232,7 +246,7 @@ function thirdItem() {
 					備考:<br>
 					<textarea name="MEMO" rows="4" cols="50" maxlength="250"><%=dto.getMemo()%></textarea>
 					<br> <input type="submit" value="贈り物・頂き物登録"
-						onclick="return itAgg()">
+						>
 			</form>
 			<script src="js/editthing.js"></script>
 		</main>
@@ -241,4 +255,87 @@ function thirdItem() {
 		</footer>
 	</div>
 </body>
+<script>
+const categorySelect = document.getElementById('nextOptionSelect');
+const itemSelect = document.getElementById('thirdOptionSelect');
+
+// CATEGORYの値が変更されたときのイベントリスナーを追加
+categorySelect.addEventListener('change', function() {
+    // 選択されたCATEGORYの値を取得
+    const selectedCategory = categorySelect.value;
+
+    // ITEMの選択肢をクリア
+    itemSelect.innerHTML = '';
+
+    // 選択されたCATEGORYに応じてITEMの選択肢を追加
+    
+    
+    	if (selectedCategory === '1') { // 品物
+        const itemOptions = [
+            { value: '0', label: '選択してください' },
+            { value: '1', label: 'お中元' },
+            { value: '2', label: 'お供え物' },
+            { value: '3', label: 'お祝い品' },
+            { value: '4', label: 'お見舞い品' },
+            { value: '5', label: '贈答品' },
+            { value: '6', label: 'お土産' },
+            { value: '7', label: '記念品' },
+            { value: '8', label: '誕生日プレゼント' },
+            { value: '9', label: '結婚祝い品' },
+            { value: '10', label: '出産祝い品' },
+            { value: '11', label: '引っ越し祝い品' },
+            { value: '12', label: 'その他' }
+        ];
+        itemOptions.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option.value;
+            optionElement.textContent = option.label;
+            itemSelect.appendChild(optionElement);
+        });
+        
+    } else if (selectedCategory === '2') { // お金
+        const itemOptions = [
+            { value: '0', label: '選択してください' },
+            { value: '1', label: '寄付金' },
+            { value: '2', label: '贈与金' },
+            { value: '3', label: '祝儀金' },
+            { value: '4', label: '贈答金' },
+            { value: '5', label: '報酬金' },
+            { value: '6', label: '賞金' },
+            { value: '7', label: '贈賄金' },
+            { value: '8', label: '支援金' },
+            { value: '9', label: '貢献金' },
+            { value: '10', label: 'ギフト券' },
+            { value: '11', label: '仏教関連金' },
+            { value: '12', label: 'お祝い金' },
+            { value: '13', label: 'その他' }
+        ];
+        itemOptions.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option.value;
+            optionElement.textContent = option.label;
+            itemSelect.appendChild(optionElement);
+        });
+        
+    } else if (selectedCategory === '3') { // 手紙など
+        const itemOptions = [
+            { value: '0', label: '選択してください' },
+            { value: '1', label: '年賀状' },
+            { value: '2', label: '招待状' },
+            { value: '3', label: 'お詫び状' },
+            { value: '4', label: '通知状' },
+            { value: '5', label: 'その他' }
+        ];
+        itemOptions.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option.value;
+            optionElement.textContent = option.label;
+            itemSelect.appendChild(optionElement);
+        });
+        
+    }
+    	
+    
+});
+</script>
 </html>
